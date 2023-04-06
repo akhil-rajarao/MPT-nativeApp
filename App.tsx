@@ -1,4 +1,5 @@
-import HomeScreen from './src/screens/HomeScreen';
+import Explore from './src/screens/explore/Explore';
+// import HomeScreen from './src/screens/home/HomeScreen';
 // import LoginScreen from './src/screens/Login';
 // import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
@@ -11,7 +12,8 @@ import {View} from 'react-native';
 function App() {
   return (
     <View>
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <Explore />
     </View>
     // <NavigationContainer>
     //   <Stack.Navigator>
