@@ -5,154 +5,159 @@ import {
 } from 'react-native-responsive-screen';
 
 import Footer from '../../components/footer';
+import Header from '../../components/Header';
 import React from 'react';
 
 const HomeScreen = () => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('../../assets/tiger3.png')}
-        />
-        <View style={styles.text}>
-          <Text style={styles.heading}>Majestic</Text>
-          <Text style={styles.heading1}>MADHYA PRADESH</Text>
-          <View style={styles.explore}>
-            <Text style={styles.exploreText}>EXPLORE</Text>
-          </View>
-          <View>
-            <Text style={styles.content}>
-              The Heart of India, tourism hotspot that boasts of a rich cultural
-              and natural heritage.From the intricately carved Khajuraho Temples
-              to the rugged wilderness of Kanha National Park, the state offers
-              a diverse range of attractions that cater to all kinds of
-              travelers.
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.bannerHeading}>
-        <Text style={styles.disText}>Discover</Text>
-        <Text style={styles.heartText}>Heart of India</Text>
-      </View>
-      <View style={styles.banners}>
-        <View>
+    <View style={styles.navbar}>
+      <Header />
+      <ScrollView>
+        <View style={styles.container}>
           <Image
-            style={styles.wildlife}
-            source={require('../../assets/wildLife.png')}
+            style={styles.image}
+            source={require('../../assets/tiger3.png')}
           />
-          <View style={styles.opacity} />
-          <Text style={styles.bannerText}>Wildlife</Text>
+          <View style={styles.text}>
+            <Text style={styles.heading}>Majestic</Text>
+            <Text style={styles.heading1}>MADHYA PRADESH</Text>
+            <View style={styles.explore}>
+              <Text style={styles.exploreText}>EXPLORE</Text>
+            </View>
+            <View>
+              <Text style={styles.content}>
+                The Heart of India, tourism hotspot that boasts of a rich
+                cultural and natural heritage.From the intricately carved
+                Khajuraho Temples to the rugged wilderness of Kanha National
+                Park, the state offers a diverse range of attractions that cater
+                to all kinds of travelers.
+              </Text>
+            </View>
+          </View>
         </View>
-        <View style={styles.bannersRow}>
+        <View style={styles.bannerHeading}>
+          <Text style={styles.disText}>Discover</Text>
+          <Text style={styles.heartText}>Heart of India</Text>
+        </View>
+        <View style={styles.banners}>
           <View>
             <Image
-              style={styles.adventure}
-              source={require('../../assets/adventure.png')}
+              style={styles.wildlife}
+              source={require('../../assets/wildLife.png')}
             />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>Adventure</Text>
+            <View style={styles.opacity} />
+            <Text style={styles.bannerText}>Wildlife</Text>
+          </View>
+          <View style={styles.bannersRow}>
+            <View>
+              <Image
+                style={styles.adventure}
+                source={require('../../assets/adventure.png')}
+              />
+              <View style={styles.opacity2} />
+              <Text style={styles.bannerText2}>Adventure</Text>
+            </View>
+            <View>
+              <Image
+                style={styles.food}
+                source={require('../../assets/food.png')}
+              />
+              <View style={styles.opacity2} />
+              <Text style={styles.bannerText2}>food</Text>
+            </View>
           </View>
           <View>
             <Image
-              style={styles.food}
-              source={require('../../assets/food.png')}
+              style={styles.heritage}
+              source={require('../../assets/heritage.png')}
             />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>food</Text>
+            <View style={styles.opacity}></View>
+            <Text style={styles.bannerText}>Heritage</Text>
           </View>
         </View>
-        <View>
-          <Image
-            style={styles.heritage}
-            source={require('../../assets/heritage.png')}
-          />
-          <View style={styles.opacity}></View>
-          <Text style={styles.bannerText}>Heritage</Text>
-        </View>
-      </View>
 
-      <View style={styles.unexploredView}>
-        <Text style={styles.unexplored}>Unexplored side of MP</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../../assets/explore.png')}
-        />
-        <Text style={styles.relaxText}>
-          Destination To Relax And Enjoy Nature
-        </Text>
-        <Text style={styles.read}>Read more -- </Text>
-      </View>
-      <View style={styles.packages}>
-        <Text style={styles.packagesHeading}>Our Top Packages</Text>
-        <View style={styles.imageTop}>
+        <View style={styles.unexploredView}>
+          <Text style={styles.unexplored}>Unexplored side of MP</Text>
           <Image
-            style={styles.packagesImage}
-            source={require('../../assets/package.jpeg')}
+            style={styles.exploreImage}
+            source={require('../../assets/explore.png')}
           />
-          <View style={styles.packagesContent}>
-            <View style={styles.days}>
-              <Text style={styles.dayText}>4 Night / 5 Days</Text>
-            </View>
-            <Text style={styles.headpackage}>Natures Nest Pachmarhi</Text>
-            <Text style={styles.textpackage}>
-              Popularly known as the 'Satpura ki Rani' (Queen of Satpura) is the
-              glorious land called Pachmarhi.Pachmarhi is one of the most
-              popular destinations in the Heart of Incredible India and is a
-              treasure trove of rich history and nature's bounty.
-            </Text>
-            <Text style={styles.optionPackage}>
-              PIPARIYA - TAWA - PACHMARHI - TAMIA - PATALKOT
-            </Text>
-            <Text style={styles.optionPackage1}>PENCH - ROOKHAD - SEONI</Text>
-            <View style={styles.view}>
-              <Text style={styles.viewText}>VIEW</Text>
+          <Text style={styles.relaxText}>
+            Destination To Relax And Enjoy Nature
+          </Text>
+          <Text style={styles.read}>Read more -- </Text>
+        </View>
+        <View style={styles.packages}>
+          <Text style={styles.packagesHeading}>Our Top Packages</Text>
+          <View style={styles.imageTop}>
+            <Image
+              style={styles.packagesImage}
+              source={require('../../assets/package.jpeg')}
+            />
+            <View style={styles.packagesContent}>
+              <View style={styles.days}>
+                <Text style={styles.dayText}>4 Night / 5 Days</Text>
+              </View>
+              <Text style={styles.headpackage}>Natures Nest Pachmarhi</Text>
+              <Text style={styles.textpackage}>
+                Popularly known as the 'Satpura ki Rani' (Queen of Satpura) is
+                the glorious land called Pachmarhi.Pachmarhi is one of the most
+                popular destinations in the Heart of Incredible India and is a
+                treasure trove of rich history and nature's bounty.
+              </Text>
+              <Text style={styles.optionPackage}>
+                PIPARIYA - TAWA - PACHMARHI - TAMIA - PATALKOT
+              </Text>
+              <Text style={styles.optionPackage1}>PENCH - ROOKHAD - SEONI</Text>
+              <View style={styles.view}>
+                <Text style={styles.viewText}>VIEW</Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      {/* >>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.popular}>
-        <Text style={styles.packagesHeading}>Popular Places</Text>
-        <View style={styles.imageTop}>
+        {/* >>>>>>>>>>>>>>>>>>>>>> */}
+        <View style={styles.popular}>
+          <Text style={styles.packagesHeading}>Popular Places</Text>
+          <View style={styles.imageTop}>
+            <Image
+              style={styles.packagesImage}
+              source={require('../../assets/popular.jpeg')}
+            />
+            <View style={styles.opacityPlace}></View>
+            <Text style={styles.PlaceText}> Pachmarhi</Text>
+          </View>
+        </View>
+        {/* >>>>>>>>>>>>>>>>>>>>>>> */}
+        <View style={styles.contact}>
           <Image
-            style={styles.packagesImage}
-            source={require('../../assets/popular.jpeg')}
+            style={styles.contactImage}
+            source={require('../../assets/contact3.jpeg')}
           />
-          <View style={styles.opacityPlace}></View>
-          <Text style={styles.PlaceText}> Pachmarhi</Text>
+          <View style={styles.contactText}>
+            <Text style={styles.contactHeading}>Contact Us</Text>
+            <Text style={styles.contentSubText}>
+              Tourist Helpline (Toll Free): 1800 233 7777
+            </Text>
+            <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
+            <Text style={styles.contentSubText}>
+              (Sunday holiday, Saturday and other holiday Half Day)
+            </Text>
+            <Text style={styles.contentSubText}>
+              Email : mpthelpline@mpstdc.com
+            </Text>
+          </View>
         </View>
-      </View>
-      {/* >>>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.contact}>
-        <Image
-          style={styles.contactImage}
-          source={require('../../assets/contact3.jpeg')}
-        />
-        <View style={styles.contactText}>
-          <Text style={styles.contactHeading}>Contact Us</Text>
-          <Text style={styles.contentSubText}>
-            Tourist Helpline (Toll Free): 1800 233 7777
-          </Text>
-          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
-          <Text style={styles.contentSubText}>
-            (Sunday holiday, Saturday and other holiday Half Day)
-          </Text>
-          <Text style={styles.contentSubText}>
-            Email : mpthelpline@mpstdc.com
-          </Text>
+        <View style={styles.footer}>
+          <Footer />
         </View>
-      </View>
-      <View style={styles.footer}>
-        <Footer />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  navbar: {},
   container: {
     flex: 1,
     // justifyContent: 'flex-end',

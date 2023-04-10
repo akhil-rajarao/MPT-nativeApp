@@ -1,4 +1,11 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,121 +15,118 @@ import Footer from '../../components/footer';
 import Header from '../../components/Header';
 import React from 'react';
 
-const Explore = () => {
+const Destination = () => {
+  const [text, onChangeText] = React.useState('');
   return (
-    <View style={styles.navbar}>
+    <View>
       <Header />
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.imageSlice}>
             <Image
               style={styles.image}
-              source={require('../../assets/explore1.png')}
+              source={require('../../assets/destination.jpg')}
             />
-            <Image
-              style={styles.image}
-              source={require('../../assets/explore2.png')}
-            />
-            <Image
-              style={styles.image}
-              source={require('../../assets/explore3.png')}
-            />
-            <Image
-              style={styles.image}
-              source={require('../../assets/explore4.png')}
-            />
-            <View style={styles.text}>
-              <Text style={styles.heading1}>EXPLORE</Text>
+            <View style={styles.search}>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeText}
+                value={text}
+                placeholder="City/Destination"
+              />
+              <View style={styles.searchButton}>
+                <Text style={styles.buttonText}>Search</Text>
+              </View>
             </View>
           </View>
         </View>
         {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-        <View style={styles.attractionView}>
-          <Text style={styles.headingText}>Attractions</Text>
+        <View style={styles.popularView}>
+          <Text style={styles.headingText}>Popular Places</Text>
           <Image
             style={styles.exploreImage}
-            source={require('../../assets/attractions.jpg')}
+            source={require('../../assets/ujjan.jpeg')}
           />
           <View style={styles.exploreOpacity} />
-          <Text style={styles.exploreText}>Take a walk through history</Text>
+          <Text style={styles.exploreText}>Ujjan</Text>
         </View>
 
         {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-        <View style={styles.bannerHeading}>
-          <Text style={styles.heartText}>Explore</Text>
+        {/* <View style={styles.bannerHeading}>
+        <Text style={styles.heartText}>Explore</Text>
+      </View>
+      <View style={styles.banners}>
+        <View>
+          <Image
+            style={styles.wildlife}
+            source={require('../../assets/owl.png')}
+          />
+          <View style={styles.opacity} />
+          <Text style={styles.bannerText}>Know more</Text>
         </View>
-        <View style={styles.banners}>
+        <View style={styles.bannersRow}>
           <View>
             <Image
-              style={styles.wildlife}
-              source={require('../../assets/owl.png')}
+              style={styles.adventure}
+              source={require('../../assets/deer.png')}
             />
-            <View style={styles.opacity} />
-            <Text style={styles.bannerText}>Know more</Text>
+            <View style={styles.opacity2} />
+            <Text style={styles.bannerText2}>Know more</Text>
           </View>
-          <View style={styles.bannersRow}>
-            <View>
-              <Image
-                style={styles.adventure}
-                source={require('../../assets/deer.png')}
-              />
-              <View style={styles.opacity2} />
-              <Text style={styles.bannerText2}>Know more</Text>
-            </View>
-            <View>
-              <Image
-                style={styles.food}
-                source={require('../../assets/tigerExplore.png')}
-              />
-              <View style={styles.opacity2} />
-              <Text style={styles.bannerText2}>Know more</Text>
-            </View>
+          <View>
+            <Image
+              style={styles.food}
+              source={require('../../assets/tigerExplore.png')}
+            />
+            <View style={styles.opacity2} />
+            <Text style={styles.bannerText2}>Know more</Text>
           </View>
         </View>
+      </View> */}
 
         {/* >>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-        <View style={styles.unexploredView}>
-          <Text style={styles.headingText}>Unexplored side of MP</Text>
-          <Image
-            style={styles.exploreImage}
-            source={require('../../assets/unexplored.jpg')}
-          />
-          <Text style={styles.lifestyle}>Organic Lifestyle</Text>
-          <Text style={styles.read}>Read more -- </Text>
-        </View>
+        {/* <View style={styles.unexploredView}>
+        <Text style={styles.headingText}>Unexplored side of MP</Text>
+        <Image
+          style={styles.exploreImage}
+          source={require('../../assets/unexplored.jpg')}
+        />
+        <Text style={styles.lifestyle}>Organic Lifestyle</Text>
+        <Text style={styles.read}>Read more -- </Text>
+      </View> */}
 
         {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
         <View style={styles.interests}>
-          <Text style={styles.headingText}>Explore Other Interests</Text>
+          <Text style={styles.headingText}>Explore</Text>
           <View style={styles.exploreOther}>
             <View style={styles.exploreBox}>
               <Image
                 style={styles.exploreOtherImage}
-                source={require('../../assets/budhYatra.png')}
+                source={require('../../assets/wildLife.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Spritual Yatra</Text>
+              <Text style={styles.otherText}>Kanha</Text>
             </View>
             <View style={styles.exploreBox}>
               <Image
                 style={styles.exploreOtherImage}
-                source={require('../../assets/riverQuila.jpeg')}
+                source={require('../../assets/Pachmarhi.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Heritage</Text>
+              <Text style={styles.otherText}>Pachmarhi</Text>
             </View>
           </View>
           <View style={styles.exploreOther}>
             <View style={styles.exploreBox}>
               <Image
                 style={styles.exploreOtherImage}
-                source={require('../../assets/exploreTiger.png')}
+                source={require('../../assets/deer.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Wildlife</Text>
+              <Text style={styles.otherText}>Bandhavgarh</Text>
             </View>
             <View style={styles.exploreBox}>
               <Image
@@ -130,7 +134,25 @@ const Explore = () => {
                 source={require('../../assets/budhYatra.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Spritual Yatra</Text>
+              <Text style={styles.otherText}>Amarkantak</Text>
+            </View>
+          </View>
+          <View style={styles.exploreOther}>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../../assets/fort.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Indore</Text>
+            </View>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../../assets/Khajuraho.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Khajuraho</Text>
             </View>
           </View>
           <View style={styles.exploreOther}>
@@ -140,34 +162,35 @@ const Explore = () => {
                 source={require('../../assets/temple.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Heritage</Text>
+              <Text style={styles.otherText}>Bhopal</Text>
             </View>
             <View style={styles.exploreBox}>
               <Image
                 style={styles.exploreOtherImage}
-                source={require('../../assets/fort.png')}
+                source={require('../../assets/exploreTiger.png')}
               />
               <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Spritual Yatra</Text>
+              <Text style={styles.otherText}>Panna</Text>
             </View>
           </View>
-          <View style={styles.exploreOther}>
-            <View style={styles.exploreBox}>
-              <Image
-                style={styles.exploreOtherImage}
-                source={require('../../assets/deer.png')}
-              />
-              <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Wildlife</Text>
-            </View>
-            <View style={styles.exploreBox}>
-              <Image
-                style={styles.exploreOtherImage}
-                source={require('../../assets/Mp.png')}
-              />
-              <View style={styles.otherOpacity} />
-              <Text style={styles.otherText}>Quila</Text>
-            </View>
+        </View>
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+
+        <View style={styles.storyContainer}>
+          <View style={styles.headingBox}>
+            <Text style={styles.headingText}>Guest Stories</Text>
+          </View>
+          <Image
+            style={styles.storyImage}
+            source={require('../../assets/story.jpg')}
+          />
+          <View style={styles.textBox}>
+            <Text style={styles.storyText}>
+              Best Hotel Of MP, I really did not expect such a wonderful
+              experience over there, everything went as an exceptional, very
+              supportive staff Have stayed in many excellent hotels but this one
+              is really amazing Champak Bungalow rocks.
+            </Text>
           </View>
         </View>
 
@@ -198,39 +221,60 @@ const Explore = () => {
     </View>
   );
 };
-export default Explore;
+export default Destination;
 
 const styles = StyleSheet.create({
-  navbar: {},
   container: {
     flex: 1,
-    // done
   },
   image: {
     height: hp('40%'),
-    width: wp('25%'),
+    width: wp('100%'),
     position: 'relative',
-    // done
   },
   imageSlice: {
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    // done
   },
-  text: {
+  search: {
+    flexDirection: 'row',
     position: 'absolute',
-    // done
+    top: 280,
   },
 
-  heading1: {
-    color: 'lightgrey',
-    fontSize: 35,
-    fontWeight: '800',
-    marginBottom: 7,
-    // done
+  input: {
+    height: hp('5%'),
+    width: wp('60%'),
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderColor: 'darkred',
   },
+  searchButton: {
+    height: hp('5%'),
+    width: wp('30%'),
+    borderWidth: 1,
+    backgroundColor: 'darkred',
+    borderColor: 'darkred',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+  },
+
+  //   text: {
+  //     position: 'absolute',
+  //     // done
+  //   },
+
+  //   heading1: {
+  //     color: 'lightgrey',
+  //     fontSize: 35,
+  //     fontWeight: '800',
+  //     marginBottom: 7,
+  //     // done
+  //   },
 
   bannerHeading: {
     display: 'flex',
@@ -298,7 +342,6 @@ const styles = StyleSheet.create({
     height: hp('30%'),
     justifyContent: 'center',
     alignItems: 'center',
-    // done
   },
   exploreOpacity: {
     backgroundColor: 'white',
@@ -306,11 +349,10 @@ const styles = StyleSheet.create({
     top: 255,
     bottom: 0,
     left: 0,
-    right: 0,
-    opacity: 0.1,
+    right: 335,
+    opacity: 0.3,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    // done
   },
   exploreText: {
     fontSize: hp('2%'),
@@ -319,9 +361,7 @@ const styles = StyleSheet.create({
     top: 255,
     fontWeight: '600',
     alignSelf: 'flex-start',
-    paddingLeft: 10,
-    opacity: 0.5,
-    // done
+    paddingLeft: 15,
   },
   opacity: {
     backgroundColor: 'white',
@@ -363,23 +403,21 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     // done
   },
-  attractionView: {
+  popularView: {
     width: wp('100%'),
     height: hp('38%'),
     marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    // done
   },
   headingText: {
     fontSize: hp('3.5%'),
     color: 'darkred',
     fontStyle: 'italic',
     fontWeight: '800',
-    paddingBottom: 8,
+    // paddingBottom: 8,
     alignSelf: 'flex-start',
     paddingLeft: 5,
-    // done
   },
 
   read: {
@@ -425,7 +463,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('113%'),
     backgroundColor: 'tan',
-    // done
+    marginTop: 30,
   },
   exploreBox: {
     width: wp('48%'),
@@ -444,34 +482,66 @@ const styles = StyleSheet.create({
   exploreOtherImage: {
     width: wp('48%'),
     height: hp('25%'),
-    borderRadius: 10,
+    // borderRadius: 10,
     // done
   },
   otherOpacity: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     alignItems: 'center',
     position: 'absolute',
-    top: 0,
+    top: 160,
     bottom: 0,
     left: 0,
-    right: 0,
+    right: 70,
     opacity: 0.4,
-    borderRadius: 10,
+
     // done
   },
   otherText: {
-    fontSize: hp('2.2%'),
+    fontSize: hp('2.1%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 80,
-    left: 50,
-    opacity: 0.5,
+    top: 162,
+    left: 10,
+    fontWeight: '500',
+    fontStyle: 'italic',
+    // opacity: 0.5,
     // done
+  },
+  storyContainer: {
+    width: wp('100%'),
+    height: hp('80%'),
+    backgroundColor: 'skyblue',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyImage: {
+    width: wp('96%'),
+    height: hp('30%'),
+  },
+  textBox: {
+    width: wp('96%'),
+    height: hp('30%'),
+    backgroundColor: 'tan',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headingBox: {
+    width: wp('96%'),
+    height: hp('10%'),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyText: {
+    color: 'black',
+    marginHorizontal: 10,
+
+    fontStyle: 'italic',
   },
 
   footer: {
     width: wp('100%'),
-    height: hp('80%'),
+    height: hp('90%'),
     paddingLeft: 10,
   },
 });
