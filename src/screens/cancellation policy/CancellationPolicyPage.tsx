@@ -15,7 +15,7 @@ const CancellationPolicyPage = () => {
   const tableValues = {
     tableHead: ['Notice for cancellation', 'Refund Policy'],
     tableData: [
-      ['30 days or more before check- in date ', '90% refund'],
+      ['30 days or more before check-in date ', '90% refund'],
       ['04 to 29 days before check-in date', '80% refund'],
       ['3 days before check- in date', 'NIL refund'],
     ],
@@ -54,7 +54,7 @@ const CancellationPolicyPage = () => {
               style={styles.head}
               textStyle={styles.text1}
             />
-            <Rows data={tableValues.tableData} textStyle={styles.text} />
+            <Rows data={tableValues.tableData} textStyle={styles.text2} />
           </Table>
         </View>
         <View
@@ -78,8 +78,9 @@ const CancellationPolicyPage = () => {
 const styles = StyleSheet.create({
   container: {flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff'},
   head: {height: 40, backgroundColor: '#BC1B1B'},
-  text: {margin: 6, alignSelf: 'center', fontSize: 16},
+  text: {margin: 6, alignSelf: 'flex-start', fontSize: 16},
   text1: {margin: 6, alignSelf: 'center', color: '#ffffff', fontWeight: 'bold'},
+  text2: {margin: 6, alignSelf: 'center', fontSize: 16},
 });
 
 export default CancellationPolicyPage;
