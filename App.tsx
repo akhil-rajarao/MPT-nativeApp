@@ -33,6 +33,11 @@ import OffersPage from './src/screens/offersandDiscounts/offers';
 import MiceandFacilities from './src/screens/mice&facilities';
 import WellnessPage from './src/screens/wellnesspage/wellness';
 import CovidPage from './src/screens/covidGuidelines/covidPage';
+import BookingRules from './src/screens/bookingRules/BookingRules';
+import PrivacyPolicy from './src/screens/privacy-policy/PrivacyPolicy';
+import ContactUs from './src/screens/Contactus-page/ContactUsPage';
+import FaqPage from './src/screens/faq-page/faq';
+import CancellationPolicyPage from './src/screens/cancellation policy/CancellationPolicyPage';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -69,7 +74,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView>
-      <CovidPage />
+      <CancellationPolicyPage />
     </SafeAreaView>
   );
 }
