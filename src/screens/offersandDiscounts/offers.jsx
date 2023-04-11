@@ -41,7 +41,7 @@ const OffersPage = () => {
     <ScrollView>
       <View>
         <Image
-          source={require('../../assets/images/covid.jpg')}
+          source={require('../../assets/images/OffersDiscount.jpg')}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -63,7 +63,7 @@ const OffersPage = () => {
           </Table>
         </View>
 
-        <Text style={{marginTop: 30}}>
+        <Text style={{marginTop: 10, left: 20}}>
           NOTE: Only 1 Promocode is applicable at one time
         </Text>
       </View>
@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
     fontWeight: '900',
     marginBottom: 50,
-    top: 80,
+    top: 100,
     zIndex: 500,
-    color: '#ffffff',
-    opacity: 0.7,
+    color: '#000000',
+    opacity: 0.5,
     position: 'absolute',
     alignSelf: 'center',
   },
