@@ -74,7 +74,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView>
-      <CancellationPolicyPage />
+      <OffersPage />
     </SafeAreaView>
   );
 }
