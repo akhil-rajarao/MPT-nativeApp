@@ -22,6 +22,7 @@ const TenderPage = () => {
     'publication Date',
     'Submission Date',
   ];
+  
   const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
   return (
     <ScrollView>
