@@ -1,5 +1,5 @@
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -10,10 +10,13 @@ import React from 'react';
 import {Text} from 'react-native-elements';
 
 const NavBar = () => {
-  const navigation = useNavigation<any>()
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.navContainer}>
-      <Image style={styles.image} source={require('../assets/images/MPTlogo.png')} />
+      <Image
+        style={styles.image}
+        source={require('../assets/images/MPTlogo.png')}
+      />
       <View style={styles.g2Logo}>
         <Image
           style={styles.image}
@@ -28,18 +31,14 @@ const NavBar = () => {
       <TouchableOpacity>
         <Text style={styles.diveText}>Dive In</Text>
       </TouchableOpacity>
-      <TouchableOpacity  onPress={() => navigation.toggleDrawer()}>
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
         <Icon name="bars" size={20} color="#fff" />
       </TouchableOpacity>
     </View>
   );
 };
 
-
-
-
 // import { useNavigation } from '@react-navigation/native';
-
 
 // import React from 'react';
 // import { Image, StyleSheet, View, ScrollView, Text, TouchableOpacity } from 'react-native';
@@ -55,10 +54,8 @@ const NavBar = () => {
 
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
-
 // const NavBar: React.FC = () => {
 
-    
 //     const [selected, setSelected] = React.useState('Dive In');
 //     const data = [
 //         { label: 'Explore', value: '1' },
@@ -69,11 +66,10 @@ const NavBar = () => {
 
 //     return (
 //         <>
-            
+
 //             <View style={styles.container}>
 //                 <View style={{flexDirection:'row',marginLeft:10,width:'30%'}} >
 //                     <Image style={styles.imageContainer} source={require('./assets/images/MPTlogo.png')} />
-
 
 //                     <Image style={styles.imageContainer} source={require('./assets/images/G20theme.png')} />
 //                 </View>
@@ -84,9 +80,9 @@ const NavBar = () => {
 //                  </TouchableOpacity>
 //                  </View>
 //                  <View style={{}}>
-//                   <View style={{right:100,flexDirection:'row',justifyContent:'space-between'}}> 
+//                   <View style={{right:100,flexDirection:'row',justifyContent:'space-between'}}>
 //                   { <SelectList
-                  
+
 //               placeholder="Dive in"
 //               searchPlaceholder="Dive in"
 //               boxStyles={{
@@ -94,7 +90,7 @@ const NavBar = () => {
 //                 height: "90%",
 //                 borderRadius:0,
 //                 borderColor:'white',
-                
+
 //               }}
 //               dropdownStyles={{ width: 150, }}
 //               setSelected={(val:any) => setSelected(val)}
@@ -120,15 +116,15 @@ const NavBar = () => {
 //          onChange={item => {
 //            setValue(item.value);
 //          }}
-        
+
 //       /> */}
 //                     <View style={{marginLeft:25,marginBottom:5}}>
 //                     <TouchableOpacity onPress={() => navigation.toggleDrawer()} >
 //                        <Icon name="bars" size={30}  />
 //                    </TouchableOpacity>
 //                   </View>
-//                   </View> 
-                  
+//                   </View>
+
 //                   </View>
 //             </View>
 //         </View>
@@ -137,7 +133,6 @@ const NavBar = () => {
 //     );
 // };
 
-
 // const styles = StyleSheet.create({
 //     container: {
 //         height: hp('6%'),
@@ -145,7 +140,7 @@ const NavBar = () => {
 //          flexDirection: 'row',
 //        backgroundColor: "black",
 //     //    height:'10%',
-     
+
 //        // alignItems: 'center',
 //          justifyContent: 'space-between',
 //          opacity: 0.5
@@ -159,7 +154,7 @@ const NavBar = () => {
 //         paddingHorizontal:10,
 //         backgroundColor:"red",
 //         borderRadius: 5,
-       
+
 //       },
 //       buttonText: {
 //         color: '#fff',

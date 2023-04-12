@@ -9,9 +9,6 @@ import {
 } from 'react-native';
 import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
-import {DataTable} from 'react-native-paper';
 import {Table, Row, Rows} from 'react-native-table-component';
 
 const EventsPage = () => {

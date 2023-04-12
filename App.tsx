@@ -93,10 +93,10 @@
 
 // export default App;
 
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import CustomDrawerContent from './src/CustomDrawerContent';
 import HomeScreen from './src/screens/HomeScreen';
@@ -114,47 +114,84 @@ import Explore from './src/screens/Explore';
 import Destination from './src/screens/Destination';
 
 const Drawer = createDrawerNavigator();
-
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'rgb(255, 45, 85)',
+    text: '#ffffff',
+  },
+};
 function App() {
   return (
-    <NavigationContainer >
-      <Drawer.Navigator screenOptions={{
-        drawerPosition: 'right', drawerActiveBackgroundColor: 'white'}} drawerContent={(props: any) => <CustomDrawerContent {...props} />} initialRouteName="HomeScreen">
-        <Drawer.Screen name="HomeScreen" component={HomeScreen} options={{
-          header: () => <NavBar />
-        }} />
-        <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} options={{
-          header: () => <NavBar />
-        }} />
-        <Drawer.Screen name="Explore" component={Explore} options={{
-          header: () => <NavBar />
+    <NavigationContainer theme={MyTheme}>
+      <Drawer.Navigator
+        screenOptions={{
+          drawerPosition: 'right',
+          drawerActiveBackgroundColor: 'white',
         }}
+        drawerContent={(props: any) => <CustomDrawerContent {...props} />}
+        initialRouteName="HomeScreen">
+        <Drawer.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            header: () => <NavBar />,
+          }}
         />
-        <Drawer.Screen name="Destination" component={Destination} options={{
-          header: () => <NavBar />
+        <Drawer.Screen
+          name="WelcomeScreen"
+          component={WelcomeScreen}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
+        <Drawer.Screen
+          name="Explore"
+          component={Explore}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
+        <Drawer.Screen
+          name="Destination"
+          component={Destination}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
+        <Drawer.Screen
+          name="Events"
+          component={EventsPage}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
+        <Drawer.Screen
+          name="Institutions"
+          component={Institutions}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
+        <Drawer.Screen
+          name="Wellness"
+          component={WellnessPage}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
 
-        }} />
-        <Drawer.Screen name="Events" component={EventsPage} options={{
-          header: () => <NavBar />
-
-        }} />
-        <Drawer.Screen name="Institutions" component={Institutions} options={{
-          header: () => <NavBar />
-
-        }} />
-        <Drawer.Screen name="Wellness" component={WellnessPage} options={{
-          header: () => <NavBar />
-
-        }} />
-
-        <Drawer.Screen name="Tenders" component={TenderPage} options={{
-          header: () => <NavBar />
-
-        }} />
+        <Drawer.Screen
+          name="Tenders"
+          component={TenderPage}
+          options={{
+            header: () => <NavBar />,
+          }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
 
 export default App;

@@ -1,0 +1,213 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Youth-Brush-Daylight.otf",
+      "sha1": "55b3ce5e3c6deb04ba14c8e7793f6b55da0f894c"
+    },
+    {
+      "path": "src/assets/images/G20theme (1).png",
+      "sha1": "002cfeffd683eb876e18bbdeb0729a0f2edff313"
+    },
+    {
+      "path": "src/assets/images/G20theme.png",
+      "sha1": "002cfeffd683eb876e18bbdeb0729a0f2edff313"
+    },
+    {
+      "path": "src/assets/images/Khajuraho.png",
+      "sha1": "edcb039725af1e622920aaabbacc04a4bfebe99c"
+    },
+    {
+      "path": "src/assets/images/MPTlogo.png",
+      "sha1": "701e463603acb00709f51e36b0530e73238d2295"
+    },
+    {
+      "path": "src/assets/images/Mp.png",
+      "sha1": "ad37b5e4292e6708f9730a983e7307d2abfeb212"
+    },
+    {
+      "path": "src/assets/images/Pachmarhi.png",
+      "sha1": "1f337f036251fe60c530f1579ac38435495a49a7"
+    },
+    {
+      "path": "src/assets/images/Wellness.jpg",
+      "sha1": "637e1e9f9484920bcb8dbb2623d91ddb0aa72148"
+    },
+    {
+      "path": "src/assets/images/adventure.png",
+      "sha1": "29b52629af62dc6dc480abb97cc3b83142536635"
+    },
+    {
+      "path": "src/assets/images/attractions.jpg",
+      "sha1": "f15e45ef2310ea65b817380696a5f2a8d9d08903"
+    },
+    {
+      "path": "src/assets/images/budhYatra.png",
+      "sha1": "03d264b31d41ae2c1011b7f20b58b2da0772beec"
+    },
+    {
+      "path": "src/assets/images/caravan.png",
+      "sha1": "daee01c2522550c19bf2f933e05ec8f508fcb54b"
+    },
+    {
+      "path": "src/assets/images/contact.jpg",
+      "sha1": "4daf3f742f1dc3ff5b587ed4ed864f12a4742404"
+    },
+    {
+      "path": "src/assets/images/contact2.jpeg",
+      "sha1": "cf7183c219e0cdeca4203ce3081875c6c35218ff"
+    },
+    {
+      "path": "src/assets/images/contact3.jpeg",
+      "sha1": "40d63efc58ed3b798e812dd058d87df6dcac85cb"
+    },
+    {
+      "path": "src/assets/images/covid.jpg",
+      "sha1": "69370b2ffccc1b3cf359dd7edfc9d231c4a7d9e6"
+    },
+    {
+      "path": "src/assets/images/deer.png",
+      "sha1": "5063287bee0b6866e2086bab13afc3c93948d659"
+    },
+    {
+      "path": "src/assets/images/destination.jpg",
+      "sha1": "f2602de12f0ab86be42f92a4beb1a2f0b607a4ac"
+    },
+    {
+      "path": "src/assets/images/explore.png",
+      "sha1": "69f62fa0de74c8c1c6850b5d852f32802bf1baea"
+    },
+    {
+      "path": "src/assets/images/explore1.png",
+      "sha1": "429520d4461efecd65217ccf24f9e903f66866c5"
+    },
+    {
+      "path": "src/assets/images/explore2.png",
+      "sha1": "68016a424cc79e932610479dcabd3f30f43a1164"
+    },
+    {
+      "path": "src/assets/images/explore3.png",
+      "sha1": "6600c670234e3d7ee9d6066d12f581f71e370da3"
+    },
+    {
+      "path": "src/assets/images/explore4.png",
+      "sha1": "dc718db554abbe28273a2008ede5fc5e96c7d309"
+    },
+    {
+      "path": "src/assets/images/exploreTiger.png",
+      "sha1": "de99045e71593b9a9d1324addb1d2b1a37b7bf0e"
+    },
+    {
+      "path": "src/assets/images/food.png",
+      "sha1": "23014773ef7ba25e81901c3a70184518eff4834c"
+    },
+    {
+      "path": "src/assets/images/fort.png",
+      "sha1": "a821c6fb4bfe8ef628561bfaf76eac4da93b508d"
+    },
+    {
+      "path": "src/assets/images/heritage.png",
+      "sha1": "6fc938459e061be9295e0d3a823c3b8190a9589b"
+    },
+    {
+      "path": "src/assets/images/images.jpeg",
+      "sha1": "40d63efc58ed3b798e812dd058d87df6dcac85cb"
+    },
+    {
+      "path": "src/assets/images/img4.jpeg",
+      "sha1": "83ea47cd63fe99cc77bce04fde883e248902dc7b"
+    },
+    {
+      "path": "src/assets/images/micefour.png",
+      "sha1": "2fa01a588729b2beaaeec1a8eaaf77e0e6ee0431"
+    },
+    {
+      "path": "src/assets/images/micethree.jpg",
+      "sha1": "08f9e1f9e197cc0d1ef209696d9fe30008554c0d"
+    },
+    {
+      "path": "src/assets/images/micetwo.jpg",
+      "sha1": "783512923a386e53295d1ddcad919ddae79f2eee"
+    },
+    {
+      "path": "src/assets/images/owl.png",
+      "sha1": "b5541982d51c265d37f04e9547937554b34ce786"
+    },
+    {
+      "path": "src/assets/images/package.jpeg",
+      "sha1": "838be8ebd28336106fb940ac0ec9de2b807e6495"
+    },
+    {
+      "path": "src/assets/images/popular.jpeg",
+      "sha1": "115ea738c4830add6b76e264e8a27e425195184f"
+    },
+    {
+      "path": "src/assets/images/riverQuila.jpeg",
+      "sha1": "174ece4f807792e9c97f48ff52cadf4a8b28b311"
+    },
+    {
+      "path": "src/assets/images/sqicon.png",
+      "sha1": "e9e143782b8ef500b8d401db28829d6a82f72d8f"
+    },
+    {
+      "path": "src/assets/images/story.jpg",
+      "sha1": "3989a0b25e2bc3b87534346ac326d9feebb13cde"
+    },
+    {
+      "path": "src/assets/images/temple.png",
+      "sha1": "8fe2e16a5c7753ecacbb76ee436abba15a89fcf1"
+    },
+    {
+      "path": "src/assets/images/tiger.png",
+      "sha1": "2ef7d97dd0efb795ff810e59c3056b33cab6e116"
+    },
+    {
+      "path": "src/assets/images/tiger3.png",
+      "sha1": "a8269a4b7b2416a257904dca4923252296f76369"
+    },
+    {
+      "path": "src/assets/images/tigerExplore.png",
+      "sha1": "46395c075fed5439212608a036e3c28c89a01933"
+    },
+    {
+      "path": "src/assets/images/ujjan.jpeg",
+      "sha1": "0adc95ac6aca26081de2f95dc6f202c2075f12a2"
+    },
+    {
+      "path": "src/assets/images/unexplored.jpg",
+      "sha1": "f2d307b1374d6d40043172beddec2c083b08e012"
+    },
+    {
+      "path": "src/assets/images/weight.png",
+      "sha1": "d64e9c63f317d5369ae4a45e58adc594bbf75024"
+    },
+    {
+      "path": "src/assets/images/wellnesstwo.png",
+      "sha1": "aac2d59421b805592de36fe49f68c8bed265b8cc"
+    },
+    {
+      "path": "src/assets/images/wfive.png",
+      "sha1": "4dbaf6bd21c0b41941b82ba992d2387a8a04825f"
+    },
+    {
+      "path": "src/assets/images/wfour.png",
+      "sha1": "e98e6cc74be400623f5d64b525731891bf116ad4"
+    },
+    {
+      "path": "src/assets/images/wildLife.png",
+      "sha1": "d31608ccbd526db13fbb36ac51cee219189bdea5"
+    },
+    {
+      "path": "src/assets/images/wseven.png",
+      "sha1": "03206498e82a749c1afe4c036c87cc25ddccfbe4"
+    },
+    {
+      "path": "src/assets/images/wsix.png",
+      "sha1": "0fad77dffbea91ef7107a0b9f333012b87216639"
+    },
+    {
+      "path": "src/assets/images/wthree.png",
+      "sha1": "1f59a0e0adcc193197697d318285d5066ebf6686"
+    }
+  ]
+}
