@@ -24,9 +24,7 @@
 //   LearnMoreLinks,
 //   ReloadInstructions,
 // } from 'react-native/Libraries/NewAppScreen';
-import WelcomeScreen from './src/screens/mice&facilities';
-// import Institutions from './src/screens/institutions/institutions';
- import CareerPage from './src/screens/careers/career';
+
 // import TenderPage from './src/screens/tenders/tenders';
 // import EventsPage from './src/screens/eventspage/events';
 // import OffersPage from './src/screens/offersandDiscounts/offers';
@@ -98,25 +96,60 @@ import WelcomeScreen from './src/screens/mice&facilities';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import CustomDrawerContent from './src/CustomDrawerContent';
+import HomeScreen from './src/screens/HomeScreen';
+import WelcomeScreen from './src/screens/mice&facilities';
+// import Institutions from './src/screens/institutions/institutions';
+import CareerPage from './src/screens/careers/career';
+import CovidPage from './src/screens/covidGuidelines/covidPage';
+import EventsPage from './src/screens/eventspage/events';
 
-import NavBar from './src/NavBar';
+import Institutions from './src/screens/institutions/institutions';
+import WellnessPage from './src/screens/wellnesspage/wellness';
+import TenderPage from './src/screens/tenders/tenders';
+import NavBar from './src/component/NavBar';
+import Explore from './src/screens/Explore';
+import Destination from './src/screens/Destination';
 
 const Drawer = createDrawerNavigator();
 
- function App() {
+function App() {
   return (
     <NavigationContainer >
-      <Drawer.Navigator   screenOptions={{drawerPosition:'right'}} drawerContent={(props: any) => <CustomDrawerContent {...props} />} initialRouteName="Home">
-        <Drawer.Screen  name="WelcomeScreen" component={WelcomeScreen} options={{
+      <Drawer.Navigator screenOptions={{
+        drawerPosition: 'right', drawerActiveBackgroundColor: 'white'}} drawerContent={(props: any) => <CustomDrawerContent {...props} />} initialRouteName="HomeScreen">
+        <Drawer.Screen name="HomeScreen" component={HomeScreen} options={{
           header: () => <NavBar />
-          
         }} />
-        <Drawer.Screen  name="CareerPage" component={CareerPage} options={{
+        <Drawer.Screen name="WelcomeScreen" component={WelcomeScreen} options={{
           header: () => <NavBar />
-          
+        }} />
+        <Drawer.Screen name="Explore" component={Explore} options={{
+          header: () => <NavBar />
+        }}
+        />
+        <Drawer.Screen name="Destination" component={Destination} options={{
+          header: () => <NavBar />
+
+        }} />
+        <Drawer.Screen name="Events" component={EventsPage} options={{
+          header: () => <NavBar />
+
+        }} />
+        <Drawer.Screen name="Institutions" component={Institutions} options={{
+          header: () => <NavBar />
+
+        }} />
+        <Drawer.Screen name="Wellness" component={WellnessPage} options={{
+          header: () => <NavBar />
+
+        }} />
+
+        <Drawer.Screen name="Tenders" component={TenderPage} options={{
+          header: () => <NavBar />
+
         }} />
       </Drawer.Navigator>
     </NavigationContainer>

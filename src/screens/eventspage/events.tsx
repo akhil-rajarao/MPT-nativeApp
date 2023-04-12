@@ -75,15 +75,15 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 
-  buttoncss2: {
-    borderColor: '0ECAF0',
-    borderWidth: 1,
-    width: 100,
-    borderRadius: 10,
-    marginTop: 20,
-    color: '#000000',
-    margin: 3,
-  },
+  // buttoncss2: {
+  //   borderColor: '0ECAF0',
+  //   borderWidth: 1,
+  //   width: 100,
+  //   borderRadius: 10,
+  //   marginTop: 20,
+  //   color: '#000000',
+  //   margin: 3,
+  // },
   buttoncss3: {
     borderColor: '0ECAF0',
     borderWidth: 1,
