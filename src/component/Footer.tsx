@@ -44,14 +44,14 @@ const Footer = () => {
 
           <View style={styles.icons}>
             {/* <Icon name="p" size={30} color=" gray" /> */}
-
+            {/* 
             <Icon name="twitter" size={30} color=" gray" />
 
             <Icon name="instagram" size={30} color=" gray" />
 
             <Icon name="linkedin" size={30} color=" gray" />
 
-            <Icon name="youtube" size={30} color=" gray" />
+            <Icon name="youtube" size={30} color=" gray" /> */}
           </View>
         </View>
       </View>
