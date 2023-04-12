@@ -1,6 +1,7 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
 // import IcFon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 
 const Footer = () => {
@@ -41,17 +42,17 @@ const Footer = () => {
           <Text style={styles.title}>FOLLOW US</Text>
           <Text style={styles.underline}></Text>
 
-          {/* <View style={styles.icons}>
-            <Icon name="pinterest-with-circle" size={30} color=" gray" />
+          <View style={styles.icons}>
+            {/* <Icon name="p" size={30} color=" gray" /> */}
 
-            <Icon name="twitter-with-circle" size={30} color=" gray" />
+            <Icon name="twitter" size={30} color=" gray" />
 
-            <Icon name="instagram-with-circle" size={30} color=" gray" />
+            <Icon name="instagram" size={30} color=" gray" />
 
-            <Icon name="linkedin-with-circle" size={30} color=" gray" />
+            <Icon name="linkedin" size={30} color=" gray" />
 
-            <Icon name="youtube-with-circle" size={30} color=" gray" />
-          </View> */}
+            <Icon name="youtube" size={30} color=" gray" />
+          </View>
         </View>
       </View>
     </ScrollView>
