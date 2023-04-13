@@ -1,22 +1,23 @@
-import React from 'react';
+// import {Image} from 'react-native';
+// import {StyleSheet} from 'react-native';
+// import {Button} from 'react-native-elements';
+// import style from '../mice&facilities/style';
+// import {DataTable} from 'react-native-paper';
+// import {Row, Rows, Table} from 'react-native-table-component';
 import {
   ScrollView,
-  ScrollViewComponent,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Image} from 'react-native';
-import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
-import {DataTable} from 'react-native-paper';
-import {Table, Row, Rows} from 'react-native-table-component';
+
+import React from 'react';
 
 const EventsPage = () => {
-  const header = ['S No', 'Event', 'Date', 'Place Details'];
-  const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
+  // const header = ['S No', 'Event', 'Date', 'Place Details'];
+  // const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
   return (
     <ScrollView>
       <View>
@@ -36,14 +37,14 @@ const EventsPage = () => {
             </TouchableOpacity>
           </View>
 
-          <Table
+          {/* <Table
             borderStyle={{
               borderWidth: 2,
               borderColor: '#c8e1ff',
             }}>
             <Row data={header} />
             <Rows data={data} />
-          </Table>
+          </Table> */}
         </View>
       </View>
     </ScrollView>

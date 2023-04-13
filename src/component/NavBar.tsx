@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-import Booking from '../screens/booking/Booking';
+//import Booking from '../screens/booking/Booking';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {Text} from 'react-native-elements';
@@ -24,12 +24,12 @@ const NavBar = () => {
           source={require('../assets/images/G20theme.png')}
         />
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Booking')}>
         <View style={styles.bookButton}>
           <Text style={styles.bookText}>BOOK A STAY</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate(Booking)}>
+      <TouchableOpacity>
         <Text style={styles.diveText}>Dive In</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
