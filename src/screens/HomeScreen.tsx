@@ -316,6 +316,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: '800',
     paddingBottom: 8,
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   exploreImage: {
     width: wp('90%'),
@@ -345,6 +346,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: '800',
     paddingBottom: 8,
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   imageTop: {
     alignItems: 'center',

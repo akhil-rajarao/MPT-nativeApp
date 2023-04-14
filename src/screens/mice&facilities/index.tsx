@@ -1,29 +1,61 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Pressable,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
+  Alert,
+  Modal,
 } from 'react-native';
 import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
-
+import {getAllCities} from '../appSlice';
+import useAppDispatch, {useAppSelector} from '../../app/hooks';
 const MiceandFacilities = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useAppDispatch();
+  const allcitiesData = useAppSelector(state => state.dashboard.cities);
+
+  useEffect(() => {
+    dispatch(getAllCities());
+    console.log('==============+>');
+  }, []);
+  const setModalVisible1 = (b: any) => {
+    console.log('function triggering');
+    setModalVisible(b);
+  };
+  console.log(allcitiesData);
   return (
     <ScrollView>
       <View>
-        <Image
-          source={require('../../assets/images/caravan.png')}
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            width: '100%',
-            height: undefined,
-            aspectRatio: 1,
-          }}
-        />
-        <Text style={styles.text}>Facilities</Text>
+        <Modal animationType="slide" transparent={true} visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Hello World!</Text>
+              <Pressable style={[styles.button, styles.buttonClose]}>
+                <Text
+                  onPress={() => setModalVisible1(false)}
+                  style={styles.textStyle}>
+                  Hide Modal
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        <Pressable onPress={() => setModalVisible(true)}>
+          <Image
+            source={require('../../assets/images/caravan.png')}
+            // eslint-disable-next-line react-native/no-inline-styles
+            style={{
+              width: '100%',
+              height: undefined,
+              aspectRatio: 1,
+            }}
+          />
+          <Text style={styles.text}>Facilities</Text>
+        </Pressable>
       </View>
       <View style={styles.container}>
         <Image
@@ -168,6 +200,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'red',
     fontSize: 40,
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   exploreText: {
     color: '#757575',
@@ -178,6 +211,48 @@ const styles = StyleSheet.create({
   innerContainer: {
     backgroundColor: '#ffffff',
     alignItems: 'center',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    marginTop: 180,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
 
