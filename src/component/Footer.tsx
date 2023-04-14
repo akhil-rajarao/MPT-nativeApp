@@ -1,10 +1,11 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
-// import IcFon from 'react-native-vector-icons/Entypo';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 const Footer = () => {
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
@@ -12,9 +13,17 @@ const Footer = () => {
           <Text style={styles.title}>Quick Links</Text>
         </View>
         <View>
-          <Text style={styles.text}>Booking Rules</Text>
-          <Text style={styles.text}>Cancellation Policy</Text>
-          <Text style={styles.text}>Contact Us</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('BookingRules')}>
+            <Text style={styles.text}>Booking Rules</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Cancel')}>
+            <Text style={styles.text}>Cancellation Policy</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+            <Text style={styles.text}>Contact Us</Text>
+          </TouchableOpacity>
+
           <Text style={styles.text}>FAQS</Text>
           <Text style={styles.text}>Booking Through Mp Online</Text>
           <Text style={styles.text}>Madhya Pradesh Tourism Board</Text>

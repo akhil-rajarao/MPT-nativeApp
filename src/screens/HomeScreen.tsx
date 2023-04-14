@@ -1,14 +1,21 @@
-import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
+// import Booking from './booking/Booking';
+// import Destination from './Destination';
 import Footer from '../component/Footer';
 import React from 'react';
-import Booking from './booking/Booking';
-import Destination from './Destination';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
@@ -22,9 +29,13 @@ const HomeScreen = () => {
         <View style={styles.text}>
           <Text style={styles.heading}>Majestic</Text>
           <Text style={styles.heading1}>MADHYA PRADESH</Text>
-          <View style={styles.explore}>
-            <Text style={styles.exploreText}>EXPLORE</Text>
-          </View>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Explore')}>
+            <View style={styles.explore}>
+              <Text style={styles.exploreText}>EXPLORE</Text>
+            </View>
+          </TouchableOpacity>
+
           <View>
             <Text style={styles.content}>
               The Heart of India, tourism hotspot that boasts of a rich cultural
@@ -36,6 +47,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+
       <View style={styles.bannerHeading}>
         <Text style={styles.disText}>Discover</Text>
         <Text style={styles.heartText}>Heart of India</Text>
@@ -272,7 +284,7 @@ const styles = StyleSheet.create({
   opacity: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 190,
+    top: 180,
     bottom: 0,
     left: 0,
     right: 0,
@@ -283,8 +295,8 @@ const styles = StyleSheet.create({
   opacity2: {
     backgroundColor: 'white',
     position: 'absolute',
-    marginTop: 220,
-    top: 0,
+    // marginTop: 220,
+    top: 220,
     bottom: 0,
     left: 0,
     right: 0,
@@ -296,7 +308,7 @@ const styles = StyleSheet.create({
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 190,
+    top: 180,
     fontStyle: 'italic',
     fontWeight: '600',
   },
@@ -304,7 +316,7 @@ const styles = StyleSheet.create({
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 220,
+    top: 217,
     fontStyle: 'italic',
     fontWeight: '600',
   },
@@ -426,18 +438,18 @@ const styles = StyleSheet.create({
   opacityPlace: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 270,
+    top: 260,
     bottom: 0,
-    left: 10,
-    right: 250,
-    opacity: 0.3,
+    left: 8,
+    right: 240,
+    opacity: 0.6,
   },
   PlaceText: {
     fontSize: hp('2.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 270,
-    left: 20,
+    top: 258,
+    left: 15,
     fontStyle: 'italic',
     fontWeight: '600',
   },
