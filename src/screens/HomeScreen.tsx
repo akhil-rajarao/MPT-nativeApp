@@ -10,6 +10,22 @@ import Booking from './booking/Booking';
 import Destination from './Destination';
 import { useNavigation } from '@react-navigation/native';
 
+const images = [
+  require('../assets/images/Gandhisagar.jpeg'),
+  require('../assets/images/musicFestival.jpeg'),
+  require('../assets/images/khajurahoFestival.jpeg'),
+  require('../assets/images/maduFestival.jpeg')
+];
+
+const images2 = [
+  require('../assets/images/riverRafting.jpeg'),
+  require('../assets/images/spotDolphins.jpeg'),
+  require('../assets/images/relax.jpeg'),
+  require('../assets/images/naturalGeography.jpeg'),
+  require('../assets/images/village.jpeg'),
+  require('../assets/images/organicLifestyle.jpeg')
+] 
+
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   return (
@@ -36,6 +52,19 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+      <View style={styles.bannerHeading}>
+        {/* <Text style={styles.disText}>Discover</Text> */}
+        <Text style={styles.heartText}>Upcoming Events in MP</Text>
+      </View>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.container1} >
+        <View style={{ flexDirection: 'row', height:hp('30%')}}>
+        {images.map((image, index) => (
+          <Image key={index} style={styles.image1} source={image} />
+        ))}
+        </View>
+      </View>
+    </ScrollView>
       <View style={styles.bannerHeading}>
         <Text style={styles.disText}>Discover</Text>
         <Text style={styles.heartText}>Heart of India</Text>
@@ -79,10 +108,17 @@ const HomeScreen = () => {
 
       <View style={styles.unexploredView}>
         <Text style={styles.unexplored}>Unexplored side of MP</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../assets/images/explore.png')}
-        />
+         
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.container1} >
+        <View style={{ flexDirection: 'row', height:hp('35%')}}>
+        {images2.map((image, index) => (
+          <Image key={index} style={styles.image2} source={image} />
+        ))}
+        </View>
+      </View>
+    </ScrollView>
+         
         <Text style={styles.relaxText}>
           Destination To Relax And Enjoy Nature
         </Text>
@@ -495,4 +531,32 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: 'white',
   },
+  container1: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    //  backgroundColor:"red",
+    height:hp('20%'),
+    marginTop:50,
+  },
+
+  image1: {
+     width: wp('95%'),
+     height: hp('25%'),
+     marginRight:10,
+   // resizeMode: 'cover',
+      resizeMode:'stretch',
+      // aspectRatio:1
+      // borderRadius:10
+  },
+  image2:{
+    width: wp('95%'),
+     height: hp('25%'),
+     marginRight:10,
+   // resizeMode: 'cover',
+      resizeMode:'stretch',
+      // aspectRatio:1
+       borderRadius:20
+  }
 });

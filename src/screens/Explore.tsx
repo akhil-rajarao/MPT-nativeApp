@@ -8,6 +8,21 @@ import Footer from '../component/Footer';
 // import Header from '../../components/Header';
 import React from 'react';
 
+const images1 = [
+  require('../assets/images/sound.jpeg'),
+  require('../assets/images/history.jpeg'),
+  require('../assets/images/pachmarchi.jpeg'),
+]
+
+const images2 = [
+  require('../assets/images/riverRafting.jpeg'),
+  require('../assets/images/spotDolphins.jpeg'),
+  require('../assets/images/relax.jpeg'),
+  require('../assets/images/naturalGeography.jpeg'),
+  require('../assets/images/village.jpeg'),
+  require('../assets/images/organicLifestyle.jpeg')
+] 
+
 const Explore = () => {
   return (
       <ScrollView>
@@ -38,10 +53,15 @@ const Explore = () => {
 
         <View style={styles.attractionView}>
           <Text style={styles.headingText}>Attractions</Text>
-          <Image
-            style={styles.exploreImage}
-            source={require('../assets/images/attractions.jpg')}
-          />
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.container1} >
+        <View style={{ flexDirection: 'row', height:hp('35%')}}>
+        {images1.map((image, index) => (
+          <Image key={index} style={styles.image1} source={image} />
+        ))}
+        </View>
+      </View>
+    </ScrollView>
           <View style={styles.exploreOpacity} />
           <Text style={styles.exploreText}>Take a walk through history</Text>
         </View>
@@ -84,10 +104,15 @@ const Explore = () => {
 
         <View style={styles.unexploredView}>
           <Text style={styles.headingText}>Unexplored side of MP</Text>
-          <Image
-            style={styles.exploreImage}
-            source={require('../assets/images/unexplored.jpg')}
-          />
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.container1} >
+        <View style={{ flexDirection: 'row', height:hp('35%')}}>
+        {images2.map((image, index) => (
+          <Image key={index} style={styles.image1} source={image} />
+        ))}
+        </View>
+      </View>
+    </ScrollView>
           <Text style={styles.lifestyle}>Organic Lifestyle</Text>
           <Text style={styles.read}>Read more -- </Text>
         </View>
@@ -311,9 +336,9 @@ const styles = StyleSheet.create({
   },
   exploreText: {
     fontSize: hp('2%'),
-    color: 'floralwhite',
+    color: 'grey',
     position: 'absolute',
-    top: 255,
+    top: 200,
     fontWeight: '600',
     alignSelf: 'flex-start',
     paddingLeft: 10,
@@ -470,5 +495,25 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('80%'),
     paddingLeft: 10,
+  },
+
+  container1: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    //  backgroundColor:"red",
+    height:hp('20%'),
+   marginTop:50,
+  },
+
+  image1: {
+     width: wp('95%'),
+     height: hp('25%'),
+     marginRight:10,
+   // resizeMode: 'cover',
+      resizeMode:'stretch',
+      // aspectRatio:1
+      // borderRadius:10
   },
 });
