@@ -45,14 +45,14 @@ const TenderPage = () => {
           <TouchableOpacity style={styles.buttoncss3}>
             <Text style={styles.buttonText2}>Apply for tenders</Text>
           </TouchableOpacity>
-          <Table
+          {/* <Table
             borderStyle={{
               borderWidth: 2,
               borderColor: '#c8e1ff',
             }}>
             <Row data={header} />
             <Rows data={data} />
-          </Table>
+          </Table> */}
         </View>
       </View>
     </ScrollView>
@@ -84,15 +84,6 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 
-  buttoncss2: {
-    borderColor: '0ECAF0',
-    borderWidth: 1,
-    width: 100,
-    borderRadius: 10,
-    marginTop: 20,
-    color: '#000000',
-    margin: 3,
-  },
   buttoncss3: {
     borderColor: '0ECAF0',
     borderWidth: 1,

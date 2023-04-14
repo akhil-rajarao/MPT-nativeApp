@@ -1,116 +1,68 @@
 import 'react-native-gesture-handler';
-
-import Booking from '../screens/booking/Booking';
 import CustomDrawerContent from '../CustomDrawerContent';
-import Destination from '../screens/Destination';
-import EventsPage from '../screens/eventspage/events';
-import Explore from '../screens/Explore';
-// import HomeScreen from '../screens/HomeScreen';
-import HomeStackNavigator from './StackNavigator';
-import Institutions from '../screens/institutions/institutions';
 import NavBar from '../component/NavBar';
-import React from 'react';
-import TenderPage from '../screens/tenders/tenders';
-// import StackNavigator from './StackNavigator';
-import WelcomeScreen from '../screens/mice&facilities';
-import WellnessPage from '../screens/wellnesspage/wellness';
+import React, { useRef } from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import HomeStackNavigator from './StackNavigation/HomeStackNavigator';
+import ExploreStackNavigator from './StackNavigation/ExploreStackNavigator';
+import DestinationStackNavigator from './StackNavigation/DestinationStackNavigation';
+import WelcomeScreenStackNavigator from './StackNavigation/WelcomeScreenStackNavigator';
+import EventsPageNavigator from './StackNavigation/EventsPageNavigator';
+import InstitutionsNavigator from './StackNavigation/InstitutionsNavigator';
+import WellnessPageNavigaton from './StackNavigation/WellnessPageNavigaton';
+import TenderPageNavigation from './StackNavigation/TenderPageNavigation';
+import WellnessPage from '../screens/wellnesspage/wellness';
+import Destination from '../screens/Destination';
 
-// const HomeStack = createStackNavigator<any>();
-// const HomeStackNavigator = () => {
-//   return (
-//     <HomeStack.Navigator>
-//       <HomeStack.Screen name="HomeScreen1" component={HomeScreen} />
-//       {/* <HomeStack.Screen name="NavBar" component={NavBar} /> */}
-//       <HomeStack.Screen name="Booking" component={Booking} />
-//     </HomeStack.Navigator>
-//   );
-// };
 
-// const DrawerStack = createStackNavigator<any>();
-// const DrawerStackNavigator = () => {
-//   return (
-//     <DrawerStack.Navigator>
-//       <DrawerStack.Screen name="Destination1" component={Destination} />
-//       {/* <HomeStack.Screen name="NavBar" component={NavBar} /> */}
-//       <DrawerStack.Screen name="Booking" component={Booking} />
-//     </DrawerStack.Navigator>
-//   );
-// };
-
-const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
+  const Drawer = createDrawerNavigator<any>();
+  // const drawerRef = useRef();
   return (
     <Drawer.Navigator
       screenOptions={{
         drawerPosition: 'right',
         drawerActiveBackgroundColor: 'white',
+        header: () => <NavBar />,
       }}
-      drawerContent={(props: any) => <CustomDrawerContent {...props} />}>
+      drawerContent={(props: any) => <CustomDrawerContent {...props} />}
+      initialRouteName="HomeScreen">
       <Drawer.Screen
         name="HomeScreen"
         component={HomeStackNavigator}
-        options={{
-          header: () => <NavBar />,
-        }}
+        // options={{
+        //   header: () => <NavBar />,
+        // }}
       />
       <Drawer.Screen
         name="WelcomeScreen"
-        component={WelcomeScreen}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={WelcomeScreenStackNavigator}
       />
       <Drawer.Screen
         name="Explore"
-        component={Explore}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={ExploreStackNavigator}
       />
       <Drawer.Screen
         name="Destination"
-        component={Destination}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={DestinationStackNavigator}
       />
       <Drawer.Screen
         name="Events"
-        component={EventsPage}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={EventsPageNavigator}
       />
       <Drawer.Screen
         name="Institutions"
-        component={Institutions}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={InstitutionsNavigator}
       />
       <Drawer.Screen
         name="Wellness"
-        component={WellnessPage}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={WellnessPageNavigaton}
       />
 
       <Drawer.Screen
         name="Tenders"
-        component={TenderPage}
-        options={{
-          header: () => <NavBar />,
-        }}
-      />
-      <Drawer.Screen
-        name="Booking"
-        component={Booking}
-        options={{
-          header: () => <NavBar />,
-        }}
+        component={TenderPageNavigation}
       />
     </Drawer.Navigator>
   );

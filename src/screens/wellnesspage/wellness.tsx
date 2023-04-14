@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   ScrollView,
@@ -11,10 +12,22 @@ import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
 
 const WellnessPage = () => {
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titleText}>WELLNESS TOURISM</Text>
+       
+        <Text style={{
+    fontSize: 30,
+    color: 'red',
+    position: 'absolute',
+    top: 170,
+    alignSelf: 'center',
+    zIndex: 30,
+    fontWeight: '800',
+  }}>WELLNESS TOURISM</Text>
+          
+     
         <Image
           source={require('../../assets/images/Wellness.jpg')}
           // eslint-disable-next-line react-native/no-inline-styles
@@ -26,6 +39,7 @@ const WellnessPage = () => {
           }}
         />
         <View style={{margin: 20}}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Trial')}>  
           <Text
             style={{
               fontSize: 35,
@@ -35,6 +49,7 @@ const WellnessPage = () => {
             }}>
             Wellness Options
           </Text>
+          </TouchableOpacity>
           <Image
             source={require('../../assets/images/wellnesstwo.png')}
             // eslint-disable-next-line react-native/no-inline-styles
@@ -199,16 +214,6 @@ const WellnessPage = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  titleText: {
-    fontSize: 30,
-    color: '#ffffff',
-    position: 'absolute',
-    top: 170,
-    alignSelf: 'center',
-    zIndex: 30,
-    fontWeight: '800',
-  },
-});
+
 
 export default WellnessPage;

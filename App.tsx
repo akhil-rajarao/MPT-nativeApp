@@ -2,7 +2,6 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import React from 'react';
-// import StackNavigator from './src/navigation/StackNavigator';
 const MyTheme = {
   ...DefaultTheme,
   colors: {

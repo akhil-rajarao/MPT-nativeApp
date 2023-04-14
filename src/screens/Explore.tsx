@@ -3,7 +3,6 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-
 import Footer from '../component/Footer';
 // import Footer from '../../components/footer';/
 // import Header from '../../components/Header';
@@ -11,189 +10,189 @@ import React from 'react';
 
 const Explore = () => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.imageSlice}>
-          <Image
-            style={styles.image}
-            source={require('../assets/images/explore1.png')}
-          />
-          <Image
-            style={styles.image}
-            source={require('../assets/images/explore2.png')}
-          />
-          <Image
-            style={styles.image}
-            source={require('../assets/images/explore3.png')}
-          />
-          <Image
-            style={styles.image}
-            source={require('../assets/images/explore4.png')}
-          />
-          <View style={styles.text}>
-            <Text style={styles.heading1}>EXPLORE</Text>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.imageSlice}>
+            <Image
+              style={styles.image}
+              source={require('../assets/images/explore1.png')}
+            />
+            <Image
+              style={styles.image}
+              source={require('../assets/images/explore2.png')}
+            />
+            <Image
+              style={styles.image}
+              source={require('../assets/images/explore3.png')}
+            />
+            <Image
+              style={styles.image}
+              source={require('../assets/images/explore4.png')}
+            />
+            <View style={styles.text}>
+              <Text style={styles.heading1}>EXPLORE</Text>
+            </View>
           </View>
         </View>
-      </View>
-      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-      <View style={styles.attractionView}>
-        <Text style={styles.headingText}>Attractions</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../assets/images/attractions.jpg')}
-        />
-        <View style={styles.exploreOpacity} />
-        <Text style={styles.exploreText}>Take a walk through history</Text>
-      </View>
-
-      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-
-      <View style={styles.bannerHeading}>
-        <Text style={styles.heartText}>Explore</Text>
-      </View>
-      <View style={styles.banners}>
-        <View>
+        <View style={styles.attractionView}>
+          <Text style={styles.headingText}>Attractions</Text>
           <Image
-            style={styles.wildlife}
-            source={require('../assets/images/owl.png')}
+            style={styles.exploreImage}
+            source={require('../assets/images/attractions.jpg')}
           />
-          <View style={styles.opacity} />
-          <Text style={styles.bannerText}>Know more</Text>
+          <View style={styles.exploreOpacity} />
+          <Text style={styles.exploreText}>Take a walk through history</Text>
         </View>
-        <View style={styles.bannersRow}>
+
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+
+        <View style={styles.bannerHeading}>
+          <Text style={styles.heartText}>Explore</Text>
+        </View>
+        <View style={styles.banners}>
           <View>
             <Image
-              style={styles.adventure}
-              source={require('../assets/images/deer.png')}
+              style={styles.wildlife}
+              source={require('../assets/images/owl.png')}
             />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>Know more</Text>
+            <View style={styles.opacity} />
+            <Text style={styles.bannerText}>Know more</Text>
           </View>
-          <View>
-            <Image
-              style={styles.food}
-              source={require('../assets/images/tigerExplore.png')}
-            />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>Know more</Text>
+          <View style={styles.bannersRow}>
+            <View>
+              <Image
+                style={styles.adventure}
+                source={require('../assets/images/deer.png')}
+              />
+              <View style={styles.opacity2} />
+              <Text style={styles.bannerText2}>Know more</Text>
+            </View>
+            <View>
+              <Image
+                style={styles.food}
+                source={require('../assets/images/tigerExplore.png')}
+              />
+              <View style={styles.opacity2} />
+              <Text style={styles.bannerText2}>Know more</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      {/* >>>>>>>>>>>>>>>>>>>>>>>>>> */}
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-      <View style={styles.unexploredView}>
-        <Text style={styles.headingText}>Unexplored side of MP</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../assets/images/unexplored.jpg')}
-        />
-        <Text style={styles.lifestyle}>Organic Lifestyle</Text>
-        <Text style={styles.read}>Read more -- </Text>
-      </View>
+        <View style={styles.unexploredView}>
+          <Text style={styles.headingText}>Unexplored side of MP</Text>
+          <Image
+            style={styles.exploreImage}
+            source={require('../assets/images/unexplored.jpg')}
+          />
+          <Text style={styles.lifestyle}>Organic Lifestyle</Text>
+          <Text style={styles.read}>Read more -- </Text>
+        </View>
 
-      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.interests}>
-        <Text style={styles.headingText}>Explore Other Interests</Text>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/budhYatra.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Spritual Yatra</Text>
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+        <View style={styles.interests}>
+          <Text style={styles.headingText}>Explore Other Interests</Text>
+          <View style={styles.exploreOther}>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/budhYatra.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Spritual Yatra</Text>
+            </View>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/riverQuila.jpeg')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Heritage</Text>
+            </View>
           </View>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/riverQuila.jpeg')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Heritage</Text>
+          <View style={styles.exploreOther}>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/exploreTiger.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Wildlife</Text>
+            </View>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/budhYatra.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Spritual Yatra</Text>
+            </View>
+          </View>
+          <View style={styles.exploreOther}>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/temple.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Heritage</Text>
+            </View>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/fort.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Spritual Yatra</Text>
+            </View>
+          </View>
+          <View style={styles.exploreOther}>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/deer.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Wildlife</Text>
+            </View>
+            <View style={styles.exploreBox}>
+              <Image
+                style={styles.exploreOtherImage}
+                source={require('../assets/images/Mp.png')}
+              />
+              <View style={styles.otherOpacity} />
+              <Text style={styles.otherText}>Quila</Text>
+            </View>
           </View>
         </View>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/exploreTiger.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Wildlife</Text>
-          </View>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/budhYatra.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Spritual Yatra</Text>
-          </View>
-        </View>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/temple.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Heritage</Text>
-          </View>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/fort.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Spritual Yatra</Text>
-          </View>
-        </View>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/deer.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Wildlife</Text>
-          </View>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={require('../assets/images/Mp.png')}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>Quila</Text>
-          </View>
-        </View>
-      </View>
 
-      {/* >>>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.contact}>
-        <Image
-          style={styles.contactImage}
-          source={require('../assets/images/contact3.jpeg')}
-        />
-        <View style={styles.contactText}>
-          <Text style={styles.contactHeading}>Contact Us</Text>
-          <Text style={styles.contentSubText}>
-            Tourist Helpline (Toll Free): 1800 233 7777
-          </Text>
-          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
-          <Text style={styles.contentSubText}>
-            (Sunday holiday, Saturday and other holiday Half Day)
-          </Text>
-          <Text style={styles.contentSubText}>
-            Email : mpthelpline@mpstdc.com
-          </Text>
+        {/* >>>>>>>>>>>>>>>>>>>>>>> */}
+        <View style={styles.contact}>
+          <Image
+            style={styles.contactImage}
+            source={require('../assets/images/contact3.jpeg')}
+          />
+          <View style={styles.contactText}>
+            <Text style={styles.contactHeading}>Contact Us</Text>
+            <Text style={styles.contentSubText}>
+              Tourist Helpline (Toll Free): 1800 233 7777
+            </Text>
+            <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
+            <Text style={styles.contentSubText}>
+              (Sunday holiday, Saturday and other holiday Half Day)
+            </Text>
+            <Text style={styles.contentSubText}>
+              Email : mpthelpline@mpstdc.com
+            </Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.footer}>
-        <Footer />
-      </View>
-    </ScrollView>
+        <View style={styles.footer}>
+          <Footer />
+        </View>
+      </ScrollView>
   );
 };
 export default Explore;

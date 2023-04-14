@@ -3,7 +3,6 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 // import IcFon from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Footer = () => {
   return (
@@ -13,10 +12,7 @@ const Footer = () => {
           <Text style={styles.title}>Quick Links</Text>
         </View>
         <View>
-          <TouchableOpacity>
-            <Text style={styles.text}>Booking Rules</Text>
-          </TouchableOpacity>
-
+          <Text style={styles.text}>Booking Rules</Text>
           <Text style={styles.text}>Cancellation Policy</Text>
           <Text style={styles.text}>Contact Us</Text>
           <Text style={styles.text}>FAQS</Text>
@@ -48,8 +44,8 @@ const Footer = () => {
 
           <View style={styles.icons}>
             {/* <Icon name="p" size={30} color=" gray" /> */}
-
-            {/* <Icon name="twitter" size={30} color=" gray" />
+            {/* 
+            <Icon name="twitter" size={30} color=" gray" />
 
             <Icon name="instagram" size={30} color=" gray" />
 

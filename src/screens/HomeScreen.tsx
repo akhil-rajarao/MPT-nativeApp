@@ -1,4 +1,4 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -6,8 +6,12 @@ import {
 
 import Footer from '../component/Footer';
 import React from 'react';
+import Booking from './booking/Booking';
+import Destination from './Destination';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -471,5 +475,24 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('80%'),
     paddingLeft: 10,
+  },
+  bookButton: {
+    height: hp('3.5%'),
+    width: wp('17%'),
+    backgroundColor: 'red',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 90,
+  },
+  g2Logo: {
+    height: hp('4.2%'),
+    width: wp('10%'),
+    backgroundColor: 'white',
+    borderRadius: 5,
+  },
+  bookText: {
+    fontSize: 10,
+    color: 'white',
   },
 });
