@@ -1,4 +1,11 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import {Carousel} from 'react-native-auto-carousel';
 import {
@@ -16,7 +23,10 @@ const HomeScreen = () => {
   const homepageBannerData = useAppSelector(
     state => state.dashboard.bannerData,
   );
+  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
   console.log('========>', homepageBannerData);
+  console.log('================sections>', sectionsData[1].contents);
+  const sectionsArray = sectionsData[1].contents;
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, []);
@@ -26,20 +36,6 @@ const HomeScreen = () => {
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
   ];
 
-  // const imagesData = [
-  //   {
-  //     data: {
-  //       uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
-  //     },
-  //     id: 'img-1',
-  //   },
-  //   {
-  //     data: {
-  //       uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
-  //     },
-  //     id: 'img-2',
-  //   },
-  // ];
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -72,16 +68,34 @@ const HomeScreen = () => {
         <Text style={styles.disText}>Discover</Text>
         <Text style={styles.heartText}>Heart of India</Text>
       </View>
+
       <View style={styles.banners}>
-        <View>
+        <FlatList
+          data={sectionsArray}
+          renderItem={({item}) => (
+            <View>
+              <Image
+                style={styles.wildlife}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                }}
+              />
+
+              <View style={styles.opacity} />
+              <Text style={styles.bannerText}>{item.content_title}</Text>
+            </View>
+          )}
+        />
+        {/* <View>
           <Image
             style={styles.wildlife}
             source={require('../assets/images/wildLife.png')}
           />
+
           <View style={styles.opacity} />
           <Text style={styles.bannerText}>Wildlife</Text>
-        </View>
-        <View style={styles.bannersRow}>
+        </View> */}
+        {/* <View style={styles.bannersRow}>
           <View>
             <Image
               style={styles.adventure}
@@ -98,15 +112,15 @@ const HomeScreen = () => {
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>food</Text>
           </View>
-        </View>
-        <View>
+        </View> */}
+        {/* <View>
           <Image
             style={styles.heritage}
             source={require('../assets/images/heritage.png')}
           />
           <View style={styles.opacity}></View>
           <Text style={styles.bannerText}>Heritage</Text>
-        </View>
+        </View> */}
       </View>
 
       <View style={styles.unexploredView}>
@@ -273,6 +287,7 @@ const styles = StyleSheet.create({
     width: wp('98%'),
     height: hp('30%'),
     borderRadius: 10,
+    marginTop: 10,
   },
   bannersRow: {
     display: 'flex',
@@ -305,7 +320,7 @@ const styles = StyleSheet.create({
   opacity: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 190,
+    top: 150,
     bottom: 0,
     left: 0,
     right: 0,
@@ -329,7 +344,7 @@ const styles = StyleSheet.create({
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 190,
+    top: 160,
     fontStyle: 'italic',
     fontWeight: '600',
   },
