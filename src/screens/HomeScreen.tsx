@@ -1,19 +1,56 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+
+import {Carousel} from 'react-native-auto-carousel';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import Footer from '../component/Footer';
+import {getPageDataGo} from './appSlice';
+import useAppDispatch, {useAppSelector} from '../app/hooks';
+
 const HomeScreen = () => {
+  const dispatch = useAppDispatch();
+  const homepageBannerData = useAppSelector(
+    state => state.dashboard.bannerData,
+  );
+  console.log('========>', homepageBannerData);
+  useEffect(() => {
+    dispatch(getPageDataGo(80373489));
+  }, []);
+
+  const Images = [
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
+  ];
+
+  // const imagesData = [
+  //   {
+  //     data: {
+  //       uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
+  //     },
+  //     id: 'img-1',
+  //   },
+  //   {
+  //     data: {
+  //       uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
+  //     },
+  //     id: 'img-2',
+  //   },
+  // ];
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('../assets/images/tiger3.png')}
+        {/* <Carousel style={styles.image} imagesData={imagesData} /> */}
+        <Carousel
+          data={Images}
+          renderItem={item => (
+            <Image key={item} source={{uri: item}} style={styles.image} />
+          )}
         />
+
         <View style={styles.text}>
           <Text style={styles.heading}>Majestic</Text>
           <Text style={styles.heading1}>MADHYA PRADESH</Text>

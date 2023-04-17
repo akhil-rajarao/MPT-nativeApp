@@ -20,11 +20,11 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 const Destination = () => {
   const [text, onChangeText] = React.useState('');
   const dispatch = useAppDispatch();
-  const allcitiesData = useAppSelector(state => state.dashboard.cities);
-  useEffect(() => {
-    dispatch(getAllCities());
-  }, [dispatch]);
-  console.log(allcitiesData[0].city_name);
+  // const allcitiesData = useAppSelector(state => state.dashboard.cities);
+  // useEffect(() => {
+  //   dispatch(getAllCities());
+  // }, [dispatch]);
+  // console.log(allcitiesData[0].city_name);
   return (
     <ScrollView>
       <View style={styles.container}>
