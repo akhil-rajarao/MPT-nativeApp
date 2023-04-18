@@ -20,13 +20,21 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
+
   const homepageBannerData = useAppSelector(
     state => state.dashboard.bannerData,
   );
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
   console.log('========>', homepageBannerData);
-  console.log('================sections>', sectionsData[1].contents);
-  const sectionsArray = sectionsData[1].contents;
+  // console.log('================sections>', sectionsData[1].contents);
+
+  const sectionsArray = sectionsData[1]?.contents;
+  const unexploredofMP = sectionsData[3]?.contents;
+  const topPackages = sectionsData[0]?.contents;
+  const popularPlaces = sectionsData[4]?.contents;
+  console.log('====opoppopop======>', popularPlaces);
+  // console.log('top packages=====.....', topPackages);
+  // console.log('unexplored side', unexploredofMP);
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, []);
@@ -70,108 +78,117 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.banners}>
-        <FlatList
-          data={sectionsArray}
-          renderItem={({item}) => (
-            <View>
-              <Image
-                style={styles.wildlife}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                }}
-              />
+        {sectionsArray && (
+          <FlatList
+            data={sectionsArray}
+            renderItem={({item}) => (
+              <View>
+                <Image
+                  style={styles.wildlife}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                  }}
+                />
 
-              <View style={styles.opacity} />
-              <Text style={styles.bannerText}>{item.content_title}</Text>
-            </View>
-          )}
-        />
-        {/* <View>
-          <Image
-            style={styles.wildlife}
-            source={require('../assets/images/wildLife.png')}
+                <View style={styles.opacity} />
+                <Text style={styles.bannerText}>{item.content_title}</Text>
+              </View>
+            )}
           />
-
-          <View style={styles.opacity} />
-          <Text style={styles.bannerText}>Wildlife</Text>
-        </View> */}
-        {/* <View style={styles.bannersRow}>
-          <View>
-            <Image
-              style={styles.adventure}
-              source={require('../assets/images/adventure.png')}
-            />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>Adventure</Text>
-          </View>
-          <View>
-            <Image
-              style={styles.food}
-              source={require('../assets/images/food.png')}
-            />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>food</Text>
-          </View>
-        </View> */}
-        {/* <View>
-          <Image
-            style={styles.heritage}
-            source={require('../assets/images/heritage.png')}
-          />
-          <View style={styles.opacity}></View>
-          <Text style={styles.bannerText}>Heritage</Text>
-        </View> */}
+        )}
       </View>
 
       <View style={styles.unexploredView}>
         <Text style={styles.unexplored}>Unexplored side of MP</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../assets/images/explore.png')}
-        />
-        <Text style={styles.relaxText}>
-          Destination To Relax And Enjoy Nature
-        </Text>
-        <Text style={styles.read}>Read more -- </Text>
+        <View>
+          {unexploredofMP && (
+            <FlatList
+              horizontal={true}
+              data={unexploredofMP}
+              renderItem={({item}) => (
+                <View>
+                  <Image
+                    style={styles.exploreImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                  <Text style={styles.relaxText}>{item.content_title}</Text>
+                  <Text style={styles.read}>Read more -- </Text>
+                </View>
+              )}
+            />
+          )}
+        </View>
       </View>
       <View style={styles.packages}>
         <Text style={styles.packagesHeading}>Our Top Packages</Text>
-        <View style={styles.imageTop}>
-          <Image
-            style={styles.packagesImage}
-            source={require('../assets/images/package.jpeg')}
+        {topPackages && (
+          <FlatList
+            horizontal={true}
+            data={topPackages}
+            renderItem={({item}) => (
+              <View style={styles.imageTop}>
+                <Image
+                  style={styles.packagesImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                  }}
+                />
+                {/* <Carousel
+                  data={item.content_images}
+                  renderItem={item => (
+                    <Image
+                      key={item}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images}`,
+                      }}
+                      style={styles.packagesImage}
+                    />
+                  )}
+                /> */}
+                <View style={styles.packagesContent}>
+                  <View style={styles.days}>
+                    <Text style={styles.dayText}>
+                      {item.description.value0}
+                    </Text>
+                  </View>
+                  <Text style={styles.headpackage}>{item.content_title}</Text>
+                  <Text style={styles.textpackage}>
+                    {item.description.value2}
+                  </Text>
+                  <Text style={styles.optionPackage}>
+                    {item.description.value3.toUpperCase()}
+                  </Text>
+                  <View style={styles.view}>
+                    <Text style={styles.viewText}>VIEW</Text>
+                  </View>
+                </View>
+              </View>
+            )}
           />
-          <View style={styles.packagesContent}>
-            <View style={styles.days}>
-              <Text style={styles.dayText}>4 Night / 5 Days</Text>
-            </View>
-            <Text style={styles.headpackage}>Natures Nest Pachmarhi</Text>
-            <Text style={styles.textpackage}>
-              Popularly known as the 'Satpura ki Rani' (Queen of Satpura) is the
-              glorious land called Pachmarhi.Pachmarhi is one of the most
-              popular destinations in the Heart of Incredible India and is a
-              treasure trove of rich history and nature's bounty.
-            </Text>
-            <Text style={styles.optionPackage}>
-              PIPARIYA - TAWA - PACHMARHI - TAMIA - PATALKOT
-            </Text>
-            <Text style={styles.optionPackage1}>PENCH - ROOKHAD - SEONI</Text>
-            <View style={styles.view}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-          </View>
-        </View>
+        )}
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>> */}
       <View style={styles.popular}>
         <Text style={styles.packagesHeading}>Popular Places</Text>
         <View style={styles.imageTop}>
-          <Image
-            style={styles.packagesImage}
-            source={require('../assets/images/popular.jpeg')}
+          <FlatList
+            horizontal={true}
+            data={popularPlaces}
+            renderItem={({item}) => (
+              <View>
+                <Image
+                  style={styles.packagesImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                  }}
+                />
+                <View style={styles.opacityPlace}></View>
+                <Text style={styles.PlaceText}> {item.content_title}</Text>
+              </View>
+            )}
           />
-          <View style={styles.opacityPlace}></View>
-          <Text style={styles.PlaceText}> Pachmarhi</Text>
         </View>
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
@@ -390,7 +407,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('100%'),
     backgroundColor: 'lightgrey',
-    marginTop: 30,
+    marginTop: 50,
   },
   packagesHeading: {
     fontSize: hp('3.5%'),
@@ -402,6 +419,7 @@ const styles = StyleSheet.create({
   },
   imageTop: {
     alignItems: 'center',
+    margin: 10,
   },
   packagesImage: {
     width: wp('95%'),
@@ -470,24 +488,24 @@ const styles = StyleSheet.create({
   popular: {
     width: wp('100%'),
     height: hp('50%'),
-    backgroundColor: 'tan',
+    backgroundColor: '#fff2da',
     marginTop: 30,
   },
   opacityPlace: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 270,
+    top: 220,
     bottom: 0,
-    left: 10,
-    right: 250,
+    left: 0,
+    right: 220,
     opacity: 0.3,
   },
   PlaceText: {
-    fontSize: hp('2.5%'),
-    color: 'floralwhite',
+    fontSize: hp('3.0%'),
+    color: '#ffffff',
     position: 'absolute',
-    top: 270,
-    left: 20,
+    top: 240,
+    left: 10,
     fontStyle: 'italic',
     fontWeight: '600',
   },
