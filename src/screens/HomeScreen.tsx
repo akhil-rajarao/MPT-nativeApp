@@ -1,41 +1,50 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import useAppDispatch, {useAppSelector} from '../app/hooks';
 
-// import Booking from './booking/Booking';
-// import Destination from './Destination';
+import {Carousel} from 'react-native-auto-carousel';
 import Footer from '../component/Footer';
-import React from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {getPageDataGo} from './appSlice';
 
 const HomeScreen = () => {
-  const navigation = useNavigation<any>();
+  const dispatch = useAppDispatch();
+  const homepageBannerData = useAppSelector(
+    state => state.dashboard.bannerData,
+  );
+  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
+  console.log('========>', homepageBannerData);
+  console.log('================sections>', sectionsData);
+  // const sectionsArray = sectionsData[1].contents;
+  useEffect(() => {
+    dispatch(getPageDataGo(80373489));
+  }, []);
+
+  const Images = [
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
+  ];
+
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('../assets/images/tiger3.png')}
+        {/* <Carousel style={styles.image} imagesData={imagesData} /> */}
+        <Carousel
+          data={Images}
+          renderItem={item => (
+            <Image key={item} source={{uri: item}} style={styles.image} />
+          )}
         />
+
         <View style={styles.text}>
           <Text style={styles.heading}>Majestic</Text>
           <Text style={styles.heading1}>MADHYA PRADESH</Text>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Explore')}>
-            <View style={styles.explore}>
-              <Text style={styles.exploreText}>EXPLORE</Text>
-            </View>
-          </TouchableOpacity>
-
+          <View style={styles.explore}>
+            <Text style={styles.exploreText}>EXPLORE</Text>
+          </View>
           <View>
             <Text style={styles.content}>
               The Heart of India, tourism hotspot that boasts of a rich cultural
@@ -47,21 +56,37 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
-
       <View style={styles.bannerHeading}>
         <Text style={styles.disText}>Discover</Text>
         <Text style={styles.heartText}>Heart of India</Text>
       </View>
+
       <View style={styles.banners}>
-        <View>
+        {/* <FlatList
+          data={sectionsData}
+          renderItem={({item}) => (
+            <View>
+              <Image
+                style={styles.wildlife}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                }}
+              />
+
+              <View style={styles.opacity} />
+              <Text style={styles.bannerText}>{item.content_title}</Text>
+            </View>
+          )}
+        /> */}
+        {/* <View>
           <Image
             style={styles.wildlife}
             source={require('../assets/images/wildLife.png')}
           />
           <View style={styles.opacity} />
           <Text style={styles.bannerText}>Wildlife</Text>
-        </View>
-        <View style={styles.bannersRow}>
+        </View> */}
+        {/* <View style={styles.bannersRow}>
           <View>
             <Image
               style={styles.adventure}
@@ -78,15 +103,15 @@ const HomeScreen = () => {
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>food</Text>
           </View>
-        </View>
-        <View>
+        </View> */}
+        {/* <View>
           <Image
             style={styles.heritage}
             source={require('../assets/images/heritage.png')}
           />
           <View style={styles.opacity}></View>
           <Text style={styles.bannerText}>Heritage</Text>
-        </View>
+        </View> */}
       </View>
 
       <View style={styles.unexploredView}>
@@ -239,6 +264,7 @@ const styles = StyleSheet.create({
     color: 'darkred',
     fontStyle: 'italic',
     fontWeight: '600',
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   banners: {
     // backgroundColor: 'green',
@@ -252,6 +278,7 @@ const styles = StyleSheet.create({
     width: wp('98%'),
     height: hp('30%'),
     borderRadius: 10,
+    marginTop: 10,
   },
   bannersRow: {
     display: 'flex',
@@ -284,7 +311,7 @@ const styles = StyleSheet.create({
   opacity: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 180,
+    top: 150,
     bottom: 0,
     left: 0,
     right: 0,
@@ -295,8 +322,8 @@ const styles = StyleSheet.create({
   opacity2: {
     backgroundColor: 'white',
     position: 'absolute',
-    // marginTop: 220,
-    top: 220,
+    marginTop: 220,
+    top: 0,
     bottom: 0,
     left: 0,
     right: 0,
@@ -308,7 +335,7 @@ const styles = StyleSheet.create({
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 180,
+    top: 160,
     fontStyle: 'italic',
     fontWeight: '600',
   },
@@ -316,7 +343,7 @@ const styles = StyleSheet.create({
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 217,
+    top: 220,
     fontStyle: 'italic',
     fontWeight: '600',
   },
@@ -332,6 +359,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: '800',
     paddingBottom: 8,
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   exploreImage: {
     width: wp('90%'),
@@ -361,6 +389,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: '800',
     paddingBottom: 8,
+    fontFamily: 'YouthBrushDaylightRegular',
   },
   imageTop: {
     alignItems: 'center',
@@ -438,18 +467,18 @@ const styles = StyleSheet.create({
   opacityPlace: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 260,
+    top: 270,
     bottom: 0,
-    left: 8,
-    right: 240,
-    opacity: 0.6,
+    left: 10,
+    right: 250,
+    opacity: 0.3,
   },
   PlaceText: {
     fontSize: hp('2.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 258,
-    left: 15,
+    top: 270,
+    left: 20,
     fontStyle: 'italic',
     fontWeight: '600',
   },
@@ -487,24 +516,5 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('80%'),
     paddingLeft: 10,
-  },
-  bookButton: {
-    height: hp('3.5%'),
-    width: wp('17%'),
-    backgroundColor: 'red',
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 90,
-  },
-  g2Logo: {
-    height: hp('4.2%'),
-    width: wp('10%'),
-    backgroundColor: 'white',
-    borderRadius: 5,
-  },
-  bookText: {
-    fontSize: 10,
-    color: 'white',
   },
 });

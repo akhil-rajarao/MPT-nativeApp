@@ -1,15 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import {any} from './../../node_modules/@types/prop-types/index.d';
-import {useAppSelector} from './../app/hooks';
-/** @format */
+import APIS, {BASE_URL_2} from '../APIs/index';
 
+// import type {any} from '../app/store';
+import APIs from '../APIs/index';
+import type {PayloadAction} from '@reduxjs/toolkit';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// import {any} from './../../node_modules/@types/prop-types/index.d';
+import axios from 'axios';
 import {createSlice} from '@reduxjs/toolkit';
 
-import axios from 'axios';
-import APIS from '../APIS';
-import {BASE_URL_2} from '../APIS';
-import type {AppDispatch} from '../app/store';
-import type {PayloadAction} from '@reduxjs/toolkit';
+// import useAppDispatch, {useAppSelector} from './../app/hooks';
+
+/** @format */
 
 export interface AppState {
   tenderArchiveData: Array<any>;
@@ -365,7 +366,7 @@ export default dashboardSlice.reducer;
 //     });
 // };
 
-export const getPageData = (pageName: string) => (dispatch: AppDispatch) => {
+export const getPageData = (pageName: string) => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.pageData(pageName),
@@ -387,7 +388,7 @@ export const getPageData = (pageName: string) => (dispatch: AppDispatch) => {
     });
 };
 
-export const getTenderData = (PageId: any) => (dispatch: AppDispatch) => {
+export const getTenderData = (PageId: any) => (dispatch: any) => {
   const config = {
     method: 'get',
     //url: APIS.pages.pageArchiveData(PageId),
@@ -411,32 +412,31 @@ export const getTenderData = (PageId: any) => (dispatch: AppDispatch) => {
       dispatch(setIsLoading(false));
     });
 };
-export const getTenderArchiveData =
-  (PageId: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      url: APIS.pages.pageArchiveData(PageId),
-      //url: APIS.pages.pageArchiveDataNew(PageId),
+export const getTenderArchiveData = (PageId: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    url: APIS.pages.pageArchiveData(PageId),
+    //url: APIS.pages.pageArchiveDataNew(PageId),
 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
-
-    axios(config)
-      .then(response => {
-        dispatch(setTenderArchiveData(response.data));
-
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        //dispatch(setErrors(error.message));
-
-        dispatch(setIsLoading(false));
-      });
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
-export const getCareerData = (PageId: any) => (dispatch: AppDispatch) => {
+  dispatch(setIsLoading(true));
+
+  axios(config)
+    .then(response => {
+      dispatch(setTenderArchiveData(response.data));
+
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      //dispatch(setErrors(error.message));
+
+      dispatch(setIsLoading(false));
+    });
+};
+export const getCareerData = (PageId: any) => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.pageArchiveDataNew(PageId),
@@ -458,33 +458,32 @@ export const getCareerData = (PageId: any) => (dispatch: AppDispatch) => {
       dispatch(setIsLoading(false));
     });
 };
-export const getCareerDataArchive =
-  (PageId: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      //url: APIS.pages.pageArchiveDataNew(PageId),
-      url: APIS.pages.pageArchiveData(PageId),
+export const getCareerDataArchive = (PageId: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    //url: APIS.pages.pageArchiveDataNew(PageId),
+    url: APIS.pages.pageArchiveData(PageId),
 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
-
-    axios(config)
-      .then(response => {
-        dispatch(setCareerArchiveData(response.data));
-
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        //dispatch(setErrors(error.message));
-
-        dispatch(setIsLoading(false));
-      });
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
+  dispatch(setIsLoading(true));
 
-export const getAllPages = () => (dispatch: AppDispatch) => {
+  axios(config)
+    .then(response => {
+      dispatch(setCareerArchiveData(response.data));
+
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      //dispatch(setErrors(error.message));
+
+      dispatch(setIsLoading(false));
+    });
+};
+
+export const getAllPages = () => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.allPages,
@@ -505,7 +504,7 @@ export const getAllPages = () => (dispatch: AppDispatch) => {
     });
 };
 
-export const loginApi = (data: any) => (dispatch: AppDispatch) => {
+export const loginApi = (data: any) => (dispatch: any) => {
   const config = {
     method: 'post',
     url: `${BASE_URL_2}/signin`,
@@ -530,7 +529,7 @@ export const loginApi = (data: any) => (dispatch: AppDispatch) => {
     });
 };
 
-export const enquiryApi = (data: any) => (dispatch: AppDispatch) => {
+export const enquiryApi = (data: any) => (dispatch: any) => {
   const config = {
     method: 'post',
     url: APIS.pages.enquiry,
@@ -553,7 +552,7 @@ export const enquiryApi = (data: any) => (dispatch: AppDispatch) => {
     });
 };
 
-export const getPageDataGo = (pageId: any) => (dispatch: AppDispatch) => {
+export const getPageDataGo = (pageId: any) => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.page(pageId),
@@ -589,10 +588,10 @@ export const getPageDataGo = (pageId: any) => (dispatch: AppDispatch) => {
     });
 };
 
-export const getAllCities = () => (dispatch: AppDispatch) => {
+export const getAllCities = () => (dispatch: any) => {
   const config = {
     method: 'get',
-    url: APIS.pages.cities,
+    url: APIs.pages.cities,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -601,7 +600,42 @@ export const getAllCities = () => (dispatch: AppDispatch) => {
 
   axios(config)
     .then(response => {
+      console.log('responseeeeeeeeeeeeeeeeee');
       dispatch(setCities(response.data));
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      console.log('errorrrrrrrrr');
+      dispatch(setErrors(error.message));
+      dispatch(setIsLoading(false));
+    });
+};
+
+export const getAllProperties = (bhopalProperties: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    url: APIS.pages.properties,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  dispatch(setIsLoading(true));
+
+  axios(config)
+    .then(response => {
+      dispatch(setProperties(response.data));
+      // if (bhopalProperties.length === 0) {
+      //   const propertiesArr = [];
+      //   response.data.forEach(
+      //     (property) =>
+      //       property.city_id === 49655117 && propertiesArr.push(property)
+      //   );
+      //   dispatch(setPropertiesCity('Bhopal'));
+      //   dispatch(setBhopalProperties(propertiesArr));
+      //   dispatch(setDisplayProperties(propertiesArr));
+      //   dispatch(setFilteredProperties(propertiesArr));
+      // }
+
       dispatch(setIsLoading(false));
     })
     .catch(error => {
@@ -610,41 +644,7 @@ export const getAllCities = () => (dispatch: AppDispatch) => {
     });
 };
 
-export const getAllProperties =
-  (bhopalProperties: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      url: APIS.pages.properties,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
-
-    axios(config)
-      .then(response => {
-        dispatch(setProperties(response.data));
-        // if (bhopalProperties.length === 0) {
-        //   const propertiesArr = [];
-        //   response.data.forEach(
-        //     (property) =>
-        //       property.city_id === 49655117 && propertiesArr.push(property)
-        //   );
-        //   dispatch(setPropertiesCity('Bhopal'));
-        //   dispatch(setBhopalProperties(propertiesArr));
-        //   dispatch(setDisplayProperties(propertiesArr));
-        //   dispatch(setFilteredProperties(propertiesArr));
-        // }
-
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        dispatch(setErrors(error.message));
-        dispatch(setIsLoading(false));
-      });
-  };
-
-export const getPropertiesByCity = (cityId: any) => (dispatch: AppDispatch) => {
+export const getPropertiesByCity = (cityId: any) => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.getPropertyByCityId(cityId),
@@ -665,31 +665,30 @@ export const getPropertiesByCity = (cityId: any) => (dispatch: AppDispatch) => {
     });
 };
 
-export const getPropertiesByCityName =
-  (cityName: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      url: APIS.pages.getPropertyByCityName(cityName),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
-
-    axios(config)
-      .then(response => {
-        dispatch(setBhopalProperties(response.data));
-
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        dispatch(setErrors(error.message));
-        dispatch(setIsLoading(false));
-      });
+export const getPropertiesByCityName = (cityName: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    url: APIS.pages.getPropertyByCityName(cityName),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
+  dispatch(setIsLoading(true));
+
+  axios(config)
+    .then(response => {
+      dispatch(setBhopalProperties(response.data));
+
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      dispatch(setErrors(error.message));
+      dispatch(setIsLoading(false));
+    });
+};
 
 export const getPropertiesByName =
-  (cityName: any, propertyName: any) => (dispatch: AppDispatch) => {
+  (cityName: any, propertyName: any) => (dispatch: any) => {
     const config = {
       method: 'get',
       url: APIS.pages.getPropertyByName(cityName, propertyName),
@@ -710,7 +709,7 @@ export const getPropertiesByName =
       });
   };
 
-export const getDestinationData = (cityId: any) => (dispatch: AppDispatch) => {
+export const getDestinationData = (cityId: any) => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.pages.getDestinationData(cityId),
@@ -731,54 +730,52 @@ export const getDestinationData = (cityId: any) => (dispatch: AppDispatch) => {
     });
 };
 
-export const getDestinationDataByPlace =
-  (cityName: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      url: APIS.pages.getDestinationDataByPlace(cityName),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
-
-    axios(config)
-      .then(response => {
-        dispatch(setDestinationData(response.data));
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        dispatch(setErrors(error.message));
-        dispatch(setIsLoading(false));
-      });
+export const getDestinationDataByPlace = (cityName: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    url: APIS.pages.getDestinationDataByPlace(cityName),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
+  dispatch(setIsLoading(true));
 
-export const getInnerPageContentById =
-  (contentId: any) => (dispatch: AppDispatch) => {
-    const config = {
-      method: 'get',
-      url: APIS.pages.getInnerPageContentById(contentId),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    dispatch(setIsLoading(true));
+  axios(config)
+    .then(response => {
+      dispatch(setDestinationData(response.data));
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      dispatch(setErrors(error.message));
+      dispatch(setIsLoading(false));
+    });
+};
 
-    axios(config)
-      .then(response => {
-        dispatch(setSectionsData(response.data.sections));
-        dispatch(setIsLoading(false));
-      })
-      .catch(error => {
-        dispatch(setErrors(error.message));
-        dispatch(setIsLoading(false));
-      });
+export const getInnerPageContentById = (contentId: any) => (dispatch: any) => {
+  const config = {
+    method: 'get',
+    url: APIS.pages.getInnerPageContentById(contentId),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   };
+  dispatch(setIsLoading(true));
+
+  axios(config)
+    .then(response => {
+      dispatch(setSectionsData(response.data.sections));
+      dispatch(setIsLoading(false));
+    })
+    .catch(error => {
+      dispatch(setErrors(error.message));
+      dispatch(setIsLoading(false));
+    });
+};
 
 let selectedoptions: any = {};
 let prev = 'START';
 export const getChatbotReply =
-  (next: any, db_id: any, chatArray: any) => (dispatch: AppDispatch) => {
+  (next: any, db_id: any, chatArray: any) => (dispatch: any) => {
     if (prev == 'DETAILS') {
       prev = 'START';
       selectedoptions = {};
@@ -820,7 +817,7 @@ export const getChatbotReply =
     }
   };
 
-export const getChatBotFirstReply = () => (dispatch: AppDispatch) => {
+export const getChatBotFirstReply = () => (dispatch: any) => {
   const config = {
     method: 'get',
     url: APIS.chatbot.chatbotFirstReply,
@@ -842,6 +839,6 @@ export const getChatBotFirstReply = () => (dispatch: AppDispatch) => {
       dispatch(setIsLoading(false));
     });
 };
-export const setbgForaccomodation = () => (dispatch: AppDispatch) => {
+export const setbgForaccomodation = () => (dispatch: any) => {
   dispatch(setaccomodationBg(true));
 };

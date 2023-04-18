@@ -41,9 +41,11 @@ const Footer = () => {
               <Text style={styles.text}>
                 Business Development & Marketing Paryatan
               </Text>
-              <Text>Bhawan . Bhadbhada Road , Bhopal - 462003</Text>
+              <Text style={styles.text}>
+                Bhawan . Bhadbhada Road , Bhopal - 462003
+              </Text>
               <Text style={styles.text}>TEL : 0755-4027132/163</Text>
-              <Text>FAX: 0755-2779476 , 2774289</Text>
+              <Text style={styles.text}>FAX: 0755-2779476 , 2774289</Text>
             </View>
           </View>
         </View>
@@ -78,12 +80,12 @@ const styles = StyleSheet.create({
 
   title4: {
     fontSize: 15,
-    color: 'gray',
+    color: 'black',
   },
   underline: {
     width: '70%',
     borderBottomWidth: 2,
-    borderColor: 'gray',
+    borderColor: 'black',
   },
   icons: {
     flexDirection: 'row',
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 5,
+    color: 'grey',
   },
 });
 
