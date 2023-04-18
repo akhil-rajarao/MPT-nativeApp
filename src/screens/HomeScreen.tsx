@@ -173,22 +173,24 @@ const HomeScreen = () => {
       <View style={styles.popular}>
         <Text style={styles.packagesHeading}>Popular Places</Text>
         <View style={styles.imageTop}>
-          <FlatList
-            horizontal={true}
-            data={popularPlaces}
-            renderItem={({item}) => (
-              <View>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                  }}
-                />
-                <View style={styles.opacityPlace}></View>
-                <Text style={styles.PlaceText}> {item.content_title}</Text>
-              </View>
-            )}
-          />
+          {popularPlaces && (
+            <FlatList
+              horizontal={true}
+              data={popularPlaces}
+              renderItem={({item}) => (
+                <View>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                  <View style={styles.opacityPlace}></View>
+                  <Text style={styles.PlaceText}> {item.content_title}</Text>
+                </View>
+              )}
+            />
+          )}
         </View>
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
