@@ -7,7 +7,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 const WellnessPageStack = createStackNavigator<any>();
 export default function WellnessPageNavigaton() {
   return (
-    <WellnessPageStack.Navigator initialRouteName="WellnessPage1">
+    <WellnessPageStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="WellnessPage1">
       <WellnessPageStack.Screen name="WellnessPage1" component={WellnessPage} />
       <WellnessPageStack.Screen name="Trial" component={Trial} />
     </WellnessPageStack.Navigator>

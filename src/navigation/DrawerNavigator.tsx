@@ -8,6 +8,7 @@ import ExploreStackNavigator from './StackNavigation/ExploreStackNavigator';
 import HomeStackNavigator from './StackNavigation/HomeStackNavigator';
 import InstitutionsNavigator from './StackNavigation/InstitutionsNavigator';
 import NavBar from '../component/NavBar';
+import PopularPlaces from '../component/common/PopularPlaces';
 import React from 'react';
 import TenderPageNavigation from './StackNavigation/TenderPageNavigation';
 import WelcomeScreenStackNavigator from './StackNavigation/WelcomeScreenStackNavigator';
@@ -43,8 +44,8 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Events" component={EventsPageNavigator} />
       <Drawer.Screen name="Institutions" component={InstitutionsNavigator} />
       <Drawer.Screen name="Wellness" component={WellnessPageNavigaton} />
-
       <Drawer.Screen name="Tenders" component={TenderPageNavigation} />
+      <Drawer.Screen name="PopularPlaces" component={PopularPlaces} />
     </Drawer.Navigator>
   );
 };

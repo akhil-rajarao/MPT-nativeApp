@@ -1,4 +1,12 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
@@ -7,18 +15,30 @@ import {
 import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 import {Carousel} from 'react-native-auto-carousel';
+import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
+  const navigation = useNavigation<any>();
+
   const dispatch = useAppDispatch();
+
   const homepageBannerData = useAppSelector(
     state => state.dashboard.bannerData,
   );
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
-  console.log('========>', homepageBannerData);
-  console.log('================sections>', sectionsData);
-  // const sectionsArray = sectionsData[1].contents;
+  // console.log('========>', homepageBannerData);
+  // console.log('================sections>', sectionsData[1].contents);
+
+  const sectionsArray = sectionsData[1]?.contents;
+  const unexploredofMP = sectionsData[3]?.contents;
+  const topPackages = sectionsData[0]?.contents;
+  const popularPlaces = sectionsData[4]?.contents;
+  // console.log('====opoppopop======>', popularPlaces);
+  // console.log('top packages=====.....', topPackages);
+  // console.log('unexplored side', unexploredofMP);
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, []);
@@ -43,7 +63,9 @@ const HomeScreen = () => {
           <Text style={styles.heading}>Majestic</Text>
           <Text style={styles.heading1}>MADHYA PRADESH</Text>
           <View style={styles.explore}>
-            <Text style={styles.exploreText}>EXPLORE</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Explore')}>
+              <Text style={styles.exploreText}>EXPLORE</Text>
+            </TouchableOpacity>
           </View>
           <View>
             <Text style={styles.content}>
@@ -62,128 +84,124 @@ const HomeScreen = () => {
       </View>
 
       <View style={styles.banners}>
-        {/* <FlatList
-          data={sectionsData}
-          renderItem={({item}) => (
-            <View>
-              <Image
-                style={styles.wildlife}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                }}
-              />
+        {sectionsArray && (
+          <FlatList
+            data={sectionsArray}
+            renderItem={({item}) => (
+              <View>
+                <Image
+                  style={styles.wildlife}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                  }}
+                />
 
-              <View style={styles.opacity} />
-              <Text style={styles.bannerText}>{item.content_title}</Text>
-            </View>
-          )}
-        /> */}
-        {/* <View>
-          <Image
-            style={styles.wildlife}
-            source={require('../assets/images/wildLife.png')}
+                <View style={styles.opacity} />
+                <Text style={styles.bannerText}>{item.content_title}</Text>
+              </View>
+            )}
           />
-          <View style={styles.opacity} />
-          <Text style={styles.bannerText}>Wildlife</Text>
-        </View> */}
-        {/* <View style={styles.bannersRow}>
-          <View>
-            <Image
-              style={styles.adventure}
-              source={require('../assets/images/adventure.png')}
-            />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>Adventure</Text>
-          </View>
-          <View>
-            <Image
-              style={styles.food}
-              source={require('../assets/images/food.png')}
-            />
-            <View style={styles.opacity2} />
-            <Text style={styles.bannerText2}>food</Text>
-          </View>
-        </View> */}
-        {/* <View>
-          <Image
-            style={styles.heritage}
-            source={require('../assets/images/heritage.png')}
-          />
-          <View style={styles.opacity}></View>
-          <Text style={styles.bannerText}>Heritage</Text>
-        </View> */}
+        )}
       </View>
 
       <View style={styles.unexploredView}>
         <Text style={styles.unexplored}>Unexplored side of MP</Text>
-        <Image
-          style={styles.exploreImage}
-          source={require('../assets/images/explore.png')}
-        />
-        <Text style={styles.relaxText}>
-          Destination To Relax And Enjoy Nature
-        </Text>
-        <Text style={styles.read}>Read more -- </Text>
+        <View>
+          {unexploredofMP && (
+            <FlatList
+              horizontal={true}
+              data={unexploredofMP}
+              renderItem={({item}) => (
+                <View>
+                  <Image
+                    style={styles.exploreImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                  <Text style={styles.relaxText}>{item.content_title}</Text>
+                  <Text style={styles.read}>Read more -- </Text>
+                </View>
+              )}
+            />
+          )}
+        </View>
       </View>
       <View style={styles.packages}>
         <Text style={styles.packagesHeading}>Our Top Packages</Text>
-        <View style={styles.imageTop}>
-          <Image
-            style={styles.packagesImage}
-            source={require('../assets/images/package.jpeg')}
+        {topPackages && (
+          <FlatList
+            horizontal={true}
+            data={topPackages}
+            renderItem={({item}) => (
+              <View style={styles.imageTop}>
+                <Image
+                  style={styles.packagesImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                  }}
+                />
+                {/* <Carousel
+                  data={item.content_images}
+                  renderItem={item => (
+                    <Image
+                      key={item}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images}`,
+                      }}
+                      style={styles.packagesImage}
+                    />
+                  )}
+                /> */}
+                <View style={styles.packagesContent}>
+                  <View style={styles.days}>
+                    <Text style={styles.dayText}>
+                      {item.description.value0}
+                    </Text>
+                  </View>
+                  <Text style={styles.headpackage}>{item.content_title}</Text>
+                  <Text style={styles.textpackage}>
+                    {item.description.value2}
+                  </Text>
+                  <Text style={styles.optionPackage}>
+                    {item?.description?.value3?.toUpperCase()}
+                  </Text>
+                  <View style={styles.view}>
+                    <Text style={styles.viewText}>VIEW</Text>
+                  </View>
+                </View>
+              </View>
+            )}
           />
-          <View style={styles.packagesContent}>
-            <View style={styles.days}>
-              <Text style={styles.dayText}>4 Night / 5 Days</Text>
-            </View>
-            <Text style={styles.headpackage}>Natures Nest Pachmarhi</Text>
-            <Text style={styles.textpackage}>
-              Popularly known as the 'Satpura ki Rani' (Queen of Satpura) is the
-              glorious land called Pachmarhi.Pachmarhi is one of the most
-              popular destinations in the Heart of Incredible India and is a
-              treasure trove of rich history and nature's bounty.
-            </Text>
-            <Text style={styles.optionPackage}>
-              PIPARIYA - TAWA - PACHMARHI - TAMIA - PATALKOT
-            </Text>
-            <Text style={styles.optionPackage1}>PENCH - ROOKHAD - SEONI</Text>
-            <View style={styles.view}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-          </View>
-        </View>
+        )}
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>> */}
       <View style={styles.popular}>
         <Text style={styles.packagesHeading}>Popular Places</Text>
         <View style={styles.imageTop}>
-          <Image
-            style={styles.packagesImage}
-            source={require('../assets/images/popular.jpeg')}
-          />
-          <View style={styles.opacityPlace}></View>
-          <Text style={styles.PlaceText}> Pachmarhi</Text>
+          {popularPlaces && (
+            <FlatList
+              horizontal={true}
+              data={popularPlaces}
+              renderItem={({item}) => (
+                <View>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                  <View style={styles.opacityPlace}></View>
+                  <Text style={styles.PlaceText}> {item.content_title}</Text>
+                </View>
+              )}
+            />
+          )}
         </View>
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.contact}>
-        <Image
-          style={styles.contactImage}
-          source={require('../assets/images/contact3.jpeg')}
-        />
-        <View style={styles.contactText}>
-          <Text style={styles.contactHeading}>Contact Us</Text>
-          <Text style={styles.contentSubText}>
-            Tourist Helpline (Toll Free): 1800 233 7777
-          </Text>
-          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
-          <Text style={styles.contentSubText}>
-            (Sunday holiday, Saturday and other holiday Half Day)
-          </Text>
-          <Text style={styles.contentSubText}>
-            Email : mpthelpline@mpstdc.com
-          </Text>
-        </View>
+      <View>
+        <ContactUs />
       </View>
       <View style={styles.footer}>
         <Footer />
@@ -250,8 +268,9 @@ const styles = StyleSheet.create({
   bannerHeading: {
     display: 'flex',
     flexDirection: 'row',
-
+    alignItems: 'center',
     marginTop: 40,
+    paddingLeft: 10,
   },
   disText: {
     fontSize: hp('2.5%'),
@@ -260,16 +279,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   heartText: {
-    fontSize: hp('3.5%'),
+    fontSize: hp('4.5%'),
     color: 'darkred',
-    fontStyle: 'italic',
     fontWeight: '600',
-    fontFamily: 'YouthBrushDaylightRegular',
+    fontFamily: 'YouthPower-X34qG',
   },
   banners: {
     // backgroundColor: 'green',
     width: wp('100%'),
-    height: hp('100%'),
+    height: hp('125%'),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -277,76 +295,80 @@ const styles = StyleSheet.create({
     // backgroundColor: 'black',
     width: wp('98%'),
     height: hp('30%'),
-    borderRadius: 10,
+    borderRadius: 1,
     marginTop: 10,
   },
   bannersRow: {
     display: 'flex',
-    flexDirection: 'row',
+    // flexDirection: 'row',
     width: wp('98%'),
     // height: hp('40%'),
     // backgroundColor: 'darkblue',
     justifyContent: 'space-between',
     paddingVertical: 10,
   },
-  adventure: {
-    // backgroundColor: 'skyblue',
-    width: wp('47%'),
-    height: hp('35%'),
-    borderRadius: 10,
-  },
-  food: {
-    // backgroundColor: 'red',
-    width: wp('47%'),
-    height: hp('35%'),
-    borderRadius: 10,
-  },
-  heritage: {
-    backgroundColor: 'black',
-    width: wp('98%'),
-    height: hp('30%'),
-    borderRadius: 10,
-    // paddingTop: 10,
-  },
+  // adventure: {
+  //   // backgroundColor: 'skyblue',
+  //   width: wp('47%'),
+  //   height: hp('35%'),
+  //   borderRadius: 10,
+  // },
+  // food: {
+  //   // backgroundColor: 'red',
+  //   width: wp('47%'),
+  //   height: hp('35%'),
+  //   borderRadius: 10,
+  // },
+  // heritage: {
+  //   backgroundColor: 'black',
+  //   width: wp('98%'),
+  //   height: hp('30%'),
+  //   borderRadius: 10,
+  //   // paddingTop: 10,
+  // },
   opacity: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 150,
+    top: 180,
     bottom: 0,
     left: 0,
     right: 0,
     opacity: 0.5,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+
+    // borderBottomLeftRadius: 10,
+    // borderBottomRightRadius: 10,
   },
-  opacity2: {
-    backgroundColor: 'white',
-    position: 'absolute',
-    marginTop: 220,
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    opacity: 0.5,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-  },
+  // opacity2: {
+  //   backgroundColor: 'white',
+  //   position: 'absolute',
+  //   marginTop: 220,
+  //   top: 0,
+  //   bottom: 0,
+  //   left: 0,
+  //   right: 0,
+  //   opacity: 0.5,
+  //   borderBottomLeftRadius: 10,
+  //   borderBottomRightRadius: 10,
+  // },
   bannerText: {
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
-    top: 160,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    top: 180,
+    // fontStyle: 'italic',
+    // fontWeight: '600',
+    fontFamily: 'YouthPower-X34qG',
+    marginLeft: 5,
   },
-  bannerText2: {
-    fontSize: hp('3.5%'),
-    color: 'floralwhite',
-    position: 'absolute',
-    top: 220,
-    fontStyle: 'italic',
-    fontWeight: '600',
-  },
+  // bannerText2: {
+  //   fontSize: hp('3.5%'),
+  //   color: 'floralwhite',
+  //   position: 'absolute',
+  //   top: 220,
+  //   // fontStyle: 'italic',
+  //   // fontWeight: '600',
+
+  // },
   unexploredView: {
     width: wp('100%'),
     height: hp('38%'),
@@ -354,49 +376,54 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   unexplored: {
-    fontSize: hp('3.5%'),
+    fontSize: hp('4.5%'),
     color: 'darkred',
-    fontStyle: 'italic',
-    fontWeight: '800',
+
     paddingBottom: 8,
-    fontFamily: 'YouthBrushDaylightRegular',
+    fontFamily: 'YouthPower-X34qG',
+    paddingLeft: 10,
   },
   exploreImage: {
     width: wp('90%'),
     height: 200,
     borderRadius: 10,
+    marginHorizontal: 5,
   },
   relaxText: {
     color: 'darkred',
     fontSize: hp('2.0%'),
     fontWeight: '800',
     paddingTop: 5,
+    marginLeft: 10,
   },
   read: {
     color: 'black',
     fontSize: hp('1.8%'),
     paddingTop: 2,
+    marginLeft: 10,
   },
   packages: {
     width: wp('100%'),
     height: hp('100%'),
     backgroundColor: 'lightgrey',
-    marginTop: 30,
+    marginTop: 50,
   },
   packagesHeading: {
-    fontSize: hp('3.5%'),
+    fontSize: hp('4.5%'),
     color: 'darkred',
-    fontStyle: 'italic',
-    fontWeight: '800',
+    marginTop: 2,
     paddingBottom: 8,
-    fontFamily: 'YouthBrushDaylightRegular',
+    fontFamily: 'YouthPower-X34qG',
+    marginLeft: 10,
   },
   imageTop: {
     alignItems: 'center',
+    margin: 10,
   },
   packagesImage: {
     width: wp('95%'),
     height: hp('40'),
+    marginHorizontal: 8,
   },
   packagesContent: {
     alignItems: 'center',
@@ -408,8 +435,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   days: {
-    width: wp('30%'),
-    height: hp('3.5%'),
+    // width: wp('30%'),
+    height: hp('3.7%'),
     // backgroundColor: 'darkred',
     borderRadius: 7,
     borderWidth: 2,
@@ -419,6 +446,7 @@ const styles = StyleSheet.create({
     marginBottom: 35,
     marginRight: 10,
     alignSelf: 'flex-end',
+    paddingHorizontal: 4,
   },
   dayText: {
     color: 'darkred',
@@ -453,6 +481,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 4,
   },
   viewText: {
     color: 'white',
@@ -461,26 +490,25 @@ const styles = StyleSheet.create({
   popular: {
     width: wp('100%'),
     height: hp('50%'),
-    backgroundColor: 'tan',
+    backgroundColor: '#fff2da',
     marginTop: 30,
   },
   opacityPlace: {
     backgroundColor: 'white',
     position: 'absolute',
-    top: 270,
+    top: 250,
     bottom: 0,
-    left: 10,
-    right: 250,
+    left: 0,
+    right: 215,
     opacity: 0.3,
   },
   PlaceText: {
-    fontSize: hp('2.5%'),
-    color: 'floralwhite',
+    fontSize: hp('3.0%'),
+    color: '#ffffff',
     position: 'absolute',
-    top: 270,
-    left: 20,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    top: 250,
+    left: 6,
+    fontFamily: 'YouthPower-X34qG',
   },
   contact: {
     width: wp('100%'),
@@ -491,10 +519,9 @@ const styles = StyleSheet.create({
   },
   contactHeading: {
     color: 'white',
-    fontSize: hp('4%'),
+    fontSize: hp('5%'),
     marginBottom: 35,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    fontFamily: 'YouthPower-X34qG',
   },
   contactImage: {
     height: hp('30%'),

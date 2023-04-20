@@ -11,7 +11,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 const HomeStack = createStackNavigator<any>();
 export default function HomeStackNavigator() {
   return (
-    <HomeStack.Navigator initialRouteName="HomeScreen1">
+    <HomeStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="HomeScreen1">
       <HomeStack.Screen name="HomeScreen1" component={HomeScreen} />
       <HomeStack.Screen name="Booking" component={Booking} />
       <HomeStack.Screen name="Explore" component={Explore} />

@@ -6,7 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 const EventsPageNavigatorStack = createStackNavigator<any>();
 export default function EventsPageNavigator() {
   return (
-    <EventsPageNavigatorStack.Navigator initialRouteName="EventsPage1">
+    <EventsPageNavigatorStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="EventsPage1">
       <EventsPageNavigatorStack.Screen
         name="EventsPage1"
         component={EventsPage}

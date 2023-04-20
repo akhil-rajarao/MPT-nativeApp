@@ -6,7 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 const InstitutionsStack = createStackNavigator<any>();
 export default function InstitutionsNavigator() {
   return (
-    <InstitutionsStack.Navigator initialRouteName="Institutions1">
+    <InstitutionsStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="Institutions1">
       <InstitutionsStack.Screen name="Institutions1" component={Institutions} />
       <InstitutionsStack.Screen name="Booking" component={Booking} />
     </InstitutionsStack.Navigator>

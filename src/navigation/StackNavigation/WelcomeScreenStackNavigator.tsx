@@ -6,7 +6,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 const WelcomeScreenStack = createStackNavigator<any>();
 export default function WelcomeScreenStackNavigator() {
   return (
-    <WelcomeScreenStack.Navigator initialRouteName="WelcomeScreen">
+    <WelcomeScreenStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="WelcomeScreen">
       <WelcomeScreenStack.Screen
         name="WelcomeScreen1"
         component={WelcomeScreen}
