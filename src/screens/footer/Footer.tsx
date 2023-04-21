@@ -37,7 +37,7 @@ const Footer = () => {
           <Text style={styles.title4}>FOLLOW US</Text>
           <Text style={styles.underline}></Text>
 
-          <View style={styles.icons}>
+          {/* <View style={styles.icons}>
             <Text>
               <Icon name="pinterest-with-circle" size={40} color=" gray" />
             </Text>
@@ -53,7 +53,7 @@ const Footer = () => {
             <Text>
               <Icon name="youtube-with-circle" size={40} color=" gray" />
             </Text>
-          </View>
+          </View> */}
         </View>
       </View>
     </ScrollView>

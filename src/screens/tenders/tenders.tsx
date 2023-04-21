@@ -1,18 +1,18 @@
-import React from 'react';
 import {
   ScrollView,
-  ScrollViewComponent,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Image} from 'react-native';
+
+import React from 'react';
+// import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
-import {DataTable} from 'react-native-paper';
-import {Table, Row, Rows} from 'react-native-table-component';
+// import {Button} from 'react-native-elements';
+// import style from '../mice&facilities/style';
+// import {DataTable} from 'react-native-paper';
+// import {Table, Row, Rows} from 'react-native-table-component';
 
 const TenderPage = () => {
   const header = [
@@ -22,6 +22,7 @@ const TenderPage = () => {
     'publication Date',
     'Submission Date',
   ];
+
   const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
   return (
     <ScrollView>
@@ -44,14 +45,14 @@ const TenderPage = () => {
           <TouchableOpacity style={styles.buttoncss3}>
             <Text style={styles.buttonText2}>Apply for tenders</Text>
           </TouchableOpacity>
-          <Table
+          {/* <Table
             borderStyle={{
               borderWidth: 2,
               borderColor: '#c8e1ff',
             }}>
             <Row data={header} />
             <Rows data={data} />
-          </Table>
+          </Table> */}
         </View>
       </View>
     </ScrollView>
@@ -83,15 +84,6 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 
-  buttoncss2: {
-    borderColor: '0ECAF0',
-    borderWidth: 1,
-    width: 100,
-    borderRadius: 10,
-    marginTop: 20,
-    color: '#000000',
-    margin: 3,
-  },
   buttoncss3: {
     borderColor: '0ECAF0',
     borderWidth: 1,

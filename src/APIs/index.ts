@@ -1,11 +1,11 @@
 import Config from 'react-native-config';
 
-export const BASEURL = () => {
-  console.log(Config.ENVIRONMENT);
-  if (Config.ENVIRONMENT === 'prod') {
-    return 'https://webapi.mpstdc.com';
-  } else return 'https://betawebapi.mpstdc.com';
-};
+// export const BASEURL = () => {
+//   console.log(Config.ENVIRONMENT);
+//   if (Config.ENVIRONMENT === 'prod') {
+//     return 'https://webapi.mpstdc.com';
+//   } else return 'https://betawebapi.mpstdc.com';
+// };
 
 export const BASEURL: string = 'http://3.108.190.123:7002';
 
@@ -21,16 +21,14 @@ const dev_url: string = 'https://betawebapi.mpstdc.com';
 //switch(dev) ->
 
 export const BASE_URL_2 =
-  import.meta.env.VITE_APP_ENV == 'production' ? production_url : dev_url;
+  Config.ENVIRONMENT == 'production' ? production_url : dev_url;
 
 export const PROD_IMAGES_URL =
   'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images';
 export const STAGING_IMAGES_URL =
   'https://d2h2ad92feb2ap.cloudfront.net/mp-cms-images';
 export const IMAGES_URL =
-  import.meta.env.VITE_APP_ENV == 'production'
-    ? PROD_IMAGES_URL
-    : STAGING_IMAGES_URL;
+  Config.ENVIRONMENT == 'production' ? PROD_IMAGES_URL : STAGING_IMAGES_URL;
 
 export default {
   pages: {
@@ -41,7 +39,7 @@ export default {
       `${BASE_URL_2}/sidebarpage/page/archive/${pageId}`,
 
     allPages: `${BASE_URL_2}/pages`,
-    page: id => `${BASE_URL_2}/page/${id}`,
+    page: (id: string) => `${BASE_URL_2}/page/${id}`,
     cities: `${BASE_URL_2}/cities`,
     properties: `${BASE_URL_2}/properties`,
     getPropertyByCityId: (cityId: string) =>

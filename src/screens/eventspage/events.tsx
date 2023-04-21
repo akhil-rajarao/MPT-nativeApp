@@ -10,9 +10,9 @@ import {
 import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
-import {DataTable} from 'react-native-paper';
-import {Table, Row, Rows} from 'react-native-table-component';
+// import style from '../mice&facilities/style';
+// import {DataTable} from 'react-native-paper';
+// import {Table, Row, Rows} from 'react-native-table-component';
 
 const EventsPage = () => {
   const header = ['S No', 'Event', 'Date', 'Place Details'];
@@ -36,14 +36,14 @@ const EventsPage = () => {
             </TouchableOpacity>
           </View>
 
-          <Table
+          {/* <Table
             borderStyle={{
               borderWidth: 2,
               borderColor: '#c8e1ff',
             }}>
             <Row data={header} />
             <Rows data={data} />
-          </Table>
+          </Table> */}
         </View>
       </View>
     </ScrollView>
@@ -75,15 +75,15 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 
-  buttoncss2: {
-    borderColor: '0ECAF0',
-    borderWidth: 1,
-    width: 100,
-    borderRadius: 10,
-    marginTop: 20,
-    color: '#000000',
-    margin: 3,
-  },
+  // buttoncss2: {
+  //   borderColor: '0ECAF0',
+  //   borderWidth: 1,
+  //   width: 100,
+  //   borderRadius: 10,
+  //   marginTop: 20,
+  //   color: '#000000',
+  //   margin: 3,
+  // },
   buttoncss3: {
     borderColor: '0ECAF0',
     borderWidth: 1,
