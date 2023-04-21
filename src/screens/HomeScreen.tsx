@@ -17,6 +17,8 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 import {Carousel} from 'react-native-auto-carousel';
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
+import PopularPlaces from '../component/common/PopularPlaces';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import {getPageDataGo} from './appSlice';
 import {useNavigation} from '@react-navigation/native';
 
@@ -38,7 +40,7 @@ const HomeScreen = () => {
   const popularPlaces = sectionsData[4]?.contents;
   // console.log('====opoppopop======>', popularPlaces);
   // console.log('top packages=====.....', topPackages);
-  // console.log('unexplored side', unexploredofMP);
+  console.log('sectionsArray side', sectionsArray);
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, []);
@@ -89,12 +91,15 @@ const HomeScreen = () => {
             data={sectionsArray}
             renderItem={({item}) => (
               <View>
-                <Image
-                  style={styles.wildlife}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                  }}
-                />
+                <TouchableHighlight
+                  onPress={() => navigation.navigate(`${item.content_title}`)}>
+                  <Image
+                    style={styles.wildlife}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                </TouchableHighlight>
 
                 <View style={styles.opacity} />
                 <Text style={styles.bannerText}>{item.content_title}</Text>
@@ -141,18 +146,7 @@ const HomeScreen = () => {
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
                   }}
                 />
-                {/* <Carousel
-                  data={item.content_images}
-                  renderItem={item => (
-                    <Image
-                      key={item}
-                      source={{
-                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images}`,
-                      }}
-                      style={styles.packagesImage}
-                    />
-                  )}
-                /> */}
+
                 <View style={styles.packagesContent}>
                   <View style={styles.days}>
                     <Text style={styles.dayText}>
@@ -176,28 +170,8 @@ const HomeScreen = () => {
         )}
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.popular}>
-        <Text style={styles.packagesHeading}>Popular Places</Text>
-        <View style={styles.imageTop}>
-          {popularPlaces && (
-            <FlatList
-              horizontal={true}
-              data={popularPlaces}
-              renderItem={({item}) => (
-                <View>
-                  <Image
-                    style={styles.packagesImage}
-                    source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                    }}
-                  />
-                  <View style={styles.opacityPlace}></View>
-                  <Text style={styles.PlaceText}> {item.content_title}</Text>
-                </View>
-              )}
-            />
-          )}
-        </View>
+      <View>
+        <PopularPlaces />
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
       <View>
