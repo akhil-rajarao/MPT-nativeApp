@@ -1,5 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import {
   ScrollView,
   ScrollViewComponent,
@@ -7,29 +5,35 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Image} from 'react-native';
-import {StyleSheet} from 'react-native';
+
 import {Button} from 'react-native-elements';
+import {Image} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const WellnessPage = () => {
   const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
-       
-        <Text style={{
-    fontSize: 30,
-    color: 'red',
-    position: 'absolute',
-    top: 170,
-    alignSelf: 'center',
-    zIndex: 30,
-    fontWeight: '800',
-  }}>WELLNESS TOURISM</Text>
-          
-     
+        <Text
+          style={{
+            fontSize: 30,
+            color: 'red',
+            position: 'absolute',
+            top: 170,
+            alignSelf: 'center',
+            zIndex: 30,
+            fontWeight: '800',
+          }}>
+          WELLNESS TOURISM
+        </Text>
+
         <Image
-          source={require('../../assets/images/Wellness.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/Wellness.4d82aff7.jpg',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -39,19 +43,21 @@ const WellnessPage = () => {
           }}
         />
         <View style={{margin: 20}}>
-        <TouchableOpacity onPress={()=>navigation.navigate('Trial')}>  
-          <Text
-            style={{
-              fontSize: 35,
-              fontWeight: '500',
-              marginTop: 40,
-              color: '#bc1b1b',
-            }}>
-            Wellness Options
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Trial')}>
+            <Text
+              style={{
+                fontSize: 35,
+                fontWeight: '500',
+                marginTop: 40,
+                color: '#bc1b1b',
+              }}>
+              Wellness Options
+            </Text>
           </TouchableOpacity>
           <Image
-            source={require('../../assets/images/wellnesstwo.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.pnghttps://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -73,7 +79,9 @@ const WellnessPage = () => {
             RELAX REFRESH REJUVENATE
           </Text>
           <Image
-            source={require('../../assets/images/wthree.png')}
+            source={{
+              uri: '	https://mpstdc.com/assets/pexels-ron-lach-9146383.19538721.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -96,7 +104,9 @@ const WellnessPage = () => {
           </Text>
 
           <Image
-            source={require('../../assets/images/wfour.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-pinkwitch-%E8%AF%…%E8%91%9B%E7%AD%B1%E6%9A%96-12851257.3857f411.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -118,7 +128,9 @@ const WellnessPage = () => {
             CLEANSING BALANCING HEALING
           </Text>
           <Image
-            source={require('../../assets/images/wfive.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-elina-fairytale-3822646.02bc4e48.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -141,7 +153,9 @@ const WellnessPage = () => {
           </Text>
 
           <Image
-            source={require('../../assets/images/wsix.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-breakingpic-3188.d063448e.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -164,7 +178,9 @@ const WellnessPage = () => {
           </Text>
 
           <Image
-            source={require('../../assets/images/wseven.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-cottonbro-studio-3997986.b6909e14.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -187,7 +203,9 @@ const WellnessPage = () => {
           </Text>
 
           <Image
-            source={require('../../assets/images/weight.png')}
+            source={{
+              uri: 'https://mpstdc.com/assets/pexels-anna-shvets-5069459.1159bc56.png',
+            }}
             // eslint-disable-next-line react-native/no-inline-styles
             style={{
               width: '100%',
@@ -213,7 +231,5 @@ const WellnessPage = () => {
     </ScrollView>
   );
 };
-
-
 
 export default WellnessPage;

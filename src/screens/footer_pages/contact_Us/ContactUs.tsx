@@ -8,7 +8,9 @@ const ContactUs = () => {
     <ScrollView>
       <View>
         <Image
-          source={require('../../../assets/images/resort.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/resort.523d46d0.jpg',
+          }}
           style={{
             width: '100%',
             height: undefined,

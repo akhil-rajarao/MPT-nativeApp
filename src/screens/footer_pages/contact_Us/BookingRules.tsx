@@ -11,7 +11,9 @@ const BookingRules = () => {
     <ScrollView>
       <View>
         <Image
-          source={require('../../../assets/images/covid.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/similar.da06dae7.jpg',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',

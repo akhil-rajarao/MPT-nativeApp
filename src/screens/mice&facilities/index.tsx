@@ -1,21 +1,18 @@
-import React from 'react';
-import {
-  Pressable,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Pressable, ScrollView, Text, View} from 'react-native';
+
+// import {Button} from 'react-native-elements';
 import {Image} from 'react-native';
+import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
 
 const MiceandFacilities = () => {
   return (
     <ScrollView>
       <View>
         <Image
-          source={require('../../assets/images/caravan.png')}
+          source={{
+            uri: 'https://mpstdc.com/assets/IMG_2055@2x.3003f1c1.png',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -27,7 +24,9 @@ const MiceandFacilities = () => {
       </View>
       <View style={styles.container}>
         <Image
-          source={require('../../assets/images/caravan.png')}
+          source={{
+            uri: 'https://mpstdc.com/assets/IMG_2055@2x.3003f1c1.png',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -53,7 +52,9 @@ const MiceandFacilities = () => {
       </View>
       <View style={styles.container}>
         <Image
-          source={require('../../assets/images/micetwo.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/pic%20(1).f817bf36.jpg',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -86,7 +87,9 @@ const MiceandFacilities = () => {
       </View>
       <View style={styles.container}>
         <Image
-          source={require('../../assets/images/micethree.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/2_05_25_59_Khajuraho_1_H@@IGHT_276_W@@IDTH_600.9b85b8bf.jpg',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',
@@ -113,7 +116,9 @@ const MiceandFacilities = () => {
       </View>
       <View style={styles.container}>
         <Image
-          source={require('../../assets/images/micefour.png')}
+          source={{
+            uri: 'https://mpstdc.com/assets/Screenshot%202022-09-12%20155232.64c7a9f4.png',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',

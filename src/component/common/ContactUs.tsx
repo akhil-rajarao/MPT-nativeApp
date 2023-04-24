@@ -11,7 +11,9 @@ const ContactUs = () => {
     <View style={styles.contact}>
       <Image
         style={styles.contactImage}
-        source={require('../../assets/images/contact3.jpeg')}
+        source={{
+          uri: 'https://mpstdc.com/assets/contactUs.fe63165b.jpg',
+        }}
       />
       <View style={styles.contactText}>
         <Text style={styles.contactHeading}>Contact Us</Text>

@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 
-import Accomodation from '../component/common/Accomodation';
+// import Accomodation from '../component/common/Accomodation';
 import CustomDrawerContent from '../CustomDrawerContent';
 // import Destination from '../screens/Destination';
 import DestinationStackNavigator from './StackNavigation/DestinationStackNavigation';
@@ -46,7 +46,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Institutions" component={InstitutionsNavigator} />
       <Drawer.Screen name="Wellness" component={WellnessPageNavigaton} />
       <Drawer.Screen name="Tenders" component={TenderPageNavigation} />
-      <Drawer.Screen name="Accomodation" component={Accomodation} />
+      {/* <Drawer.Screen name="Accommodation" component={Accommodation} /> */}
     </Drawer.Navigator>
   );
 };

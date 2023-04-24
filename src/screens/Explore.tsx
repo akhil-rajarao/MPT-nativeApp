@@ -94,7 +94,9 @@ const Explore = () => {
         <View>
           <Image
             style={styles.wildlife}
-            source={require('../assets/images/owl.png')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3102891357.png',
+            }}
           />
           <View style={styles.opacity} />
           <Text style={styles.bannerText}>Know more</Text>
@@ -103,7 +105,9 @@ const Explore = () => {
           <View>
             <Image
               style={styles.adventure}
-              source={require('../assets/images/deer.png')}
+              source={{
+                uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2905632104.png',
+              }}
             />
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>Know more</Text>
@@ -111,7 +115,9 @@ const Explore = () => {
           <View>
             <Image
               style={styles.food}
-              source={require('../assets/images/tigerExplore.png')}
+              source={{
+                uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3138472901.png',
+              }}
             />
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>Know more</Text>

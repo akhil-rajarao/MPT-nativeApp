@@ -1,18 +1,14 @@
-import React from 'react';
+import {Row, Rows, Table} from 'react-native-table-component';
 import {
   ScrollView,
-  ScrollViewComponent,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Image} from 'react-native';
+
+import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
-import {DataTable} from 'react-native-paper';
-import {Table, Row, Rows} from 'react-native-table-component';
 
 const CareerPage = () => {
   const header = ['S.No', 'Title', 'Published Date', 'Last Submission Date'];

@@ -15,6 +15,7 @@ import {
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../app/hooks';
 
+import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
 import {useNavigation} from '@react-navigation/native';
@@ -64,7 +65,9 @@ const Destination = () => {
         <View style={styles.imageSlice}>
           <Image
             style={styles.image}
-            source={require('../assets/images/destination.jpg')}
+            source={{
+              uri: 'https://mpstdc.com/assets/mm.a1ec398c.jpg',
+            }}
           />
           <View style={styles.search}>
             <TextInput
@@ -103,7 +106,8 @@ const Destination = () => {
             data={popularPlacesData1}
             renderItem={({item}) => (
               <View style={{padding: 10}}>
-                <Pressable onPress={() => navigation.navigate('Jabalpur')}>
+                <Pressable
+                  onPress={() => navigation.navigate(`${item.content_title}`)}>
                   <Image
                     style={styles.packagesImage}
                     source={{
@@ -267,7 +271,9 @@ const Destination = () => {
         </View>
         <Image
           style={styles.storyImage}
-          source={require('../assets/images/story.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/storyImg1.b792bfea.jpg',
+          }}
         />
         <View style={styles.textBox}>
           <Text style={styles.storyText}>
@@ -280,24 +286,8 @@ const Destination = () => {
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
-      <View style={styles.contact}>
-        <Image
-          style={styles.contactImage}
-          source={require('../assets/images/contact3.jpeg')}
-        />
-        <View style={styles.contactText}>
-          <Text style={styles.contactHeading}>Contact Us</Text>
-          <Text style={styles.contentSubText}>
-            Tourist Helpline (Toll Free): 1800 233 7777
-          </Text>
-          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
-          <Text style={styles.contentSubText}>
-            (Sunday holiday, Saturday and other holiday Half Day)
-          </Text>
-          <Text style={styles.contentSubText}>
-            Email : mpthelpline@mpstdc.com
-          </Text>
-        </View>
+      <View>
+        <ContactUs />
       </View>
       <View style={styles.footer}>
         <Footer />
@@ -583,7 +573,7 @@ const styles = StyleSheet.create({
   storyContainer: {
     width: wp('100%'),
     height: hp('80%'),
-    backgroundColor: 'skyblue',
+    // backgroundColor: 'skyblue',
     alignItems: 'center',
     justifyContent: 'center',
   },

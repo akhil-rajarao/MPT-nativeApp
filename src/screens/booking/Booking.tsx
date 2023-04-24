@@ -11,6 +11,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
+import ContactUs from '../../component/common/ContactUs';
 //   import Header from '../../components/Header';
 import Footer from '../../component/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -182,7 +183,9 @@ const Destination = () => {
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
-            source={require('../../assets/images/hotelLake.jpeg')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2367999579.png',
+            }}
           />
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>
@@ -214,24 +217,8 @@ const Destination = () => {
 
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-      <View style={styles.contact}>
-        <Image
-          style={styles.contactImage}
-          source={require('../../assets/images/contact3.jpeg')}
-        />
-        <View style={styles.contactText}>
-          <Text style={styles.contactHeading}>Contact Us</Text>
-          <Text style={styles.contentSubText}>
-            Tourist Helpline (Toll Free): 1800 233 7777
-          </Text>
-          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
-          <Text style={styles.contentSubText}>
-            (Sunday holiday, Saturday and other holiday Half Day)
-          </Text>
-          <Text style={styles.contentSubText}>
-            Email : mpthelpline@mpstdc.com
-          </Text>
-        </View>
+      <View>
+        <ContactUs />
       </View>
       <View style={styles.footer}>
         <Footer />

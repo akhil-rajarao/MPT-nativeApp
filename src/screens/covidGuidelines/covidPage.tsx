@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ScrollView,
   ScrollViewComponent,
@@ -6,16 +5,20 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Image} from 'react-native';
-import {StyleSheet} from 'react-native';
+
 import {Button} from 'react-native-elements';
+import {Image} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 
 const CovidPage = () => {
   return (
     <ScrollView>
       <View>
         <Image
-          source={require('../../assets/images/covid.jpg')}
+          source={{
+            uri: 'https://mpstdc.com/assets/similar.da06dae7.jpg',
+          }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             width: '100%',

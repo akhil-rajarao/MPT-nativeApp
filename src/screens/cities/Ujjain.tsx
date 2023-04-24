@@ -74,7 +74,7 @@ const Ujjain = () => {
                     {item.property_name}
                   </Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
+                {/* <View style={{flexDirection: 'row'}}>
                   {[...Array(5)].map((_item, index) =>
                     rating >= index + 1 ? (
                       <Icon name="star" size={15} color="goldenrod" />
@@ -82,7 +82,7 @@ const Ujjain = () => {
                       <Icon name="star" size={15} color="black" />
                     ),
                   )}
-                </View>
+                </View> */}
                 <View>
                   <Text style={{color: 'black'}}>{item.price_range}</Text>
                 </View>
@@ -129,7 +129,7 @@ const Ujjain = () => {
       <View>
         <ContactUs />
       </View>
-      <View>
+      <View style={styles.footer}>
         <Footer />
       </View>
     </ScrollView>
@@ -266,5 +266,8 @@ const styles = StyleSheet.create({
   bookText: {
     fontSize: 12,
     color: 'white',
+  },
+  footer: {
+    marginLeft: 10,
   },
 });
