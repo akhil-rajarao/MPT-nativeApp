@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,6 +17,7 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import {useNavigation} from '@react-navigation/native';
 
 // import {getDestinationData} from './appSlice';
 
@@ -29,6 +31,7 @@ import {getPageDataGo} from './appSlice';
 
 const Destination = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
 
   const destinationData = useAppSelector(state => state.dashboard.bannerData);
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
@@ -100,12 +103,14 @@ const Destination = () => {
             data={popularPlacesData1}
             renderItem={({item}) => (
               <View style={{padding: 10}}>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                  }}
-                />
+                <Pressable onPress={() => navigation.navigate('Jabalpur')}>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                </Pressable>
                 <View style={styles.opacityPlace}></View>
                 <Text style={styles.PlaceText}> {item.content_title}</Text>
               </View>
@@ -119,106 +124,138 @@ const Destination = () => {
         <Text style={styles.headingText}>Explore</Text>
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[0]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[0]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[0].content_title}{' '}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[0].content_title}{' '}
+              </Text>
+            )}
           </View>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[1]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[1]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[1].content_title}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[2]?.content_images[0]}`,
-              }}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[2].content_title}
-            </Text>
-          </View>
-          <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[3]?.content_images[0]}`,
-              }}
-            />
-            <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[3].content_title}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[1].content_title}
+              </Text>
+            )}
           </View>
         </View>
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[4]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[2]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[4].content_title}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[2].content_title}
+              </Text>
+            )}
           </View>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[5]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[3]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[5].content_title}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[3].content_title}
+              </Text>
+            )}
           </View>
         </View>
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[6]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[4]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[6].content_title}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[4].content_title}
+              </Text>
+            )}
           </View>
           <View style={styles.exploreBox}>
-            <Image
-              style={styles.exploreOtherImage}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[7]?.content_images[0]}`,
-              }}
-            />
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[5]?.content_images[0]}`,
+                }}
+              />
+            )}
             <View style={styles.otherOpacity} />
-            <Text style={styles.otherText}>
-              {exploreData[0]?.contents[7].content_title}
-            </Text>
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[5].content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[6]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[6].content_title}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[7]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[7].content_title}
+              </Text>
+            )}
           </View>
         </View>
       </View>

@@ -16,12 +16,14 @@ const NavBar = () => {
     <View style={styles.navContainer}>
       <Image
         style={styles.image}
-        source={require('../assets/images/MPTlogo.png')}
+        source={{uri: 'https://mpstdc.com/assets/MPT%20logo.e77c5286.png'}}
       />
       <View style={styles.g2Logo}>
         <Image
           style={styles.image}
-          source={require('../assets/images/G20theme.png')}
+          source={{
+            uri: 'https://mpstdc.com/assets/G20%20theme%20and%20logo.3dd0b73a.png',
+          }}
         />
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('Booking')}>
