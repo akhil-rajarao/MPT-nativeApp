@@ -45,7 +45,7 @@ const Destination = () => {
     item.section_title.includes('Explore'),
   );
 
-  let popularPlacesData1 = popularPlacesData[0].contents;
+  let popularPlacesData1 = popularPlacesData && popularPlacesData[0].contents;
 
   popularPlacesData1 &&
     console.log('=====popularPlacesData===>', popularPlacesData1);

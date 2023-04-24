@@ -8,38 +8,40 @@ import useAppDispatch, {useAppSelector} from '../../app/hooks';
 
 import ContactUs from '../../component/common/ContactUs';
 import Footer from '../../component/Footer';
+import HTMLView from 'react-native-htmlview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import {Image} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {color} from 'react-native-tailwindcss';
 import {getDestinationData} from '../appSlice';
 
 export default function Jabalpur() {
   const dispatch = useAppDispatch();
-
+  // const htmlContent = `<p><a href="http://jsdf.co">&hearts; nice job!</a></p>`;
   const destinationData = useAppSelector(
     state => state.dashboard.destinationData,
   );
-
   const destDataBanner = destinationData.banners[0];
+  // console.log(destDataBanner, '....................///////////////////');
   const destSection = destinationData.section.contents;
   const dataAccomadationImages = destinationData.properties[0].property_image;
   const dataAccommodation = destinationData.properties[0];
   useEffect(() => {
     dispatch(getDestinationData(6750710));
-  });
-  // const descriptionData = cityData[0].description
-  //   const accomataionData = cityData[0].property_image;
-  console.log(dataAccommodation, '==========>destinationData Dataaaaa');
-  // jablapur
+  }, []);
+
+  console.log(destSection, '==========>destinationData Dataaaaa');
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image
-          style={styles.wildlifeImage}
-          source={{
-            uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${destDataBanner.banner_image}`,
-          }}
-        />
+        {destDataBanner && (
+          <Image
+            style={styles.wildlifeImage}
+            source={{
+              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${destDataBanner.banner_image}`,
+            }}
+          />
+        )}
         <View style={styles.opacity} />
         <Text style={styles.imageText}>{destDataBanner.banner_title}</Text>
       </View>
@@ -124,8 +126,9 @@ export default function Jabalpur() {
         </ScrollView>
       </View>
       {/* >>>>> */}
-      <View style={{backgroundColor: 'black'}}>
-        <Text>{destDataBanner.description}</Text>
+      <View style={{}}>
+        {/* <Text>{destDataBanner.description}</Text> */}
+        <HTMLView value={destDataBanner.description} stylesheet={style1} />
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
@@ -315,5 +318,26 @@ const styles = StyleSheet.create({
   boxText: {
     width: wp('92%'),
     height: hp('15%'),
+  },
+  a: {
+    fontWeight: '300',
+    color: 'black',
+    fontSize: 12,
+  },
+  styles: {
+    fontWeight: '300',
+    color: 'black',
+    fontSize: 12,
+  },
+  testHtml: {
+    fontWeight: '300',
+    color: 'black',
+    fontSize: 12,
+  },
+});
+
+const style1 = StyleSheet.create({
+  a: {
+    color: 'black',
   },
 });

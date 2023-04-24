@@ -1,6 +1,6 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
@@ -55,15 +55,15 @@ const Footer = () => {
           <Text style={styles.underline}></Text>
 
           <View style={styles.icons}>
-            {/* <Icon name="p" size={30} color=" gray" />
+            {/* <Icon name="p" size={30} color=" gray" /> */}
 
-            <Icon name="twitter" size={30} color=" gray" />
+            <Icon name="twitter" size={30} color="darkgray" />
 
-            <Icon name="instagram" size={30} color=" gray" />
+            <Icon name="instagram" size={30} color="darkgray" />
 
-            <Icon name="linkedin" size={30} color=" gray" />
+            <Icon name="linkedin" size={30} color="darkgray" />
 
-            <Icon name="youtube" size={30} color=" gray" /> */}
+            <Icon name="youtube" size={30} color="darkgray" />
           </View>
         </View>
       </View>
