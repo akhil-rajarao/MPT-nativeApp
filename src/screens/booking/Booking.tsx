@@ -45,6 +45,7 @@ const Destination = () => {
 
       <View style={styles.AccommodationView}>
         <Text style={styles.headingText}>Accommodation</Text>
+        <ScrollView horizontal> 
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
@@ -199,7 +200,9 @@ const Destination = () => {
               <Text style={styles.bookText}>BOOK NOW</Text>
             </View>
           </View>
+      
         </View>
+        </ScrollView>
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}

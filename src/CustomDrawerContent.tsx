@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'darkred',
     paddingLeft: 100,
     position: 'relative',
+    width:'100%'
   },
 
   container: {
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 100,
     top: 10,
+    width:'100%'
   },
 
   container2: {
@@ -128,7 +130,6 @@ const styles = StyleSheet.create({
   },
   drawerContainer: {
     flex: 1,
-    //flexDirection:'row'
 
     justifyContent: 'flex-end',
   },

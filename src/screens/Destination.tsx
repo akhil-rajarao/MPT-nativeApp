@@ -16,6 +16,8 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 // import {getDestinationData} from './appSlice';
 
@@ -29,6 +31,7 @@ import {getPageDataGo} from './appSlice';
 
 const Destination = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
 
   const destinationData = useAppSelector(state => state.dashboard.bannerData);
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
@@ -100,12 +103,14 @@ const Destination = () => {
             data={popularPlacesData1}
             renderItem={({item}) => (
               <View style={{padding: 10}}>
+                <TouchableHighlight onPress={() => navigation.navigate('Jabalpur')}>  
                 <Image
                   style={styles.packagesImage}
                   source={{
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
                   }}
                 />
+                </TouchableHighlight>
                 <View style={styles.opacityPlace}></View>
                 <Text style={styles.PlaceText}> {item.content_title}</Text>
               </View>
