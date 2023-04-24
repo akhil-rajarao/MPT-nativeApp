@@ -1,566 +1,664 @@
 import {
+  FlatList,
+  Image,
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
-  Image,
-  Button,
   TextInput,
-  ScrollView,
-  SafeAreaView,
-  FlatList,
+  View,
 } from 'react-native';
+import React, {useEffect} from 'react';
 import {
-  widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import React from 'react';
+import useAppDispatch, {useAppSelector} from '../../app/hooks';
+
 import Footer from '../footer/Footer';
+import {getPageDataGo} from '../appSlice';
+import {useNavigation} from '@react-navigation/native';
+
+// import {getDestinationData} from './appSlice';
+
+// import  getPageDataGo from './appSlice';
+
+// const images1 = [
+//   require('../assets/images/sound.jpeg'),
+//   require('../assets/images/history.jpeg'),
+//   require('../assets/images/pachmarchi.jpeg'),
+// ];
 
 const Destination = () => {
-  
-  
-  const Box = () => {
-    const imgPath = [
-      // require('../../assets/dest.jpg'),
-      [require('../../assets/explore.png'), 'Kanha' ],
-      [require('../../assets/explore2.png'), 'Pachmarhi' ],
-      [require('../../assets/explore3.png'), 'Bandhavgarh' ],
-      [require('../../assets/explore4.png'), 'Amarkantak' ],
-      [require('../../assets/explore5.png'), 'Indore' ],
-      [require('../../assets/explore6.png'), 'Khajunaho'],
-      [require('../../assets/explore7.png'), 'Bhopal'],
-      [require('../../assets/explore8.png'), 'Panna'],
-    ];
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
 
-    return (
-      <ScrollView>
-        <View
-          style={{
-            height: hp('100%'),
-            width: wp('100%'),
-            backgroundColor: '#DEB887',
-          }}>
-          <Text style={styles.head3}>Explore</Text>
-          <View style={styles.container}>
-            {imgPath?.map((item, i) => (
-              <View style={styles.box}>
-                <View style={styles.inner}>
-                <Image
-                  key={i}
-                  style={{
-                    width: '100%',
-                    height: '95%',
-                    position: 'relative',
-                  }}
-                  source={item[0]}
-                />
+  const destinationData = useAppSelector(state => state.dashboard.bannerData);
+  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
+  console.log(destinationData, 'destinationData>>>>>>>>>>>>>>>>>>>>');
 
-                <Text
-                  style={{
-                    position: 'absolute',
-                    color: 'white',
-                    fontSize: 22,
-                    fontWeight: 'bold',
-                    paddingTop: 110,
-                    paddingRight: 40,
-                  }}>
-                  {item[1]}
-                </Text>
+  let popularPlacesData = sectionsData?.filter((item, index) =>
+    item.section_title.includes('Popular'),
+  );
 
-                </View>
-              </View>
-            ))}
-          </View>
-        </View>
-      </ScrollView>
-    );
-  };
+  let exploreData = sectionsData?.filter((item, index) =>
+    item.section_title.includes('Explore'),
+  );
 
-  {
-    /* </View>
-            </View> */
-  }
+  let popularPlacesData1 = popularPlacesData[0].contents;
 
-  {
-    /* <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                /> */
-  }
-  {
-    /* <View style={styles.exploreOpacity}></View>
-                <Text style={styles.exploreText}>Bhopal</Text> */
-  }
-  {
-    /* </View>
-            </View> */
-  }
-  {
-    /* <View style={styles.box}>
-              <View style={styles.inner}> */
-  }
-  {
-    /* {
-                  imgUrls?.map((item,i)=>(
-                    <Image
-                    style={{width: '100%', height: '95%'}}
-                    source={item}
-                  />
-                  ))
-                } */
-  }
-  {
-    /* <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-                
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-          </View> */
-  }
-  {
-    /* </View> */
-  }
-  {
-    /* </View>
-      </ScrollView>
-    );
-  }; */
-  }
+  popularPlacesData1 &&
+    console.log('=====popularPlacesData===>', popularPlacesData1);
+  //  console.log("fwoakfpoa",popularPlacesData1)
 
-  const images = [
-    [require('../../assets/pap1.jpg'), 'Amarakantak'],
+  useEffect(() => {
+    dispatch(getPageDataGo(59908572));
+  }, []);
 
-    [require('../../assets/pop2.jpg'), 'Sanchi'],
-    [require('../../assets/pop3.jpg'), 'Bhopal'],
-    [require('../../assets/pop4.jpg'), 'Ujjain'],
-    [require('../../assets/pop5.jpg'), 'Pench'],
-  ];
+  //  59908572
   const [text, onChangeText] = React.useState('');
+
   return (
-    
     <ScrollView>
-      <View style={styles.screen}>
-        <View style={styles.mainview}>
-          <Text style={styles.head1}>Destination</Text>
-          <View style={styles.view1}>
-            <Image
-              style={styles.image1}
-              source={require('../../assets/dest.jpg')}
-            />
-            <View style={styles.input}>
-              <TextInput
-                placeholder="City/Destination"
-                onChangeText={onChangeText}
-                value=""
-                style={styles.search}
-              />
-              <View style={styles.button}>
-                <Text style={styles.buttontext}>Search</Text>
-              </View>
-            </View>
-            <View style={{marginTop: 1}}>
-              <Text style={styles.head2}>Popular Places</Text>
-              <ScrollView horizontal={true}>
-                <View style={{flexDirection: 'row'}}>
-                  {images.map((image1, index) => (
-                    <View style={{paddingLeft: 10}}>
-                      <Image
-                        key={index}
-                        style={styles.image}
-                        source={image1[0]}
-                      />
-                      <Text
-                        style={{
-                          zIndex: 300,
-                          color: 'white',
-                          position: 'absolute',
-                          fontSize: 20,
-                          fontStyle: 'italic',
-                          fontWeight: 'bold',
-                          paddingTop: 230,
-                          paddingLeft: 20,
-                        }}>
-                        {image1[1]}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-              </ScrollView>
-            </View>
-            {/* <Text style={styles.head3}>Explore</Text> */}
-          </View>
-        </View>
-      </View>
-      {/* <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-        }}> */}
-      {/* <Text style={styles.head3}>Explore</Text> */}
-      <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-          marginTop: 1,
-        }}>
-        <Box />
-      </View>
-      {/* </View> */}
-      <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-        }}>
-        <Text style={styles.head2}>Guest Stories</Text>
-        <ScrollView horizontal={true}>
-          <View style={{flexDirection: 'row'}}>
-            <View>
-              <Image
-                style={styles.getstories1}
-                source={require('../../assets/guest1.jpg')}
-              />
-              <View
-                style={{
-                  backgroundColor: '#DEB887',
-                  paddingTop: 60,
-                  paddingBottom: 40,
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  marginTop: 5,
-
-                  alignItems: 'flex-start',
-                }}>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  Awesome Orchha Lovely Betwa Retreat All covid norms{' '}
-                </Text>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  followed very nice and sincere staff my second visit
-                </Text>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  to this beautiful resort and the level of service goes
-                </Text>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  {' '}
-                  Mouth watering food especially the barbeque and
-                </Text>
-
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  {' '}
-                  above all a personal bonfire.up and out of the way.
-                </Text>
-                <></>
-              </View>
-            </View>
-            <View>
-              <Image
-                style={styles.getstories2}
-                source={require('../../assets/guest2.jpg')}
-              />
-              <View
-                style={{
-                  backgroundColor: '#DEB887',
-                  paddingTop: 60,
-                  paddingBottom: 40,
-                  paddingLeft:5,
-                  marginTop: 5,
-                  alignItems: 'flex-start',
-                }}>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  Best Hotel of Mp,I really did not expect
-                </Text>
-
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  such a wonderful experience over there,everything went
-                </Text>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  as an exceptional,very supportive staff Have stayed
-                </Text>
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  {' '}
-                  in many excellent hotels but this one
-                </Text>
-
-                <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
-                  {' '}
-                  is really amazing Champak Bungalow rockes.
-                </Text>
-              </View>
-            </View>
-          </View>
-        </ScrollView>
-        <View style={{marginBottom: 10}}>
+      <View style={styles.container}>
+        <View style={styles.imageSlice}>
           <Image
-            style={styles.getstories2}
-            source={require('../../assets/pop4.jpg')}
+            style={styles.image}
+            source={require('../assets/images/destination.jpg')}
           />
-
-          <View style={styles.exploreOpacity}></View>
-          <Text style={styles.exploreText}>Contact Us</Text>
-          <Text style={styles.tex}>
-            Tourist Helpline(Toll Free):1800 233 7777
-          </Text>
-          <Text style={styles.secondtex}>Timing : (10 AM to 6 PM)</Text>
-          <Text style={styles.thirdtex}>
-            {' '}
-            (Sunday holiday,Saturday and Other holiday Half Day)
-          </Text>
-          <Text style={styles.fourthtex}>Email : mpthelpline@mpstdc.com</Text>
+          <View style={styles.search}>
+            <TextInput
+              style={styles.input}
+              onChangeText={onChangeText}
+              value={text}
+              placeholder="City/Destination"
+            />
+            <View style={styles.searchButton}>
+              <Text style={styles.buttonText}>Search</Text>
+            </View>
+          </View>
         </View>
       </View>
-      <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-          // marginBottom: 90,
-          paddingBottom: 90,
-        }}>
+      {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
+
+      {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <View style={styles.container1}>
+            <View style={{flexDirection: 'row', height: hp('35%')}}>
+              {popularPlacesData1.map((content_images:any, index:any) => (
+                <Image key={index} style={styles.image1} source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${content_images}`,
+                }} />
+              ))}
+            </View>
+          </View>
+        </ScrollView> */}
+
+      <View style={styles.imageTop}>
+        <Text style={styles.headingText}>Popular Places</Text>
+        {popularPlacesData1 && (
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+            data={popularPlacesData1}
+            renderItem={({item}) => (
+              <View style={{padding: 10}}>
+                <Pressable onPress={() => navigation.navigate('Jabalpur')}>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                </Pressable>
+                <View style={styles.opacityPlace}></View>
+                <Text style={styles.PlaceText}> {item.content_title}</Text>
+              </View>
+            )}
+          />
+        )}
+      </View>
+
+      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+      <View style={styles.interests}>
+        <Text style={styles.headingText}>Explore</Text>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[0]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[0].content_title}{' '}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[1]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[1].content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[2]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[2].content_title}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[3]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[3].content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[4]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[4].content_title}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[5]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[5].content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[6]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[6].content_title}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Image
+                style={styles.exploreOtherImage}
+                source={{
+                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[7]?.content_images[0]}`,
+                }}
+              />
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[7].content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+      </View>
+      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+
+      <View style={styles.storyContainer}>
+        <View style={styles.headingBox}>
+          <Text style={styles.headingText}>Guest Stories</Text>
+        </View>
+        <Image
+          style={styles.storyImage}
+          source={require('../assets/images/story.jpg')}
+        />
+        <View style={styles.textBox}>
+          <Text style={styles.storyText}>
+            Best Hotel Of MP, I really did not expect such a wonderful
+            experience over there, everything went as an exceptional, very
+            supportive staff Have stayed in many excellent hotels but this one
+            is really amazing Champak Bungalow rocks.
+          </Text>
+        </View>
+      </View>
+
+      {/* >>>>>>>>>>>>>>>>>>>>>>> */}
+      <View style={styles.contact}>
+        <Image
+          style={styles.contactImage}
+          source={require('../assets/images/contact3.jpeg')}
+        />
+        <View style={styles.contactText}>
+          <Text style={styles.contactHeading}>Contact Us</Text>
+          <Text style={styles.contentSubText}>
+            Tourist Helpline (Toll Free): 1800 233 7777
+          </Text>
+          <Text style={styles.contentSubText}>Timing: (10 AM to 6PM) </Text>
+          <Text style={styles.contentSubText}>
+            (Sunday holiday, Saturday and other holiday Half Day)
+          </Text>
+          <Text style={styles.contentSubText}>
+            Email : mpthelpline@mpstdc.com
+          </Text>
+        </View>
+      </View>
+      <View style={styles.footer}>
         <Footer />
       </View>
-      <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-          
-        }}></View>
     </ScrollView>
-   
   );
 };
+export default Destination;
 
 const styles = StyleSheet.create({
-  screen: {
-    height: hp('100%'),
+  container: {
+    flex: 1,
+    // height: hp('30%'),
+  },
+  image: {
+    height: hp('23.5%'),
     width: wp('100%'),
-  },
-  head1: {
-    fontStyle: 'italic',
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'darkred',
-    marginTop: 4,
-  },
-
-  mainview: {
-    paddingLeft: 1,
-    paddingRight: 5,
-  },
-  image1: {
     position: 'relative',
-    height: hp('50%'),
-    width: wp('100%'),
-    paddingTop: 2,
   },
-  view1: {
-    height: hp('90%'),
-    width: wp('100%'),
+  imageSlice: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   search: {
-    backgroundColor: 'white',
-    // paddingTop: 10,
-    // borderRadius: 10,
-    // color: 'black',
-    // borderWidth: 1,
-    width: wp('63%'),
-    height: hp('5%'),
-    borderColor: 'darkred',
-    borderWidth: 1,
-  },
-  input: {
-    // paddingRight: 10,
     flexDirection: 'row',
     position: 'absolute',
-    paddingTop: 345,
-    paddingLeft: 18,
+    top: 150,
   },
-  button: {
+
+  input: {
+    height: hp('5%'),
+    width: wp('60%'),
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderColor: 'darkred',
+  },
+  searchButton: {
     height: hp('5%'),
     width: wp('30%'),
     borderWidth: 1,
     backgroundColor: 'darkred',
-    bordercolor: 'darkred',
+    borderColor: 'darkred',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttontext: {
+  buttonText: {
     color: 'white',
   },
-  head2: {
-    fontStyle: 'italic',
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'darkred',
-    marginTop: 15,
-    paddingLeft: 2,
-  },
 
-  image: {
-    width: wp('90%'),
-    height: hp('40%'),
-    margin: 1,
-    marginBottom: 50,
-    // // resizeMode: 'cover',
-    resizeMode: 'contain',
-    position: 'relative',
-  },
-  head3: {
-    fontStyle: 'italic',
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'darkred',
-    marginTop: 0,
-    paddingLeft: 4,
-  },
-
-  explor: {
+  bannerHeading: {
+    display: 'flex',
     flexDirection: 'row',
+    marginTop: 20,
+    // done
   },
 
-  container: {
-    width: '100%',
-    height: '50%',
-    backgroundColor: '#DEB887',
-    padding: 5,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  heartText: {
+    fontSize: hp('3.5%'),
+    color: 'darkred',
+    fontStyle: 'italic',
+    fontWeight: '600',
+    paddingLeft: 10,
+    // done
   },
-  box: {
-    width: '50%',
-    height: '50%',
-    padding: 5,
-    backgroundColor: 'white',
-  },
-  inner: {
-    flex: 1,
-    backgroundColor: '#eee',
-    alignItems: 'center',
+  banners: {
+    width: wp('100%'),
+    height: hp('80%'),
     justifyContent: 'center',
+    alignItems: 'center',
+    // done
+  },
+  wildlife: {
+    width: wp('98%'),
+    height: hp('30%'),
+    // done
+  },
+  bannersRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: wp('98%'),
+    height: hp('50%'),
+
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    // done
+  },
+  adventure: {
+    width: wp('47%'),
+    height: hp('35%'),
+    // done
+  },
+  food: {
+    width: wp('47%'),
+    height: hp('35%'),
+  },
+  unexploredView: {
+    width: wp('100%'),
+    height: hp('45%'),
+
+    marginTop: 30,
+    // done
+  },
+
+  lifestyle: {
+    color: 'darkred',
+    fontWeight: 'bold',
+    fontSize: hp('1.8%'),
+    marginLeft: 5,
+    // done
+  },
+  exploreImage: {
+    width: wp('95%'),
+    height: hp('30%'),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   exploreOpacity: {
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     position: 'absolute',
-    top: 0,
-    fontColor: 'black',
-    fontSize: 30,
-    opacity: 0.1,
+    top: 255,
+    bottom: 0,
+    left: 0,
+    right: 335,
+    opacity: 0.3,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   },
   exploreText: {
-    fontSize: 20,
-    color: 'white',
+    fontSize: hp('2%'),
+    color: 'floralwhite',
     position: 'absolute',
-    top: 10,
-    fontWeight: '600',
-    alignSelf: 'center',
-    paddingLeft: 10,
-    opacity: 1.5,
-  },
-  tex: {
-    fontSize: 15,
-    color: 'white',
-    position: 'absolute',
-    top: 40,
+    top: 255,
     fontWeight: '600',
     alignSelf: 'flex-start',
-    paddingLeft: 10,
-    opacity: 1.5,
+    paddingLeft: 15,
   },
-  secondtex: {
-    fontSize: 15,
-    color: 'white',
+  opacity: {
+    backgroundColor: 'white',
     position: 'absolute',
-    top: 70,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
+    top: 200,
+    bottom: 0,
+    left: 250,
+    right: 0,
+    opacity: 0.5,
+    // done
   },
-  thirdtex: {
-    fontSize: 15,
-    color: 'white',
+  opacity2: {
+    backgroundColor: 'white',
     position: 'absolute',
-    top: 100,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
+    top: 240,
+    bottom: 0,
+    left: 80,
+    right: 0,
+    opacity: 0.3,
+    // done
   },
-  fourthtex: {
-    fontSize: 15,
-    color: 'white',
+  bannerText: {
+    fontSize: hp('2%'),
+    color: 'floralwhite',
     position: 'absolute',
-    top: 180,
+    top: 200,
+    left: 260,
+    fontStyle: 'italic',
     fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
+    // done
   },
-  getstories1: {
+  bannerText2: {
+    fontSize: hp('2%'),
+    color: 'floralwhite',
+    position: 'absolute',
+    top: 240,
+    left: 90,
+    fontStyle: 'italic',
+    fontWeight: '600',
+    // done
+  },
+  popularView: {
+    width: wp('100%'),
+    height: hp('38%'),
+    marginTop: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headingText: {
+    fontSize: hp('3.5%'),
+    color: 'darkred',
+    fontStyle: 'italic',
+    fontWeight: '800',
+    paddingBottom: 8,
+    alignSelf: 'flex-start',
+    paddingLeft: 5,
+  },
+
+  read: {
+    color: 'black',
+    fontSize: hp('1.8%'),
+    paddingTop: 2,
+    // done
+  },
+
+  contact: {
+    width: wp('100%'),
+    height: hp('40%'),
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // done
+  },
+  contactHeading: {
+    color: 'white',
+    fontSize: hp('4%'),
+    marginBottom: 35,
+    fontStyle: 'italic',
+    fontWeight: '600',
+    // done
+  },
+  contactImage: {
     height: hp('30%'),
     width: wp('100%'),
-    paddingTop: 2,
+    // done
   },
-  getstories2: {
-    height: hp('30%'),
+  contactText: {
+    position: 'absolute',
+
+    alignItems: 'center',
+    // done
+  },
+  contentSubText: {
+    color: 'white',
+    fontSize: hp('1.7%'),
+    // done
+  },
+  interests: {
     width: wp('100%'),
-    paddingTop: 2,
+    height: hp('113%'),
+    backgroundColor: 'tan',
+    marginTop: 30,
+  },
+  exploreBox: {
+    width: wp('48%'),
+    height: hp('25%'),
+    backgroundColor: 'black',
+    borderRadius: 10,
+    // done
+  },
+  exploreOther: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingBottom: 10,
+    // done
+  },
+  exploreOtherImage: {
+    width: wp('48%'),
+    height: hp('25%'),
+    // borderRadius: 10,
+    // done
+  },
+  otherOpacity: {
+    backgroundColor: 'white',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 160,
+    bottom: 0,
+    left: 0,
+    right: 70,
+    opacity: 0.4,
+
+    // done
+  },
+  otherText: {
+    fontSize: hp('2.1%'),
+    color: 'floralwhite',
+    position: 'absolute',
+    top: 162,
+    left: 10,
+    fontWeight: '500',
+    fontStyle: 'italic',
+    // opacity: 0.5,
+    // done
+  },
+  storyContainer: {
+    width: wp('100%'),
+    height: hp('80%'),
+    backgroundColor: 'skyblue',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyImage: {
+    width: wp('96%'),
+    height: hp('30%'),
+  },
+  textBox: {
+    width: wp('96%'),
+    height: hp('30%'),
+    backgroundColor: 'tan',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headingBox: {
+    width: wp('96%'),
+    height: hp('10%'),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyText: {
+    color: 'black',
+    marginHorizontal: 10,
+
+    fontStyle: 'italic',
+  },
+
+  footer: {
+    width: wp('100%'),
+    height: hp('90%'),
+    paddingLeft: 10,
+  },
+  container1: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    //  backgroundColor:"red",
+    height: hp('20%'),
+    marginTop: 50,
+  },
+
+  image1: {
+    width: wp('95%'),
+    height: hp('25%'),
+    marginRight: 10,
+    // resizeMode: 'cover',
+    resizeMode: 'stretch',
+    // aspectRatio:1
+    // borderRadius:10
+  },
+  opacityPlace: {
+    backgroundColor: 'red',
+    position: 'absolute',
+    top: 220,
+    bottom: 10,
+    left: 10,
+    right: 210,
+    opacity: 0.3,
+  },
+  PlaceText: {
+    fontSize: hp('3.0%'),
+    color: '#ffffff',
+    position: 'absolute',
+    top: 230,
+    left: 10,
+    fontStyle: 'italic',
+    fontWeight: '600',
+  },
+  imageTop: {
+    alignItems: 'center',
+    marginTop: 70,
+  },
+  packagesImage: {
+    width: wp('85%'),
+    height: hp('35%'),
   },
 });
-
-export default Destination;

@@ -26,7 +26,9 @@ const Destination = () => {
         <View style={styles.imageSlice}>
           <Image
             style={styles.image}
-            source={require('../../assets/images/Booking.jpeg')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3544608669.png',
+            }}
           />
           <View style={styles.search}>
             <TextInput
@@ -49,7 +51,9 @@ const Destination = () => {
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
-            source={require('../../assets/images/palash.jpeg')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2367999579.png',
+            }}
           />
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>
@@ -80,7 +84,9 @@ const Destination = () => {
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
-            source={require('../../assets/images/hotelWind.jpeg')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/79237081.png',
+            }}
           />
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>
@@ -111,7 +117,9 @@ const Destination = () => {
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
-            source={require('../../assets/images/hotelTourist.png')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3987510413.png',
+            }}
           />
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>
@@ -142,7 +150,9 @@ const Destination = () => {
         <View style={styles.HotelBox}>
           <Image
             style={styles.hotelImage}
-            source={require('../../assets/images/hotelKerwa.jpeg')}
+            source={{
+              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/292874974.png',
+            }}
           />
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>

@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-import ContactUs from '../footer_pages/contact_Us/ContactUs';
+import ContactUs from '../../component/common/ContactUs';
 import ExploreImageContainer from '../../component/common/ExploreImageContainer';
 import Footer from '../../component/Footer';
 import React from 'react';
@@ -16,7 +16,7 @@ const Adventure = () => {
         <Image
           style={styles.wildlifeImage}
           source={{
-            uri: '	https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/4287949877.png',
+            uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/4287949877.png',
           }}
         />
         <View style={styles.opacity} />
