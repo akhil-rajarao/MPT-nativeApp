@@ -15,26 +15,31 @@ import useAppDispatch, {useAppSelector} from '../../app/hooks';
 
 import ContactUs from '../../component/common/ContactUs';
 import Footer from '../../component/Footer';
+import HTMLView from 'react-native-htmlview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getDestinationData} from '../appSlice';
+import {useRoute} from '@react-navigation/native';
 
-const Ujjain = () => {
+const Cities = () => {
   const dispatch = useAppDispatch();
+  const route = useRoute();
 
+  const {city_id} = route.params;
   const destinationData = useAppSelector(
     state => state.dashboard.destinationData,
   );
+  console.log('city_id==>', city_id);
 
-  const destDataBanner = destinationData.banners[0];
-  const destSection = destinationData.section.contents;
-  const dataAccomadationImages = destinationData.properties[0].property_image;
-  const dataAccommodation = destinationData.properties;
+  const destDataBanner = destinationData?.banners[0];
+  const destSection = destinationData?.section?.contents;
+  // const dataAccomadationImages = destinationData?.properties[0]?.property_image;
+  const dataAccommodation = destinationData?.properties;
 
-  console.log(dataAccommodation, 'UJJANNNN DATAA=====>');
+  console.log(destinationData, 'UJJANNNN DATAA=====>');
   const rating = 4;
   useEffect(() => {
-    dispatch(getDestinationData(8198182));
-  }, []);
+    dispatch(getDestinationData(city_id));
+  }, [city_id, dispatch]);
 
   return (
     <ScrollView>
@@ -43,38 +48,44 @@ const Ujjain = () => {
           <Image
             style={styles.wildlifeImage}
             source={{
-              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${destDataBanner.banner_image}`,
+              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${destDataBanner?.banner_image}`,
             }}
           />
         )}
         <View style={styles.opacity} />
-        <Text style={styles.imageText}>{destDataBanner.banner_title}</Text>
+        <Text style={styles.imageText}>{destDataBanner?.banner_title}</Text>
       </View>
-      {/* >>>>>>>>>>>>>>>>>>>> */}
+
+      {/* >>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
       <View style={styles.AccommodationView}>
-        <Text style={styles.headingText}>Accommodation</Text>
+        <Text style={styles.packagesHeading}>Accommodation</Text>
         {dataAccommodation && (
           <FlatList
             horizontal={true}
             data={dataAccommodation}
             renderItem={({item}) => (
-              <View style={styles.imageTop}>
+              <View style={styles.HotelBox}>
                 <Image
-                  style={styles.packagesImage}
+                  style={styles.hotelImage}
                   source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.property_image[0]}`,
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.property_image[0]}`,
                   }}
                 />
-                <View>
-                  <Text style={{color: 'black'}}>{item.property_type}</Text>
-                </View>
-                <View style={{}}>
-                  <Text style={styles.packagesHeading}>
-                    {item.property_name}
-                  </Text>
-                </View>
-                {/* <View style={{flexDirection: 'row'}}>
+                <View style={styles.boxText}>
+                  <Text style={styles.Residency}>{item?.property_type}</Text>
+
+                  <Text style={styles.mptText}>{item?.property_name}</Text>
+
+                  <View style={styles.stars}>
+                    {/* <Icon name="eyes" size={15} color="lightblue" /> */}
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                  </View>
+                  {/* <View style={{flexDirection: 'row'}}>
                   {[...Array(5)].map((_item, index) =>
                     rating >= index + 1 ? (
                       <Icon name="star" size={15} color="goldenrod" />
@@ -83,8 +94,20 @@ const Ujjain = () => {
                     ),
                   )}
                 </View> */}
-                <View>
-                  <Text style={{color: 'black'}}>{item.price_range}</Text>
+                  <View>
+                    <Text style={styles.priceText}>{item?.price_range}</Text>
+                    <Text style={styles.priceText}>
+                      Dinner - A/C rooms - parking facilities
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.button}>
+                  <View style={styles.viewButton}>
+                    <Text style={styles.viewText}>VIEW</Text>
+                  </View>
+                  <View style={styles.bookButton}>
+                    <Text style={styles.bookText}>BOOK NOW</Text>
+                  </View>
                 </View>
               </View>
             )}
@@ -92,8 +115,9 @@ const Ujjain = () => {
         )}
       </View>
       {/* >>>>>>>>>>>>>> */}
-      <View>
-        <Text style={{color: 'black'}}>{destDataBanner.description}</Text>
+      <View style={styles.cityTextView}>
+        {/* <Text>{destDataBanner.description}</Text> */}
+        <HTMLView value={destDataBanner.description} stylesheet={styles} />
       </View>
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
       <View style={styles.packages}>
@@ -107,17 +131,17 @@ const Ujjain = () => {
                 <Image
                   style={styles.packagesImage}
                   source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images}`,
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
                   }}
                 />
                 <View style={{}}>
                   <Text style={styles.packagesHeading}>
-                    {item.content_title}
+                    {item?.content_title}
                   </Text>
                 </View>
                 <View>
                   <Text style={{color: 'black'}}>
-                    {item.description.value0}
+                    {item?.description?.value0}
                   </Text>
                 </View>
               </View>
@@ -136,7 +160,7 @@ const Ujjain = () => {
   );
 };
 
-export default Ujjain;
+export default Cities;
 
 const styles = StyleSheet.create({
   container: {
@@ -173,9 +197,10 @@ const styles = StyleSheet.create({
   packagesHeading: {
     fontSize: hp('4.5%'),
     color: 'darkred',
-    marginTop: 2,
+    // marginTop: 2,
     paddingBottom: 8,
     fontFamily: 'YouthPower-X34qG',
+    alignSelf: 'flex-start',
     marginLeft: 10,
   },
   imageTop: {
@@ -194,7 +219,7 @@ const styles = StyleSheet.create({
   },
   AccommodationView: {
     width: wp('100%'),
-    marginTop: 70,
+    marginTop: 40,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -269,5 +294,29 @@ const styles = StyleSheet.create({
   },
   footer: {
     marginLeft: 10,
+  },
+  cityTextView: {
+    paddingHorizontal: 10,
+  },
+  p: {
+    color: 'black',
+    fontSize: 16,
+    // paddingBottom: 20,
+    letterSpacing: 1,
+  },
+  h2: {
+    color: 'darkred',
+    fontSize: 20,
+    fontWeight: '800',
+  },
+  h1: {
+    color: 'darkred',
+    // fontFamily: 'YouthPower-X34qG',
+    fontSize: 23,
+    fontWeight: 'bold',
+  },
+  li: {
+    color: 'black',
+    fontSize: 16,
   },
 });

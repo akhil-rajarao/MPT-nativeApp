@@ -1,4 +1,12 @@
-import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
@@ -8,17 +16,24 @@ import useAppDispatch, {useAppSelector} from '../../app/hooks';
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {getPageDataGo} from '../../screens/appSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const ExploreImageContainer = () => {
   const dispatch = useAppDispatch();
+
+  const navigation = useNavigation<any>();
+
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
   );
 
-  const exploreotherinterestsData = ExploresectionsData[1].contents;
+  const exploreotherinterestsData = ExploresectionsData[1]?.contents;
   ExploresectionsData &&
-    console.log('===unexplored side=====>', exploreotherinterestsData);
+    console.log(
+      '===unexplored sideeeeeeeeeeee=====>',
+      exploreotherinterestsData,
+    );
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
@@ -33,14 +48,22 @@ const ExploreImageContainer = () => {
             horizontal={false}
             renderItem={({item}) => (
               <View style={styles.exploreBox}>
-                <Image
-                  style={styles.exploreOtherImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                  }}
-                />
-                <View style={styles.otherOpacity} />
-                <Text style={styles.otherText}>{item.content_title}</Text>
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate('ExploreInterest', {
+                      content: item,
+                    })
+                  }>
+                  <Image
+                    style={styles.exploreOtherImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                    }}
+                  />
+                  <View style={styles.otherOpacity} />
+
+                  <Text style={styles.otherText}>{item?.content_title}</Text>
+                </Pressable>
               </View>
             )}
           />

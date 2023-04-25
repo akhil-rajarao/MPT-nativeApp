@@ -1,5 +1,6 @@
 import Booking from '../../screens/booking/Booking';
 import Explore from '../../screens/Explore';
+import ExploreInterest from '../../component/common/ExploreInterest';
 // import HomeScreen from '../../screens/HomeScreen';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -13,6 +14,7 @@ export default function ExploreStackNavigator() {
       <ExploreStack.Screen name="Explore1" component={Explore} />
       {/* <HomeStack.Screen name="NavBar" component={NavBar} /> */}
       <ExploreStack.Screen name="Booking" component={Booking} />
+      {/* <ExploreStack.Screen name="ExploreInterest" component={ExploreInterest} /> */}
     </ExploreStack.Navigator>
   );
 }

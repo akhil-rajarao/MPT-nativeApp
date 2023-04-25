@@ -27,10 +27,10 @@ const Explore = () => {
     state => state.dashboard.sectionsData,
   );
 
-  const attractionsData = ExploresectionsData[0].contents;
+  const attractionsData = ExploresectionsData[0]?.contents;
   // const exploreData = ExploresectionsData[1].contents;
   // const unexploredData = ExploresectionsData[6].contents;
-  const exploreotherinterestsData = ExploresectionsData[1].contents;
+  const exploreotherinterestsData = ExploresectionsData[1]?.contents;
   ExploresectionsData &&
     console.log('===unexplored side=====>', exploreotherinterestsData);
 
@@ -50,7 +50,7 @@ const Explore = () => {
                 <Image
                   style={styles.image}
                   source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.banner_image}`,
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.banner_image}`,
                   }}
                 />
               )}

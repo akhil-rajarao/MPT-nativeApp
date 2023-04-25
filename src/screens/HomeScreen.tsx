@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -18,7 +19,6 @@ import {Carousel} from 'react-native-auto-carousel';
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
-import {TouchableHighlight} from 'react-native-gesture-handler';
 import {getPageDataGo} from './appSlice';
 import {useNavigation} from '@react-navigation/native';
 
@@ -37,9 +37,9 @@ const HomeScreen = () => {
   const sectionsArray = sectionsData[1]?.contents;
   const unexploredofMP = sectionsData[3]?.contents;
   const topPackages = sectionsData[0]?.contents;
-  const popularPlaces = sectionsData[4]?.contents;
+  const upcomingEvents = sectionsData[2]?.contents;
   // console.log('====opoppopop======>', popularPlaces);
-  // console.log('top packages=====.....', topPackages);
+  console.log('top packages=====.....', upcomingEvents);
   console.log('sectionsArray side', sectionsArray);
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
@@ -80,6 +80,30 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+
+      <View style={styles.eventPackages}>
+        <Text style={styles.packagesHeading}>Upcoming Events in MP</Text>
+        {upcomingEvents && (
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={upcomingEvents}
+            renderItem={({item}) => (
+              <View style={styles.imageTop}>
+                <Image
+                  style={styles.eventImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
+                  }}
+                />
+                <View style={styles.eventOpacity} />
+                <Text style={styles.eventText}>{item?.content_title}</Text>
+              </View>
+            )}
+          />
+        )}
+      </View>
+
       <View style={styles.bannerHeading}>
         <Text style={styles.disText}>Discover</Text>
         <Text style={styles.heartText}>Heart of India</Text>
@@ -91,18 +115,18 @@ const HomeScreen = () => {
             data={sectionsArray}
             renderItem={({item}) => (
               <View>
-                <TouchableHighlight
-                  onPress={() => navigation.navigate(`${item.content_title}`)}>
+                <Pressable
+                  onPress={() => navigation.navigate(`${item?.content_title}`)}>
                   <Image
                     style={styles.wildlife}
                     source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                     }}
                   />
-                </TouchableHighlight>
+                </Pressable>
 
                 <View style={styles.opacity} />
-                <Text style={styles.bannerText}>{item.content_title}</Text>
+                <Text style={styles.bannerText}>{item?.content_title}</Text>
               </View>
             )}
           />
@@ -121,7 +145,7 @@ const HomeScreen = () => {
                   <Image
                     style={styles.exploreImage}
                     source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                     }}
                   />
                   <Text style={styles.relaxText}>{item.content_title}</Text>
@@ -137,25 +161,26 @@ const HomeScreen = () => {
         {topPackages && (
           <FlatList
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
             data={topPackages}
             renderItem={({item}) => (
               <View style={styles.imageTop}>
                 <Image
                   style={styles.packagesImage}
                   source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                   }}
                 />
 
                 <View style={styles.packagesContent}>
                   <View style={styles.days}>
                     <Text style={styles.dayText}>
-                      {item.description.value0}
+                      {item?.description?.value0}
                     </Text>
                   </View>
-                  <Text style={styles.headpackage}>{item.content_title}</Text>
+                  <Text style={styles.headpackage}>{item?.content_title}</Text>
                   <Text style={styles.textpackage}>
-                    {item.description.value2}
+                    {item?.description?.value2}
                   </Text>
                   <Text style={styles.optionPackage}>
                     {item?.description?.value3?.toUpperCase()}
@@ -239,6 +264,36 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '600',
   },
+  // >>>>>>>>>>>>>>>>>>>>events
+
+  eventImage: {
+    width: wp('95%'),
+    height: hp('23'),
+  },
+  eventText: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight: '800',
+    position: 'absolute',
+    top: 145,
+    bottom: 45,
+    left: 10,
+    right: 0,
+  },
+
+  eventOpacity: {
+    backgroundColor: 'black',
+    position: 'absolute',
+    top: 140,
+    bottom: 55,
+    left: 10,
+    right: 10,
+    opacity: 0.5,
+
+    // borderBottomLeftRadius: 10,
+    // borderBottomRightRadius: 10,
+  },
+
   bannerHeading: {
     display: 'flex',
     flexDirection: 'row',
@@ -376,10 +431,16 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     marginLeft: 10,
   },
+  eventPackages: {
+    width: wp('100%'),
+    height: hp('38%'),
+
+    marginTop: 50,
+  },
   packages: {
     width: wp('100%'),
     height: hp('100%'),
-    backgroundColor: 'lightgrey',
+    // backgroundColor: 'lightgrey',
     marginTop: 50,
   },
   packagesHeading: {
@@ -392,11 +453,12 @@ const styles = StyleSheet.create({
   },
   imageTop: {
     alignItems: 'center',
-    margin: 10,
+    padding: 10,
+    // margin: 1,
   },
   packagesImage: {
     width: wp('95%'),
-    height: hp('40'),
+    height: hp('40%'),
     marginHorizontal: 8,
   },
   packagesContent: {
@@ -514,8 +576,6 @@ const styles = StyleSheet.create({
     fontSize: hp('1.7%'),
   },
   footer: {
-    width: wp('100%'),
-    height: hp('80%'),
-    paddingLeft: 10,
+    marginLeft: 10,
   },
 });

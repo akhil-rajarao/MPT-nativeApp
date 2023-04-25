@@ -721,6 +721,9 @@ export const getDestinationData = (cityId: any) => (dispatch: any) => {
 
   axios(config)
     .then(response => {
+      console.log('+++++++++++++++++++++++++');
+      console.log(response.data);
+      console.log('+++++++++++++++++++++++++');
       dispatch(setDestinationData(response.data));
       dispatch(setIsLoading(false));
     })

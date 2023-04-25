@@ -6,10 +6,13 @@ import {
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../../app/hooks';
 
+import {Pressable} from 'react-native';
 import {getPageDataGo} from '../../screens/appSlice';
+import {useNavigation} from '@react-navigation/native';
 
 const PopularPlaces = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
   const popularPlaces = sectionsData[4]?.contents;
   useEffect(() => {
@@ -26,12 +29,19 @@ const PopularPlaces = () => {
             data={popularPlaces}
             renderItem={({item}) => (
               <View>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
-                  }}
-                />
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate('Cities', {
+                      city_id: `${item?.city_id}`,
+                    })
+                  }>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                    }}
+                  />
+                </Pressable>
                 <View style={styles.opacityPlace}></View>
                 <Text style={styles.PlaceText}> {item.content_title}</Text>
               </View>

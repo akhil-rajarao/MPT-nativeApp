@@ -14,10 +14,12 @@ const NavBar = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.navContainer}>
-      <Image
-        style={styles.image}
-        source={{uri: 'https://mpstdc.com/assets/MPT%20logo.e77c5286.png'}}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+        <Image
+          style={styles.image}
+          source={{uri: 'https://mpstdc.com/assets/MPT%20logo.e77c5286.png'}}
+        />
+      </TouchableOpacity>
       <View style={styles.g2Logo}>
         <Image
           style={styles.image}

@@ -2,8 +2,10 @@ import Adventure from '../../screens/adventure/Adventure';
 import Booking from '../../screens/booking/Booking';
 import BookingRules from '../../screens/footer_pages/contact_Us/BookingRules';
 import Cancel from '../../screens/footer_pages/contact_Us/Cancel';
+import Cities from '../../screens/cities/Cities';
 import ContactUs from '../../screens/footer_pages/contact_Us/ContactUs';
 import Explore from '../../screens/Explore';
+import ExploreInterest from '../../component/common/ExploreInterest';
 import Food from '../../screens/food/Food';
 import Heritage from '../../screens/heritage/Heritage';
 import HomeScreen from '../../screens/HomeScreen';
@@ -29,6 +31,8 @@ export default function HomeStackNavigator() {
       <HomeStack.Screen name="Adventure" component={Adventure} />
       <HomeStack.Screen name="Food" component={Food} />
       <HomeStack.Screen name="Heritage" component={Heritage} />
+      <HomeStack.Screen name="Cities" component={Cities} />
+      <HomeStack.Screen name="ExploreInterest" component={ExploreInterest} />
     </HomeStack.Navigator>
   );
 }

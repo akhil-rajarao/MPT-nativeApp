@@ -8,7 +8,8 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {getAllCities, getPageDataGo} from './appSlice';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -17,7 +18,6 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
-import {getPageDataGo} from './appSlice';
 import {useNavigation} from '@react-navigation/native';
 
 // import {getDestinationData} from './appSlice';
@@ -34,8 +34,8 @@ const Destination = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
 
-  const destinationData = useAppSelector(state => state.dashboard.bannerData);
-  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
+  const destinationData = useAppSelector(state => state.dashboard?.bannerData);
+  const sectionsData = useAppSelector(state => state.dashboard?.sectionsData);
   console.log(destinationData, 'destinationData>>>>>>>>>>>>>>>>>>>>');
 
   let popularPlacesData = sectionsData?.filter((item, index) =>
@@ -46,18 +46,23 @@ const Destination = () => {
     item.section_title.includes('Explore'),
   );
 
-  let popularPlacesData1 = popularPlacesData && popularPlacesData[0].contents;
+  let popularPlacesData1 = popularPlacesData[0]?.contents;
 
-  popularPlacesData1 &&
-    console.log('=====popularPlacesData===>', popularPlacesData1);
+  let cities = useAppSelector(state => state?.dashboard?.cities);
+
+  console.log('=====cities===>', cities);
+  console.log('=====exploreData===>', exploreData[0]?.contents[1]?.city_id);
   //  console.log("fwoakfpoa",popularPlacesData1)
 
   useEffect(() => {
     dispatch(getPageDataGo(59908572));
+    dispatch(getAllCities());
   }, []);
 
   //  59908572
-  const [text, onChangeText] = React.useState('');
+  const [inputText, setInputText] = useState<any>('');
+  const [showDropdown, setShowDropDown] = useState(false);
+  const [selectedCity, setSelectedCity] = useState('');
 
   return (
     <ScrollView>
@@ -72,12 +77,19 @@ const Destination = () => {
           <View style={styles.search}>
             <TextInput
               style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
+              value={inputText}
               placeholder="City/Destination"
+              onChangeText={setInputText}
             />
             <View style={styles.searchButton}>
-              <Text style={styles.buttonText}>Search</Text>
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('cities', {
+                    city_id: selectedCity,
+                  })
+                }>
+                <Text style={styles.buttonText}>Search</Text>
+              </Pressable>
             </View>
           </View>
         </View>
@@ -107,16 +119,20 @@ const Destination = () => {
             renderItem={({item}) => (
               <View style={{padding: 10}}>
                 <Pressable
-                  onPress={() => navigation.navigate(`${item.content_title}`)}>
+                  onPress={() =>
+                    navigation.navigate('Cities', {
+                      city_id: `${item?.city_id}`,
+                    })
+                  }>
                   <Image
                     style={styles.packagesImage}
                     source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                     }}
                   />
                 </Pressable>
                 <View style={styles.opacityPlace}></View>
-                <Text style={styles.PlaceText}> {item.content_title}</Text>
+                <Text style={styles.PlaceText}> {item?.content_title}</Text>
               </View>
             )}
           />
@@ -129,67 +145,47 @@ const Destination = () => {
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[0]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[0]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[0]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[0].content_title}{' '}
+                {exploreData[0]?.contents[0]?.content_title}{' '}
               </Text>
             )}
           </View>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[1]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[1]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[1]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[1].content_title}
-              </Text>
-            )}
-          </View>
-        </View>
-        <View style={styles.exploreOther}>
-          <View style={styles.exploreBox}>
-            {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[2]?.content_images[0]}`,
-                }}
-              />
-            )}
-            <View style={styles.otherOpacity} />
-            {exploreData && (
-              <Text style={styles.otherText}>
-                {exploreData[0]?.contents[2].content_title}
-              </Text>
-            )}
-          </View>
-          <View style={styles.exploreBox}>
-            {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[3]?.content_images[0]}`,
-                }}
-              />
-            )}
-            <View style={styles.otherOpacity} />
-            {exploreData && (
-              <Text style={styles.otherText}>
-                {exploreData[0]?.contents[3].content_title}
+                {exploreData[0]?.contents[1]?.content_title}
               </Text>
             )}
           </View>
@@ -197,33 +193,47 @@ const Destination = () => {
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[4]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[2]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[2]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[4].content_title}
+                {exploreData[0]?.contents[2]?.content_title}
               </Text>
             )}
           </View>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[5]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[3]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[3]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[5].content_title}
+                {exploreData[0]?.contents[3]?.content_title}
               </Text>
             )}
           </View>
@@ -231,33 +241,95 @@ const Destination = () => {
         <View style={styles.exploreOther}>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[6]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[4]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[4]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[6].content_title}
+                {exploreData[0]?.contents[4]?.content_title}
               </Text>
             )}
           </View>
           <View style={styles.exploreBox}>
             {exploreData && (
-              <Image
-                style={styles.exploreOtherImage}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[7]?.content_images[0]}`,
-                }}
-              />
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[5]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[5]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
             )}
             <View style={styles.otherOpacity} />
             {exploreData && (
               <Text style={styles.otherText}>
-                {exploreData[0]?.contents[7].content_title}
+                {exploreData[0]?.contents[5]?.content_title}
+              </Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.exploreOther}>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[6]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[6]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[6]?.content_title}
+              </Text>
+            )}
+          </View>
+          <View style={styles.exploreBox}>
+            {exploreData && (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('Cities', {
+                    city_id: `${exploreData[0]?.contents[7]?.city_id}`,
+                  })
+                }>
+                <Image
+                  style={styles.exploreOtherImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${exploreData[0]?.contents[7]?.content_images[0]}`,
+                  }}
+                />
+              </Pressable>
+            )}
+            <View style={styles.otherOpacity} />
+            {exploreData && (
+              <Text style={styles.otherText}>
+                {exploreData[0]?.contents[7]?.content_title}
               </Text>
             )}
           </View>

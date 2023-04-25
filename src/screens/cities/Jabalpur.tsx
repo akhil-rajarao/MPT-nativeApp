@@ -128,7 +128,7 @@ export default function Jabalpur() {
       {/* >>>>> */}
       <View style={{}}>
         {/* <Text>{destDataBanner.description}</Text> */}
-        <HTMLView value={destDataBanner.description} stylesheet={style1} />
+        <HTMLView value={destDataBanner.description} stylesheet={styles} />
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>> */}
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   },
   packages: {
     width: wp('100%'),
-    height: hp('100%'),
+    height: hp('70%'),
     backgroundColor: 'lightgrey',
     marginTop: 50,
   },
@@ -334,10 +334,25 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 12,
   },
-});
-
-const style1 = StyleSheet.create({
-  a: {
+  p: {
     color: 'black',
   },
+  h2: {
+    color: 'darkred',
+  },
+  h1: {
+    color: 'darkred',
+  },
 });
+
+// const style1 = StyleSheet.create({
+//   p: {
+//     color: 'black',
+//   },
+//   h2: {
+//     color: 'darkred',
+//   },
+//   h1: {
+//     color: 'darkred',
+//   },
+// });

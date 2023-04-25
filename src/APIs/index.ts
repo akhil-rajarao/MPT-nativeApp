@@ -20,8 +20,8 @@ const dev_url: string = 'https://betawebapi.mpstdc.com';
 //.env -> dev, staging, prdocution
 //switch(dev) ->
 
-export const BASE_URL_2 =
-  Config.ENVIRONMENT == 'production' ? production_url : dev_url;
+export const BASE_URL_2 = production_url;
+// Config.ENVIRONMENT == 'production' ? production_url : dev_url;
 
 export const PROD_IMAGES_URL =
   'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images';
