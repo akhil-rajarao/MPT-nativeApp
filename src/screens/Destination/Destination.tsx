@@ -15,6 +15,7 @@ import {
 } from 'react-native-responsive-screen';
 import React from 'react';
 import Footer from '../footer/Footer';
+import Gridexplore from './Gridexplore';
 
 const Destination = () => {
   
@@ -22,7 +23,7 @@ const Destination = () => {
   const Box = () => {
     const imgPath = [
       // require('../../assets/dest.jpg'),
-      [require('../../assets/explore.png'), 'Kanha' ],
+      [require('../../assets/explore.png'), 'Kanha'],
       [require('../../assets/explore2.png'), 'Pachmarhi' ],
       [require('../../assets/explore3.png'), 'Bandhavgarh' ],
       [require('../../assets/explore4.png'), 'Amarkantak' ],
@@ -40,8 +41,10 @@ const Destination = () => {
             width: wp('100%'),
             backgroundColor: '#DEB887',
           }}>
-          <Text style={styles.head3}>Explore</Text>
+           
+          {/* <Text style={styles.head3}>Explore</Text> */}
           <View style={styles.container}>
+            
             {imgPath?.map((item, i) => (
               <View style={styles.box}>
                 <View style={styles.inner}>
@@ -49,7 +52,7 @@ const Destination = () => {
                   key={i}
                   style={{
                     width: '100%',
-                    height: '95%',
+                    height:'100%',
                     position: 'relative',
                   }}
                   source={item[0]}
@@ -59,8 +62,9 @@ const Destination = () => {
                   style={{
                     position: 'absolute',
                     color: 'white',
-                    fontSize: 22,
-                    fontWeight: 'bold',
+                    fontSize: 25,
+                    fontWeight: '900',
+                    fontFamily:'cursive',
                     paddingTop: 110,
                     paddingRight: 40,
                   }}>
@@ -76,107 +80,7 @@ const Destination = () => {
     );
   };
 
-  {
-    /* </View>
-            </View> */
-  }
-
-  {
-    /* <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                /> */
-  }
-  {
-    /* <View style={styles.exploreOpacity}></View>
-                <Text style={styles.exploreText}>Bhopal</Text> */
-  }
-  {
-    /* </View>
-            </View> */
-  }
-  {
-    /* <View style={styles.box}>
-              <View style={styles.inner}> */
-  }
-  {
-    /* {
-                  imgUrls?.map((item,i)=>(
-                    <Image
-                    style={{width: '100%', height: '95%'}}
-                    source={item}
-                  />
-                  ))
-                } */
-  }
-  {
-    /* <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-                
-              </View>
-            </View>
-            <View style={styles.box}>
-              <View style={styles.inner}>
-                <Image
-                  style={{width: '100%', height: '95%'}}
-                  source={require('')}
-                />
-              </View>
-            </View>
-          </View> */
-  }
-  {
-    /* </View> */
-  }
-  {
-    /* </View>
-      </ScrollView>
-    );
-  }; */
-  }
+ 
 
   const images = [
     [require('../../assets/pap1.jpg'), 'Amarakantak'],
@@ -192,12 +96,13 @@ const Destination = () => {
     <ScrollView>
       <View style={styles.screen}>
         <View style={styles.mainview}>
-          <Text style={styles.head1}>Destination</Text>
+          {/* <Text style={styles.head1}>Destination</Text> */}
           <View style={styles.view1}>
             <Image
               style={styles.image1}
               source={require('../../assets/dest.jpg')}
             />
+            <Text style={{position:'absolute',color:'white',fontSize:30, alignSelf:'center',  paddingTop:185,fontWeight:'900',}}>DESTINATION</Text>
             <View style={styles.input}>
               <TextInput
                 placeholder="City/Destination"
@@ -225,10 +130,11 @@ const Destination = () => {
                           zIndex: 300,
                           color: 'white',
                           position: 'absolute',
-                          fontSize: 20,
+                          fontSize: 25,
                           fontStyle: 'italic',
-                          fontWeight: 'bold',
-                          paddingTop: 230,
+                          fontFamily:'cursive',
+                          fontWeight: '800',
+                          paddingTop: 220,
                           paddingLeft: 20,
                         }}>
                         {image1[1]}
@@ -238,49 +144,60 @@ const Destination = () => {
                 </View>
               </ScrollView>
             </View>
-            {/* <Text style={styles.head3}>Explore</Text> */}
+            </View>
           </View>
         </View>
-      </View>
-      {/* <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-        }}> */}
-      {/* <Text style={styles.head3}>Explore</Text> */}
+     
+      
       <View
         style={{
-          height: hp('100%'),
-          width: wp('100%'),
+          height:'100%',
+          width: '100%',
           backgroundColor: 'white',
           marginTop: 1,
+          marginBottom:1,
+          // paddingTop:10,
+          paddingBottom:10,
         }}>
-        <Box />
-      </View>
-      {/* </View> */}
+         
+          <Text style={styles.head3}>Explore</Text>
+          <View style={{paddingTop:10,}}>
+          <Gridexplore/>
+           {/* <Box /> */}
+          </View>
+         
+       
+      {/* {...Guest Stories start } */}
+     
+      
       <View
         style={{
-          height: hp('100%'),
+          height: hp('68%'),
           width: wp('100%'),
           backgroundColor: 'white',
+          marginTop:'5%',
+          marginBottom:'1%',
+         
         }}>
         <Text style={styles.head2}>Guest Stories</Text>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} >
           <View style={{flexDirection: 'row'}}>
             <View>
               <Image
                 style={styles.getstories1}
                 source={require('../../assets/guest1.jpg')}
               />
+              
               <View
                 style={{
                   backgroundColor: '#DEB887',
-                  paddingTop: 60,
+                  paddingTop: 50,
                   paddingBottom: 40,
-                  paddingLeft: 10,
+                  paddingLeft: 1,
                   paddingRight: 10,
-                  marginTop: 5,
+                  marginLeft:1,
+                  marginRight:10,
+                  marginTop: 1,
 
                   alignItems: 'flex-start',
                 }}>
@@ -313,10 +230,12 @@ const Destination = () => {
               <View
                 style={{
                   backgroundColor: '#DEB887',
-                  paddingTop: 60,
-                  paddingBottom: 40,
-                  paddingLeft:5,
+                  paddingTop: 50,
+                  paddingBottom: 5,
+                  paddingLeft:10,
                   marginTop: 5,
+                  marginLeft:1,
+                  marginRight:10,
                   alignItems: 'flex-start',
                 }}>
                 <Text style={{fontSize: 15, color: 'black', fontWeight: '700'}}>
@@ -342,8 +261,11 @@ const Destination = () => {
             </View>
           </View>
         </ScrollView>
-        <View style={{marginBottom: 10}}>
-          <Image
+        
+        {/* Contact us image */}
+        {/* <View style={{paddingBottom:20, marginTop:20,}}>
+        */}
+          {/* <Image
             style={styles.getstories2}
             source={require('../../assets/pop4.jpg')}
           />
@@ -359,26 +281,30 @@ const Destination = () => {
             (Sunday holiday,Saturday and Other holiday Half Day)
           </Text>
           <Text style={styles.fourthtex}>Email : mpthelpline@mpstdc.com</Text>
+          */}
+       
         </View>
-      </View>
+        
+       
+        {/* </View> */}
+     
       <View
         style={{
           height: hp('100%'),
           width: wp('100%'),
           backgroundColor: 'white',
-          // marginBottom: 90,
-          paddingBottom: 90,
+       
+          marginTop:10,
+          marginBottom:0,
+          paddingBottom:0,
+          paddingTop:20,
         }}>
         <Footer />
       </View>
-      <View
-        style={{
-          height: hp('100%'),
-          width: wp('100%'),
-          backgroundColor: 'white',
-          
-        }}></View>
-    </ScrollView>
+      </View>
+     
+        
+           </ScrollView>
    
   );
 };
@@ -409,6 +335,7 @@ const styles = StyleSheet.create({
   view1: {
     height: hp('90%'),
     width: wp('100%'),
+    
   },
   search: {
     backgroundColor: 'white',
@@ -442,8 +369,9 @@ const styles = StyleSheet.create({
   },
   head2: {
     fontStyle: 'italic',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 40,
+    fontWeight: '900',
+    fontFamily:'cursive',
     color: 'darkred',
     marginTop: 15,
     paddingLeft: 2,
@@ -451,7 +379,7 @@ const styles = StyleSheet.create({
 
   image: {
     width: wp('90%'),
-    height: hp('40%'),
+    height: hp('45%'),
     margin: 1,
     marginBottom: 50,
     // // resizeMode: 'cover',
@@ -460,7 +388,8 @@ const styles = StyleSheet.create({
   },
   head3: {
     fontStyle: 'italic',
-    fontSize: 30,
+    fontSize: 40,
+    fontFamily:'cursive',
     fontWeight: 'bold',
     color: 'darkred',
     marginTop: 0,
@@ -473,7 +402,7 @@ const styles = StyleSheet.create({
 
   container: {
     width: '100%',
-    height: '50%',
+    height: '45%',
     backgroundColor: '#DEB887',
     padding: 5,
     flexDirection: 'row',
@@ -481,76 +410,81 @@ const styles = StyleSheet.create({
   },
   box: {
     width: '50%',
-    height: '50%',
+    height: '55%',
     padding: 5,
-    backgroundColor: 'white',
+    backgroundColor: '#DEB887',
+    paddingTop:2,
   },
   inner: {
     flex: 1,
-    backgroundColor: '#eee',
+    backgroundColor: '#DEB887',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop:10,
+   
+    
   },
-  exploreOpacity: {
-    backgroundColor: 'green',
-    position: 'absolute',
-    top: 0,
-    fontColor: 'black',
-    fontSize: 30,
-    opacity: 0.1,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-  },
-  exploreText: {
-    fontSize: 20,
-    color: 'white',
-    position: 'absolute',
-    top: 10,
-    fontWeight: '600',
-    alignSelf: 'center',
-    paddingLeft: 10,
-    opacity: 1.5,
-  },
-  tex: {
-    fontSize: 15,
-    color: 'white',
-    position: 'absolute',
-    top: 40,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 10,
-    opacity: 1.5,
-  },
-  secondtex: {
-    fontSize: 15,
-    color: 'white',
-    position: 'absolute',
-    top: 70,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
-  },
-  thirdtex: {
-    fontSize: 15,
-    color: 'white',
-    position: 'absolute',
-    top: 100,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
-  },
-  fourthtex: {
-    fontSize: 15,
-    color: 'white',
-    position: 'absolute',
-    top: 180,
-    fontWeight: '600',
-    alignSelf: 'flex-start',
-    paddingLeft: 30,
-    opacity: 1.5,
-  },
+  // exploreOpacity: {
+  //   backgroundColor: 'green',
+  //   position: 'absolute',
+  //   top: 0,
+  //   fontColor: 'black',
+  //   fontSize: 30,
+  //   opacity: 0.1,
+  //   borderBottomLeftRadius: 10,
+  //   borderBottomRightRadius: 10,
+  // },
+  // exploreText: {
+  //   fontSize: 40,
+  //   fontFamily:'cursive',
+  //   color: 'white',
+  //   position: 'absolute',
+  //   top: 10,
+  //   fontWeight: '900',
+  //   alignSelf: 'center',
+  //   paddingLeft: 10,
+  //   opacity: 1.5,
+  // },
+  // tex: {
+  //   fontSize: 15,
+  //   color: 'white',
+  //   position: 'absolute',
+  //   top: 60,
+  //   fontWeight: '600',
+  //   alignSelf: 'flex-start',
+  //   paddingLeft: 20,
+  //   opacity: 1.5,
+  // },
+  // secondtex: {
+  //   fontSize: 15,
+  //   color: 'white',
+  //   position: 'absolute',
+  //   top: 80,
+  //   fontWeight: '600',
+  //   alignSelf: 'flex-start',
+  //   paddingLeft: 30,
+  //   opacity: 1.5,
+  // },
+  // thirdtex: {
+  //   fontSize: 15,
+  //   color: 'white',
+  //   position: 'absolute',
+  //   top: 100,
+  //   fontWeight: '600',
+  //   alignSelf: 'flex-start',
+  //   paddingLeft: 30,
+  //   opacity: 1.5,
+  // },
+  // fourthtex: {
+  //   fontSize: 15,
+  //   color: 'white',
+  //   position: 'absolute',
+  //   top: 180,
+  //   fontWeight: '600',
+  //   alignSelf: 'flex-start',
+  //   paddingLeft: 30,
+  //   opacity: 1.5,
+  // },
   getstories1: {
     height: hp('30%'),
     width: wp('100%'),
@@ -561,6 +495,7 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     paddingTop: 2,
   },
+  
 });
 
 export default Destination;
