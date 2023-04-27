@@ -7,12 +7,13 @@ import ContactUs from '../../screens/footer_pages/contact_Us/ContactUs';
 import Explore from '../../screens/Explore';
 import ExploreInterest from '../../component/common/ExploreInterest';
 import Food from '../../screens/food/Food';
-import Heritage from '../../screens/heritage/Heritage';
+// import Heritage from '../../component/common/InnerPages'
 import HomeScreen from '../../screens/HomeScreen';
 import React from 'react';
 import Trial from '../../screens/Trial';
 import Wildlife from '../../screens/wildLife/Wildlife';
 import {createStackNavigator} from '@react-navigation/stack';
+import InnerPages from '../../component/common/InnerPages';
 
 const HomeStack = createStackNavigator<any>();
 export default function HomeStackNavigator() {
@@ -30,7 +31,7 @@ export default function HomeStackNavigator() {
       <HomeStack.Screen name="Wildlife" component={Wildlife} />
       <HomeStack.Screen name="Adventure" component={Adventure} />
       <HomeStack.Screen name="Food" component={Food} />
-      <HomeStack.Screen name="Heritage" component={Heritage} />
+      <HomeStack.Screen name="InnerPages" component={InnerPages} />
       <HomeStack.Screen name="Cities" component={Cities} />
       <HomeStack.Screen name="ExploreInterest" component={ExploreInterest} />
     </HomeStack.Navigator>

@@ -766,6 +766,7 @@ export const getInnerPageContentById = (contentId: any) => (dispatch: any) => {
 
   axios(config)
     .then(response => {
+      dispatch(setInnerPageData(response.data));
       dispatch(setSectionsData(response.data.sections));
       dispatch(setIsLoading(false));
     })

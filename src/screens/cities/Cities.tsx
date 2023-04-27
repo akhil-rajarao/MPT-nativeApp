@@ -30,12 +30,13 @@ const Cities = () => {
   );
   console.log('city_id==>', city_id);
 
+  console.log(destinationData, 'UJJANNNN DATAA=====>');
   const destDataBanner = destinationData?.banners[0];
   const destSection = destinationData?.section?.contents;
   // const dataAccomadationImages = destinationData?.properties[0]?.property_image;
   const dataAccommodation = destinationData?.properties;
 
-  console.log(destinationData, 'UJJANNNN DATAA=====>');
+ 
   const rating = 4;
   useEffect(() => {
     dispatch(getDestinationData(city_id));

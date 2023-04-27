@@ -20,30 +20,29 @@ import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
 import {getPageDataGo} from './appSlice';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
 
   const dispatch = useAppDispatch();
 
-  const homepageBannerData = useAppSelector(
-    state => state.dashboard.bannerData,
-  );
-  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
-  // console.log('========>', homepageBannerData);
-  // console.log('================sections>', sectionsData[1].contents);
+  const isFocused = useIsFocused();
+  // const homepageBannerData = useAppSelector(
+  //   state => state.dashboard.bannerData,
+  // );
 
+  const sectionsData = useAppSelector(state => state?.dashboard?.sectionsData);
   const sectionsArray = sectionsData[1]?.contents;
   const unexploredofMP = sectionsData[3]?.contents;
   const topPackages = sectionsData[0]?.contents;
   const upcomingEvents = sectionsData[2]?.contents;
-  // console.log('====opoppopop======>', popularPlaces);
-  console.log('top packages=====.....', upcomingEvents);
-  console.log('sectionsArray side', sectionsArray);
+
+  console.log("sectionsArray===>",sectionsArray)
+
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
-  }, []);
+  }, [dispatch,isFocused]);
 
   const Images = [
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
@@ -98,6 +97,14 @@ const HomeScreen = () => {
                 />
                 <View style={styles.eventOpacity} />
                 <Text style={styles.eventText}>{item?.content_title}</Text>
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate('ExploreInterest', {
+                      content: item,
+                    })
+                  }>
+                <Text style={{color:'black'}}>Know More</Text>
+                </Pressable>
               </View>
             )}
           />
@@ -113,10 +120,13 @@ const HomeScreen = () => {
         {sectionsArray && (
           <FlatList
             data={sectionsArray}
+            
             renderItem={({item}) => (
               <View>
                 <Pressable
-                  onPress={() => navigation.navigate(`${item?.content_title}`)}>
+                  onPress={() => navigation.navigate('InnerPages',{
+                         id:item?.id
+                  })}>
                   <Image
                     style={styles.wildlife}
                     source={{
@@ -139,6 +149,7 @@ const HomeScreen = () => {
           {unexploredofMP && (
             <FlatList
               horizontal={true}
+              showsHorizontalScrollIndicator={false}
               data={unexploredofMP}
               renderItem={({item}) => (
                 <View>
@@ -149,7 +160,14 @@ const HomeScreen = () => {
                     }}
                   />
                   <Text style={styles.relaxText}>{item.content_title}</Text>
+                  <Pressable
+                  onPress={() =>
+                    navigation.navigate('ExploreInterest', {
+                      content: item,
+                    })
+                  }>
                   <Text style={styles.read}>Read more -- </Text>
+                  </Pressable>
                 </View>
               )}
             />
@@ -165,6 +183,7 @@ const HomeScreen = () => {
             data={topPackages}
             renderItem={({item}) => (
               <View style={styles.imageTop}>
+
                 <Image
                   style={styles.packagesImage}
                   source={{

@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -19,24 +20,35 @@ import ContactUs from '../component/common/ContactUs';
 import ExploreImageContainer from '../component/common/ExploreImageContainer';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 const Explore = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
+  const isFocused = useIsFocused();
+
+
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
   );
+  let experienceData = ExploresectionsData?.filter(
+    (item, index) => item.experience === true && item.section_title != 'Explore'
+  );
 
   const attractionsData = ExploresectionsData[0]?.contents;
+
+  const unexploredofMP = ExploresectionsData[6]?.contents;
   // const exploreData = ExploresectionsData[1].contents;
   // const unexploredData = ExploresectionsData[6].contents;
-  const exploreotherinterestsData = ExploresectionsData[1]?.contents;
-  ExploresectionsData &&
-    console.log('===unexplored side=====>', exploreotherinterestsData);
+  // const exploreotherinterestsData = ExploresectionsData[1]?.contents;
+  // ExploresectionsData &&
+
+    console.log('===unexploredofMP side=====>', unexploredofMP);
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
-  }, [dispatch]);
+  }, [dispatch,isFocused]);
 
   return (
     <ScrollView>
@@ -71,12 +83,17 @@ const Explore = () => {
             horizontal={true}
             renderItem={({item}) => (
               <View>
+               <Pressable
+                  onPress={() => navigation.navigate('InnerPages',{
+                         id:item?.id
+                  })}>
                 <Image
                   style={styles.exploreImage}
                   source={{
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                   }}
                 />
+                </Pressable>
                 <View style={styles.exploreOpacity}></View>
                 <Text style={styles.exploreText}>{item?.content_title}</Text>
               </View>
@@ -92,42 +109,91 @@ const Explore = () => {
       </View>
       <View style={styles.banners}>
         <View>
+        <Pressable onPress={() => navigation.navigate('InnerPages',{
+              id:experienceData[0]?.contents[0]?.id
+            })}>
           <Image
             style={styles.wildlife}
             source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3102891357.png',
+              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[0]?.content_images[0]}`,
             }}
           />
+         </Pressable>
           <View style={styles.opacity} />
           <Text style={styles.bannerText}>Know more</Text>
         </View>
         <View style={styles.bannersRow}>
           <View>
+          <Pressable onPress={() => navigation.navigate('InnerPages',{
+              id:experienceData[0]?.contents[1]?.id
+            })}>
             <Image
               style={styles.adventure}
               source={{
-                uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2905632104.png',
+                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[1]?.content_images[0]}`,
               }}
             />
+            </Pressable>
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>Know more</Text>
           </View>
           <View>
+          <Pressable onPress={() => navigation.navigate('InnerPages',{
+              id:experienceData[0]?.contents[2]?.id
+            })}>
             <Image
               style={styles.food}
               source={{
-                uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3138472901.png',
+                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[2]?.content_images[0]}`,
               }}
             />
+             </Pressable>
             <View style={styles.opacity2} />
+           
             <Text style={styles.bannerText2}>Know more</Text>
+           
           </View>
         </View>
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
+
+      
       <View style={styles.unexploredView}>
+        <Text style={styles.unexplored}>Unexplored side of MP</Text>
+        <View>
+          {unexploredofMP && (
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={unexploredofMP}
+              renderItem={({item}) => (
+                <View>
+                  <Image
+                    style={styles.exploreImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                    }}
+                  />
+                  <Text style={styles.relaxText}>{item.content_title}</Text>
+                  <Pressable
+                  onPress={() =>
+                    navigation.navigate('ExploreInterest', {
+                      content: item,
+                    })
+                  }>
+                  <Text style={styles.read}>Read more -- </Text>
+                  </Pressable>
+                </View>
+              )}
+            />
+          )}
+        </View>
+      </View>
+
+
+      {/* <View style={styles.unexploredView}>
         <Text style={styles.headingText}>Unexplored side of MP</Text>
         <FlatList
           data={attractionsData}
@@ -145,7 +211,7 @@ const Explore = () => {
             </View>
           )}
         />
-      </View>
+      </View> */}
 
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
       <View>
@@ -445,5 +511,21 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('80%'),
     paddingLeft: 10,
+  },
+  unexplored: {
+    fontSize: hp('4.5%'),
+    color: 'darkred',
+
+    paddingBottom: 8,
+    fontFamily: 'YouthPower-X34qG',
+    paddingLeft: 10,
+  },
+  
+  relaxText: {
+    color: 'darkred',
+    fontSize: hp('2.0%'),
+    fontWeight: '800',
+    paddingTop: 5,
+    marginLeft: 10,
   },
 });

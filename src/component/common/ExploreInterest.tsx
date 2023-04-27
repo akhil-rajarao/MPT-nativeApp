@@ -14,7 +14,7 @@ import {useRoute} from '@react-navigation/native';
 const ExploreInterest = () => {
   const route = useRoute();
 
-  const {content} = route.params;
+  const {content} :any = route.params;
 
   console.log(content, 'content=========>>>>');
   return (
@@ -32,7 +32,7 @@ const ExploreInterest = () => {
         <Text style={styles.imageText}>{content?.content_title}</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{content?.description.Value0}</Text>
+        <Text style={styles.text}>{content?.description.value0}</Text>
       </View>
       <View>
         <ExploreImageContainer />
