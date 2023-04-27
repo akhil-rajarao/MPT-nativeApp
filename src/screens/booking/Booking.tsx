@@ -1,5 +1,6 @@
 import {
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,11 +17,13 @@ import ContactUs from '../../component/common/ContactUs';
 import Footer from '../../component/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 // import style from '../mice&facilities/style';
 
 const Destination = () => {
   const [text, onChangeText] = React.useState('');
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -73,9 +76,11 @@ const Destination = () => {
             </Text>
           </View>
           <View style={styles.button}>
+            <Pressable onPress={()=> navigation.navigate('AccomodatinView')}>
             <View style={styles.viewButton}>
               <Text style={styles.viewText}>VIEW</Text>
             </View>
+            </Pressable>
             <View style={styles.bookButton}>
               <Text style={styles.bookText}>BOOK NOW</Text>
             </View>

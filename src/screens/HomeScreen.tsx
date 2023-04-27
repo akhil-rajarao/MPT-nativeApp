@@ -185,9 +185,11 @@ const HomeScreen = () => {
                   <Text style={styles.optionPackage}>
                     {item?.description?.value3?.toUpperCase()}
                   </Text>
+                  <TouchableOpacity onPress={() => navigation.navigate('PackageView')}>
                   <View style={styles.view}>
                     <Text style={styles.viewText}>VIEW</Text>
                   </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             )}
