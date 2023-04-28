@@ -6,33 +6,27 @@ import {
   View,
 } from 'react-native';
 
-import React from 'react';
-// import {Image} from 'react-native';
-import {StyleSheet} from 'react-native';
 // import {Button} from 'react-native-elements';
+// import {Image} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+
 // import style from '../mice&facilities/style';
 // import {DataTable} from 'react-native-paper';
 // import {Table, Row, Rows} from 'react-native-table-component';
 
-const TenderPage = () => {
-  const header = [
-    'Tender No',
-    'Subject',
-    'Corrigendum/ Clarification/ Addendum',
-    'publication Date',
-    'Submission Date',
-  ];
-
+const Events = () => {
+  const header = ['S No', 'Event', 'Date', 'Place Details'];
   const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titlecss}>TENDERS</Text>
+        <Text style={styles.titlecss}>EVENTS</Text>
         <View style={styles.innerContainer}>
           <TouchableOpacity style={styles.buttoncss}>
-            <Text style={styles.buttonText}>Current Tenders</Text>
+            <Text style={styles.buttonText}>Current Events</Text>
           </TouchableOpacity>
-          <Text style={styles.archiveText}>Tender Archive (Click Here)</Text>
+          <Text style={styles.archiveText}>Event Archive (Click Here)</Text>
           <TextInput style={styles.input} placeholder="Search by Title" />
           <View style={styles.ButtonContainer}>
             <TouchableOpacity style={styles.buttoncss2}>
@@ -42,9 +36,7 @@ const TenderPage = () => {
               <Text style={styles.buttonText2}>Reset</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.buttoncss3}>
-            <Text style={styles.buttonText2}>Apply for tenders</Text>
-          </TouchableOpacity>
+
           {/* <Table
             borderStyle={{
               borderWidth: 2,
@@ -84,6 +76,15 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 
+  // buttoncss2: {
+  //   borderColor: '0ECAF0',
+  //   borderWidth: 1,
+  //   width: 100,
+  //   borderRadius: 10,
+  //   marginTop: 20,
+  //   color: '#000000',
+  //   margin: 3,
+  // },
   buttoncss3: {
     borderColor: '0ECAF0',
     borderWidth: 1,
@@ -127,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TenderPage;
+export default Events;

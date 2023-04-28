@@ -9,6 +9,8 @@ import ExploreInterest from '../../component/common/ExploreInterest';
 import Food from '../../screens/food/Food';
 import Heritage from '../../screens/heritage/Heritage';
 import HomeScreen from '../../screens/HomeScreen';
+import KnowMoreUE from '../../component/common/KnowMoreUE';
+import PackageView from '../../component/common/PackageView';
 import React from 'react';
 import Trial from '../../screens/Trial';
 import Wildlife from '../../screens/wildLife/Wildlife';
@@ -33,6 +35,8 @@ export default function HomeStackNavigator() {
       <HomeStack.Screen name="Heritage" component={Heritage} />
       <HomeStack.Screen name="Cities" component={Cities} />
       <HomeStack.Screen name="ExploreInterest" component={ExploreInterest} />
+      <HomeStack.Screen name="PackageView" component={PackageView} />
+      <HomeStack.Screen name="KnowMoreUE" component={KnowMoreUE} />
     </HomeStack.Navigator>
   );
 }

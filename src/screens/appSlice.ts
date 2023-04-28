@@ -566,6 +566,7 @@ export const getPageDataGo = (pageId: any) => (dispatch: any) => {
     .then(response => {
       dispatch(setBannerData(response.data.banners));
       dispatch(setSectionsData(response.data.sections));
+
       if (response.data.page_title === 'Explore') {
         let experienceSections = response.data.sections.filter(
           (section: any) => section.experience === true,
@@ -766,6 +767,9 @@ export const getInnerPageContentById = (contentId: any) => (dispatch: any) => {
 
   axios(config)
     .then(response => {
+      console.log('************', response.data);
+      console.log('****************');
+      dispatch(setInnerPageData(response.data));
       dispatch(setSectionsData(response.data.sections));
       dispatch(setIsLoading(false));
     })

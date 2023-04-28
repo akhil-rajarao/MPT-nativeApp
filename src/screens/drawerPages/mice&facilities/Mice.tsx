@@ -5,7 +5,7 @@ import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
-const MiceandFacilities = () => {
+const Mice = () => {
   return (
     <ScrollView>
       <View>
@@ -186,4 +186,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MiceandFacilities;
+export default Mice;

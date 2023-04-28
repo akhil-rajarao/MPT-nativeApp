@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -17,6 +17,7 @@ import useAppDispatch, {useAppSelector} from '../../app/hooks';
 import {ScrollView} from 'react-native-gesture-handler';
 import {getPageDataGo} from '../../screens/appSlice';
 import {useNavigation} from '@react-navigation/native';
+import {useScrollToTop} from '@react-navigation/native';
 
 const ExploreImageContainer = () => {
   const dispatch = useAppDispatch();
@@ -34,12 +35,15 @@ const ExploreImageContainer = () => {
       '===unexplored sideeeeeeeeeeee=====>',
       exploreotherinterestsData,
     );
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
   }, [dispatch]);
   return (
-    <ScrollView>
+    <ScrollView ref={ref}>
       <View style={styles.interests}>
         <Text style={styles.headingText}>Explore Other Interests</Text>
         <View style={styles.exploreOther}>

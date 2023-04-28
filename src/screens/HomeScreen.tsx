@@ -14,36 +14,33 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {Carousel} from 'react-native-auto-carousel';
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
 import {getPageDataGo} from './appSlice';
-import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
 
   const dispatch = useAppDispatch();
 
-  const homepageBannerData = useAppSelector(
-    state => state.dashboard.bannerData,
-  );
-  const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
-  // console.log('========>', homepageBannerData);
-  // console.log('================sections>', sectionsData[1].contents);
+  const isFocused = useIsFocused();
+  // const homepageBannerData = useAppSelector(
+  //   state => state.dashboard.bannerData,
+  // );
 
+  const sectionsData = useAppSelector(state => state?.dashboard?.sectionsData);
   const sectionsArray = sectionsData[1]?.contents;
   const unexploredofMP = sectionsData[3]?.contents;
   const topPackages = sectionsData[0]?.contents;
   const upcomingEvents = sectionsData[2]?.contents;
-  // console.log('====opoppopop======>', popularPlaces);
-  console.log('top packages=====.....', upcomingEvents);
-  console.log('sectionsArray side', sectionsArray);
+
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
-  }, []);
+  }, [dispatch, isFocused]);
 
   const Images = [
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
@@ -98,6 +95,16 @@ const HomeScreen = () => {
                 />
                 <View style={styles.eventOpacity} />
                 <Text style={styles.eventText}>{item?.content_title}</Text>
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate('KnowMoreUE', {
+                      content: item,
+                    })
+                  }>
+                  <View>
+                    <Text style={styles.knowMore}>Know More</Text>
+                  </View>
+                </Pressable>
               </View>
             )}
           />
@@ -139,6 +146,7 @@ const HomeScreen = () => {
           {unexploredofMP && (
             <FlatList
               horizontal={true}
+              showsHorizontalScrollIndicator={false}
               data={unexploredofMP}
               renderItem={({item}) => (
                 <View>
@@ -149,7 +157,14 @@ const HomeScreen = () => {
                     }}
                   />
                   <Text style={styles.relaxText}>{item.content_title}</Text>
-                  <Text style={styles.read}>Read more -- </Text>
+                  <Pressable
+                    onPress={() =>
+                      navigation.navigate('ExploreInterest', {
+                        content: item,
+                      })
+                    }>
+                    <Text style={styles.read}>Read more -- </Text>
+                  </Pressable>
                 </View>
               )}
             />
@@ -185,9 +200,11 @@ const HomeScreen = () => {
                   <Text style={styles.optionPackage}>
                     {item?.description?.value3?.toUpperCase()}
                   </Text>
-                  <View style={styles.view}>
-                    <Text style={styles.viewText}>VIEW</Text>
-                  </View>
+                  <Pressable onPress={() => navigation.navigate('PackageView')}>
+                    <View style={styles.view}>
+                      <Text style={styles.viewText}>VIEW</Text>
+                    </View>
+                  </Pressable>
                 </View>
               </View>
             )}
@@ -577,5 +594,12 @@ const styles = StyleSheet.create({
   },
   footer: {
     marginLeft: 10,
+  },
+  knowMore: {
+    color: 'darkred',
+    textDecorationLine: 'underline',
+    fontSize: 14,
+    marginRight: 250,
+    marginTop: 5,
   },
 });

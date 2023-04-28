@@ -6,12 +6,13 @@ import {
   View,
 } from 'react-native';
 
-import {Button} from 'react-native-elements';
+// import {Button} from 'react-native-elements';
 import {Image} from 'react-native';
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
-const CovidPage = () => {
+// import {StyleSheet} from 'react-native';
+
+const Covid = () => {
   return (
     <ScrollView>
       <View>
@@ -178,4 +179,4 @@ const CovidPage = () => {
   );
 };
 
-export default CovidPage;
+export default Covid;

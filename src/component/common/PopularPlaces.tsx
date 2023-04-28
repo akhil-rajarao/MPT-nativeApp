@@ -17,7 +17,7 @@ const PopularPlaces = () => {
   const popularPlaces = sectionsData[4]?.contents;
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
-  }, []);
+  }, [dispatch]);
 
   return (
     <View style={styles.popular}>
@@ -38,12 +38,12 @@ const PopularPlaces = () => {
                   <Image
                     style={styles.packagesImage}
                     source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item.content_images[0]}`,
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                     }}
                   />
                 </Pressable>
                 <View style={styles.opacityPlace}></View>
-                <Text style={styles.PlaceText}> {item.content_title}</Text>
+                <Text style={styles.PlaceText}> {item?.content_title}</Text>
               </View>
             )}
           />

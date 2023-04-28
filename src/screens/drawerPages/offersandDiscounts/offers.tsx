@@ -1,21 +1,10 @@
 import {Row, Rows, Table} from 'react-native-table-component';
-import {
-  ScrollView,
-  ScrollViewComponent,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
-import {Button} from 'react-native-elements';
-import {DataTable} from 'react-native-paper';
-import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import style from '../mice&facilities/style';
 
-const OffersPage = () => {
+const Offers = () => {
   const header = [
     'HOTELS',
     'Weekday Promo Code (Mon-Thu)',
@@ -30,11 +19,7 @@ const OffersPage = () => {
       <View>
         <Text style={styles.titlecss}>OFFERS & DISCOUNTS</Text>
 
-        <Table
-          borderStyle={{
-            borderWidth: 2,
-            borderColor: '#c8e1ff',
-          }}>
+        <Table>
           <Row data={header} />
           <Rows data={data} />
         </Table>
@@ -57,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OffersPage;
+export default Offers;
