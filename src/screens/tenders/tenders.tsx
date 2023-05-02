@@ -4,7 +4,14 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image
 } from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+
+
 
 import React from 'react';
 // import {Image} from 'react-native';
@@ -13,6 +20,10 @@ import {StyleSheet} from 'react-native';
 // import style from '../mice&facilities/style';
 // import {DataTable} from 'react-native-paper';
 // import {Table, Row, Rows} from 'react-native-table-component';
+import { Table, Row, Rows } from 'react-native-table-component';
+import ContactUs from '../../component/common/ContactUs';
+import Footer from '../../component/Footer';
+
 
 const TenderPage = () => {
   const header = [
@@ -23,11 +34,26 @@ const TenderPage = () => {
     'Submission Date',
   ];
 
-  const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
+  const data = [
+    ['1' , 'NIT No.: 2044/SpaPalash/2023',  'MPSTDC INVITES OFFERS FOR SELECTION OF AN AGENCY FOR RENTING OF SPA CENTRE AT PALASH RESIDENCY, BHOPAL',  '06-04-2023',  '03-05-2023'],
+    // ['sample' , 'sample',  'sample',  'sample',  'sample'],
+    // ['sample' , 'sample',  'sample',  'sample',  'sample'],
+    // ['sample' , 'sample',  'sample',  'sample',  'sample'],
+    // ['sample' , 'sample',  'sample',  'sample',  'sample'],
+];
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titlecss}>TENDERS</Text>
+        <View>
+        <Image
+            style={styles.imagestyles}
+            source={{
+              uri: `https://mpstdc.com/assets/similar.da06dae7.jpg`,
+            }}
+          />
+         <Text style={styles.titlecss}>TENDERS</Text>
+        </View>
+       
         <View style={styles.innerContainer}>
           <TouchableOpacity style={styles.buttoncss}>
             <Text style={styles.buttonText}>Current Tenders</Text>
@@ -53,18 +79,48 @@ const TenderPage = () => {
             <Row data={header} />
             <Rows data={data} />
           </Table> */}
+
+<View  style={styles.container}>
+      <Table>
+        <Row data={header} style={styles.head} textStyle={styles.text}/>
+        <Rows  data={data} style={styles.datarow}  textStyle={styles.text2} />
+      </Table>
+    </View>
+    <View>
+      <Text style={styles.record}>Record Not Found</Text>
+    </View>
+
+
         </View>
+        <View style={styles.lastview}>
+       <ContactUs/>
+       </View>
+       <View style={styles.last2view}>
+       <Footer/>
+        
+       </View>
+      
       </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  imagestyles:{
+    width:wp('100%'),
+    height:hp('45%'),
+    position:'relative',
+  },
+ 
   titlecss: {
     fontSize: 30,
     textAlign: 'center',
     marginTop: 30,
     fontWeight: 'bold',
+    position:'absolute',
+   paddingHorizontal:120,
+   paddingTop:130,
+   color:'white'
   },
   ButtonContainer: {
     display: 'flex',
@@ -125,6 +181,43 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 16,
   },
+  head:{
+    height:120,
+    backgroundColor:'darkred'
+  },
+  text:{
+    marginHorizontal:5,
+    color:'white',
+    fontSize:15
+  },
+  text2:{
+    marginHorizontal:5,
+    color:'black'
+  },
+  datarow:{
+    height:400,
+    
+    backgroundColor:'white',
+    
+   },
+   container:{
+   
+    padding:0,
+    paddingTop:30,
+    // backgroundColor:'red'
+   },
+   record:{
+    paddingHorizontal:90,
+    fontSize:18,
+   },
+   lastview:{
+    marginTop:50,
+    
+   },
+   last2view:{
+    marginLeft:10
+   },
+  
 });
 
 export default TenderPage;

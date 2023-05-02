@@ -231,14 +231,7 @@ const PackageView = () => {
 
 
   </View>
-  <View   style={{
-         height:hp('100%'),
-         width: wp('100%'),
-         backgroundColor: 'white',
-       
-          }} >
 
-  </View>
  </View>
   
  
