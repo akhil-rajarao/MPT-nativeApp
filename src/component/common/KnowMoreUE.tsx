@@ -14,9 +14,9 @@ import {ScrollView} from 'react-native-gesture-handler';
 const KnowMoreUE = () => {
   const route = useRoute();
 
-  const {content} = route.params;
+  const {content}: any = route.params;
 
-  const isFocused = useIsFocused();
+  // const isFocused = useIsFocused();
 
   console.log(content, 'content=========>>>>');
   return (

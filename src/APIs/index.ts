@@ -11,7 +11,7 @@ export const BASEURL: string = 'http://3.108.190.123:7002';
 
 export const BASE_URL_1: string = 'https://webapi.mpstdc.com/nodeservice';
 
-const production_url: string = ' https://webapi.mpstdc.com';
+const production_url: string = 'https://webapi.mpstdc.com';
 // export const BASE_URL_2 = "http://13.232.4.147:9000"
 const dev_url: string = 'https://betawebapi.mpstdc.com';
 

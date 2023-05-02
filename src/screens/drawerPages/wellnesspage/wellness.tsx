@@ -5,6 +5,7 @@ import {
 } from 'react-native-responsive-screen';
 
 import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 import {Image} from 'react-native';
 import React from 'react';
 
@@ -39,235 +40,78 @@ const Wellness = () => {
 
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-ron-lach-9146383.19538721.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}>PAIN FREE LIFE</Text>
         </View>
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-pinkwitch-%E8%AF%B8%E8%91%9B%E7%AD%B1%E6%9A%96-12851257.3857f411.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}>CLEANSING BALANCING HEALING</Text>
         </View>
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-elina-fairytale-3822646.02bc4e48.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}>SOUNDARYA</Text>
         </View>
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-breakingpic-3188.d063448e.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}> LIVE A STRESS-FREE LIFE</Text>
         </View>
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-cottonbro-studio-3997986.b6909e14.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}>REFRESH THE SOUL</Text>
         </View>
         {/* ??????????????? */}
 
-        <View style={{marginTop: 10}}>
+        <View style={styles.image}>
           <Image
             source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
+              uri: 'https://mpstdc.com/assets/pexels-anna-shvets-5069459.1159bc56.png',
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          <Text style={styles.bannerText}>SOUNDARYA</Text>
         </View>
         {/* ??????????????? */}
-
-        <View style={{marginTop: 10}}>
-          <Image
-            source={{
-              uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
-            }}
-            style={styles.bannerImage}
-          />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
-        </View>
       </View>
 
-      {/* ??????????????? */}
-
-      {/* <Image
-        source={{
-          uri: '	https://mpstdc.com/assets/pexels-ron-lach-9146383.19538721.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 760,
-          alignSelf: 'center',
-          fontSize: 20,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        PAIN FREE LIFE
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://mpstdc.com/assets/pexels-pinkwitch-%E8%AF%…%E8%91%9B%E7%AD%B1%E6%9A%96-12851257.3857f411.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 1100,
-          alignSelf: 'center',
-          fontSize: 23,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        CLEANSING BALANCING HEALING
-      </Text>
-      <Image
-        source={{
-          uri: 'https://mpstdc.com/assets/pexels-elina-fairytale-3822646.02bc4e48.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 1430,
-          alignSelf: 'center',
-          fontSize: 23,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        CLINCALLY CUSTOMIZED MEDICALY SUPERVISED WEIGHT LOSS TREATMENTS
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://mpstdc.com/assets/pexels-breakingpic-3188.d063448e.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 1790,
-          alignSelf: 'center',
-          fontSize: 23,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        LIVE A STRESS-FREE LIFE
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://mpstdc.com/assets/pexels-cottonbro-studio-3997986.b6909e14.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 2190,
-          alignSelf: 'center',
-          fontSize: 23,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        REFRESH THE SOUL
-      </Text>
-
-      <Image
-        source={{
-          uri: 'https://mpstdc.com/assets/pexels-anna-shvets-5069459.1159bc56.png',
-        }}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: 'auto',
-          aspectRatio: 1,
-          position: 'relative',
-          marginTop: 30,
-        }}
-      />
-      <Text
-        style={{
-          position: 'absolute',
-          top: 2590,
-          alignSelf: 'center',
-          fontSize: 23,
-          fontWeight: 800,
-          color: '#ffffff',
-        }}>
-        SOUNDARYA
-      </Text> */}
       <View>
         <ContactUs />
+      </View>
+      <View style={styles.footer}>
+        <Footer />
       </View>
     </ScrollView>
   );
@@ -295,7 +139,7 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    height: hp('340%'),
+    height: hp('300%'),
     // width: wp('90%'),
     display: 'flex',
     alignItems: 'center',
@@ -314,6 +158,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 800,
     color: '#ffffff',
+  },
+  image: {
+    marginTop: 20,
+  },
+  footer: {
+    marginLeft: 10,
   },
 });
 

@@ -14,7 +14,7 @@ import {useRoute} from '@react-navigation/native';
 const ExploreInterest = () => {
   const route = useRoute();
 
-  const {content} = route.params;
+  const {content}: any = route.params;
 
   console.log(content, 'content=========>>>>');
   return (

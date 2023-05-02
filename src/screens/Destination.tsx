@@ -18,7 +18,7 @@ import useAppDispatch, {useAppSelector} from '../app/hooks';
 
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 // import {getDestinationData} from './appSlice';
 
@@ -33,6 +33,7 @@ import {useNavigation} from '@react-navigation/native';
 const Destination = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
+  const isFocused = useIsFocused();
 
   const destinationData = useAppSelector(state => state.dashboard?.bannerData);
   const sectionsData = useAppSelector(state => state.dashboard?.sectionsData);
@@ -46,18 +47,23 @@ const Destination = () => {
     item.section_title.includes('Explore'),
   );
 
+  let guestStoriesData = sectionsData?.filter((item, index) =>
+		item.section_title.includes("Guest"),
+	);
+	let guestStories = guestStoriesData && guestStoriesData[0]?.contents;
+
   let popularPlacesData1 = popularPlacesData[0]?.contents;
 
   let cities = useAppSelector(state => state?.dashboard?.cities);
 
-  console.log('=====cities===>', cities);
-  console.log('=====exploreData===>', exploreData[0]?.contents[1]?.city_id);
+  console.log('=====guestStories===>', guestStories);
+  // console.log('=====exploreData===>', exploreData[0]?.contents[1]?.city_id);
   //  console.log("fwoakfpoa",popularPlacesData1)
 
   useEffect(() => {
     dispatch(getPageDataGo(59908572));
     dispatch(getAllCities());
-  }, []);
+  }, [dispatch,isFocused]);
 
   //  59908572
   const [inputText, setInputText] = useState<any>('');

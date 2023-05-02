@@ -19,10 +19,10 @@ const Offers = () => {
       <View>
         <Text style={styles.titlecss}>OFFERS & DISCOUNTS</Text>
 
-        <Table>
+        {/* <Table>
           <Row data={header} />
           <Rows data={data} />
-        </Table>
+        </Table> */}
 
         <Text style={{marginTop: 30}}>
           NOTE: Only 1 Promocode is applicable at one time

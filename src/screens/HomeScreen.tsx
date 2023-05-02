@@ -22,6 +22,8 @@ import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
 import {getPageDataGo} from './appSlice';
 
+// import {useIsFocused, useNavigation} from '@react-navigation/native';
+
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
 
@@ -123,7 +125,11 @@ const HomeScreen = () => {
             renderItem={({item}) => (
               <View>
                 <Pressable
-                  onPress={() => navigation.navigate(`${item?.content_title}`)}>
+                  onPress={() =>
+                    navigation.navigate('InnerPages', {
+                      id: item?.id,
+                    })
+                  }>
                   <Image
                     style={styles.wildlife}
                     source={{
@@ -159,7 +165,7 @@ const HomeScreen = () => {
                   <Text style={styles.relaxText}>{item.content_title}</Text>
                   <Pressable
                     onPress={() =>
-                      navigation.navigate('ExploreInterest', {
+                      navigation.navigate('KnowMoreUE', {
                         content: item,
                       })
                     }>

@@ -1,4 +1,10 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -14,12 +20,12 @@ const NavBar = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.navContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+      <Pressable onPress={() => navigation.navigate('HomeScreen')}>
         <Image
           style={styles.image}
           source={{uri: 'https://mpstdc.com/assets/MPT%20logo.e77c5286.png'}}
         />
-      </TouchableOpacity>
+      </Pressable>
       <View style={styles.g2Logo}>
         <Image
           style={styles.image}

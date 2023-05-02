@@ -1,30 +1,22 @@
-import {
-  FlatList,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {useEffect, useRef} from 'react';
+import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {getPageDataGo} from '../../screens/appSlice';
-import {useNavigation} from '@react-navigation/native';
-import {useScrollToTop} from '@react-navigation/native';
 
 const ExploreImageContainer = () => {
   const dispatch = useAppDispatch();
 
+  const isFocused = useIsFocused();
   const navigation = useNavigation<any>();
 
-  const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
+  // const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
   );
@@ -35,15 +27,12 @@ const ExploreImageContainer = () => {
       '===unexplored sideeeeeeeeeeee=====>',
       exploreotherinterestsData,
     );
-  const ref = useRef(null);
-
-  useScrollToTop(ref);
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
-  }, [dispatch]);
+  }, [dispatch, isFocused]);
   return (
-    <ScrollView ref={ref}>
+    <ScrollView>
       <View style={styles.interests}>
         <Text style={styles.headingText}>Explore Other Interests</Text>
         <View style={styles.exploreOther}>
