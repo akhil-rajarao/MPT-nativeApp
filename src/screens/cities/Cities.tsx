@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React, {useEffect} from 'react';
@@ -12,34 +13,36 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../../app/hooks';
+import {useIsFocused, useNavigation, useRoute} from '@react-navigation/native';
 
 import ContactUs from '../../component/common/ContactUs';
 import Footer from '../../component/Footer';
 import HTMLView from 'react-native-htmlview';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getDestinationData} from '../appSlice';
-import {useRoute} from '@react-navigation/native';
 
 const Cities = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const route = useRoute();
 
-  const {city_id} = route.params;
+  const isFocused = useIsFocused();
+  const {city_id}: any = route.params;
   const destinationData = useAppSelector(
     state => state.dashboard.destinationData,
   );
   console.log('city_id==>', city_id);
 
+  console.log(destinationData, 'UJJANNNN DATAA=====>');
   const destDataBanner = destinationData?.banners[0];
   const destSection = destinationData?.section?.contents;
   // const dataAccomadationImages = destinationData?.properties[0]?.property_image;
   const dataAccommodation = destinationData?.properties;
 
-  console.log(destinationData, 'UJJANNNN DATAA=====>');
   const rating = 4;
   useEffect(() => {
     dispatch(getDestinationData(city_id));
-  }, [city_id, dispatch]);
+  }, [city_id, dispatch, isFocused]);
 
   return (
     <ScrollView>
@@ -102,9 +105,16 @@ const Cities = () => {
                   </View>
                 </View>
                 <View style={styles.button}>
-                  <View style={styles.viewButton}>
-                    <Text style={styles.viewText}>VIEW</Text>
-                  </View>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('AccommodationView', {
+                        content: item,
+                      })
+                    }>
+                    <View style={styles.viewButton}>
+                      <Text style={styles.viewText}>VIEW</Text>
+                    </View>
+                  </TouchableOpacity>
                   <View style={styles.bookButton}>
                     <Text style={styles.bookText}>BOOK NOW</Text>
                   </View>

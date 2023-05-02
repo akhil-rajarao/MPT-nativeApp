@@ -16,6 +16,7 @@ import {
 import React from 'react';
 // import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
+
 // import {Button} from 'react-native-elements';
 // import style from '../mice&facilities/style';
 // import {DataTable} from 'react-native-paper';
@@ -25,7 +26,7 @@ import ContactUs from '../../component/common/ContactUs';
 import Footer from '../../component/Footer';
 
 
-const TenderPage = () => {
+const Tender = () => {
   const header = [
     'Tender No',
     'Subject',
@@ -220,4 +221,4 @@ const styles = StyleSheet.create({
   
 });
 
-export default TenderPage;
+export default Tender;

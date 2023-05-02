@@ -1,3 +1,4 @@
+import AccommodationView from '../../component/common/AccommodationView';
 import Adventure from '../../screens/adventure/Adventure';
 import Booking from '../../screens/booking/Booking';
 import BookingRules from '../../screens/footer_pages/contact_Us/BookingRules';
@@ -7,8 +8,15 @@ import ContactUs from '../../screens/footer_pages/contact_Us/ContactUs';
 import Explore from '../../screens/Explore';
 import ExploreInterest from '../../component/common/ExploreInterest';
 import Food from '../../screens/food/Food';
+<<<<<<< HEAD
 import Heritage from '../../component/common/Heritage';
+=======
+// import Heritage from '../../component/common/InnerPages'
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 import HomeScreen from '../../screens/HomeScreen';
+import InnerPages from '../../component/common/InnerPages';
+import KnowMoreUE from '../../component/common/KnowMoreUE';
+import PackageView from '../../component/common/PackageView';
 import React from 'react';
 import Trial from '../../screens/Trial';
 import Wildlife from '../../screens/wildLife/Wildlife';
@@ -32,11 +40,19 @@ export default function HomeStackNavigator() {
       <HomeStack.Screen name="Wildlife" component={Wildlife} />
       <HomeStack.Screen name="Adventure" component={Adventure} />
       <HomeStack.Screen name="Food" component={Food} />
-      <HomeStack.Screen name="Heritage" component={Heritage} />
+      <HomeStack.Screen name="InnerPages" component={InnerPages} />
       <HomeStack.Screen name="Cities" component={Cities} />
       <HomeStack.Screen name="ExploreInterest" component={ExploreInterest} />
       <HomeStack.Screen name="PackageView" component={PackageView} />
+<<<<<<< HEAD
       <HomeStack.Screen name="AccomodatinView" component={AccomodatinView}/>
+=======
+      <HomeStack.Screen name="KnowMoreUE" component={KnowMoreUE} />
+      <HomeStack.Screen
+        name="AccommodationView"
+        component={AccommodationView}
+      />
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
     </HomeStack.Navigator>
   );
 }

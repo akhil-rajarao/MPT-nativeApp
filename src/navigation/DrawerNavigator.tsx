@@ -1,20 +1,21 @@
 import 'react-native-gesture-handler';
 
-// import Accomodation from '../component/common/Accomodation';
+import Career from '../screens/drawerPages/careers/Career';
+import Contact from '../screens/drawerPages/contact/Contact';
+import Covid from '../screens/drawerPages/covid-19/Covid';
 import CustomDrawerContent from '../CustomDrawerContent';
-// import Destination from '../screens/Destination';
 import DestinationStackNavigator from './StackNavigation/DestinationStackNavigation';
-import EventsPageNavigator from './StackNavigation/EventsPageNavigator';
+import Events from '../screens/drawerPages/events/Events';
 import ExploreStackNavigator from './StackNavigation/ExploreStackNavigator';
 import HomeStackNavigator from './StackNavigation/HomeStackNavigator';
-import InstitutionsNavigator from './StackNavigation/InstitutionsNavigator';
+import Institutions from '../screens/drawerPages/institutions/Institutions';
+import Mice from '../screens/drawerPages/mice&facilities/Mice';
 import NavBar from '../component/NavBar';
-import PopularPlaces from '../component/common/PopularPlaces';
+import Offers from '../screens/drawerPages/offersandDiscounts/offers';
+import Order from '../screens/drawerPages/orders&circulars/Order';
 import React from 'react';
-import TenderPageNavigation from './StackNavigation/TenderPageNavigation';
-import WelcomeScreenStackNavigator from './StackNavigation/WelcomeScreenStackNavigator';
-// import WellnessPage from '../screens/wellnesspage/wellness';
-import WellnessPageNavigaton from './StackNavigation/WellnessPageNavigaton';
+import Tender from '../screens/drawerPages/tenders/Tenders';
+import Wellness from '../screens/drawerPages/wellnesspage/wellness';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 const DrawerNavigator = () => {
@@ -24,29 +25,25 @@ const DrawerNavigator = () => {
     <Drawer.Navigator
       screenOptions={{
         drawerPosition: 'right',
+
         drawerActiveBackgroundColor: 'white',
         header: () => <NavBar />,
       }}
       drawerContent={(props: any) => <CustomDrawerContent {...props} />}
       initialRouteName="HomeScreen">
-      <Drawer.Screen
-        name="HomeScreen"
-        component={HomeStackNavigator}
-        // options={{
-        //   header: () => <NavBar />,
-        // }}
-      />
-      <Drawer.Screen
-        name="WelcomeScreen"
-        component={WelcomeScreenStackNavigator}
-      />
+      <Drawer.Screen name="HomeScreen" component={HomeStackNavigator} />
       <Drawer.Screen name="Explore" component={ExploreStackNavigator} />
       <Drawer.Screen name="Destination" component={DestinationStackNavigator} />
-      <Drawer.Screen name="Events" component={EventsPageNavigator} />
-      <Drawer.Screen name="Institutions" component={InstitutionsNavigator} />
-      <Drawer.Screen name="Wellness" component={WellnessPageNavigaton} />
-      <Drawer.Screen name="Tenders" component={TenderPageNavigation} />
-      {/* <Drawer.Screen name="Accommodation" component={Accommodation} /> */}
+      <Drawer.Screen name="WELLNESS TOURISM" component={Wellness} />
+      <Drawer.Screen name="OFFER $ DISCOUNT" component={Offers} />
+      <Drawer.Screen name="MICE & OTHER FACILITIES" component={Mice} />
+      <Drawer.Screen name="Institutions" component={Institutions} />
+      <Drawer.Screen name="Events" component={Events} />
+      <Drawer.Screen name="ORDERS & CIRCULARS" component={Order} />
+      <Drawer.Screen name="COVID-19 PROTOCOLS" component={Covid} />
+      <Drawer.Screen name="TENDERS" component={Tender} />
+      <Drawer.Screen name="CAREERS" component={Career} />
+      <Drawer.Screen name="CONTACT" component={Contact} />
     </Drawer.Navigator>
   );
 };

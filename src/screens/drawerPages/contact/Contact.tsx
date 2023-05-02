@@ -2,6 +2,7 @@
 
 // // import React from 'react';
 
+<<<<<<< HEAD:src/screens/heritage/Heritage.tsx
 // // const Heritage = () => {
 // //   return (
 // //     <View>
@@ -327,3 +328,14 @@
 //     height: hp('35%'),
 //   },
 // });
+=======
+const Contact = () => {
+  return (
+    <View>
+      <Text>Contact</Text>
+    </View>
+  );
+};
+
+export default Contact;
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da:src/screens/drawerPages/contact/Contact.tsx

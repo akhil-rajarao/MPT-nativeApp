@@ -3,18 +3,20 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import {useIsFocused, useRoute} from '@react-navigation/native';
 
 import ContactUs from './ContactUs';
 import ExploreImageContainer from './ExploreImageContainer';
 import Footer from '../Footer';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
-import {useRoute} from '@react-navigation/native';
 
-const ExploreInterest = () => {
+const KnowMoreUE = () => {
   const route = useRoute();
 
   const {content}: any = route.params;
+
+  // const isFocused = useIsFocused();
 
   console.log(content, 'content=========>>>>');
   return (
@@ -32,7 +34,7 @@ const ExploreInterest = () => {
         <Text style={styles.imageText}>{content?.content_title}</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{content?.description.Value0}</Text>
+        <Text style={styles.text}>{content?.description.value0}</Text>
       </View>
       <View>
         <ExploreImageContainer />
@@ -47,7 +49,7 @@ const ExploreInterest = () => {
   );
 };
 
-export default ExploreInterest;
+export default KnowMoreUE;
 
 const styles = StyleSheet.create({
   container: {

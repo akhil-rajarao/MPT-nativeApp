@@ -1,4 +1,3 @@
-import {Row, Rows, Table} from 'react-native-table-component';
 import {
   ScrollView,
   Text,
@@ -7,21 +6,27 @@ import {
   View,
 } from 'react-native';
 
+// import {Button} from 'react-native-elements';
+// import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
-const CareerPage = () => {
-  const header = ['S.No', 'Title', 'Published Date', 'Last Submission Date'];
-  const data = [['sample', 'sample', 'sample']];
+// import style from '../mice&facilities/style';
+// import {DataTable} from 'react-native-paper';
+// import {Table, Row, Rows} from 'react-native-table-component';
+
+const Events = () => {
+  const header = ['S No', 'Event', 'Date', 'Place Details'];
+  const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titlecss}>CAREERS</Text>
+        <Text style={styles.titlecss}>EVENTS</Text>
         <View style={styles.innerContainer}>
           <TouchableOpacity style={styles.buttoncss}>
-            <Text style={styles.buttonText}>Current Openings</Text>
+            <Text style={styles.buttonText}>Current Events</Text>
           </TouchableOpacity>
-          <Text style={styles.archiveText}>Click Archive (Click Here)</Text>
+          <Text style={styles.archiveText}>Event Archive (Click Here)</Text>
           <TextInput style={styles.input} placeholder="Search by Title" />
           <View style={styles.ButtonContainer}>
             <TouchableOpacity style={styles.buttoncss2}>
@@ -31,14 +36,15 @@ const CareerPage = () => {
               <Text style={styles.buttonText2}>Reset</Text>
             </TouchableOpacity>
           </View>
-          <Table
+
+          {/* <Table
             borderStyle={{
               borderWidth: 2,
               borderColor: '#c8e1ff',
             }}>
             <Row data={header} />
             <Rows data={data} />
-          </Table>
+          </Table> */}
         </View>
       </View>
     </ScrollView>
@@ -68,6 +74,25 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: '#000000',
     margin: 3,
+  },
+
+  // buttoncss2: {
+  //   borderColor: '0ECAF0',
+  //   borderWidth: 1,
+  //   width: 100,
+  //   borderRadius: 10,
+  //   marginTop: 20,
+  //   color: '#000000',
+  //   margin: 3,
+  // },
+  buttoncss3: {
+    borderColor: '0ECAF0',
+    borderWidth: 1,
+    width: 180,
+    borderRadius: 10,
+    color: '#000000',
+    margin: 3,
+    marginBottom: 10,
   },
   input: {
     height: 40,
@@ -103,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CareerPage;
+export default Events;

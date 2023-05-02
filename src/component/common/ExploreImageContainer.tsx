@@ -1,29 +1,22 @@
-import {
-  FlatList,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {getPageDataGo} from '../../screens/appSlice';
-import {useNavigation} from '@react-navigation/native';
 
 const ExploreImageContainer = () => {
   const dispatch = useAppDispatch();
 
+  const isFocused = useIsFocused();
   const navigation = useNavigation<any>();
 
-  const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
+  // const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
   );
@@ -37,7 +30,7 @@ const ExploreImageContainer = () => {
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
-  }, [dispatch]);
+  }, [dispatch, isFocused]);
   return (
     <ScrollView>
       <View style={styles.interests}>

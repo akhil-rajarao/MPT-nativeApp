@@ -5,25 +5,48 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import useAppDispatch, {useAppSelector} from '../../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import ContactUs from '../../component/common/ContactUs';
+import {FlatList} from 'react-native-gesture-handler';
 //   import Header from '../../components/Header';
 import Footer from '../../component/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
+<<<<<<< HEAD
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+=======
+import {getAllProperties} from '../appSlice';
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 
 // import style from '../mice&facilities/style';
 
 const Destination = () => {
   const [text, onChangeText] = React.useState('');
+<<<<<<< HEAD
   const navigation = useNavigation<any>();
+=======
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation<any>();
+
+  const isFocused = useIsFocused();
+  const properties = useAppSelector(state => state?.dashboard?.properties);
+  useEffect(() => {
+    dispatch(getAllProperties());
+  }, [dispatch, isFocused]);
+
+  // console.log('properties======>', properties);
+
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -51,17 +74,21 @@ const Destination = () => {
 
       <View style={styles.AccommodationView}>
         <Text style={styles.headingText}>Accommodation</Text>
-        <View style={styles.HotelBox}>
-          <Image
-            style={styles.hotelImage}
-            source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2367999579.png',
-            }}
-          />
-          <View style={styles.boxText}>
-            <Text style={styles.Residency}>Residency</Text>
-            <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
+        {properties && (
+          <FlatList
+            data={properties}
+            renderItem={({item}) => (
+              <View style={styles.HotelBox}>
+                <Image
+                  style={styles.hotelImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.property_image[0]}`,
+                  }}
+                />
+                <View style={styles.boxText}>
+                  <Text style={styles.Residency}>{item?.property_type}</Text>
 
+<<<<<<< HEAD
             <View style={styles.stars}>
               {/* <Icon name="eyes" size={15} color="lightblue" /> */}
               <Icon name="star" size={15} color="goldenrod" />
@@ -96,128 +123,53 @@ const Destination = () => {
           <View style={styles.boxText}>
             <Text style={styles.Residency}>Residency</Text>
             <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
+=======
+                  <Text style={styles.mptText}>{item?.property_name}</Text>
+>>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 
-            <View style={styles.stars}>
-              {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-            </View>
-            <Text style={styles.priceText}>RS 3,540-4,564/NIGHT</Text>
-            <Text style={styles.priceText}>
-              Dinner - A/C rooms - parking facilities
-            </Text>
-          </View>
-          <View style={styles.button}>
-            <View style={styles.viewButton}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-            <View style={styles.bookButton}>
-              <Text style={styles.bookText}>BOOK NOW</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.HotelBox}>
-          <Image
-            style={styles.hotelImage}
-            source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3987510413.png',
-            }}
+                  <View style={styles.stars}>
+                    {/* <Icon name="eyes" size={15} color="lightblue" /> */}
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                    <Icon name="star" size={15} color="goldenrod" />
+                  </View>
+                  {/* <View style={{flexDirection: 'row'}}>
+                  {[...Array(5)].map((_item, index) =>
+                    rating >= index + 1 ? (
+                      <Icon name="star" size={15} color="goldenrod" />
+                    ) : (
+                      <Icon name="star" size={15} color="black" />
+                    ),
+                  )}
+                </View> */}
+                  <View>
+                    <Text style={styles.priceText}>{item?.price_range}</Text>
+                    <Text style={styles.priceText}>
+                      Dinner - A/C rooms - parking facilities
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.button}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('AccommodationView', {
+                        content: item,
+                      })
+                    }>
+                    <View style={styles.viewButton}>
+                      <Text style={styles.viewText}>VIEW</Text>
+                    </View>
+                  </TouchableOpacity>
+                  <View style={styles.bookButton}>
+                    <Text style={styles.bookText}>BOOK NOW</Text>
+                  </View>
+                </View>
+              </View>
+            )}
           />
-          <View style={styles.boxText}>
-            <Text style={styles.Residency}>Residency</Text>
-            <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
-
-            <View style={styles.stars}>
-              {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-            </View>
-            <Text style={styles.priceText}>RS 3,540-4,564/NIGHT</Text>
-            <Text style={styles.priceText}>
-              Dinner - A/C rooms - parking facilities
-            </Text>
-          </View>
-          <View style={styles.button}>
-            <View style={styles.viewButton}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-            <View style={styles.bookButton}>
-              <Text style={styles.bookText}>BOOK NOW</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.HotelBox}>
-          <Image
-            style={styles.hotelImage}
-            source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/292874974.png',
-            }}
-          />
-          <View style={styles.boxText}>
-            <Text style={styles.Residency}>Residency</Text>
-            <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
-
-            <View style={styles.stars}>
-              {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-            </View>
-            <Text style={styles.priceText}>RS 3,540-4,564/NIGHT</Text>
-            <Text style={styles.priceText}>
-              Dinner - A/C rooms - parking facilities
-            </Text>
-          </View>
-          <View style={styles.button}>
-            <View style={styles.viewButton}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-            <View style={styles.bookButton}>
-              <Text style={styles.bookText}>BOOK NOW</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.HotelBox}>
-          <Image
-            style={styles.hotelImage}
-            source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2367999579.png',
-            }}
-          />
-          <View style={styles.boxText}>
-            <Text style={styles.Residency}>Residency</Text>
-            <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
-
-            <View style={styles.stars}>
-              {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-            </View>
-            <Text style={styles.priceText}>RS 3,540-4,564/NIGHT</Text>
-            <Text style={styles.priceText}>
-              Dinner - A/C rooms - parking facilities
-            </Text>
-          </View>
-          <View style={styles.button}>
-            <View style={styles.viewButton}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-            <View style={styles.bookButton}>
-              <Text style={styles.bookText}>BOOK NOW</Text>
-            </View>
-          </View>
-        </View>
+        )}
       </View>
 
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}

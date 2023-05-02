@@ -43,7 +43,8 @@ export default CustomDrawerContent;
 const styles = StyleSheet.create({
   drawer: {
     backgroundColor: 'darkred',
-    paddingLeft: 100,
+    paddingLeft: 80,
+    // alignItems: 'flex-end',
     position: 'relative',
   },
 
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    zIndex: 100,
+    zIndex: 150,
     top: 10,
   },
 
@@ -62,7 +63,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'absolute',
     zIndex: 100,
-
     top: 300,
   },
 
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'absolute',
     zIndex: 100,
-
     top: 500,
     left: 100,
   },

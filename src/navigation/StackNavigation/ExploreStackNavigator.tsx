@@ -1,6 +1,6 @@
 import Booking from '../../screens/booking/Booking';
 import Explore from '../../screens/Explore';
-import ExploreInterest from '../../component/common/ExploreInterest';
+// import ExploreInterest from '../../component/common/ExploreInterest';
 // import HomeScreen from '../../screens/HomeScreen';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';

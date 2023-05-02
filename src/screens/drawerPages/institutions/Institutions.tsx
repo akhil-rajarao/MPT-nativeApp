@@ -1,15 +1,11 @@
+import {ScrollView, Text, View} from 'react-native';
+
 import React from 'react';
-import {
-  ScrollView,
-  ScrollViewComponent,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {Image} from 'react-native';
+// import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
-import style from '../mice&facilities/style';
+
+// import {Button} from 'react-native-elements';
+// import style from '../mice&facilities/style';
 
 const Institutions = () => {
   return (
