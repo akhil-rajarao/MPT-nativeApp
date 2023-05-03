@@ -8,11 +8,7 @@ import ContactUs from '../../screens/footer_pages/contact_Us/ContactUs';
 import Explore from '../../screens/Explore';
 import ExploreInterest from '../../component/common/ExploreInterest';
 import Food from '../../screens/food/Food';
-<<<<<<< HEAD
-import Heritage from '../../component/common/Heritage';
-=======
 // import Heritage from '../../component/common/InnerPages'
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 import HomeScreen from '../../screens/HomeScreen';
 import InnerPages from '../../component/common/InnerPages';
 import KnowMoreUE from '../../component/common/KnowMoreUE';
@@ -21,7 +17,7 @@ import React from 'react';
 import Trial from '../../screens/Trial';
 import Wildlife from '../../screens/wildLife/Wildlife';
 import {createStackNavigator} from '@react-navigation/stack';
-import PackageView from '../../screens/packageView/PackageView';
+// import PackageView from '../../screens/packageView/PackageView';
 import AccomodatinView from '../../component/common/AccomodatinView';
 
 const HomeStack = createStackNavigator<any>();
@@ -44,15 +40,11 @@ export default function HomeStackNavigator() {
       <HomeStack.Screen name="Cities" component={Cities} />
       <HomeStack.Screen name="ExploreInterest" component={ExploreInterest} />
       <HomeStack.Screen name="PackageView" component={PackageView} />
-<<<<<<< HEAD
-      <HomeStack.Screen name="AccomodatinView" component={AccomodatinView}/>
-=======
       <HomeStack.Screen name="KnowMoreUE" component={KnowMoreUE} />
       <HomeStack.Screen
         name="AccommodationView"
         component={AccommodationView}
       />
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
     </HomeStack.Navigator>
   );
 }

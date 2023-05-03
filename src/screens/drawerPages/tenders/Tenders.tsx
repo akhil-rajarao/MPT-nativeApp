@@ -22,8 +22,10 @@ import {StyleSheet} from 'react-native';
 // import {DataTable} from 'react-native-paper';
 // import {Table, Row, Rows} from 'react-native-table-component';
 import { Table, Row, Rows } from 'react-native-table-component';
-import ContactUs from '../../component/common/ContactUs';
-import Footer from '../../component/Footer';
+
+import Footer from '../../../component/Footer';
+import ContactUs from '../../../component/common/ContactUs';
+
 
 
 const Tender = () => {

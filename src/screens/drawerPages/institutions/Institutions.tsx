@@ -1,8 +1,14 @@
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View,Image} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 import React from 'react';
 // import {Image} from 'react-native';
 import {StyleSheet} from 'react-native';
+import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 
 // import {Button} from 'react-native-elements';
 // import style from '../mice&facilities/style';
@@ -11,7 +17,16 @@ const Institutions = () => {
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titleText}>INSTITUTIONS</Text>
+        <View>
+        <Image
+            style={styles.imagestyles}
+            source={{
+              uri: `https://mpstdc.com/assets/similar.da06dae7.jpg`,
+            }}
+          />
+           <Text style={styles.titleText}>INSTITUTIONS</Text>
+        </View>
+       
         <View style={styles.innerContainer}>
           <Text style={styles.headingText}>MPIHTTS</Text>
           <View style={styles.detailsContainer}>
@@ -67,6 +82,12 @@ const Institutions = () => {
             </Text>
           </View>
         </View>
+        <View>
+          <ContactUs/>
+        </View>
+        <View style={styles.lastview}>
+        <Footer/>
+        </View>
       </View>
     </ScrollView>
   );
@@ -74,9 +95,11 @@ const Institutions = () => {
 
 const styles = StyleSheet.create({
   titleText: {
-    marginTop: 50,
+    marginTop: 120,
     alignSelf: 'center',
     fontSize: 40,
+    position:'absolute',
+    color:'white'
   },
   innerContainer: {
     margin: 10,
@@ -125,6 +148,14 @@ const styles = StyleSheet.create({
     padding: 13,
     margin: 10,
     fontWeight: 'bold',
+  },
+  imagestyles:{
+    width:wp('100%'),
+    height:hp('40%'),
+    position:'relative',
+  },
+  lastview:{
+    marginLeft:10
   },
 });
 

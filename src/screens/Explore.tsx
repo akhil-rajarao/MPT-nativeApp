@@ -474,28 +474,20 @@ import ContactUs from '../component/common/ContactUs';
 import ExploreImageContainer from '../component/common/ExploreImageContainer';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+// import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 const Explore = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const isFocused = useIsFocused();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
   );
   let experienceData = ExploresectionsData?.filter(
-<<<<<<< HEAD
-    (item, index) => item.experience === true && item.section_title != 'Explore'
-=======
     (item, index) =>
       item.experience === true && item.section_title != 'Explore',
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
   );
 
   const attractionsData = ExploresectionsData[0]?.contents;
@@ -503,16 +495,6 @@ const Explore = () => {
   const unexploredofMP = ExploresectionsData[6]?.contents;
   // const exploreData = ExploresectionsData[1].contents;
   // const unexploredData = ExploresectionsData[6].contents;
-<<<<<<< HEAD
-  const exploreotherinterestsData = ExploresectionsData[1]?.contents;
-  // ExploresectionsData &&
-
-    console.log('===experienceData side=====>', experienceData[0]?.contents[0]?.content_images[0]);
-
-  useEffect(() => {
-    dispatch(getPageDataGo(59789662));
-  }, [dispatch,isFocused]);
-=======
   // const exploreotherinterestsData = ExploresectionsData[1]?.contents;
   // ExploresectionsData &&
 
@@ -521,7 +503,6 @@ const Explore = () => {
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
   }, [dispatch, isFocused]);
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 
   return (
     <ScrollView>
@@ -556,18 +537,6 @@ const Explore = () => {
             horizontal={true}
             renderItem={({item}) => (
               <View>
-<<<<<<< HEAD
-               <Pressable
-                  onPress={() => navigation.navigate('Heritage',{
-                         id:item?.id
-                  })}>
-                <Image
-                  style={styles.exploreImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                  }}
-                />
-=======
                 <Pressable
                   onPress={() =>
                     navigation.navigate('InnerPages', {
@@ -580,7 +549,6 @@ const Explore = () => {
                       uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                     }}
                   />
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
                 </Pressable>
                 <View style={styles.exploreOpacity}></View>
                 <Text style={styles.exploreText}>{item?.content_title}</Text>
@@ -597,15 +565,6 @@ const Explore = () => {
       </View>
       <View style={styles.banners}>
         <View>
-<<<<<<< HEAD
-          
-          <Image
-            style={styles.wildlife}
-            source={{
-              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[0]?.content_images[0]}`,
-            }}
-          />
-=======
           <Pressable
             onPress={() =>
               navigation.navigate('InnerPages', {
@@ -619,20 +578,11 @@ const Explore = () => {
               }}
             />
           </Pressable>
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
           <View style={styles.opacity} />
           <Text style={styles.bannerText}>Know more</Text>
         </View>
         <View style={styles.bannersRow}>
           <View>
-<<<<<<< HEAD
-            <Image
-              style={styles.adventure}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[1]?.content_images[0]}`,
-              }}
-            />
-=======
             <Pressable
               onPress={() =>
                 navigation.navigate('InnerPages', {
@@ -646,25 +596,10 @@ const Explore = () => {
                 }}
               />
             </Pressable>
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
             <View style={styles.opacity2} />
             <Text style={styles.bannerText2}>Know more</Text>
           </View>
           <View>
-<<<<<<< HEAD
-          {/* <Pressable onPress={() => navigation.navigate('ExploreInterest',{
-              content:`${experienceData[0]?.contents[0]}`
-            })}> */}
-            <Image
-              style={styles.food}
-              source={{
-                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[2]?.content_images[0]}`,
-              }}
-            />
-             {/* </Pressable> */}
-            <View style={styles.opacity2} />
-           
-=======
             <Pressable
               onPress={() =>
                 navigation.navigate('InnerPages', {
@@ -680,7 +615,6 @@ const Explore = () => {
             </Pressable>
             <View style={styles.opacity2} />
 
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
             <Text style={styles.bannerText2}>Know more</Text>
            
           </View>

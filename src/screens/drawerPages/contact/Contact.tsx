@@ -1,341 +1,338 @@
-// // import {Text, View} from 'react-native';
-
-// // import React from 'react';
-
-<<<<<<< HEAD:src/screens/heritage/Heritage.tsx
-// // const Heritage = () => {
-// //   return (
-// //     <View>
-// //       <Text>Heritage</Text>
-// //     </View>
-// //   );
-// // };
-
-// // export default Heritage;
-
-// import {FlatList, Image, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
-// import {
-//   heightPercentageToDP as hp,
-//   widthPercentageToDP as wp,
-// } from 'react-native-responsive-screen';
 
 
-// import { useEffect } from 'react';
-// import useAppDispatch, { useAppSelector } from '../../app/hooks';
-// import { useIsFocused, useRoute } from '@react-navigation/native';
-// import { getInnerPageContentById } from '../../screens/appSlice';
-// import ExploreInterest from './ExploreInterest';
-// import ContactUs from './ContactUs';
-// import Footer from '../Footer';
-// import ExploreImageContainer from './ExploreImageContainer';
+import { View,Text,ScrollView,Image,StyleSheet } from "react-native";
 
-// const Heritage = () => {
-  
-//   const dispatch = useAppDispatch();
-//   const isFocused = useIsFocused();
-
-//   const innerPageData = useAppSelector(state => state?.dashboard?.innerPageData);
-  
-   
-//   const route = useRoute();
-
-//   const {id} = route.params;
-
-//   // if(id===93187332)
-//   let innerPageSections = id===93187332?innerPageData?.sections[7].contents: id===24947658?innerPageData?.sections[3].contents: id===67870362?innerPageData?.sections[5].contents: id===17779663?innerPageData?.sections[0].contents: id===32157115?innerPageData?.sections[1].contents: id===59789662?innerPageData?.sections[6].contents: id===45523481?innerPageData?.sections[8].contents:undefined
-  
-  
-  
-  
-//   console.log("==========>innerPageDataSEctions",innerPageSections)
+import React from 'react';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import ContactUs from "../../../component/common/ContactUs";
+import Footer from "../../../component/Footer";
 
 
-//   useEffect(() => {
-//      dispatch(getInnerPageContentById(id));
-//   }, [dispatch,isFocused]);
-
-//   return (
-//     <ScrollView>
-//       <View style={styles.container}>
-//         {innerPageData && (
-//           <Image
-//             style={styles.wildlifeImage}
-//             source={{
-//               uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${innerPageData?.content_images}`,
-//             }}
-//           />
-//         )}
-//         <View style={styles.opacity} />
-//         <Text style={styles.imageText}>{innerPageData?.content_title}</Text>
-//       </View>
-//       <View>
-//         <Text style={{color:'black'}}>{innerPageData?.description?.value0}</Text>
-//       </View>
-//       <View style={styles.imageTop}>
-//         <Text style={styles.headingText}>Popular Places</Text>
-//         {innerPageSections && (
-//           <FlatList
-//             showsVerticalScrollIndicator={false}
-//             data={innerPageSections}
-//             renderItem={({item}) => (
-//               <View style={{padding: 10}}>
-//                   <Image
-//                     style={styles.packagesImage}
-//                     source={{
-//                       uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
-//                     }}
-//                   />
-                
-//                 <View style={styles.opacityPlace}></View>
-//                 <Text style={styles.PlaceText}> {item?.content_title}</Text>
-//                 <View>
-//                   <Text style={{color:'black'}}>
-//                     {item?.description?.value0}
-//                   </Text>
-//                    </View>
-//               </View>
-              
-//             )}
-//           />
-//         )}
-//       </View>
-//       <ExploreImageContainer/>
-//       <ContactUs/>
-//       <Footer/>
-//       </ScrollView>
-//   );
-// };
-
-// export default Heritage;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   wildlifeImage: {
-//     width: wp('100%'),
-//     height: hp('35%'),
-//     borderRadius: 1,
-//   },
-//   opacity: {
-//     position: 'absolute',
-//     backgroundColor: 'black',
-//     width: wp('100%'),
-//     height: hp('35%'),
-//     opacity: 0.3,
-//   },
-//   imageText: {
-//     color: 'lightgrey',
-//     fontSize: 40,
-//     fontWeight: '800',
-//     marginBottom: 7,
-//     position: 'absolute',
-//     opacity: 0.6,
-//   },
-//   textContainer: {
-//     padding: 20,
-//   },
-//   text: {
-//     color: 'black',
-//     fontSize: 15,
-//     letterSpacing: 2,
-//   },
-//   footer: {
-//     marginLeft: 10,
-//   },
-//   popularView: {
-//     width: wp('100%'),
-//     height: hp('38%'),
-//     marginTop: 30,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-//   headingText: {
-//     fontSize: hp('3.5%'),
-//     color: 'darkred',
-//     fontStyle: 'italic',
-//     fontWeight: '800',
-//     paddingBottom: 8,
-//     alignSelf: 'flex-start',
-//     paddingLeft: 5,
-//   },
-
-//   read: {
-//     color: 'black',
-//     fontSize: hp('1.8%'),
-//     paddingTop: 2,
-//     // done
-//   },
-
-//   contact: {
-//     width: wp('100%'),
-//     height: hp('40%'),
-//     marginTop: 10,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     // done
-//   },
-//   contactHeading: {
-//     color: 'white',
-//     fontSize: hp('4%'),
-//     marginBottom: 35,
-//     fontStyle: 'italic',
-//     fontWeight: '600',
-//     // done
-//   },
-//   contactImage: {
-//     height: hp('30%'),
-//     width: wp('100%'),
-//     // done
-//   },
-//   contactText: {
-//     position: 'absolute',
-
-//     alignItems: 'center',
-//     // done
-//   },
-//   contentSubText: {
-//     color: 'white',
-//     fontSize: hp('1.7%'),
-//     // done
-//   },
-//   interests: {
-//     width: wp('100%'),
-//     height: hp('113%'),
-//     backgroundColor: 'tan',
-//     marginTop: 30,
-//   },
-//   exploreBox: {
-//     width: wp('48%'),
-//     height: hp('25%'),
-//     backgroundColor: 'black',
-//     borderRadius: 10,
-//     // done
-//   },
-//   exploreOther: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'space-around',
-//     paddingBottom: 10,
-//     // done
-//   },
-//   exploreOtherImage: {
-//     width: wp('48%'),
-//     height: hp('25%'),
-//     // borderRadius: 10,
-//     // done
-//   },
-//   otherOpacity: {
-//     backgroundColor: 'white',
-//     alignItems: 'center',
-//     position: 'absolute',
-//     top: 160,
-//     bottom: 0,
-//     left: 0,
-//     right: 70,
-//     opacity: 0.4,
-
-//     // done
-//   },
-//   otherText: {
-//     fontSize: hp('2.1%'),
-//     color: 'floralwhite',
-//     position: 'absolute',
-//     top: 162,
-//     left: 10,
-//     fontWeight: '500',
-//     fontStyle: 'italic',
-//     // opacity: 0.5,
-//     // done
-//   },
-//   storyContainer: {
-//     width: wp('100%'),
-//     height: hp('80%'),
-//     // backgroundColor: 'skyblue',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   storyImage: {
-//     width: wp('96%'),
-//     height: hp('30%'),
-//   },
-//   textBox: {
-//     width: wp('96%'),
-//     height: hp('30%'),
-//     backgroundColor: 'tan',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   headingBox: {
-//     width: wp('96%'),
-//     height: hp('10%'),
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   storyText: {
-//     color: 'black',
-//     marginHorizontal: 10,
-
-//     fontStyle: 'italic',
-//   },
-
- 
-//   container1: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     //  backgroundColor:"red",
-//     height: hp('20%'),
-//     marginTop: 50,
-//   },
-
-//   image1: {
-//     width: wp('95%'),
-//     height: hp('25%'),
-//     marginRight: 10,
-//     // resizeMode: 'cover',
-//     resizeMode: 'stretch',
-//     // aspectRatio:1
-//     // borderRadius:10
-//   },
-//   opacityPlace: {
-//     backgroundColor: 'red',
-//     position: 'absolute',
-//     top: 220,
-//     bottom: 10,
-//     left: 10,
-//     right: 210,
-//     opacity: 0.3,
-//   },
-//   PlaceText: {
-//     fontSize: hp('3.0%'),
-//     color: '#ffffff',
-//     position: 'absolute',
-//     top: 230,
-//     left: 10,
-//     fontStyle: 'italic',
-//     fontWeight: '600',
-//   },
-//   imageTop: {
-//     alignItems: 'center',
-//     marginTop: 70,
-//   },
-//   packagesImage: {
-//     width: wp('85%'),
-//     height: hp('35%'),
-//   },
-// });
-=======
 const Contact = () => {
   return (
-    <View>
-      <Text>Contact</Text>
-    </View>
+    <ScrollView>
+      <View>
+      <View>
+        <Image
+            style={styles.imagestyles}
+            source={{
+              uri: `https://mpstdc.com/assets/similar.da06dae7.jpg`,
+            }}
+          />
+           <Text style={styles.titleText}>CONTACT US</Text>
+        </View>
+       <View style={styles.seconddivision}>
+        <View style={styles.innerContainer}>
+          <Text style={styles.headingText}>ADVANCE BOOKING</Text>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+            </Text>
+            <Text style={styles.secondaryText}>
+            Business Development & Marketing
+            Paryatan Bhawan, Bhadbhada Road, Bhopal -462003
+             TEL: 0755-4027132/ 163 FAX: 0755-2779476, 2774289
+             Tourist Helpline (Toll Free): 1800 233 7777 Timing: (10 AM to 6 PM )
+            (Sunday holiday, Saturday and other holiday Half Day)
+             E-mail: mpthelpline@mpstdc.com
+            </Text>
+          </View>
+        </View>
+        </View>
+          
+          <View style={styles.seconddivision}>
+          <Text style={styles.secTitle}>MARKETING OFFICES</Text>
+     
+            <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>AHMEDABAD</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              219, 'Supermall' IInd Floor, Near Lal Bungalow, C.G.Road,Ahmedabad-380006
+
+             Contact: 079-26462977 Telefax: 079-26462978
+
+              E-mail: ahmedabad@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             {/* ................................. */}
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>HYDERABAD</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Groud Floor, Balyogi Paryatak Bhavan, Opp. ITC Kakatiya Hotel, Begumpet Main road,Hyderabad-500016
+
+               Contact: 040-40034319 Telefax: 040-23407785
+
+               E-mail: mohyderabad@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             {/* ............................. */}
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>KOLKATA</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              'Chitrakoot', Room No.67, 6th Floor 230-A, A.J.C Bose Road,Kolkata-700 020
+
+               Contact: 033-22833526 Telefax: 033-22875855
+
+              E-mail: mokolkata@mp.gov.in
+             </Text>
+              </View>
+             </View>
+               {/* ........................................ */}
+               <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>MUMBAI</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Madhyalok Bhawan (M P Bhawan), Plot no. 23 & 24, Sector 30A, Behind CIDCO Exhibition Center, Vashi, Navi Mumbai - 400703
+
+                Contact: 022-27811093, 27811485 Telefax:
+
+                E-mail: mumbai@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             {/* ................................................. */}
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>NEW DELHI</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              56, Alps Building, Ground Floor, Opposite - Janpath Market, Near Yes Bank, New Delhi-110001
+
+Contact: 011-23326528, 23711185, 23311186 Telefax:
+
+E-mail: modelhi@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>NAGPUR</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              407-A, 4th Floor, Lokmat Bhawan, Wardha Road, nagpur - 440012
+
+Contact: 0712-2442378,325900 Telefax: 0712-2423374
+
+E-mail: nagpur@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>RAIPUR</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Office No.1, Mahant Guru Ghasidas Museum Campus, Ghadi Chowk, Civil Lines, Raipur (C.G.)
+
+Contact: 0771-4048810, 9028838128 Telefax
+
+E-mail: raipur@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>JAIPUR</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              108,City Pearl Complex, Opp. Hotel Gangaur,Vidhayak Puri Road, Jaipur-302001
+
+Contact: 7880108605
+
+E-mail: jaipur@mpstdc.com
+             </Text>
+              </View>
+             </View>
+         </View>
+         
+  <View style={styles.seconddivision}>
+  <Text style={styles.secTitle}>REGIONAL/TOURIST OFFICES</Text>
+     
+         <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>KHAJURAHO</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Tourist Interpretation & Facilitation Center Near Circuit House, khajuraho
+
+              Contact: 07686-274051 Telefax: 07686-272330
+
+               E-mail: khajuraho@mp.gov.in 
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>JHANSI</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Railway Station, Jhansi
+
+             Contact: 0510-2442622 Telefax:
+
+              E-mail: tojhansi@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>INDORE</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              42, Residency Area Opp.Saint Paul H.S.School, Indore
+
+              Contact: 0731-2499566, 2499466, 7869982222 Telefax: 0731-2491345
+
+              E-mail: indore@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>INDORE</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Airport Counter Indore
+
+              Contact: 0731-2620404 Telefax:
+
+               E-mail: indoreairport@mpstdc.com
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>JHANSI</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Railway Station, Jhansi
+
+Contact: 0510-2442622 Telefax
+
+E-mail: tojhansi@mp.gov.in
+             </Text>
+              </View>
+             </View>
+             <View style={styles.innerContainer}>
+             <Text style={styles.headingText}>PACHMARHI</Text>
+             <View style={styles.detailsContainer}>
+              {/* <Text style={styles.innerHeading}>
+              HEAD OFFICE-BHOPAL
+              </Text> */}
+              <Text style={styles.secondaryText}>
+              Amaltas Complex Near tehsil, Pachmarhi
+
+Contact: 07578-252100 Telefax: 07578-252102
+
+E-mail: pachmarhi@mp.gov.in
+             </Text>
+              </View>
+             </View>
+   </View>
+   
+     <View>
+      <ContactUs/>
+     </View>
+     <View style={styles.lastview}>
+      <Footer/>
+     </View>
+      </View>
+    </ScrollView>
   );
 };
 
 export default Contact;
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da:src/screens/drawerPages/contact/Contact.tsx
+const styles = StyleSheet.create({
+  imagestyles:{
+    width:wp('100%'),
+    height:hp('40%'),
+    position:'relative',
+  },
+  titleText: {
+    marginTop: 120,
+    alignSelf: 'center',
+    fontSize: 40,
+    position:'absolute',
+    color:'white'
+  },
+  secTitle: {
+    textAlign: 'center',
+    backgroundColor: '#BD1B1B',
+    color: '#ffffff',
+    fontSize: 17,
+    padding: 13,
+    margin: 10,
+    fontWeight: 'bold',
+  },
+  
+  innerContainer: {
+    margin: 10,
+    border: 'solid',
+    borderWidth: 2,
+    borderColor: 'black',
+  },
+  headingText: {
+    textAlign: 'center',
+    backgroundColor: '#BD1B1B',
+    color: '#ffffff',
+    fontSize: 20,
+    padding: 5,
+  },
+  detailsContainer: {
+    padding: 20,
+  },
+  innerHeading: {
+    fontSize: 19,
+    textAlign: 'center',
+    color:'black',
+  },
+  secondaryText: {
+    color: '#757575',
+    textAlign: 'center',
+    fontSize: 17,
+  },
+  seconddivision:{
+    marginTop:50
+  },
+  lastview:{
+    marginLeft:10
+  },
+  
+})

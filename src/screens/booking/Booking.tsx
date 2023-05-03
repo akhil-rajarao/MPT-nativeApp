@@ -21,20 +21,12 @@ import {FlatList} from 'react-native-gesture-handler';
 //   import Header from '../../components/Header';
 import Footer from '../../component/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-<<<<<<< HEAD
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-=======
 import {getAllProperties} from '../appSlice';
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 
 // import style from '../mice&facilities/style';
 
 const Destination = () => {
   const [text, onChangeText] = React.useState('');
-<<<<<<< HEAD
-  const navigation = useNavigation<any>();
-=======
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
 
@@ -46,7 +38,6 @@ const Destination = () => {
 
   // console.log('properties======>', properties);
 
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -88,44 +79,7 @@ const Destination = () => {
                 <View style={styles.boxText}>
                   <Text style={styles.Residency}>{item?.property_type}</Text>
 
-<<<<<<< HEAD
-            <View style={styles.stars}>
-              {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-              <Icon name="star" size={15} color="goldenrod" />
-            </View>
-            <Text style={styles.priceText}>RS 3,540-4,564/NIGHT</Text>
-            <Text style={styles.priceText}>
-              Dinner - A/C rooms - parking facilities
-            </Text>
-          </View>
-          <View style={styles.button}>
-            <Pressable onPress={()=> navigation.navigate('AccomodatinView')}>
-            <View style={styles.viewButton}>
-              <Text style={styles.viewText}>VIEW</Text>
-            </View>
-            </Pressable>
-            <View style={styles.bookButton}>
-              <Text style={styles.bookText}>BOOK NOW</Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.HotelBox}>
-          <Image
-            style={styles.hotelImage}
-            source={{
-              uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/79237081.png',
-            }}
-          />
-          <View style={styles.boxText}>
-            <Text style={styles.Residency}>Residency</Text>
-            <Text style={styles.mptText}>MPT Palash Residency, Bhopal</Text>
-=======
                   <Text style={styles.mptText}>{item?.property_name}</Text>
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
 
                   <View style={styles.stars}>
                     {/* <Icon name="eyes" size={15} color="lightblue" /> */}

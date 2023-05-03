@@ -206,19 +206,11 @@ const HomeScreen = () => {
                   <Text style={styles.optionPackage}>
                     {item?.description?.value3?.toUpperCase()}
                   </Text>
-<<<<<<< HEAD
-                  <TouchableOpacity onPress={() => navigation.navigate('PackageView')}>
-                  <View style={styles.view}>
-                    <Text style={styles.viewText}>VIEW</Text>
-                  </View>
-                  </TouchableOpacity>
-=======
                   <Pressable onPress={() => navigation.navigate('PackageView')}>
                     <View style={styles.view}>
                       <Text style={styles.viewText}>VIEW</Text>
                     </View>
                   </Pressable>
->>>>>>> 1f55457f15c831a874c69cf23246aa72d72bb5da
                 </View>
               </View>
             )}
