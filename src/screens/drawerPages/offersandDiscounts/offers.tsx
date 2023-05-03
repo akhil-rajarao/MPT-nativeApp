@@ -17,7 +17,7 @@ const Offers = () => {
   return (
     <ScrollView>
       <View>
-        <Text style={styles.titlecss}>OFFERS & DISCOUNTS</Text>
+        <Text style={styles.titlecss}>OFFERS and discount</Text>
 
         {/* <Table>
           <Row data={header} />

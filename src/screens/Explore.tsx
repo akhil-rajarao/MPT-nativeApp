@@ -39,10 +39,6 @@ const Explore = () => {
   const attractionsData = ExploresectionsData[0]?.contents;
 
   const unexploredofMP = ExploresectionsData[6]?.contents;
-  // const exploreData = ExploresectionsData[1].contents;
-  // const unexploredData = ExploresectionsData[6].contents;
-  // const exploreotherinterestsData = ExploresectionsData[1]?.contents;
-  // ExploresectionsData &&
 
   console.log('===unexploredofMP side=====>', unexploredofMP);
 
@@ -113,7 +109,7 @@ const Explore = () => {
         <View>
           <Pressable
             onPress={() =>
-              navigation.navigate('InnerPages', {
+              navigation.navigate('InnerPage2', {
                 id: experienceData[0]?.contents[0]?.id,
               })
             }>
@@ -131,7 +127,7 @@ const Explore = () => {
           <View>
             <Pressable
               onPress={() =>
-                navigation.navigate('InnerPages', {
+                navigation.navigate('InnerPage2', {
                   id: experienceData[0]?.contents[1]?.id,
                 })
               }>
@@ -148,7 +144,7 @@ const Explore = () => {
           <View>
             <Pressable
               onPress={() =>
-                navigation.navigate('InnerPages', {
+                navigation.navigate('InnerPage2', {
                   id: experienceData[0]?.contents[2]?.id,
                 })
               }>
@@ -187,7 +183,7 @@ const Explore = () => {
                   <Text style={styles.relaxText}>{item.content_title}</Text>
                   <Pressable
                     onPress={() =>
-                      navigation.navigate('ExploreInterest', {
+                      navigation.navigate('KnowMoreUE', {
                         content: item,
                       })
                     }>

@@ -20,7 +20,7 @@ import ExploreImageContainer from './ExploreImageContainer';
 import Footer from '../Footer';
 import {getInnerPageContentById} from '../../screens/appSlice';
 
-const InnerPages = () => {
+const InnerPage2 = () => {
   const dispatch = useAppDispatch();
   const isFocused = useIsFocused();
 
@@ -34,26 +34,16 @@ const InnerPages = () => {
 
   // if(id===93187332)
   let innerPageSections =
-    id === 93187332
-      ? innerPageData?.sections[7]?.contents
-      : id === 24947658
+    id === 29788625
       ? innerPageData?.sections[3]?.contents
-      : id === 67870362
-      ? innerPageData?.sections[5]?.contents
-      : id === 17779663
-      ? innerPageData?.sections[0]?.contents
-      : id === 32157115
-      ? innerPageData?.sections[1]?.contents
-      : id === 59789662
-      ? innerPageData?.sections[6]?.contents
-      : id === 45523481
-      ? innerPageData?.sections[8]?.contents
       : id === 43105675
       ? innerPageData?.sections[3]?.contents
       : id === 11771867
       ? innerPageData?.sections[3]?.contents
-      : id === 29788625
+      : id === 24947658
       ? innerPageData?.sections[3]?.contents
+      : id === 93187332
+      ? innerPageData?.sections[7]?.contents
       : undefined;
 
   console.log('==========>innerPageDataSEctions', innerPageSections);
@@ -81,7 +71,7 @@ const InnerPages = () => {
           {innerPageData?.description?.value0}
         </Text>
       </View>
-      <View style={styles.imageTop}>
+      {/* <View style={styles.imageTop}>
         <Text style={styles.headingText}>Popular Places</Text>
         {innerPageSections && (
           <FlatList
@@ -97,8 +87,8 @@ const InnerPages = () => {
                   }}
                 />
 
-                {/* <View style={styles.opacityPlace}></View>
-                  <Text style={styles.PlaceText}> {item?.content_title}</Text> */}
+                <View style={styles.opacityPlace}></View>
+                  <Text style={styles.PlaceText}> {item?.content_title}</Text>
                 <View>
                   <Text style={{marginTop: 10, fontSize: 18, color: 'darkred'}}>
                     sanchi
@@ -111,7 +101,34 @@ const InnerPages = () => {
             )}
           />
         )}
+      </View> */}
+
+      <View style={styles.attractionView}>
+        {/* <Text style={styles.headingText}>Popu</Text> */}
+        <Text style={styles.headingText}>
+          {innerPageData?.content_title} Destinations
+        </Text>
+        {innerPageSections && (
+          <FlatList
+            data={innerPageSections}
+            horizontal={true}
+            renderItem={({item}) => (
+              <View>
+                <Image
+                  style={styles.exploreImage}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                  }}
+                />
+
+                <View style={styles.exploreOpacity}></View>
+                <Text style={styles.exploreText}>{item?.content_title}</Text>
+              </View>
+            )}
+          />
+        )}
       </View>
+
       <View style={{marginTop: 50}}>
         <ExploreImageContainer />
       </View>
@@ -121,7 +138,7 @@ const InnerPages = () => {
   );
 };
 
-export default InnerPages;
+export default InnerPage2;
 
 const styles = StyleSheet.create({
   container: {
@@ -166,15 +183,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  headingText: {
-    fontSize: hp('3.5%'),
-    color: 'darkred',
-    fontStyle: 'italic',
-    fontWeight: '800',
-    paddingBottom: 8,
-    alignSelf: 'flex-start',
-    paddingLeft: 5,
   },
 
   read: {
@@ -348,5 +356,58 @@ const styles = StyleSheet.create({
   packagesImage: {
     width: wp('95%'),
     height: hp('35%'),
+  },
+  exploreImage: {
+    width: wp('90%'),
+    height: 196,
+    // borderRadius: 10,
+    marginHorizontal: 5,
+    position: 'relative',
+    // done
+  },
+  exploreOpacity: {
+    backgroundColor: 'white',
+    position: 'absolute',
+    top: 170,
+    bottom: 15,
+    left: 0,
+    right: 0,
+    opacity: 0.3,
+    marginHorizontal: 5,
+    // borderBottomLeftRadius: 10,
+    // borderBottomRightRadius: 10,
+
+    // done
+  },
+  exploreText: {
+    fontSize: hp('2%'),
+    color: '#ffffff',
+    position: 'absolute',
+    bottom: 15,
+    top: 175,
+    fontWeight: '700',
+    alignSelf: 'flex-start',
+    paddingLeft: 10,
+    zIndex: 200,
+
+    // done
+  },
+  attractionView: {
+    width: wp('100%'),
+    height: hp('35%'),
+    marginTop: 30,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    // marginLeft: 15,
+    // done
+  },
+  headingText: {
+    fontSize: hp('4.5%'),
+    color: 'darkred',
+    paddingBottom: 8,
+    fontFamily: 'YouthPower-X34qG',
+    paddingLeft: 10,
+    marginLeft: 5,
+    // done
   },
 });

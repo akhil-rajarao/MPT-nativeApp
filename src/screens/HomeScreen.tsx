@@ -125,11 +125,17 @@ const HomeScreen = () => {
             renderItem={({item}) => (
               <View>
                 <Pressable
-                  onPress={() =>
-                    navigation.navigate('InnerPages', {
-                      id: item?.id,
-                    })
-                  }>
+                  onPress={() => {
+                    if (item.id === 93187332 || item.id === 24947658) {
+                      navigation.navigate('InnerPage2', {
+                        id: item?.id,
+                      });
+                    } else {
+                      navigation.navigate('InnerPages', {
+                        id: item?.id,
+                      });
+                    }
+                  }}>
                   <Image
                     style={styles.wildlife}
                     source={{
@@ -192,6 +198,17 @@ const HomeScreen = () => {
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
                   }}
                 />
+                {/* <Carousel
+                  data={item?.content_images}
+                  renderItem={item => (
+                    <Image
+                      style={styles.packagesImage}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item}`,
+                      }}
+                    />
+                  )}
+                /> */}
 
                 <View style={styles.packagesContent}>
                   <View style={styles.days}>
