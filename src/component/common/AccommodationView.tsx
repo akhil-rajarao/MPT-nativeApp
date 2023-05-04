@@ -24,7 +24,7 @@ const AccommodationView = () => {
 
   console.log(content, 'content=========>>>>');
 
-  const amenitiesObj = {
+  const amenitiesObj :any= {
     1: 'Dinner',
     2: 'A/C Rooms',
     3: 'BAR Facilities',
@@ -37,7 +37,7 @@ const AccommodationView = () => {
     10: 'Health',
   };
 
-  const amenitiesIconsObj = {
+  const amenitiesIconsObj :any = {
     1: (
       <MaterialCommunityIcons
         name="silverware-fork-knife"

@@ -84,13 +84,8 @@ const InnerPages = () => {
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
                   }}
                 />
-
-                {/* <View style={styles.opacityPlace}></View>
-                <Text style={styles.PlaceText}> {item?.content_title}</Text> */}
                 <View>
-                  <Text style={{marginTop: 10, fontSize: 18, color: 'darkred'}}>
-                    sanchi
-                  </Text>
+                <Text style={styles.PlaceText}> {item?.content_title}</Text>
                   <Text style={{color: 'black', marginTop: 30}}>
                     {item?.description?.value0}
                   </Text>
@@ -322,12 +317,12 @@ const styles = StyleSheet.create({
   },
   PlaceText: {
     fontSize: hp('3.0%'),
-    color: '#ffffff',
-    position: 'absolute',
-    top: 230,
-    left: 10,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    color: 'black',
+    // position: 'absolute',
+    // top: 230,
+    // left: 10,
+    // fontStyle: 'italic',
+    // fontWeight: '600',
   },
   imageTop: {
     alignItems: 'center',

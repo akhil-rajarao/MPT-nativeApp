@@ -54,7 +54,7 @@ const Destination = () => {
     // handleFilterDropdown(text);
   };
   console.log('properties======>', properties);
-  const amenitiesObj = {
+  const amenitiesObj :any = {
     1: 'Dinner',
     2: 'A/C Rooms',
     3: 'BAR Facilities',
@@ -195,7 +195,7 @@ const Destination = () => {
                     )}
                   </View>
 
-                  {item?.ammenities?.map((number: number) => {
+                  {item && item?.ammenities && item?.ammenities?.map((number: number) => {
                     return (
                       <View
                         style={{

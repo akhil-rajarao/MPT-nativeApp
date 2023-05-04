@@ -32,8 +32,8 @@ const DrawerNavigator = () => {
       drawerContent={(props: any) => <CustomDrawerContent {...props} />}
       initialRouteName="HomeScreen">
       <Drawer.Screen name="HomeScreen" component={HomeStackNavigator} />
-      <Drawer.Screen name="Explore" component={ExploreStackNavigator} />
-      <Drawer.Screen name="Destination" component={DestinationStackNavigator} />
+      {/* <Drawer.Screen name="Explore" component={ExploreStackNavigator} /> */}
+      {/* <Drawer.Screen name="Destination" component={DestinationStackNavigator} /> */}
       <Drawer.Screen name="WELLNESS TOURISM" component={Wellness} />
       <Drawer.Screen name="OFFER $ DISCOUNT" component={Offers} />
       <Drawer.Screen name="MICE & OTHER FACILITIES" component={Mice} />
