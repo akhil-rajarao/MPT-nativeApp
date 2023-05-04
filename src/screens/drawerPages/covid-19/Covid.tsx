@@ -26,7 +26,7 @@ const Covid = () => {
         <Text
           style={{
             fontSize: 30,
-            color: '#ffffff',
+            color: 'white',
             top: -270,
             alignSelf: 'center',
             zIndex: 40,
@@ -40,14 +40,14 @@ const Covid = () => {
             top: -210,
             alignSelf: 'center',
             fontSize: 20,
-            color: '#ffffff',
+            color: 'white',
             fontWeight: 'bold',
           }}>
           Central Govt. Guidelines ~{'\n'} State Govt. Guidelines ~{'\n'} Our
           Precautionary Steps Saathi
         </Text>
         <View style={{padding: 25}}>
-          <Text style={{alignSelf: 'center', marginTop: -70, fontSize: 20}}>
+          <Text style={{alignSelf: 'center', marginTop: -70, fontSize: 20,color: 'gray',}}>
             {' '}
             State Govt. Guidelines
           </Text>
@@ -57,11 +57,12 @@ const Covid = () => {
               fontWeight: 'bold',
               marginTop: 20,
               alignSelf: 'center',
+              color: 'gray',
             }}>
             विषय:- प्रदेश में कोविड-19 के संभावित तृतीय लहर की पूर्व तैयारियों
             के सम्बन्ध में निर्देश|
           </Text>
-          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17}}>
+          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17,color: 'gray',}}>
             सन्दर्भ:- संचलनालयीन पत्र क्र./आई.डी.एस.पी./2021/1572 दिनांक
             11/10/2021 विषयांतर्गत लेख है कि SARS CoV-2 Variants के प्रवृत्तियों
             में अंतर्राष्ट्रीय स्तर पर निरंतर बदलाव होना प्रतिवेदित है जिसके
@@ -78,10 +79,11 @@ const Covid = () => {
               fontWeight: 'bold',
               marginTop: 20,
               alignSelf: 'center',
+              color: 'gray',
             }}>
             कोविड - 19 के संभावित प्रकरणों का चिन्हांकन, टेस्टिंग एवं ट्रैकिंग
           </Text>
-          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17}}>
+          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17,color: 'gray',}}>
             1. कोविड पॉजिटिव प्रकरणों की संभावित वृद्धि के नियंत्रण हेतु
             Test-Track-Treat के साथ-साथ कोविड टीकाकरण में गति एवं कोविड अनुकूल
             व्यवहारों का पालन सुनिश्चित किया जाए l2. भीड़-भाड़ को नियंत्रित करते
@@ -102,10 +104,11 @@ const Covid = () => {
               fontWeight: 'bold',
               marginTop: 20,
               alignSelf: 'center',
+              color: 'gray',
             }}>
             कोविड -19 पॉजिटिव प्रकरणों का प्रबंधन
           </Text>
-          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17}}>
+          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17,color: 'gray',}}>
             1. Variant Of Concern की सम्भावना एवं कोविड -19 की तृतीय संभावित लहर
             के त्वरित नियंत्रण हेतु नीतिगत निर्णय अनुसार अब समस्त लक्षण युक्त
             कोविड पॉजिटिव प्रकरणों को लक्षणों के आधार पर अस्पताल में कोविड
@@ -146,10 +149,11 @@ const Covid = () => {
               fontWeight: 'bold',
               marginTop: 20,
               alignSelf: 'center',
+              color: 'gray',
             }}>
             कोविड -19 प्रकरणों के लिए उपचार व्यवस्थाएं
           </Text>
-          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17}}>
+          <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 17,color: 'gray',}}>
             1. प्रदेश में कोविड प्रकरणों की स्थिति पर कड़ी निगरानी रखते हुए आवयशक
             स्वास्थ्य संसाधन एवं समुचित अधोसंरचनागत व्यवस्थाएं सुनिश्चित की जाए
             l2. पर्याप्त ऑक्सीजन सिलेंडर तथा क्रियाशील ऑक्सीजन कंसन्टेटर की
@@ -174,7 +178,7 @@ const Covid = () => {
       <View>
         <ContactUs />
       </View>
-      <View style={{marginLeft: 10, marginBottom: 15}}>
+      <View>
         <Footer />
       </View>
     </ScrollView>

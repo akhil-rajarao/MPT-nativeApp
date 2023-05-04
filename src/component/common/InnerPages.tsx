@@ -53,54 +53,104 @@ const InnerPages = () => {
   }, [dispatch, id, isFocused]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {innerPageData && (
-          <Image
-            style={styles.wildlifeImage}
-            source={{
-              uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${innerPageData?.content_images}`,
-            }}
-          />
-        )}
-        <View style={styles.opacity} />
-        <Text style={styles.imageText}>{innerPageData?.content_title}</Text>
-      </View>
+    <FlatList
+  data={[{ key: 'outer' }]} // data for outer FlatList, can be an empty array if you don't need it
+  renderItem={({ item }) => (
+    <View style={{}}>
+      {innerPageData && (
+        <Image
+          style={styles.wildlifeImage}
+          source={{
+            uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${innerPageData?.content_images}`,
+          }}
+        />
+      )}
+      <View/>
+      <Text style={styles.imageText}>{innerPageData?.content_title}</Text>
       <View>
-        <Text style={{color: 'black', marginHorizontal: 10, marginTop: 20}}>
+         <Text style={{color: 'black', marginHorizontal: 10, marginTop: 20,fontSize: 18, letterSpacing: 2}}>
           {innerPageData?.description?.value0}
-        </Text>
+       </Text>
       </View>
-      <View style={styles.imageTop}>
-        {innerPageSections && (
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            data={innerPageSections}
-            renderItem={({item}) => (
-              <View style={styles.imagePackage}>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
-                  }}
-                />
-                <View>
-                <Text style={styles.PlaceText}> {item?.content_title}</Text>
-                  <Text style={{color: 'black', marginTop: 30}}>
-                    {item?.description?.value0}
-                  </Text>
-                </View>
-              </View>
-            )}
-          />
+      <FlatList // inner FlatList
+        data={innerPageSections}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <View style={styles.imagePackage}>
+            <Image
+              style={styles.packagesImage}
+              source={{
+                uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
+              }}
+            />
+            <View>
+              <Text style={styles.PlaceText}> {item?.content_title}</Text>
+              <Text style={{ color: 'black', marginTop: 10, fontSize: 18, letterSpacing: 2 }}>
+                {item?.description?.value0}
+              </Text>
+            </View>
+          </View>
         )}
-      </View>
-      <View style={{marginTop: 50}}>
+        keyExtractor={(item) => item.id}
+      />
+      <View style={{ marginTop: 50 }}>
         <ExploreImageContainer />
       </View>
       <ContactUs />
       <Footer />
-    </ScrollView>
+    </View>
+  )}
+  keyExtractor={(item) => item.key}
+/>
+
+    // <ScrollView>
+    //   <View style={styles.container}>
+    //     {innerPageData && (
+    //       <Image
+    //         style={styles.wildlifeImage}
+    //         source={{
+    //           uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${innerPageData?.content_images}`,
+    //         }}
+    //       />
+    //     )}
+    //     <View style={styles.opacity} />
+    //     <Text style={styles.imageText}>{innerPageData?.content_title}</Text>
+    //   </View>
+    //   <View>
+    //     <Text style={{color: 'black', marginHorizontal: 10, marginTop: 20,fontSize: 18, letterSpacing: 2}}>
+    //       {innerPageData?.description?.value0}
+    //     </Text>
+    //   </View>
+    //   <View style={styles.imageTop}>
+    //     {innerPageSections && (
+    //       <FlatList
+    //         showsVerticalScrollIndicator={false}
+    //         data={innerPageSections}
+    //         renderItem={({item}) => (
+    //           <View style={styles.imagePackage}>
+    //             <Image
+    //               style={styles.packagesImage}
+    //               source={{
+    //                 uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
+    //               }}
+    //             />
+    //             <View>
+    //             <Text style={styles.PlaceText}> {item?.content_title}</Text>
+    //               <Text style={{color: 'black', marginTop: 10,fontSize: 18, letterSpacing: 2}}>
+    //                 {item?.description?.value0}
+    //               </Text>
+    //             </View>
+    //           </View>
+    //         )}
+    //       />
+    //     )}
+    //   </View>
+    //   <View style={{marginTop: 50}}>
+    //     <ExploreImageContainer />
+    //   </View>
+    //   <ContactUs />
+    //   <Footer />
+    // </ScrollView>
   );
 };
 
@@ -316,8 +366,10 @@ const styles = StyleSheet.create({
     height: 50,
   },
   PlaceText: {
+    marginTop:10,
     fontSize: hp('3.0%'),
-    color: 'black',
+    color: 'red',
+    fontFamily: 'YouthPower-X34qG'
     // position: 'absolute',
     // top: 230,
     // left: 10,

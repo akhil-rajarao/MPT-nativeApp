@@ -1909,6 +1909,14 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/react-native-htmlview@^0.16.0":
+  "integrity" "sha512-JlrEylQx8TGHtWh2vsUDtk+IQKcUDjhCofvRHRv/l1W/FAF5P+iT/BnetUE3YpCbJVJhVBLO+zg9oWH2PCnHmA=="
+  "resolved" "https://registry.npmjs.org/@types/react-native-htmlview/-/react-native-htmlview-0.16.0.tgz"
+  "version" "0.16.0"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-table-component@^1.2.4":
   "integrity" "sha512-JxTc3HXkBPxY/aFJpb4XFot+CM8ismemFCcPy7GlguX9C7Xc+kCmVOmFmA/o1jX2BNPuM45OS264QL6BMlPa6Q=="
   "resolved" "https://registry.npmjs.org/@types/react-native-table-component/-/react-native-table-component-1.2.4.tgz"

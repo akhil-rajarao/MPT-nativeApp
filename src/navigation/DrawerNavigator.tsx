@@ -17,6 +17,7 @@ import React from 'react';
 import Tender from '../screens/drawerPages/tenders/Tenders';
 import Wellness from '../screens/drawerPages/wellnesspage/wellness';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import Trial from '../screens/Trial';
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator<any>();
@@ -33,7 +34,7 @@ const DrawerNavigator = () => {
       initialRouteName="HomeScreen">
       <Drawer.Screen name="HomeScreen" component={HomeStackNavigator} />
       {/* <Drawer.Screen name="Explore" component={ExploreStackNavigator} /> */}
-      {/* <Drawer.Screen name="Destination" component={DestinationStackNavigator} /> */}
+      {/* <Drawer.Screen name="Trial" component={Trial} /> */}
       <Drawer.Screen name="WELLNESS TOURISM" component={Wellness} />
       <Drawer.Screen name="OFFER $ DISCOUNT" component={Offers} />
       <Drawer.Screen name="MICE & OTHER FACILITIES" component={Mice} />

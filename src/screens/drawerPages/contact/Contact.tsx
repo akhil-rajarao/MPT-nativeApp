@@ -252,12 +252,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 40,
     position: 'absolute',
-    color: 'white',
+    color: 'darkgray',
   },
   secTitle: {
     textAlign: 'center',
     backgroundColor: '#BD1B1B',
-    color: '#ffffff',
+    color: 'darkgray',
     fontSize: 17,
     padding: 13,
     margin: 10,
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   headingText: {
     textAlign: 'center',
     backgroundColor: '#BD1B1B',
-    color: '#ffffff',
+    color: 'darkgray',
     fontSize: 20,
     padding: 5,
   },
