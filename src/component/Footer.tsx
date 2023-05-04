@@ -1,4 +1,11 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Linking,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
@@ -20,19 +27,32 @@ const Footer = () => {
           <TouchableOpacity onPress={() => navigation.navigate('Cancel')}>
             <Text style={styles.text}>Cancellation Policy</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Privacy')}>
+            <Text style={styles.text}>Privacy Policy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ContactUS')}>
             <Text style={styles.text}>Contact Us</Text>
           </TouchableOpacity>
 
           <Text style={styles.text}>FAQS</Text>
-          <Text style={styles.text}>Booking Through Mp Online</Text>
-          <Text style={styles.text}>Madhya Pradesh Tourism Board</Text>
+          <Pressable
+            onPress={() => Linking.openURL('https://mpstdc.mponline.gov.in/')}>
+            <Text style={styles.text}>Booking Through Mp Online</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => Linking.openURL('https://www.mptourism.com/')}>
+            <Text style={styles.text}>Madhya Pradesh Tourism Board</Text>
+          </Pressable>
           <Text style={styles.text}>Genaral Sales Agents</Text>
-          <Text style={styles.text}>Institutions</Text>
-          <Text style={styles.text}>
-            Jungel Safari Booking (Forest Department)
-          </Text>
+          <Pressable onPress={() => navigation.navigate('Institutions')}>
+            <Text style={styles.text}>Institutions</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => Linking.openURL('https://forest.mponline.gov.in/')}>
+            <Text style={styles.text}>
+              Jungel Safari Booking (Forest Department)
+            </Text>
+          </Pressable>
         </View>
         <View>
           <Text style={styles.title}>Address</Text>

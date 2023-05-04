@@ -1,5 +1,6 @@
 import {
   Image,
+  Linking,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -27,7 +28,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 // import style from '../mice&facilities/style';
 
 const Destination = () => {
-  const [text, onChangeText] = React.useState('');
+  // const [text, onChangeText] = React.useState('');
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
 
@@ -53,8 +54,20 @@ const Destination = () => {
     setSelectedCity(city?.id);
     // handleFilterDropdown(text);
   };
+
+  // const url =
+  //   'https://www.secure-booking-engine.com/accounts/v4T40B8UuLAiX2rrsTheFw/properties/fFLD6k4WzC15QFf5yWFGrA/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/cart/Gv38iSQgjRdNQ3IMeSwxSw/#/search';
+  // const handleClick = () => {
+  //   Linking.canOpenURL(url).then(supported => {
+  //     if (supported) {
+  //       Linking.openURL(url);
+  //     } else {
+  //       console.log("Don't know how to open URI: " + url);
+  //     }
+  //   });
+  // };
   console.log('properties======>', properties);
-  const amenitiesObj = {
+  const amenitiesObj: any = Object.freeze({
     1: 'Dinner',
     2: 'A/C Rooms',
     3: 'BAR Facilities',
@@ -65,7 +78,7 @@ const Destination = () => {
     8: 'Parking facilities',
     9: 'Pool facilities',
     10: 'Kerala Ayurvedic Panchkarma',
-  };
+  });
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -161,12 +174,14 @@ const Destination = () => {
             data={properties}
             renderItem={({item}) => (
               <View style={styles.HotelBox}>
-                <Image
-                  style={styles.hotelImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.property_image[0]}`,
-                  }}
-                />
+                {item.property_image && (
+                  <Image
+                    style={styles.hotelImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.property_image[0]}`,
+                    }}
+                  />
+                )}
                 <View style={styles.boxText}>
                   <Text style={styles.Residency}>{item?.property_type}</Text>
 
@@ -194,21 +209,27 @@ const Destination = () => {
                       ),
                     )}
                   </View>
-
-                  {item?.ammenities?.map((number: number) => {
-                    return (
-                      <View
-                        style={{
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                        }}>
-                        <Text style={{color: 'black', flexDirection: 'row'}}>
-                          - {amenitiesObj[Number(number)]}
-                        </Text>
-                      </View>
-                    );
-                  })}
+                  {/* ??????????????????????/ */}
+                  <View style={styles.dateNew}>
+                    {item &&
+                      item?.ammenities &&
+                      item?.ammenities?.map((number: number) => {
+                        return (
+                          <View
+                            // eslint-disable-next-line react-native/no-inline-styles
+                            style={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexDirection: 'row',
+                            }}>
+                            <Text
+                              style={{color: 'black', flexDirection: 'row'}}>
+                              - {amenitiesObj[Number(number)]}
+                            </Text>
+                          </View>
+                        );
+                      })}
+                  </View>
                 </View>
                 <View style={styles.button}>
                   <TouchableOpacity
@@ -222,7 +243,10 @@ const Destination = () => {
                     </View>
                   </TouchableOpacity>
                   <View style={styles.bookButton}>
-                    <Text style={styles.bookText}>BOOK NOW</Text>
+                    <TouchableOpacity
+                      onPress={() => Linking.openURL(`${item.booking_url}`)}>
+                      <Text style={styles.bookText}>BOOK NOW</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>
@@ -540,6 +564,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: hp('1.7%'),
     // done
+  },
+  dateNew: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    // marginHorizontal: 10,
+    flexWrap: 'wrap',
   },
   // interests: {
   //   width: wp('100%'),

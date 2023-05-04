@@ -24,7 +24,7 @@ const AccommodationView = () => {
 
   console.log(content, 'content=========>>>>');
 
-  const amenitiesObj = {
+  const amenitiesObj: any = {
     1: 'Dinner',
     2: 'A/C Rooms',
     3: 'BAR Facilities',
@@ -37,7 +37,7 @@ const AccommodationView = () => {
     10: 'Health',
   };
 
-  const amenitiesIconsObj = {
+  const amenitiesIconsObj: any = {
     1: (
       <MaterialCommunityIcons
         name="silverware-fork-knife"
@@ -59,9 +59,32 @@ const AccommodationView = () => {
   return (
     <ScrollView>
       <View style={styles.mainview}>
-        <View>
+        <View style={{marginTop: 15}}>
           <Text style={styles.title}>{content.property_name}</Text>
           {/* <View>pending icons</View> */}
+
+          <View style={styles.stars}>
+            <View style={{marginRight: 5}}>
+              <Entypo name="tripadvisor" size={25} color="green" />
+            </View>
+            {Array.from({length: 5}).map((_item, index) =>
+              content?.rating >= index + 1 ? (
+                <FontAwesome
+                  key={index}
+                  name="star"
+                  size={25}
+                  color="goldenrod"
+                />
+              ) : (
+                <FontAwesome
+                  key={index}
+                  name="star-o"
+                  size={25}
+                  color="black"
+                />
+              ),
+            )}
+          </View>
 
           <View style={styles.mainImageView}>
             <Image
@@ -126,21 +149,22 @@ const AccommodationView = () => {
           </View>
           <ScrollView horizontal>
             <View style={styles.amenetiesOfIconMainV}>
-              {content?.ammenities?.map((number: number) => {
-                return (
-                  <View
-                    style={{
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginRight: 15,
-                    }}>
-                    {amenitiesIconsObj[Number(number)]}
-                    <Text style={{color: 'black'}}>
-                      {amenitiesObj[Number(number)]}
-                    </Text>
-                  </View>
-                );
-              })}
+              {content?.ammenities &&
+                content?.ammenities?.map((number: number) => {
+                  return (
+                    <View
+                      style={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginRight: 15,
+                      }}>
+                      {amenitiesIconsObj[Number(number)]}
+                      <Text style={{color: 'black'}}>
+                        {amenitiesObj[Number(number)]}
+                      </Text>
+                    </View>
+                  );
+                })}
             </View>
           </ScrollView>
           <View>
@@ -228,7 +252,7 @@ const styles = StyleSheet.create({
   },
   mainImageView: {
     paddingRight: 0,
-    marginTop: 30,
+    marginTop: 10,
   },
   mainImage: {
     height: hp('30%'),
@@ -238,7 +262,7 @@ const styles = StyleSheet.create({
   },
   secondImageView: {
     width: wp('97%'),
-    height: hp('120%'),
+    height: hp('100%'),
     backgroundColor: 'white',
     marginTop: 10,
     alignSelf: 'center',
@@ -260,7 +284,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   amenetiesMainView: {
-    marginTop: -120,
+    // marginTop: -120,
     height: hp('100%'),
     width: wp('100%'),
     // backgroundColor: 'skyblue',
@@ -288,21 +312,25 @@ const styles = StyleSheet.create({
     backgroundColor: 'darkred',
     marginHorizontal: 25,
     marginTop: 30,
-    paddingHorizontal: 20,
   },
   buttonText: {
     fontSize: 15,
     fontWeight: '600',
-    // alignSelf: 'center',
-    justifyContent: 'center',
     color: 'white',
-    paddingHorizontal: 15,
     marginTop: 10,
+    alignSelf: 'center',
+    // alignItems: 'center',
   },
   PropertyContactView: {
     marginHorizontal: 20,
     paddingHorizontal: 10,
     marginTop: 20,
+  },
+  stars: {
+    flexDirection: 'row',
+    padding: 2,
+    marginTop: 10,
+    marginLeft: 12,
   },
   iconView: {
     marginHorizontal: 20,

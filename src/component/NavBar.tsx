@@ -1,5 +1,6 @@
 import {
   Image,
+  Linking,
   Pressable,
   StyleSheet,
   TouchableOpacity,
@@ -29,12 +30,14 @@ const NavBar = () => {
         />
       </Pressable>
       <View style={styles.g2Logo}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: 'https://mpstdc.com/assets/G20%20theme%20and%20logo.3dd0b73a.png',
-          }}
-        />
+        <Pressable onPress={() => Linking.openURL('https://www.g20.org/en/')}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: 'https://mpstdc.com/assets/G20%20theme%20and%20logo.3dd0b73a.png',
+            }}
+          />
+        </Pressable>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('Booking')}>
         <View style={styles.bookButton}>
@@ -46,18 +49,23 @@ const NavBar = () => {
       </TouchableOpacity> */}
 
       <View style={styles.diveIn}>
-        <View style={{display: 'flex', flexDirection: 'row', top: 15}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            top: 20,
+          }}>
           <Pressable
             onPress={() => {
-              setShowDropDown(true);
+              setShowDropDown(!showDropDown);
             }}>
             <Text style={styles.diveText}>Dive In</Text>
           </Pressable>
           <Pressable
             onPress={() => {
-              setShowDropDown(true);
+              setShowDropDown(!showDropDown);
             }}>
-            <Icon name="caretdown" size={15} color="#fff" />
+            <Icon name="caretdown" size={10} color="#fff" />
           </Pressable>
         </View>
         {showDropDown && (
@@ -127,29 +135,27 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   diveIn: {
-    // display: 'flex',
+    display: 'flex',
     flexDirection: 'column',
     // alignItems: 'center',
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
+    // alignItems: 'flex-start',
+    // alignSelf: 'center',
     // position: 'absolute',
   },
   dropboxtext: {
     fontSize: 14,
     color: 'black',
     textAlign: 'center',
+    marginTop: 8,
   },
   dropbox: {
     borderWidth: 2,
-    borderColor: 'red',
+    borderColor: 'white',
+    borderRadius: 6,
     backgroundColor: 'white',
-    // display: 'flex',
-    // top: 30,
-    // top: 21,
-    // justifyContent: 'space-between',
-
-    width: wp('30%'),
-    height: hp('7%'),
-    // zIndex: 1,
-    // elevation: 2,
+    top: 50,
+    width: 100,
+    height: 80,
   },
 });
