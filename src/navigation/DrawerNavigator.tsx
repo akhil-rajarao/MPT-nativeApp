@@ -39,9 +39,10 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="MICE & OTHER FACILITIES" component={Mice} />
       <Drawer.Screen name="Institutions" component={Institutions} />
       <Drawer.Screen name="Events" component={Events} />
+      <Drawer.Screen name="TENDERS" component={Tender} />
       <Drawer.Screen name="ORDERS & CIRCULARS" component={Order} />
       <Drawer.Screen name="COVID-19 PROTOCOLS" component={Covid} />
-      <Drawer.Screen name="TENDERS" component={Tender} />
+
       <Drawer.Screen name="CAREERS" component={Career} />
       <Drawer.Screen name="CONTACT" component={Contact} />
     </Drawer.Navigator>

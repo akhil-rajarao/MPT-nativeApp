@@ -1,11 +1,7 @@
-import {
-  ScrollView,
-  ScrollViewComponent,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
+import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 // import {Button} from 'react-native-elements';
 import {Image} from 'react-native';
 import React from 'react';
@@ -174,6 +170,12 @@ const Covid = () => {
             कोविड -19 प्रकरणों के लिए उपचार व्यवस्थाएं
           </Text>
         </View>
+      </View>
+      <View>
+        <ContactUs />
+      </View>
+      <View style={{marginLeft: 10, marginBottom: 15}}>
+        <Footer />
       </View>
     </ScrollView>
   );
