@@ -21,6 +21,8 @@ import Wildlife from '../../screens/wildLife/Wildlife';
 import {createStackNavigator} from '@react-navigation/stack';
 // import PackageView from '../../screens/packageView/PackageView';
 import AccomodatinView from '../../component/common/AccomodatinView';
+import FAQ from '../../screens/footer_pages/FAQ';
+import GeneralSales from '../../screens/footer_pages/GeneralSales';
 
 const HomeStack = createStackNavigator<any>();
 export default function HomeStackNavigator() {
@@ -49,6 +51,9 @@ export default function HomeStackNavigator() {
         name="AccommodationView"
         component={AccommodationView}
       />
+      <HomeStack.Screen name="FAQ" component={FAQ} />
+      <HomeStack.Screen name="GeneralSales" component={GeneralSales} />
+
     </HomeStack.Navigator>
   );
 }

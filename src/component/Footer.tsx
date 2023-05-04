@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
@@ -24,11 +24,14 @@ const Footer = () => {
           <TouchableOpacity onPress={() => navigation.navigate('ContactUs')}>
             <Text style={styles.text}>Contact Us</Text>
           </TouchableOpacity>
-
+          <TouchableOpacity onPress={() => navigation.navigate('FAQ')}>
           <Text style={styles.text}>FAQS</Text>
+          </TouchableOpacity>
           <Text style={styles.text}>Booking Through Mp Online</Text>
           <Text style={styles.text}>Madhya Pradesh Tourism Board</Text>
+          <Pressable onPress={()=> navigation.navigate('GeneralSales')}>
           <Text style={styles.text}>Genaral Sales Agents</Text>
+          </Pressable>
           <Text style={styles.text}>Institutions</Text>
           <Text style={styles.text}>
             Jungel Safari Booking (Forest Department)

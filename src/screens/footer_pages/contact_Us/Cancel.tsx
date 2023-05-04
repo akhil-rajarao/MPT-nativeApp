@@ -5,6 +5,8 @@ import {ScrollView, Text, View} from 'react-native';
 import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 
 const Cancel = () => {
   const tableValues = {
@@ -67,6 +69,12 @@ const Cancel = () => {
             1/10/2021{'\n'}
           </Text>
         </View>
+        <View>
+          <ContactUs/>
+        </View>
+        <View style={styles.lastview}>
+          <Footer/>
+        </View>
       </View>
     </ScrollView>
   );
@@ -78,6 +86,9 @@ const styles = StyleSheet.create({
   text: {margin: 6, alignSelf: 'flex-start', fontSize: 16},
   text1: {margin: 6, alignSelf: 'center', color: '#ffffff', fontWeight: 'bold'},
   text2: {margin: 6, alignSelf: 'center', fontSize: 16},
+  lastview:{
+      marginLeft:10
+  },
 });
 
 export default Cancel;

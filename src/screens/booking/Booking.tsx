@@ -35,10 +35,6 @@ const Destination = () => {
   const properties = useAppSelector(state => state?.dashboard?.properties);
 
   let cities = useAppSelector(state => state?.dashboard?.cities);
-  useEffect(() => {
-    dispatch(getAllProperties());
-    dispatch(getAllCities());
-  }, [dispatch, isFocused]);
 
   const [inputText, setInputText] = useState('');
   const [showDropDown, setShowDropDown] = useState(false);
@@ -53,8 +49,14 @@ const Destination = () => {
     setSelectedCity(city?.id);
     // handleFilterDropdown(text);
   };
+
+  useEffect(() => {
+    dispatch(getAllProperties());
+    dispatch(getAllCities());
+  }, [dispatch, isFocused]);
+
   console.log('properties======>', properties);
-  const amenitiesObj = {
+  const amenitiesObj: any = {
     1: 'Dinner',
     2: 'A/C Rooms',
     3: 'BAR Facilities',
@@ -195,20 +197,18 @@ const Destination = () => {
                     )}
                   </View>
 
-                  {item?.ammenities?.map((number: number) => {
-                    return (
-                      <View
-                        style={{
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                        }}>
-                        <Text style={{color: 'black', flexDirection: 'row'}}>
-                          - {amenitiesObj[Number(number)]}
-                        </Text>
-                      </View>
-                    );
-                  })}
+                  <View style={styles.dateNew}>
+                    {item &&
+                      item?.ammenities?.map((number: number) => {
+                        return (
+                          <View style={{}}>
+                            <Text style={{color: 'black'}}>
+                              - {amenitiesObj[Number(number)]}
+                            </Text>
+                          </View>
+                        );
+                      })}
+                  </View>
                 </View>
                 <View style={styles.button}>
                   <TouchableOpacity
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   HotelBox: {
-    height: hp('50%'),
+    height: hp('60%'),
     width: wp('96%'),
     borderWidth: 1,
     borderColor: 'darkred',
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 80,
   },
   viewButton: {
     width: wp('20%'),
@@ -625,5 +625,13 @@ const styles = StyleSheet.create({
     width: wp('100%'),
     height: hp('90%'),
     paddingLeft: 10,
+  },
+  dateNew: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    // marginHorizontal: 10,
+    flexWrap: 'wrap',
   },
 });

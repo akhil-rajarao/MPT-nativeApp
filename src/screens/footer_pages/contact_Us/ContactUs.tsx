@@ -2,6 +2,7 @@ import {ScrollView, Text, View} from 'react-native';
 
 import {Image} from 'react-native';
 import React from 'react';
+import Footer from '../../../component/Footer';
 
 const ContactUs = () => {
   return (
@@ -64,6 +65,12 @@ const ContactUs = () => {
             STAY AT THE TIME OF BOOKING CHECK- IN TIME: 1400 HRS. (2 PM)
             CHECK-OUT TIME: 1200 HRS. (12 PM) {'\n'}
           </Text>
+        </View>
+        <View>
+          <ContactUs/>
+        </View>
+        <View style={{marginLeft:10}}>
+          <Footer/>
         </View>
       </View>
     </ScrollView>
