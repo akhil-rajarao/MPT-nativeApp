@@ -1,15 +1,21 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import {useIsFocused, useRoute} from '@react-navigation/native';
 
 import ContactUs from '../../component/common/ContactUs';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Footer from '../../component/Footer';
-import React from 'react';
-import {useRoute} from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-// import Icon from 'react-native-vector-icons/Entypo';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AccommodationView = () => {
   const route = useRoute();
@@ -17,6 +23,39 @@ const AccommodationView = () => {
   const {content}: any = route.params;
 
   console.log(content, 'content=========>>>>');
+
+  const amenitiesObj = {
+    1: 'Dinner',
+    2: 'A/C Rooms',
+    3: 'BAR Facilities',
+    4: 'WiFi Facilities',
+    5: 'Conference Room',
+    6: 'Transport',
+    7: 'Gym Facilities',
+    8: 'Parking facilities',
+    9: 'Pool facilities',
+    10: 'Health',
+  };
+
+  const amenitiesIconsObj = {
+    1: (
+      <MaterialCommunityIcons
+        name="silverware-fork-knife"
+        size={20}
+        color="gray"
+      />
+    ),
+    2: <MaterialCommunityIcons name="air-conditioner" size={20} color="gray" />,
+    3: <Entypo name="drink" size={20} color="gray" />,
+    4: <FontAwesome name="wifi" size={20} color="gray" />,
+    5: <MaterialIcons name="meeting-room" size={20} color="gray" />,
+    6: <MaterialIcons name="emoji-transportation" size={20} color="gray" />,
+    7: <MaterialCommunityIcons name="dumbbell" size={20} color="gray" />,
+    8: <FontAwesome5 name="parking" size={24} color="red" />,
+    9: <MaterialIcons name="pool" size={24} color="red" />,
+    10: <FontAwesome5 name="first-aid" size={24} color="red" />,
+  };
+
   return (
     <ScrollView>
       <View style={styles.mainview}>
@@ -85,47 +124,25 @@ const AccommodationView = () => {
           <View>
             <Text style={styles.title}>Amenities</Text>
           </View>
-          <View style={styles.amenetiesOfIconMainV}>
-            <View>
-              {/* <Text>
-             <Icon name="tripadvisor" size={24} color=" gray" />
-             </Text> */}
-              <Text style={styles.icon}>O</Text>
-              <Text style={styles.amenticsText}>Dinner</Text>
+          <ScrollView horizontal>
+            <View style={styles.amenetiesOfIconMainV}>
+              {content?.ammenities?.map((number: number) => {
+                return (
+                  <View
+                    style={{
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginRight: 15,
+                    }}>
+                    {amenitiesIconsObj[Number(number)]}
+                    <Text style={{color: 'black'}}>
+                      {amenitiesObj[Number(number)]}
+                    </Text>
+                  </View>
+                );
+              })}
             </View>
-            <View>
-              {/* <Text>
-             <Icon name="tripadvisor" size={24} color=" gray" />
-             </Text> */}
-              <Text style={styles.icon}>O</Text>
-              <Text style={styles.amenticsText}>A/C </Text>
-              <Text style={styles.amenticsText}>Rooms</Text>
-            </View>
-            <View>
-              {/* <Text>
-             <Icon name="tripadvisor" size={24} color=" gray" />
-             </Text> */}
-              <Text style={styles.icon}>O</Text>
-              <Text style={styles.amenticsText}>BAR</Text>
-              <Text style={styles.amenticsText}>Facilities</Text>
-            </View>
-            <View>
-              {/* <Text>
-             <Icon name="tripadvisor" size={24} color=" gray" />
-             </Text> */}
-              <Text style={styles.icon}>O</Text>
-              <Text style={styles.amenticsText}>Conference</Text>
-              <Text style={styles.amenticsText}>Rooms</Text>
-            </View>
-            <View>
-              {/* <Text>
-             <Icon name="tripadvisor" size={24} color=" gray" />
-             </Text> */}
-              <Text style={styles.icon}>O</Text>
-              <Text style={styles.amenticsText}>Parking</Text>
-              <Text style={styles.amenticsText}>facilities</Text>
-            </View>
-          </View>
+          </ScrollView>
           <View>
             <Text style={styles.underline}></Text>
           </View>
@@ -137,11 +154,11 @@ const AccommodationView = () => {
           </View>
           <View style={styles.proparty}>
             <View style={styles.iconView}>
-              <Text style={styles.icon}>0</Text>
-              <Text style={styles.icon}>0</Text>
-              <Text style={styles.icon}>0</Text>
-              <Text style={styles.icon}>0</Text>
-              <Text style={styles.icon}>0</Text>
+              <Ionicons name="person" size={20} color="gray" />
+              <FontAwesome name="mobile-phone" size={22} color="gray" />
+              <MaterialCommunityIcons name="email" size={20} color="gray" />
+              <Entypo name="phone" size={20} color="gray" />
+              <Ionicons name="location" size={20} color="gray" />
             </View>
             <View style={styles.propartyContactTextVi}>
               <Text style={styles.contactText}>{content.manager_name}</Text>

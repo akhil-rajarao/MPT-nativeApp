@@ -1,4 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -8,7 +9,6 @@ import {useIsFocused, useRoute} from '@react-navigation/native';
 import ContactUs from './ContactUs';
 import ExploreImageContainer from './ExploreImageContainer';
 import Footer from '../Footer';
-import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const KnowMoreUE = () => {
@@ -16,7 +16,7 @@ const KnowMoreUE = () => {
 
   const {content}: any = route.params;
 
-  // const isFocused = useIsFocused();
+  const isFocused = useIsFocused();
 
   console.log(content, 'content=========>>>>');
   return (

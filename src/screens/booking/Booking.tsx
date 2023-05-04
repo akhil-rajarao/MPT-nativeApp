@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {getAllCities, getAllProperties} from '../appSlice';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -17,11 +18,11 @@ import useAppDispatch, {useAppSelector} from '../../app/hooks';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import ContactUs from '../../component/common/ContactUs';
+import Entypo from 'react-native-vector-icons/Entypo';
 import {FlatList} from 'react-native-gesture-handler';
 //   import Header from '../../components/Header';
 import Footer from '../../component/Footer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {getAllProperties} from '../appSlice';
 
 // import style from '../mice&facilities/style';
 
@@ -32,12 +33,39 @@ const Destination = () => {
 
   const isFocused = useIsFocused();
   const properties = useAppSelector(state => state?.dashboard?.properties);
+
+  let cities = useAppSelector(state => state?.dashboard?.cities);
   useEffect(() => {
     dispatch(getAllProperties());
+    dispatch(getAllCities());
   }, [dispatch, isFocused]);
 
-  // console.log('properties======>', properties);
+  const [inputText, setInputText] = useState('');
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [selectedCity, setSelectedCity] = useState<number | undefined>();
 
+  const handleInputChange = (text: string) => {
+    setInputText(text);
+    setShowDropDown(true);
+    const city = cities.find(
+      c => c.city_name.toLowerCase().trim() === text.toLowerCase().trim(),
+    );
+    setSelectedCity(city?.id);
+    // handleFilterDropdown(text);
+  };
+  console.log('properties======>', properties);
+  const amenitiesObj = {
+    1: 'Dinner',
+    2: 'A/C Rooms',
+    3: 'BAR Facilities',
+    4: 'WiFi Facilities',
+    5: 'Conference Room',
+    6: 'Transport',
+    7: 'Gym Facilities',
+    8: 'Parking facilities',
+    9: 'Pool facilities',
+    10: 'Kerala Ayurvedic Panchkarma',
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -48,16 +76,79 @@ const Destination = () => {
               uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3544608669.png',
             }}
           />
-          <View style={styles.search}>
+        </View>
+
+        <View style={styles.search}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: wp('60%'),
+              height: hp('5%'),
+            }}>
             <TextInput
-              style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
-              placeholder="Bhopal"
+              // eslint-disable-next-line react-native/no-inline-styles
+              style={{
+                backgroundColor: 'white',
+                fontFamily: 'Poppins-LightItalic',
+                color: '#888',
+                fontSize: 16,
+                textAlign: 'center',
+              }}
+              value={inputText}
+              placeholder="City/Destination"
+              onFocus={() => {
+                setShowDropDown(false);
+              }}
+              onChangeText={handleInputChange}
             />
-            <View style={styles.searchButton}>
+            {inputText && showDropDown && (
+              <View
+                // eslint-disable-next-line react-native/no-inline-styles
+                style={{
+                  borderWidth: 2,
+                  borderColor: 'red',
+                  backgroundColor: 'skyblue',
+                }}>
+                {cities
+                  .filter(item =>
+                    item.city_name
+                      .toLowerCase()
+                      .includes(inputText.toLowerCase()),
+                  )
+                  .map(item => (
+                    // eslint-disable-next-line react/jsx-no-undef
+                    <TouchableOpacity
+                      key={item.id}
+                      style={{paddingVertical: 10}}
+                      onPress={() => {
+                        setInputText(item.city_name);
+                        setSelectedCity(item.id);
+                        setShowDropDown(false);
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: 'black',
+                          textAlign: 'center',
+                        }}>
+                        {item.city_name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+              </View>
+            )}
+          </View>
+          {/* text input  */}
+          <View style={styles.searchButton}>
+            <Pressable
+              onPress={() =>
+                navigation.navigate('Cities', {
+                  city_id: selectedCity,
+                })
+              }>
               <Text style={styles.buttonText}>Search</Text>
-            </View>
+            </Pressable>
           </View>
         </View>
       </View>
@@ -82,28 +173,42 @@ const Destination = () => {
                   <Text style={styles.mptText}>{item?.property_name}</Text>
 
                   <View style={styles.stars}>
-                    {/* <Icon name="eyes" size={15} color="lightblue" /> */}
-                    <Icon name="star" size={15} color="goldenrod" />
-                    <Icon name="star" size={15} color="goldenrod" />
-                    <Icon name="star" size={15} color="goldenrod" />
-                    <Icon name="star" size={15} color="goldenrod" />
-                    <Icon name="star" size={15} color="goldenrod" />
+                    <View style={{marginRight: 5}}>
+                      <Entypo name="tripadvisor" size={15} color="green" />
+                    </View>
+                    {Array.from({length: 5}).map((_item, index) =>
+                      item?.rating >= index + 1 ? (
+                        <Icon
+                          key={index}
+                          name="star"
+                          size={15}
+                          color="goldenrod"
+                        />
+                      ) : (
+                        <Icon
+                          key={index}
+                          name="star-o"
+                          size={15}
+                          color="black"
+                        />
+                      ),
+                    )}
                   </View>
-                  {/* <View style={{flexDirection: 'row'}}>
-                  {[...Array(5)].map((_item, index) =>
-                    rating >= index + 1 ? (
-                      <Icon name="star" size={15} color="goldenrod" />
-                    ) : (
-                      <Icon name="star" size={15} color="black" />
-                    ),
-                  )}
-                </View> */}
-                  <View>
-                    <Text style={styles.priceText}>{item?.price_range}</Text>
-                    <Text style={styles.priceText}>
-                      Dinner - A/C rooms - parking facilities
-                    </Text>
-                  </View>
+
+                  {item?.ammenities?.map((number: number) => {
+                    return (
+                      <View
+                        style={{
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexDirection: 'row',
+                        }}>
+                        <Text style={{color: 'black', flexDirection: 'row'}}>
+                          - {amenitiesObj[Number(number)]}
+                        </Text>
+                      </View>
+                    );
+                  })}
                 </View>
                 <View style={styles.button}>
                   <TouchableOpacity
@@ -156,7 +261,11 @@ const styles = StyleSheet.create({
   search: {
     flexDirection: 'row',
     position: 'absolute',
-    top: 280,
+    top: 265,
+    display: 'flex',
+    alignSelf: 'center',
+
+    // width: 100,
   },
 
   input: {

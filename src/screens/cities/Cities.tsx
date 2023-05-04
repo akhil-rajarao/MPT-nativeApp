@@ -144,12 +144,12 @@ const Cities = () => {
                     uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
                   }}
                 />
-                <View style={{}}>
-                  <Text style={styles.packagesHeading}>
+                <View style={styles.packagesTitleView}>
+                  <Text style={styles.packagesTitle}>
                     {item?.content_title}
                   </Text>
                 </View>
-                <View>
+                <View style={styles.packagesDescription}>
                   <Text style={{color: 'black'}}>
                     {item?.description?.value0}
                   </Text>
@@ -200,8 +200,9 @@ const styles = StyleSheet.create({
   },
   packages: {
     width: wp('100%'),
-    height: hp('100%'),
-    backgroundColor: 'lightgrey',
+    height: hp('80%'),
+    backgroundColor: 'lightpink',
+    opacity: 25,
     marginTop: 50,
   },
   packagesHeading: {
@@ -212,15 +213,33 @@ const styles = StyleSheet.create({
     fontFamily: 'YouthPower-X34qG',
     alignSelf: 'flex-start',
     marginLeft: 10,
+    marginTop: 10,
+  },
+  packagesTitle: {
+    fontSize: hp('4.5%'),
+    color: 'darkred',
+    // marginTop: 2,
+    paddingBottom: 8,
+    fontFamily: 'YouthPower-X34qG',
+    // alignSelf: '',
+  },
+
+  packagesTitleView: {
+    alignSelf: 'flex-start',
+    marginLeft: 8,
+    marginTop: 8,
   },
   imageTop: {
     alignItems: 'center',
     margin: 10,
+    marginBottom: 20,
+    backgroundColor: 'white',
   },
   packagesImage: {
     width: wp('95%'),
     height: hp('40'),
-    marginHorizontal: 8,
+    // marginHorizontal: 8,
+    alignSelf: 'center',
   },
   Residency: {
     fontSize: 13,
@@ -328,5 +347,11 @@ const styles = StyleSheet.create({
   li: {
     color: 'black',
     fontSize: 16,
+  },
+  packagesDescription: {
+    width: wp('95%'),
+    height: hp('40'),
+    marginLeft: 8,
+    // marginTop: 1,
   },
 });

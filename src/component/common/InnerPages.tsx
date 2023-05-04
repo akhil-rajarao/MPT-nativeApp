@@ -34,11 +34,7 @@ const InnerPages = () => {
 
   // if(id===93187332)
   let innerPageSections =
-    id === 93187332
-      ? innerPageData?.sections[7]?.contents
-      : id === 24947658
-      ? innerPageData?.sections[3]?.contents
-      : id === 67870362
+    id === 67870362
       ? innerPageData?.sections[5]?.contents
       : id === 17779663
       ? innerPageData?.sections[0]?.contents
@@ -48,12 +44,6 @@ const InnerPages = () => {
       ? innerPageData?.sections[6]?.contents
       : id === 45523481
       ? innerPageData?.sections[8]?.contents
-      : id === 43105675
-      ? innerPageData?.sections[3]?.contents
-      : id === 11771867
-      ? innerPageData?.sections[3]?.contents
-      : id === 29788625
-      ? innerPageData?.sections[3]?.contents
       : undefined;
 
   console.log('==========>innerPageDataSEctions', innerPageSections);
@@ -82,7 +72,6 @@ const InnerPages = () => {
         </Text>
       </View>
       <View style={styles.imageTop}>
-        <Text style={styles.headingText}>Popular Places</Text>
         {innerPageSections && (
           <FlatList
             showsVerticalScrollIndicator={false}

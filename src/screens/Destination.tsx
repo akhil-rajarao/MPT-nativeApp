@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -15,20 +16,11 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
-
-// import {getDestinationData} from './appSlice';
-
-// import  getPageDataGo from './appSlice';
-
-// const images1 = [
-//   require('../assets/images/sound.jpeg'),
-//   require('../assets/images/history.jpeg'),
-//   require('../assets/images/pachmarchi.jpeg'),
-// ];
+import SearchableDropdown from 'react-native-searchable-dropdown';
 
 const Destination = () => {
   const dispatch = useAppDispatch();
@@ -47,29 +39,37 @@ const Destination = () => {
     item.section_title.includes('Explore'),
   );
 
-  let guestStoriesData = sectionsData?.filter((item, index) =>
-		item.section_title.includes("Guest"),
-	);
-	let guestStories = guestStoriesData && guestStoriesData[0]?.contents;
-
   let popularPlacesData1 = popularPlacesData[0]?.contents;
 
   let cities = useAppSelector(state => state?.dashboard?.cities);
 
-  console.log('=====guestStories===>', guestStories);
+  console.log('=====cities===>', cities[0].city_name);
   // console.log('=====exploreData===>', exploreData[0]?.contents[1]?.city_id);
   //  console.log("fwoakfpoa",popularPlacesData1)
 
   useEffect(() => {
     dispatch(getPageDataGo(59908572));
     dispatch(getAllCities());
-  }, [dispatch,isFocused]);
+  }, [dispatch, isFocused]);
 
   //  59908572
-  const [inputText, setInputText] = useState<any>('');
-  const [showDropdown, setShowDropDown] = useState(false);
-  const [selectedCity, setSelectedCity] = useState('');
+  // const [inputText, setInputText] = useState<any>('');
+  // const [showDropdown, setShowDropDown] = useState(false);
+  // const [selectedCity, setSelectedCity] = useState('');
 
+  const [inputText, setInputText] = useState('');
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [selectedCity, setSelectedCity] = useState<number | undefined>();
+
+  const handleInputChange = (text: string) => {
+    setInputText(text);
+    setShowDropDown(true);
+    const city = cities.find(
+      c => c.city_name.toLowerCase().trim() === text.toLowerCase().trim(),
+    );
+    setSelectedCity(city?.id);
+    // handleFilterDropdown(text);
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -80,26 +80,84 @@ const Destination = () => {
               uri: 'https://mpstdc.com/assets/mm.a1ec398c.jpg',
             }}
           />
-          <View style={styles.search}>
+        </View>
+        <View style={styles.search}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              width: wp('60%'),
+              height: hp('5%'),
+            }}>
             <TextInput
-              style={styles.input}
+              // eslint-disable-next-line react-native/no-inline-styles
+              style={{
+                backgroundColor: 'white',
+                fontFamily: 'Poppins-LightItalic',
+                color: '#888',
+                fontSize: 16,
+                textAlign: 'center',
+              }}
               value={inputText}
               placeholder="City/Destination"
-              onChangeText={setInputText}
+              onFocus={() => {
+                setShowDropDown(false);
+              }}
+              onChangeText={handleInputChange}
             />
-            <View style={styles.searchButton}>
-              <Pressable
-                onPress={() =>
-                  navigation.navigate('cities', {
-                    city_id: selectedCity,
-                  })
-                }>
-                <Text style={styles.buttonText}>Search</Text>
-              </Pressable>
-            </View>
+            {inputText && showDropDown && (
+              <View
+                // eslint-disable-next-line react-native/no-inline-styles
+                style={{
+                  borderWidth: 2,
+                  borderColor: 'red',
+                  backgroundColor: 'skyblue',
+                  zIndex: 1,
+                  elevation: 2,
+                }}>
+                {cities
+                  .filter(item =>
+                    item.city_name
+                      .toLowerCase()
+                      .includes(inputText.toLowerCase()),
+                  )
+                  .map(item => (
+                    // eslint-disable-next-line react/jsx-no-undef
+                    <TouchableOpacity
+                      key={item.id}
+                      style={{paddingVertical: 10}}
+                      onPress={() => {
+                        setInputText(item.city_name);
+                        setSelectedCity(item.id);
+                        setShowDropDown(false);
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          color: 'black',
+                          textAlign: 'center',
+                        }}>
+                        {item.city_name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+              </View>
+            )}
+          </View>
+          {/* text input  */}
+          <View style={styles.searchButton}>
+            <Pressable
+              onPress={() =>
+                navigation.navigate('Cities', {
+                  city_id: selectedCity,
+                })
+              }>
+              <Text style={styles.buttonText}>Search</Text>
+            </Pressable>
           </View>
         </View>
       </View>
+
       {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
 
       {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -394,6 +452,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     position: 'absolute',
     top: 150,
+    display: 'flex',
+    alignSelf: 'center',
+
+    // width: 100,
   },
 
   input: {
@@ -724,6 +786,7 @@ const styles = StyleSheet.create({
   imageTop: {
     alignItems: 'center',
     marginTop: 70,
+    // position: 'relative',
   },
   packagesImage: {
     width: wp('85%'),

@@ -5,19 +5,21 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import useAppDispatch, {useAppSelector} from '../../app/hooks';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import {Pressable} from 'react-native';
 import {getPageDataGo} from '../../screens/appSlice';
-import {useNavigation} from '@react-navigation/native';
 
 const PopularPlaces = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const sectionsData = useAppSelector(state => state.dashboard.sectionsData);
   const popularPlaces = sectionsData[4]?.contents;
+
+  const isFocused = useIsFocused();
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
-  }, [dispatch]);
+  }, [dispatch, isFocused]);
 
   return (
     <View style={styles.popular}>
