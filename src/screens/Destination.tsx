@@ -20,7 +20,6 @@ import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
-import SearchableDropdown from 'react-native-searchable-dropdown';
 
 const Destination = () => {
   const dispatch = useAppDispatch();
@@ -31,11 +30,11 @@ const Destination = () => {
   const sectionsData = useAppSelector(state => state.dashboard?.sectionsData);
   console.log(destinationData, 'destinationData>>>>>>>>>>>>>>>>>>>>');
 
-  let popularPlacesData = sectionsData?.filter((item, index) =>
+  let popularPlacesData = sectionsData?.filter(item =>
     item.section_title.includes('Popular'),
   );
 
-  let exploreData = sectionsData?.filter((item, index) =>
+  let exploreData = sectionsData?.filter(item =>
     item.section_title.includes('Explore'),
   );
 
@@ -83,6 +82,7 @@ const Destination = () => {
         </View>
         <View style={styles.search}>
           <View
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -132,6 +132,7 @@ const Destination = () => {
                         setShowDropDown(false);
                       }}>
                       <Text
+                        // eslint-disable-next-line react-native/no-inline-styles
                         style={{
                           fontSize: 14,
                           color: 'black',
@@ -160,18 +161,6 @@ const Destination = () => {
 
       {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/}
 
-      {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={styles.container1}>
-            <View style={{flexDirection: 'row', height: hp('35%')}}>
-              {popularPlacesData1.map((content_images:any, index:any) => (
-                <Image key={index} style={styles.image1} source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${content_images}`,
-                }} />
-              ))}
-            </View>
-          </View>
-        </ScrollView> */}
-
       <View style={styles.imageTop}>
         <Text style={styles.headingText}>Popular Places</Text>
         {popularPlacesData1 && (
@@ -188,12 +177,14 @@ const Destination = () => {
                       city_id: `${item?.city_id}`,
                     })
                   }>
-                  <Image
-                    style={styles.packagesImage}
-                    source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                    }}
-                  />
+                  {item && (
+                    <Image
+                      style={styles.packagesImage}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                      }}
+                    />
+                  )}
                 </Pressable>
                 <View style={styles.opacityPlace}></View>
                 <Text style={styles.PlaceText}> {item?.content_title}</Text>

@@ -1,12 +1,14 @@
 import {Row, Rows, Table} from 'react-native-table-component';
 import {ScrollView, Text, View} from 'react-native';
 
+import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 // import {Button} from 'react-native-elements';
 import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import ContactUs from '../../../component/common/ContactUs';
-import Footer from '../../../component/Footer';
+// import ContactUs from '../../../component/common/ContactUs';
+// import Footer from '../../../component/Footer';
 
 const Cancel = () => {
   const tableValues = {
@@ -39,15 +41,15 @@ const Cancel = () => {
             style={{
               color: '#bc1b1b',
               alignSelf: 'center',
-              fontWeight: 'bold',
-              fontSize: 25,
-              marginTop: 10,
+              fontFamily: 'YouthPower-X34qG',
+              fontSize: 30,
+              margin: 25,
             }}>
             Cancellation Policy
           </Text>
         </View>
         <View style={styles.container}>
-          <Table borderStyle={{borderWidth: 2, borderColor: '#7F7F7F'}}>
+          <Table>
             <Row
               data={tableValues.tableHead}
               style={styles.head}
@@ -63,10 +65,16 @@ const Cancel = () => {
             marginTop: 8,
             padding: 30,
           }}>
-          <Text style={{color: '#000000', fontSize: 17, fontWeight: 'bold'}}>
-            * 18% GST on cancellation charge amount will apply. Note: Amendment
-            in dates will be treated as cancellation. Affected by wef :
-            1/10/2021{'\n'}
+          <Text
+            style={{
+              color: '#000000',
+              fontSize: 17,
+              fontWeight: 'bold',
+              letterSpacing: 2,
+            }}>
+            * 18% GST on cancellation charge amount will apply.{'\n'} {'\n'}{' '}
+            Note: Amendment in dates will be treated as cancellation.{'\n'}{' '}
+            {'\n'} Affected by wef : 1/10/2021{'\n'}
           </Text>
         </View>
         <View>
@@ -75,6 +83,12 @@ const Cancel = () => {
         <View style={styles.lastview}>
           <Footer/>
         </View>
+      </View>
+      <View>
+        <ContactUs />
+      </View>
+      <View style={{marginLeft: 10}}>
+        <Footer />
       </View>
     </ScrollView>
   );

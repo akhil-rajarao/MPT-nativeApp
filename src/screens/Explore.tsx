@@ -448,9 +448,6 @@
 //   },
 // });
 
-
-
-
 import {
   FlatList,
   Image,
@@ -474,6 +471,7 @@ import ContactUs from '../component/common/ContactUs';
 import ExploreImageContainer from '../component/common/ExploreImageContainer';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+
 // import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 const Explore = () => {
@@ -486,8 +484,7 @@ const Explore = () => {
     state => state.dashboard.sectionsData,
   );
   let experienceData = ExploresectionsData?.filter(
-    (item, index) =>
-      item.experience === true && item.section_title != 'Explore',
+    item => item.experience === true && item.section_title != 'Explore',
   );
 
   const attractionsData = ExploresectionsData[0]?.contents;
@@ -612,7 +609,6 @@ const Explore = () => {
             <View style={styles.opacity2} />
 
             <Text style={styles.bannerText2}>Know more</Text>
-           
           </View>
         </View>
       </View>
@@ -987,4 +983,3 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-

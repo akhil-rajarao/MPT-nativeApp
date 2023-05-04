@@ -1,9 +1,10 @@
 import {ScrollView, Text, View} from 'react-native';
 
-import {Image} from 'react-native';
-import React from 'react';
 import ContactUs from '../../../component/common/ContactUs';
 import Footer from '../../../component/Footer';
+import {Image} from 'react-native';
+import React from 'react';
+
 
 // import {StyleSheet} from 'react-native';
 // import {Button} from 'react-native-elements';
@@ -30,9 +31,9 @@ const BookingRules = () => {
             style={{
               color: '#bc1b1b',
               alignSelf: 'center',
-              fontWeight: 'bold',
-              fontSize: 25,
-              marginTop: 10,
+              fontFamily: 'YouthPower-X34qG',
+              fontSize: 30,
+              margin: 25,
             }}>
             BOOKING RULES
           </Text>
@@ -44,64 +45,64 @@ const BookingRules = () => {
             marginTop: 8,
             padding: 30,
           }}>
-          <Text style={{color: '#757575', fontSize: 18}}>
+          <Text style={{color: '#757575', fontSize: 18, letterSpacing: 2}}>
             Booking is non-transferable{'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Management reserve the right to cancel advance booking in
             exceptional and unavoidable circumstances{'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Reservation will stand cancelled if the tourist fails to avail the
             accommodation within 12 hours of his scheduled time of arrival in
             the unit. Reservation will, however, be continued if a tourist is
             able to inform the manager of the unit about his late arrival. Late
             arrival will not absolve the tourist from paying full tariff.{'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             In case a tourist shortens the duration of his proposed stay, the
             advance paid for the unoccupied period will not be adjusted. No
             refund will be admissible. {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Tariff is subject to change without prior notice.  {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Taxes as applicable will be extra payable at the unit (Only for
             book-in 30 June, 2017).   {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Tariff is subject to change without prior notice..   {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             All Disputes are subject to the jurisdiction of Bhopal courts only. {' '}
             {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Please carry a valid photo identity card along with Booking receipt
             at the time of check-in in the Hotel  {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             In case of power cut only fan and light will work through generator.{' '}
             {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Private catering is not allowed. {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             Kanha, Bandhavgarh, Panna, & Pench National Park remain closed from
             1st July to 30th September due to rains. However Kipling's Court at
             Pench, White Tiger Forest lodge at Bandhavgarv, Kanha Safari Lodge,
             Mukki, Gawa Kanha Resort, Malanjkhand, Mohgaon and Baghira Jungle
             Resort, Mocha remains open. {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             CHECK-IN TIME: 14:00 HRS. (2 PM)  {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             CHECK-OUT TIME: 12:00 HRS. (12 PM) {'\n'}
           </Text>
-          <Text style={{color: '#7f7f7f', fontSize: 18}}>
+          <Text style={{color: '#7f7f7f', fontSize: 18, letterSpacing: 2}}>
             100% ADVANCE REQUIRED FOR THE ENTIRE DURATION OF STAY AT THE TIME OF
             BOOKING {'\n'}
           </Text>
@@ -112,6 +113,12 @@ const BookingRules = () => {
         <View style={{marginLeft:10}}>
           <Footer/>
         </View>
+      </View>
+      <View>
+        <ContactUs />
+      </View>
+      <View style={{marginLeft: 10}}>
+        <Footer />
       </View>
     </ScrollView>
   );

@@ -1,10 +1,12 @@
 import {ScrollView, Text, View} from 'react-native';
 
+import ContactUs from '../../../component/common/ContactUs';
+import Footer from '../../../component/Footer';
 import {Image} from 'react-native';
 import React from 'react';
-import Footer from '../../../component/Footer';
 
-const ContactUs = () => {
+
+const ContactUS = () => {
   return (
     <ScrollView>
       <View>
@@ -25,9 +27,9 @@ const ContactUs = () => {
             style={{
               color: '#bc1b1b',
               alignSelf: 'center',
-              fontWeight: 'bold',
-              fontSize: 25,
-              marginTop: 10,
+              fontFamily: 'YouthPower-X34qG',
+              fontSize: 30,
+              margin: 25,
             }}>
             CONTACT US
           </Text>
@@ -39,7 +41,7 @@ const ContactUs = () => {
             marginTop: 8,
             padding: 30,
           }}>
-          <Text style={{color: '#000000', fontSize: 18}}>
+          <Text style={{color: '#000000', fontSize: 18, letterSpacing: 2}}>
             Booking is non-transferable Management reserve the right to cancel
             advance booking in exceptional and unavoidable circumstances
             Reservation will stand cancelled if the tourist fails to avail the
@@ -73,8 +75,14 @@ const ContactUs = () => {
           <Footer/>
         </View>
       </View>
+      <View>
+        <ContactUs />
+      </View>
+      <View style={{marginLeft: 10}}>
+        <Footer />
+      </View>
     </ScrollView>
   );
 };
 
-export default ContactUs;
+export default ContactUS;
