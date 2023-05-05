@@ -33,8 +33,9 @@ const Footer = () => {
           <TouchableOpacity onPress={() => navigation.navigate('ContactUS')}>
             <Text style={styles.text}>Contact Us</Text>
           </TouchableOpacity>
-
-          <Text style={styles.text}>FAQs</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('FAQ')}>
+          <Text style={styles.text}>FAQS</Text>
+          </TouchableOpacity>
           <Pressable
             onPress={() => Linking.openURL('https://mpstdc.mponline.gov.in/')}>
             <Text style={styles.text}>Booking Through MpOnline</Text>
@@ -43,7 +44,9 @@ const Footer = () => {
             onPress={() => Linking.openURL('https://www.mptourism.com/')}>
             <Text style={styles.text}>Madhya Pradesh Tourism Board</Text>
           </Pressable>
+          <Pressable onPress={() => navigation.navigate('GeneralSales')}>
           <Text style={styles.text}>Genaral Sales Agents</Text>
+          </Pressable>
           <Pressable onPress={() => navigation.navigate('Institutions')}>
             <Text style={styles.text}>Institutions</Text>
           </Pressable>

@@ -527,9 +527,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -541,11 +542,14 @@ import ContactUs from '../component/common/ContactUs';
 import ExploreImageContainer from '../component/common/ExploreImageContainer';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const Trial = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const isFocused = useIsFocused();
+
+  const [showDropDown, setShowDropDown] = useState(false);
 
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
@@ -610,9 +614,49 @@ const Trial = () => {
                 </View>
               )} />
           )}
-        </View></><View style={styles.bannerHeading}>
+        </View></>
+        <View>
+        <View style={styles.bannerHeading}>
           <Text style={styles.heartText}>Explore</Text>
-        </View><View style={styles.banners}>
+          <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            // top: 20,
+          }}>
+         
+          <Pressable
+            onPress={() => {
+              setShowDropDown(!showDropDown);
+            }}>
+            <Icon name="caretdown" size={20} color="red" />
+          </Pressable>
+        </View>
+        {showDropDown && (
+          <View style={styles.dropbox}>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                navigation.navigate('Explore');
+              }}>
+              <Text style={styles.dropboxtext}>Explore</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                navigation.navigate('Destination');
+              }}>
+              <Text style={styles.dropboxtext}>Destination</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        </View>
+
+        
+    
+
+        </View>
+        <View style={styles.banners}>
           <View>
             <Pressable
               onPress={() => navigation.navigate('InnerPage2', {
@@ -640,7 +684,7 @@ const Trial = () => {
                   }} />
               </Pressable>
               <View style={styles.opacity2} />
-              <Text style={styles.bannerText2}>Know more</Text>
+              <Text style={styles.bannerText2}>Know more --{'>'}</Text>
             </View>
             <View>
               <Pressable
@@ -678,7 +722,7 @@ const Trial = () => {
                       onPress={() => navigation.navigate('KnowMoreUE', {
                         content: item,
                       })}>
-                      <Text style={styles.read}>Read more -- </Text>
+                      <Text style={styles.read}>Read more   --{'>'} </Text>
                     </Pressable>
                   </View>
                 )} />
@@ -745,11 +789,41 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     // done
   },
+  diveText: {
+    fontSize: 15,
+    color: 'white',
+  },
+  diveIn: {
+    display: 'flex',
+    flexDirection: 'column',
+    // alignItems: 'center',
+    justifyContent: 'space-between',
+    // alignItems: 'flex-start',
+    // alignSelf: 'center',
+    // position: 'absolute',
+  },
+  dropboxtext: {
+    fontSize: 14,
+    color: 'black',
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  dropbox: {
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 6,
+    backgroundColor: 'white',
+    top: 50,
+    width: 100,
+    height: 80,
+    zIndex:2
+  },
   banners: {
     width: wp('100%'),
     height: hp('65%'),
     // justifyContent: 'center',
     alignItems: 'center',
+    position:'relative'
 
     // done
   },
@@ -794,7 +868,7 @@ const styles = StyleSheet.create({
   exploreImage: {
     width: wp('90%'),
     height: 196,
-    // borderRadius: 10,
+     borderRadius: 10,
     marginHorizontal: 5,
     position: 'relative',
     // done

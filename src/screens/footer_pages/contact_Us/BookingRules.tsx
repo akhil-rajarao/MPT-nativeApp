@@ -5,6 +5,7 @@ import Footer from '../../../component/Footer';
 import {Image} from 'react-native';
 import React from 'react';
 
+
 // import {StyleSheet} from 'react-native';
 // import {Button} from 'react-native-elements';
 
@@ -105,6 +106,12 @@ const BookingRules = () => {
             100% ADVANCE REQUIRED FOR THE ENTIRE DURATION OF STAY AT THE TIME OF
             BOOKING {'\n'}
           </Text>
+        </View>
+        <View>
+          <ContactUs/>
+        </View>
+        <View style={{marginLeft:10}}>
+          <Footer/>
         </View>
       </View>
       <View>

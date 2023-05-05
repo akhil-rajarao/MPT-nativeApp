@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Modal, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -12,6 +12,11 @@ import React from 'react';
 // import {useNavigation} from '@react-navigation/native';
 
 const Wellness = () => {
+  const [modalVisible, setModalVisible] = React.useState(false);
+            const onpress =() =>{
+                 setModalVisible (!modalVisible)
+
+            }
   // const navigation = useNavigation<any>();
   return (
     <ScrollView>
@@ -29,12 +34,27 @@ const Wellness = () => {
       </View>
       <View style={styles.imageContainer}>
         <View style={{marginTop: 10}}>
+        <Pressable onPress={onpress}>
           <Image
             source={{
               uri: 'https://mpstdc.com/assets/pexels-john-tekeridis-3212179.c7ac00fc.png',
             }}
             style={styles.bannerImage}
           />
+            </Pressable>
+          {
+          modalVisible ?     <Modal transparent={true}  animationType='none'>
+          {/* <View  style={{backgroundColor:'gray',flex:1,marginHorizontal:10,}}>
+            <View style={{backgroundColor:'white',margin:40,padding:20,borderRadius:10,flex:1,}}>
+           </View>
+           <Pressable>
+              <Text onPress={onpress}>Hide popup</Text>
+              </Pressable>
+           
+           </View> */}
+    
+        </Modal>  :null
+         }
           <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
         </View>
 

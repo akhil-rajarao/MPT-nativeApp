@@ -5,7 +5,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Image
+  Image,
+  Pressable
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -16,10 +17,12 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import ContactUs from '../../../component/common/ContactUs';
 import Footer from '../../../component/Footer';
+import { useNavigation } from '@react-navigation/native';
 
 const Career = () => {
   const header = ['S.No', 'Title', 'Published Date', 'Last Submission Date','Details'];
   const data = [['sample', 'sample', 'sample','gopi']];
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
@@ -37,7 +40,9 @@ const Career = () => {
           <TouchableOpacity style={styles.buttoncss}>
             <Text style={styles.buttonText}>Current Openings</Text>
           </TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('CareerArchive')}>
           <Text style={styles.archiveText}>Click Archive (Click Here)</Text>
+          </Pressable>
           <TextInput style={styles.input} placeholder="Search by Title" />
           <View style={styles.ButtonContainer}>
             <TouchableOpacity style={styles.buttoncss2}>

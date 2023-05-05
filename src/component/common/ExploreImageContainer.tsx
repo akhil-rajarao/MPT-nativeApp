@@ -30,43 +30,10 @@ const ExploreImageContainer = () => {
 
   useEffect(() => {
     dispatch(getPageDataGo(59789662));
-  }, [dispatch, isFocused]);
-  // return (
-  //   <ScrollView>
-  //     <View style={styles.interests}>
-  //       <Text style={styles.headingText}>Explore Other Interests</Text>
-  //       <View style={styles.exploreOther}>
-  //         <FlatList
-  //           data={exploreotherinterestsData}
-  //           horizontal={false}
-  //           renderItem={({item}) => (
-  //             <View style={styles.exploreBox}>
-  //               <Pressable
-  //                 onPress={() =>
-  //                   navigation.navigate('ExploreInterest', {
-  //                     content: item,
-  //                   })
-  //                 }>
-  //                 <Image
-  //                   style={styles.exploreOtherImage}
-                    // source={{
-                    //   uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                    // }}
-  //                 />
-  //                 <View style={styles.otherOpacity} />
-
-  //                 <Text style={styles.otherText}>{item?.content_title}</Text>
-  //               </Pressable>
-  //             </View>
-  //           )}
-  //         />
-  //       </View>
-  //     </View>
-  //   </ScrollView>
-  // );
-
+  }, [dispatch, isFocused,getPageDataGo]);
   return (
     <ScrollView>
+      {exploreotherinterestsData &&
     <View style={styles.mainview}>
     
     <View style={styles.one}>
@@ -231,6 +198,7 @@ const ExploreImageContainer = () => {
     </View>
     </View>
     </View>
+}
     </ScrollView>
     );
    };

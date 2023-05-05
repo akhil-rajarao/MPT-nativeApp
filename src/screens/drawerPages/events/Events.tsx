@@ -4,11 +4,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Image
+  Image,
+  Pressable
 } from 'react-native';
-
-// import {Button} from 'react-native-elements';
-// import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {
@@ -18,15 +16,12 @@ import {
 import {Row, Rows, Table} from 'react-native-table-component';
 import ContactUs from '../../../component/common/ContactUs';
 import Footer from '../../../component/Footer';
-
-
-// import style from '../mice&facilities/style';
-// import {DataTable} from 'react-native-paper';
-// import {Table, Row, Rows} from 'react-native-table-component';
+import { useNavigation } from '@react-navigation/native';
 
 const Events = () => {
   const header = ['S No', 'Event', 'Date', 'Place Details'];
   const data = [['sample', 'sample', 'sample', 'sample', 'sample']];
+  const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
@@ -44,7 +39,9 @@ const Events = () => {
           <TouchableOpacity style={styles.buttoncss}>
             <Text style={styles.buttonText}>Current Events</Text>
           </TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('EventsArchive')}>
           <Text style={styles.archiveText}>Event Archive (Click Here)</Text>
+          </Pressable>
           <TextInput style={styles.input} placeholder="Search by Title" />
           <View style={styles.ButtonContainer}>
             <TouchableOpacity style={styles.buttoncss2}>
@@ -65,7 +62,7 @@ const Events = () => {
           </Table> */}
            <View  style={styles.container}>
       <Table>
-        <Row data={header} style={styles.header} textStyle={styles.text}/>
+        {/* <Row data={header} style={styles.header} textStyle={styles.text}/> */}
         {/* <Rows  data={data} style={styles.datarow}  textStyle={styles.text2} /> */}
       </Table>
     </View>
