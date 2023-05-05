@@ -71,38 +71,6 @@ const InnerPage2 = () => {
           {innerPageData?.description?.value0}
         </Text>
       </View>
-      {/* <View style={styles.imageTop}>
-        <Text style={styles.headingText}>Popular Places</Text>
-        {innerPageSections && (
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            horizontal={true}
-            data={innerPageSections}
-            renderItem={({item}) => (
-              <View style={styles.imagePackage}>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
-                  }}
-                />
-
-                <View style={styles.opacityPlace}></View>
-                  <Text style={styles.PlaceText}> {item?.content_title}</Text>
-                <View>
-                  <Text style={{marginTop: 10, fontSize: 18, color: 'darkred'}}>
-                    sanchi
-                  </Text>
-                  <Text style={{color: 'black', marginTop: 30}}>
-                    {item?.description?.value0}
-                  </Text>
-                </View>
-              </View>
-            )}
-          />
-        )}
-      </View> */}
-
       <View style={styles.attractionView}>
         {/* <Text style={styles.headingText}>Popu</Text> */}
         <Text style={styles.headingText}>

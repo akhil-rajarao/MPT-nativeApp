@@ -22,7 +22,6 @@ import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
 import {getPageDataGo} from './appSlice';
 
-// import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
@@ -30,9 +29,6 @@ const HomeScreen = () => {
   const dispatch = useAppDispatch();
 
   const isFocused = useIsFocused();
-  // const homepageBannerData = useAppSelector(
-  //   state => state.dashboard.bannerData,
-  // );
 
   const sectionsData = useAppSelector(state => state?.dashboard?.sectionsData);
   const sectionsArray = sectionsData[1]?.contents;
@@ -43,23 +39,23 @@ const HomeScreen = () => {
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, [dispatch, isFocused]);
-
+  
+  console.log("insideee triallll hurrayyy===>")
   const Images = [
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
   ];
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {/* <Carousel style={styles.image} imagesData={imagesData} /> */}
+    <FlatList
+    data={[{ key: 'outer' }]} // data for outer FlatList, can be an empty array if you don't need it
+    renderItem={({ item }) => (
+      <><View style={styles.container}>
         <Carousel
           data={Images}
           renderItem={item => (
-            <Image key={item} source={{uri: item}} style={styles.image} />
-          )}
-        />
-
+            <Image key={item} source={{ uri: item }} style={styles.image} />
+          )} />
         <View style={styles.text}>
           <Text style={styles.heading}>Majestic</Text>
           <Text style={styles.heading1}>MADHYA PRADESH</Text>
@@ -78,191 +74,147 @@ const HomeScreen = () => {
             </Text>
           </View>
         </View>
-      </View>
-
-      <View style={styles.eventPackages}>
-        <Text style={styles.packagesHeading}>Upcoming Events in MP</Text>
-        {upcomingEvents && (
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={upcomingEvents}
-            renderItem={({item}) => (
-              <View style={styles.imageTop}>
-                <Image
-                  style={styles.eventImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
-                  }}
-                />
-                <View style={styles.eventOpacity} />
-                <Text style={styles.eventText}>{item?.content_title}</Text>
-                <Pressable
-                  onPress={() =>
-                    navigation.navigate('KnowMoreUE', {
-                      content: item,
-                    })
-                  }>
-                  <View>
-                    <Text style={styles.knowMore}>Know More</Text>
-                  </View>
-                </Pressable>
-              </View>
-            )}
-          />
-        )}
-      </View>
-
-      <View style={styles.bannerHeading}>
-        <Text style={styles.disText}>Discover</Text>
-        <Text style={styles.heartText}>Heart of India</Text>
-      </View>
-
-      <View style={styles.banners}>
-        {sectionsArray && (
-          <FlatList
-            data={sectionsArray}
-            renderItem={({item}) => (
-              <View>
-                <Pressable
-                  onPress={() => {
-                    if (item.id === 93187332 || item.id === 24947658) {
-                      navigation.navigate('InnerPage2', {
-                        id: item?.id,
-                      });
-                    } else {
-                      navigation.navigate('InnerPages', {
-                        id: item?.id,
-                      });
-                    }
-                  }}>
-                  <Image
-                    style={styles.wildlife}
-                    source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                    }}
-                  />
-                </Pressable>
-
-                <View style={styles.opacity} />
-                <Text style={styles.bannerText}>{item?.content_title}</Text>
-              </View>
-            )}
-          />
-        )}
-      </View>
-
-      <View style={styles.unexploredView}>
-        <Text style={styles.unexplored}>Unexplored side of MP</Text>
-        <View>
-          {unexploredofMP && (
+      </View><View style={styles.eventPackages}>
+          <Text style={styles.packagesHeading}>Upcoming Events in MP</Text>
+          {upcomingEvents && (
             <FlatList
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              data={unexploredofMP}
-              renderItem={({item}) => (
-                <View>
+              data={upcomingEvents}
+              renderItem={({ item }) => (
+                <View style={styles.imageTop}>
                   <Image
-                    style={styles.exploreImage}
+                    style={styles.eventImage}
                     source={{
-                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                    }}
-                  />
-                  <Text style={styles.relaxText}>{item.content_title}</Text>
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images}`,
+                    }} />
+                  <View style={styles.eventOpacity} />
+                  <Text style={styles.eventText}>{item?.content_title}</Text>
                   <Pressable
-                    onPress={() =>
-                      navigation.navigate('KnowMoreUE', {
-                        content: item,
-                      })
-                    }>
-                    <Text style={styles.read}>Read more -- </Text>
-                  </Pressable>
-                </View>
-              )}
-            />
-          )}
-        </View>
-      </View>
-      <View style={styles.packages}>
-        <Text style={styles.packagesHeading}>Our Top Packages</Text>
-        {topPackages && (
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={topPackages}
-            renderItem={({item}) => (
-              <View style={styles.imageTop}>
-                <Image
-                  style={styles.packagesImage}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
-                  }}
-                />
-                {/* <Carousel
-                  data={item?.content_images}
-                  renderItem={item => (
-                    <Image
-                      style={styles.packagesImage}
-                      source={{
-                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item}`,
-                      }}
-                    />
-                  )}
-                /> */}
-
-                <View style={styles.packagesContent}>
-                  <View style={styles.days}>
-                    <Text style={styles.dayText}>
-                      {item?.description?.value0}
-                    </Text>
-                  </View>
-                  <Text style={styles.headpackage}>{item?.content_title}</Text>
-                  <Text style={styles.textpackage}>
-                    {item?.description?.value2}
-                  </Text>
-                  <Text style={styles.optionPackage}>
-                    {item?.description?.value3?.toUpperCase()}
-                  </Text>
-                  <Pressable onPress={() => navigation.navigate('PackageView')}>
-                    <View style={styles.view}>
-                      <Text style={styles.viewText}>VIEW</Text>
+                    onPress={() => navigation.navigate('KnowMoreUE', {
+                      content: item,
+                    })}>
+                    <View>
+                      <Text style={styles.knowMore}>Know More</Text>
                     </View>
                   </Pressable>
                 </View>
-              </View>
-            )}
-          />
-        )}
-      </View>
-      {/* >>>>>>>>>>>>>>>>>>>>>> */}
-      <View>
-        <PopularPlaces />
-      </View>
-      {/* >>>>>>>>>>>>>>>>>>>>>>> */}
-      <View>
-        <ContactUs />
-      </View>
-      <View style={styles.footer}>
-        <Footer />
-      </View>
-    </ScrollView>
-  );
-};
-export default HomeScreen;
+              )} />
+          )}
+        </View><View style={styles.bannerHeading}>
+          <Text style={styles.disText}>Discover</Text>
+          <Text style={styles.heartText}>Heart of India</Text>
+        </View><View style={styles.banners}>
+          {sectionsArray && (
+            <FlatList
+              data={sectionsArray}
+              renderItem={({ item }) => (
+                <View>
+                  <Pressable
+                    onPress={() => {
+                      if (item.id === 93187332 || item.id === 24947658) {
+                        navigation.navigate('InnerPage2', {
+                          id: item?.id,
+                        });
+                      } else {
+                        navigation.navigate('InnerPages', {
+                          id: item?.id,
+                        });
+                      }
+                    } }>
+                    <Image
+                      style={styles.wildlife}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                      }} />
+                  </Pressable>
 
+                  <View style={styles.opacity} />
+                  <Text style={styles.bannerText}>{item?.content_title}</Text>
+                </View>
+              )} />
+          )}
+        </View><View style={styles.unexploredView}>
+          <Text style={styles.unexplored}>Unexplored side of MP</Text>
+          <View>
+            {unexploredofMP && (
+              <FlatList
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                data={unexploredofMP}
+                renderItem={({ item }) => (
+                  <View>
+                    <Image
+                      style={styles.exploreImage}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                      }} />
+                    <Text style={styles.relaxText}>{item.content_title}</Text>
+                    <Pressable
+                      onPress={() => navigation.navigate('KnowMoreUE', {
+                        content: item,
+                      })}>
+                      <Text style={styles.read}>Read more -- </Text>
+                    </Pressable>
+                  </View>
+                )} />
+            )}
+          </View>
+        </View><View style={styles.packages}>
+          <Text style={styles.packagesHeading}>Our Top Packages</Text>
+          {topPackages && (
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={topPackages}
+              renderItem={({ item }) => (
+                <View style={styles.imageTop}>
+                  <Image
+                    style={styles.packagesImage}
+                    source={{
+                      uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${item?.content_images[0]}`,
+                    }} />
+                  <View style={styles.packagesContent}>
+                    <View style={styles.days}>
+                      <Text style={styles.dayText}>
+                        {item?.description?.value0}
+                      </Text>
+                    </View>
+                    <Text style={styles.headpackage}>{item?.content_title}</Text>
+                    <Text style={styles.textpackage}>
+                      {item?.description?.value2}
+                    </Text>
+                    <Text style={styles.optionPackage}>
+                      {item?.description?.value3?.toUpperCase()}
+                    </Text>
+                    <Pressable onPress={() => navigation.navigate('PackageView')}>
+                      <View style={styles.view}>
+                        <Text style={styles.viewText}>VIEW</Text>
+                      </View>
+                    </Pressable>
+                  </View>
+                </View>
+              )} />
+          )}
+        </View><View>
+          <PopularPlaces />
+        </View><View>
+          <ContactUs />
+        </View><View style={styles.footer}>
+          <Footer />
+        </View></>
+    )}
+   />
+ );
+}
 const styles = StyleSheet.create({
-  navbar: {},
   container: {
     flex: 1,
-    // justifyContent: 'flex-end',
-    // alignItems: 'center',
   },
   image: {
     height: hp('100%'),
     width: wp('100%'),
-    // flex: 1,
     position: 'relative',
-    // zIndex: 2,
   },
   text: {
     position: 'absolute',
@@ -270,7 +222,6 @@ const styles = StyleSheet.create({
     bottom: 100,
     right: '20%',
     height: '30%',
-    // zIndex: 2,
   },
   heading: {
     color: 'white',
@@ -304,8 +255,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '600',
   },
-  // >>>>>>>>>>>>>>>>>>>>events
-
   eventImage: {
     width: wp('95%'),
     height: hp('23'),
@@ -329,9 +278,6 @@ const styles = StyleSheet.create({
     left: 10,
     right: 10,
     opacity: 0.5,
-
-    // borderBottomLeftRadius: 10,
-    // borderBottomRightRadius: 10,
   },
 
   bannerHeading: {
@@ -354,14 +300,12 @@ const styles = StyleSheet.create({
     fontFamily: 'YouthPower-X34qG',
   },
   banners: {
-    // backgroundColor: 'green',
     width: wp('100%'),
     height: hp('125%'),
     justifyContent: 'center',
     alignItems: 'center',
   },
   wildlife: {
-    // backgroundColor: 'black',
     width: wp('98%'),
     height: hp('30%'),
     borderRadius: 1,
@@ -369,32 +313,10 @@ const styles = StyleSheet.create({
   },
   bannersRow: {
     display: 'flex',
-    // flexDirection: 'row',
     width: wp('98%'),
-    // height: hp('40%'),
-    // backgroundColor: 'darkblue',
     justifyContent: 'space-between',
     paddingVertical: 10,
   },
-  // adventure: {
-  //   // backgroundColor: 'skyblue',
-  //   width: wp('47%'),
-  //   height: hp('35%'),
-  //   borderRadius: 10,
-  // },
-  // food: {
-  //   // backgroundColor: 'red',
-  //   width: wp('47%'),
-  //   height: hp('35%'),
-  //   borderRadius: 10,
-  // },
-  // heritage: {
-  //   backgroundColor: 'black',
-  //   width: wp('98%'),
-  //   height: hp('30%'),
-  //   borderRadius: 10,
-  //   // paddingTop: 10,
-  // },
   opacity: {
     backgroundColor: 'white',
     position: 'absolute',
@@ -403,45 +325,18 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     opacity: 0.5,
-
-    // borderBottomLeftRadius: 10,
-    // borderBottomRightRadius: 10,
   },
-  // opacity2: {
-  //   backgroundColor: 'white',
-  //   position: 'absolute',
-  //   marginTop: 220,
-  //   top: 0,
-  //   bottom: 0,
-  //   left: 0,
-  //   right: 0,
-  //   opacity: 0.5,
-  //   borderBottomLeftRadius: 10,
-  //   borderBottomRightRadius: 10,
-  // },
   bannerText: {
     fontSize: hp('3.5%'),
     color: 'floralwhite',
     position: 'absolute',
     top: 180,
-    // fontStyle: 'italic',
-    // fontWeight: '600',
     fontFamily: 'YouthPower-X34qG',
     marginLeft: 5,
   },
-  // bannerText2: {
-  //   fontSize: hp('3.5%'),
-  //   color: 'floralwhite',
-  //   position: 'absolute',
-  //   top: 220,
-  //   // fontStyle: 'italic',
-  //   // fontWeight: '600',
-
-  // },
   unexploredView: {
     width: wp('100%'),
     height: hp('38%'),
-    // backgroundColor: 'lightgrey',
     marginTop: 30,
   },
   unexplored: {
@@ -480,7 +375,6 @@ const styles = StyleSheet.create({
   packages: {
     width: wp('100%'),
     height: hp('100%'),
-    // backgroundColor: 'lightgrey',
     marginTop: 50,
   },
   packagesHeading: {
@@ -511,9 +405,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   days: {
-    // width: wp('30%'),
     height: hp('3.7%'),
-    // backgroundColor: 'darkred',
     borderRadius: 7,
     borderWidth: 2,
     borderColor: 'darkred',
@@ -579,7 +471,7 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
   PlaceText: {
-    fontSize: hp('3.0%'),
+    fontSize: hp('3.0%'),    // width: wp('30%'),
     color: '#ffffff',
     position: 'absolute',
     top: 250,
@@ -605,10 +497,6 @@ const styles = StyleSheet.create({
   },
   contactText: {
     position: 'absolute',
-    // left: 50,
-    // bottom: 200,
-    // right: '10%',
-    // height: '30%',
     alignItems: 'center',
   },
   contentSubText: {
@@ -626,3 +514,5 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 });
+
+export default HomeScreen;

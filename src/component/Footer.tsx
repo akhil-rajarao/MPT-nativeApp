@@ -16,7 +16,7 @@ const Footer = () => {
   const navigation = useNavigation<any>();
   return (
     <ScrollView>
-      <View>
+      <View style={styles.container}>
         <View>
           <Text style={styles.title}>Quick Links</Text>
         </View>
@@ -38,7 +38,7 @@ const Footer = () => {
           </TouchableOpacity>
           <Pressable
             onPress={() => Linking.openURL('https://mpstdc.mponline.gov.in/')}>
-            <Text style={styles.text}>Booking Through Mp Online</Text>
+            <Text style={styles.text}>Booking Through MpOnline</Text>
           </Pressable>
           <Pressable
             onPress={() => Linking.openURL('https://www.mptourism.com/')}>
@@ -74,20 +74,37 @@ const Footer = () => {
           </View>
         </View>
         <View>
-          <Text style={styles.title}>FOLLOW US</Text>
+          <Text style={{marginTop:20}}>FOLLOW US</Text>
           <Text style={styles.underline}></Text>
 
           <View style={styles.icons}>
-            {/* <Icon name="p" size={30} color=" gray" /> */}
+            <TouchableOpacity onPress={() => Linking.openURL("https://in.pinterest.com/MpTourismDotCom/")}>
+            <Icon name="pinterest" size={30} color="darkgray" />
+            </TouchableOpacity>
 
+
+            <TouchableOpacity onPress={() => Linking.openURL("https://twitter.com/MPSTDCofficial")}>
             <Icon name="twitter" size={30} color="darkgray" />
+            </TouchableOpacity>
 
+
+            <TouchableOpacity onPress={() => Linking.openURL("https://www.instagram.com/mpstdcofficial/?theme=dark")}>
             <Icon name="instagram" size={30} color="darkgray" />
+            </TouchableOpacity>
 
+
+            <TouchableOpacity onPress={() => Linking.openURL("https://www.linkedin.com/company/mpt-hotels-resorts?original_referer=https%3A%2F%2Fmpstdc.com%2F")}>
             <Icon name="linkedin" size={30} color="darkgray" />
+            </TouchableOpacity>
 
+
+            <TouchableOpacity onPress={() => Linking.openURL("https://www.youtube.com/channel/UC8JZ2BzI6ltAlcVRLR4ujEA")}>
             <Icon name="youtube" size={30} color="darkgray" />
+            </TouchableOpacity>
           </View>
+        </View>
+        <View style={{marginTop:20,marginLeft:10}}>
+          <Text style={styles.text}>Designed by XILP</Text>
         </View>
       </View>
     </ScrollView>
@@ -95,10 +112,14 @@ const Footer = () => {
 };
 
 const styles = StyleSheet.create({
+  container:{
+     marginLeft:10,
+     marginBottom:30
+  },
   title: {
-    fontSize: 15,
-    color: 'gray',
-    fontWeight: '500',
+    fontSize: 18,
+    color: 'darkgray',
+    fontWeight: 'bold',
     marginTop: 20,
   },
 
@@ -107,9 +128,9 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   underline: {
-    width: '70%',
-    borderBottomWidth: 2,
-    borderColor: 'black',
+    width: '80%',
+    borderBottomWidth: 4,
+    borderColor: 'gray',
   },
   icons: {
     flexDirection: 'row',
@@ -119,7 +140,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 5,
-    color: 'grey',
+    color: 'gray',
+    letterSpacing:1
   },
 });
 
