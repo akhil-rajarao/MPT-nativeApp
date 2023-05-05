@@ -1152,12 +1152,12 @@ const styles = StyleSheet.create({
     height: hp('90%'),
     paddingLeft: 10,
   },
-  dateNew: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    // marginHorizontal: 10,
-    flexWrap: 'wrap',
-  },
+  // dateNew: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   alignItems: 'flex-start',
+  //   justifyContent: 'space-between',
+  //   marginHorizontal: 10,
+  //   flexWrap: 'wrap',
+  // },
 });
