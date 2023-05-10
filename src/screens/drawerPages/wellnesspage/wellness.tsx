@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View,Modal} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -35,7 +35,21 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text>
+          {/* <Text style={styles.bannerText}>RELAX REFRESH REJUVENATE</Text> */}
+        
+        {/* <Modal>
+          <ScrollView>
+          <View style={styles.firstmodelView}>
+            <View style={styles.innerContainer}>
+              <Text style={styles.caravanText}>bgfhhghr</Text>
+              <Text style={styles.discription}>ftedffffffffffffffffff</Text>
+            </View>
+
+          </View>
+          </ScrollView>
+        </Modal> */}
+        
+        
         </View>
 
         {/* ??????????????? */}
@@ -47,7 +61,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>PAIN FREE LIFE</Text>
+          {/* <Text style={styles.bannerText}>PAIN FREE LIFE</Text> */}
         </View>
         {/* ??????????????? */}
 
@@ -58,7 +72,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>CLEANSING BALANCING HEALING</Text>
+          {/* <Text style={styles.bannerText}>CLEANSING BALANCING HEALING</Text> */}
         </View>
         {/* ??????????????? */}
 
@@ -69,7 +83,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>SOUNDARYA</Text>
+          {/* <Text style={styles.bannerText}>SOUNDARYA</Text> */}
         </View>
         {/* ??????????????? */}
 
@@ -80,7 +94,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}> LIVE A STRESS-FREE LIFE</Text>
+          {/* <Text style={styles.bannerText}> LIVE A STRESS-FREE LIFE</Text> */}
         </View>
         {/* ??????????????? */}
 
@@ -91,7 +105,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>REFRESH THE SOUL</Text>
+          {/* <Text style={styles.bannerText}>REFRESH THE SOUL</Text> */}
         </View>
         {/* ??????????????? */}
 
@@ -102,7 +116,7 @@ const Wellness = () => {
             }}
             style={styles.bannerImage}
           />
-          <Text style={styles.bannerText}>SOUNDARYA</Text>
+          {/* <Text style={styles.bannerText}>SOUNDARYA</Text> */}
         </View>
         {/* ??????????????? */}
       </View>
@@ -151,7 +165,7 @@ const styles = StyleSheet.create({
     width: wp('90%'),
     height: hp('40%'),
   },
-  bannerText: {
+  bannerText:{
     position: 'absolute',
     alignSelf: 'center',
     marginTop: 200,
@@ -165,6 +179,30 @@ const styles = StyleSheet.create({
   footer: {
     marginLeft: 10,
   },
+  firstmodelView:{
+    backgroundColor:'gray',
+    margin:20,
+    flex:1, 
+    marginBottom:10,
+    marginLeft:10,
+    marginTop:60,
+  },
+  // innerContainer: {
+  //   backgroundColor: '#ffffff',
+  //   alignItems: 'center',
+  // },
+  // caravanText: {
+  //   fontSize: 25,
+  //   color: 'red',
+  //   margin: 20,
+  // },
+  // discription: {
+  //   fontSize: 15,
+  //   // textAlign: 'center',
+  //   alignSelf:'flex-start',
+  //   paddingLeft:5,
+  //   paddingRight:5,
+  // },
 });
 
 export default Wellness;
