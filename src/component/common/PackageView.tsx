@@ -2,17 +2,37 @@ import { View, Text, StyleSheet,
     ScrollView,
     Image,
     TouchableOpacity, } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from 'react-native-responsive-screen';
   
   import Icon from 'react-native-vector-icons/Feather';
+  import Entypo from 'react-native-vector-icons/Entypo'
 import Footer from '../../component/Footer';
 import ContactUs from '../../component/common/ContactUs';
+import useAppDispatch, { useAppSelector } from '../../app/hooks';
+import { ItenaryData } from '../../screens/config';
+import { useRoute } from '@react-navigation/native';
 const PackageView = () => {
     const onPress = () => '';
+    const dispatch = useAppDispatch()
+
+    const route = useRoute();
+
+    const {city}: any = route.params;
+     
+    console.log("cityyyyy",city)
+    const item = useAppSelector(state => state.dashboard.packageItem);
+
+    const packageData :any = ItenaryData[city];
+
+    console.log("itwemmm",packageData)
+
+    useEffect(() => {
+      // dispatch(getPageDataGo(98667108));
+    }, []);
   return (
     <ScrollView>
     <View>
@@ -66,19 +86,23 @@ const PackageView = () => {
             </View>
             <View style={styles.iconOrTextView}>
              <Text style={styles.iconText}>0</Text>
+             {/* <Entypo name="flow-line" size={70} color="red"  /> */}
             </View>
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>Arrival at Gwalior
+            <Text  style={styles.daysContentText}>
+              {packageData[0].activities[0]}
+              {"\n"}
+              {packageData[0].activities[1]}
+              {"\n"}
 
-              Check In Hotel
-              
-              Visit Units and sightseeing visit
-              
-              In the evening enjoy sound and light show
-              
-              Overnight stay at Gwalior</Text>
+              {packageData[0].activities[2]}
+              {"\n"}
+
+              {packageData[0].activities[3]}
+
+            </Text>
            </View>
         </View>
 
@@ -95,13 +119,22 @@ const PackageView = () => {
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>After breakfast sightseeing visit Gwalior fort,GujariMahal,TelikaMandir, SasBahukaMandir, Ghaus Mohammed’s Tomb
+            <Text  style={styles.daysContentText}>
+            {packageData[1].activities[0]}
+                      {"\n"}
 
-              After lunch visit Chhatri, Man Mandir Palace,Jaivilas Palace &amp;Museum, Tansen Tomb
+              {packageData[1].activities[1]}
+              {"\n"}
+
               
-              Evening depart for Shivpuri(112km)
+              {packageData[1].activities[2]}
+              {"\n"}
+
               
-              Overnight stay at Shivpuri</Text>
+              {packageData[1].activities[3]}
+              {"\n"}
+              {packageData[1].activities[4]}
+            </Text>
            </View>
         </View>
 
@@ -117,13 +150,22 @@ const PackageView = () => {
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>After breakfast sightseeing visit Madhav National Park, George castle, Sultan hotel, Baradari, Chhatris, Madhav Vilas Palace
+            <Text  style={styles.daysContentText}>            
+              {packageData[2].activities[0]}
+                      {"\n"}
 
-              After lunch depart for Chanderi (127 km)
+              {packageData[2].activities[1]}
+              {"\n"}
+
               
-              Evening visit Chanderi market for famous Sarees
+              {packageData[2]?.activities[2]}
+              {"\n"}
+
               
-              Overnight stay at Chanderi</Text>
+              {packageData[2]?.activities[3]}
+              {"\n"}
+
+</Text>
            </View>
         </View>
 
@@ -139,13 +181,22 @@ const PackageView = () => {
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>After breakfast sightseeing visit Chanderi fort, Jama Masjid, KoshakMahal, Laxman Temple, ShezadikaRauza and other monuments
+            <Text  style={styles.daysContentText}>
 
-              After sightseeing and lunch depart forOrchha (143 km)
+            {packageData[3].activities[0]}
+                      {"\n"}
+
+              {packageData[3].activities[1]}
+              {"\n"}
+
               
-              Visit units and Sound &amp; Light Show.
+              {packageData[3].activities[2]}
+              {"\n"}
+
               
-              Overnight stay at Orchha</Text>
+              {packageData[3].activities[3]}
+              {"\n"}
+</Text>
            </View>
         </View>
 
@@ -161,18 +212,26 @@ const PackageView = () => {
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>After breakfast visit Jahangir Mahal, Raja Mahal, RaiParveenMahal, Ramraja Temple, Chaturbhuj Temple, Laxminarayan Temple, PhoolBagh, SahidSmarak and other Monuments
+            <Text  style={styles.daysContentText}>
+            {packageData[4].activities[0]}
+            {"\n"}
 
-              Depart for Datia (50 km)
+              {packageData[4].activities[1]}
+              {"\n"}
+
               
-              Sightseeing visit Bir Singh Palace, PeetambharaPeeth
+              {packageData[4].activities[2]}
+              {"\n"}
+
               
-              Overnight stay at Datia</Text>
+              {packageData[4].activities[3]}
+              {"\n"}
+            </Text>
            </View>
         </View>
 
 
-        <View  style={styles.daysStartView}>
+        {/* <View  style={styles.daysStartView}>
            <View  style={styles.daysAndIconsView}>
             <View style={styles.DayView}>
               <Text style={styles.DayText}>DAY 6</Text>
@@ -183,11 +242,23 @@ const PackageView = () => {
             </View>
        
            <View style={styles.daysContentView}>
-            <Text  style={styles.daysContentText}>After breakfast sightseeing visit White Marble Temples and other Monuments
+            <Text  style={styles.daysContentText}>
+            {packageData[5].activities[0]}
+                      {"\n"}
 
-              Depart for Jhansi and drop at Station (34 km)</Text>
+              {packageData[5].activities[1]}
+              {"\n"}
+
+              
+              {packageData[5].activities[3]}
+              {"\n"}
+
+              
+              {packageData[5].activities[3]}
+              {"\n"}
+            </Text>
            </View>
-        </View>
+        </View> */}
  {/* ...............days start .........................*/}
 
 
@@ -321,28 +392,30 @@ const styles = StyleSheet.create({
                         marginTop:8
                      },
     daysMainView:{
-        width: wp('100%'),
+        // width: wp('100%'),
         backgroundColor: 'white',
         marginTop:40
     },
     daysStartView:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginHorizontal:10
+        // marginHorizontal:10
+        width:wp("100%")
     },
     daysAndIconsView:{
         flexDirection:'row' ,
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        width:wp("25%")
     },
     DayView:{
-        marginHorizontal:10
+        // marginHorizontal:10
+        width:("75%")
     },
     DayText:{fontSize:18,
         color:'darkred',
     },
     iconOrTextView:{
-        marginHorizontal:10,
-        paddingHorizontal:0
+        width:wp("25%")
     },
     iconText:{
         fontSize:18,
@@ -351,13 +424,13 @@ const styles = StyleSheet.create({
     },
     daysContentView:{
         alignContent:'center',
-        marginHorizontal:50,
-        paddingHorizontal:30
+        // marginHorizontal:20,
+        // paddingHorizontal:30
     },
     daysContentText:{
         marginVertical: 1,
-        paddingHorizontal:10,
-        fontSize: 18,
+        // paddingHorizontal:10,
+        fontSize: 16,
         color: 'gray',
     },
 

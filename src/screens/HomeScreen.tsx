@@ -36,7 +36,7 @@ const HomeScreen = () => {
   const topPackages = sectionsData[0]?.contents;
   const upcomingEvents = sectionsData[2]?.contents;
 
-  
+  console.log("top  p ackageeee",topPackages)
 
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
@@ -188,7 +188,9 @@ const HomeScreen = () => {
                     <Text style={styles.optionPackage}>
                       {item?.description?.value3?.toUpperCase()}
                     </Text>
-                    <Pressable onPress={() => navigation.navigate('PackageView')}>
+                    <Pressable onPress={() => navigation.navigate('PackageView',{
+                      city: item?.content_title.split(' ').pop()
+                    })}>
                       <View style={styles.view}>
                         <Text style={styles.viewText}>VIEW</Text>
                       </View>

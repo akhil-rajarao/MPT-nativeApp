@@ -129,7 +129,7 @@ const Mice = () => {
           }}
         />
         <View style={styles.innerContainer}>
-          <Text style={styles.caravanText}>MPT DDX Drive In Cinema</Text>
+          <Text style={styles.caravanText}>MPT DDX Drive In Cinema</Text>data
           <Text style={styles.discription}>
             MPT Hotels & Resorts is excited to invite you to our Open Air 'Drive
             In' Cinema the "MPT DDX Drive In Cinema" at MPT Lake View Residency,

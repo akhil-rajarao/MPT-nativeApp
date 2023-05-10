@@ -551,6 +551,8 @@ const Trial = () => {
 
   const [showDropDown, setShowDropDown] = useState(false);
 
+  const [exploreIndex,setExploreIndex] = useState<any>("0");
+
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
     state => state.dashboard.sectionsData,
@@ -615,6 +617,7 @@ const Trial = () => {
               )} />
           )}
         </View></>
+
         <View>
         <View style={styles.bannerHeading}>
           <Text style={styles.heartText}>Explore</Text>
@@ -634,20 +637,35 @@ const Trial = () => {
         </View>
         {showDropDown && (
           <View style={styles.dropbox}>
-            <TouchableOpacity
+                        <TouchableOpacity
               onPress={() => {
                 setShowDropDown(false);
-                navigation.navigate('Explore');
+                setExploreIndex("1")
               }}>
-              <Text style={styles.dropboxtext}>Explore</Text>
+              <Text style={styles.dropboxtext}>Heritage</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
                 setShowDropDown(false);
-                navigation.navigate('Destination');
+                setExploreIndex("2")
               }}>
-              <Text style={styles.dropboxtext}>Destination</Text>
+              <Text style={styles.dropboxtext}>Local Flavours</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("3")
+              }}>
+              <Text style={styles.dropboxtext}>Wellness Tourism</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("4")
+              }}>
+              <Text style={styles.dropboxtext}>Spiritual Yatra</Text>
+            </TouchableOpacity>
+
           </View>
         )}
         </View>
@@ -657,52 +675,68 @@ const Trial = () => {
 
         </View>
         <View style={styles.banners}>
-          <View>
-            <Pressable
-              onPress={() => navigation.navigate('InnerPage2', {
-                id: experienceData[0]?.contents[0]?.id,
-              })}>
-              <Image
-                style={styles.wildlife}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[0]?.content_images[0]}`,
-                }} />
-            </Pressable>
-            <View style={styles.opacity} />
-            <Text style={styles.bannerText}>Know more</Text>
-          </View>
-          <View style={styles.bannersRow}>
-            <View>
+          { exploreIndex &&(
+          <><View>
+            {exploreIndex === "3" && (
               <Pressable
-                onPress={() => navigation.navigate('InnerPage2', {
-                  id: experienceData[0]?.contents[1]?.id,
-                })}>
+                onPress={() => navigation.navigate('WELLNESS TOURISM')}>
                 <Image
-                  style={styles.adventure}
+                  style={styles.wildlife}
                   source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[1]?.content_images[0]}`,
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[0]?.content_images[0]}`,
                   }} />
               </Pressable>
-              <View style={styles.opacity2} />
-              <Text style={styles.bannerText2}>Know more --{'>'}</Text>
-            </View>
-            <View>
-              <Pressable
-                onPress={() => navigation.navigate('InnerPage2', {
-                  id: experienceData[0]?.contents[2]?.id,
-                })}>
-                <Image
-                  style={styles.food}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[2]?.content_images[0]}`,
-                  }} />
-              </Pressable>
-              <View style={styles.opacity2} />
+            )}
+            { exploreIndex !=="3" && (
+               <Pressable
+               onPress={() => navigation.navigate('InnerPage2', {
+                 id: experienceData[exploreIndex]?.contents[0]?.id,
+               })}>
+               <Image
+                 style={styles.wildlife}
+                 source={{
+                   uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[0]?.content_images[0]}`,
+                 }} />
+             </Pressable>
+            )
+            }
+              <View style={styles.opacity} />
+              <Text style={styles.bannerText}>Know more</Text>
+            </View><View style={styles.bannersRow}>
+                <View>
+                  <Pressable
+                    onPress={() => navigation.navigate('InnerPage2', {
+                      id: experienceData[exploreIndex]?.contents[1]?.id,
+                    })}>
+                    <Image
+                      style={styles.adventure}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[1]?.content_images[0]}`,
+                      }} />
+                  </Pressable>
+                  <View style={styles.opacity2} />
+                  <Text style={styles.bannerText2}>Know more --{'>'}</Text>
+                </View>
+                <View>
+                  <Pressable
+                    onPress={() => navigation.navigate('InnerPage2', {
+                      id: experienceData[exploreIndex]?.contents[2]?.id,
+                    })}>
+                    <Image
+                      style={styles.food}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[2]?.content_images[0]}`,
+                      }} />
+                  </Pressable>
+                  <View style={styles.opacity2} />
 
-              <Text style={styles.bannerText2}>Know more</Text>
-            </View>
-          </View>
-        </View></><View style={styles.unexploredView}>
+                  <Text style={styles.bannerText2}>Know more</Text>
+                </View>
+              </View></>
+    )}
+        </View>
+        
+        </><View style={styles.unexploredView}>
           <Text style={styles.unexplored}>Unexplored side of MP</Text>
           <View>
             {unexploredofMP && (
@@ -813,10 +847,12 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 6,
     backgroundColor: 'white',
+    minHeight:200,
     top: 50,
     width: 100,
     height: 80,
-    zIndex:2
+    zIndex:2,
+    elevation:2
   },
   banners: {
     width: wp('100%'),
@@ -830,6 +866,7 @@ const styles = StyleSheet.create({
   wildlife: {
     width: wp('98%'),
     height: hp('27%'),
+    position:'relative'
     // done
   },
   bannersRow: {
