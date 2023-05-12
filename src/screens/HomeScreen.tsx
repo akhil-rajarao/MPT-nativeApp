@@ -20,7 +20,7 @@ import {Carousel} from 'react-native-auto-carousel';
 import ContactUs from '../component/common/ContactUs';
 import Footer from '../component/Footer';
 import PopularPlaces from '../component/common/PopularPlaces';
-import {getPageDataGo} from './appSlice';
+import {getPageDataGo, reset} from './appSlice';
 
 
 const HomeScreen = () => {
@@ -36,11 +36,12 @@ const HomeScreen = () => {
   const topPackages = sectionsData[0]?.contents;
   const upcomingEvents = sectionsData[2]?.contents;
 
+  console.log("top  p ackageeee",topPackages)
+
   useEffect(() => {
     dispatch(getPageDataGo(80373489));
   }, [dispatch, isFocused]);
   
-  console.log("insideee triallll hurrayyy===>")
   const Images = [
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2471332643.png',
     'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/2179003322.png',
@@ -48,7 +49,7 @@ const HomeScreen = () => {
 
   return (
     <FlatList
-    data={[{ key: 'outer' }]} // data for outer FlatList, can be an empty array if you don't need it
+    data={[{ key: 'outer' }]} 
     renderItem={({ item }) => (
       <><View style={styles.container}>
         <Carousel
@@ -187,7 +188,9 @@ const HomeScreen = () => {
                     <Text style={styles.optionPackage}>
                       {item?.description?.value3?.toUpperCase()}
                     </Text>
-                    <Pressable onPress={() => navigation.navigate('PackageView')}>
+                    <Pressable onPress={() => navigation.navigate('PackageView',{
+                      city: item?.content_title.split(' ').pop()
+                    })}>
                       <View style={styles.view}>
                         <Text style={styles.viewText}>VIEW</Text>
                       </View>

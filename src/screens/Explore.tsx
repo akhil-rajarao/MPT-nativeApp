@@ -527,9 +527,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -541,11 +542,16 @@ import ContactUs from '../component/common/ContactUs';
 import ExploreImageContainer from '../component/common/ExploreImageContainer';
 import Footer from '../component/Footer';
 import {getPageDataGo} from './appSlice';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const Trial = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
   const isFocused = useIsFocused();
+
+  const [showDropDown, setShowDropDown] = useState(false);
+
+  const [exploreIndex,setExploreIndex] = useState<any>("0");
 
   const ExploreBannerData = useAppSelector(state => state.dashboard.bannerData);
   const ExploresectionsData = useAppSelector(
@@ -610,55 +616,127 @@ const Trial = () => {
                 </View>
               )} />
           )}
-        </View></><View style={styles.bannerHeading}>
-          <Text style={styles.heartText}>Explore</Text>
-        </View><View style={styles.banners}>
-          <View>
-            <Pressable
-              onPress={() => navigation.navigate('InnerPage2', {
-                id: experienceData[0]?.contents[0]?.id,
-              })}>
-              <Image
-                style={styles.wildlife}
-                source={{
-                  uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[0]?.content_images[0]}`,
-                }} />
-            </Pressable>
-            <View style={styles.opacity} />
-            <Text style={styles.bannerText}>Know more</Text>
-          </View>
-          <View style={styles.bannersRow}>
-            <View>
-              <Pressable
-                onPress={() => navigation.navigate('InnerPage2', {
-                  id: experienceData[0]?.contents[1]?.id,
-                })}>
-                <Image
-                  style={styles.adventure}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[1]?.content_images[0]}`,
-                  }} />
-              </Pressable>
-              <View style={styles.opacity2} />
-              <Text style={styles.bannerText2}>Know more</Text>
-            </View>
-            <View>
-              <Pressable
-                onPress={() => navigation.navigate('InnerPage2', {
-                  id: experienceData[0]?.contents[2]?.id,
-                })}>
-                <Image
-                  style={styles.food}
-                  source={{
-                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[0]?.contents[2]?.content_images[0]}`,
-                  }} />
-              </Pressable>
-              <View style={styles.opacity2} />
+        </View></>
 
-              <Text style={styles.bannerText2}>Know more</Text>
-            </View>
+        <View>
+        <View style={styles.bannerHeading}>
+          <Text style={styles.heartText}>Explore</Text>
+          <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            // top: 20,
+          }}>
+         
+          <Pressable
+            onPress={() => {
+              setShowDropDown(!showDropDown);
+            }}>
+            <Icon name="caretdown" size={20} color="red" />
+          </Pressable>
+        </View>
+        {showDropDown && (
+          <View style={styles.dropbox}>
+                        <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("1")
+              }}>
+              <Text style={styles.dropboxtext}>Heritage</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("2")
+              }}>
+              <Text style={styles.dropboxtext}>Local Flavours</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("3")
+              }}>
+              <Text style={styles.dropboxtext}>Wellness Tourism</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setShowDropDown(false);
+                setExploreIndex("4")
+              }}>
+              <Text style={styles.dropboxtext}>Spiritual Yatra</Text>
+            </TouchableOpacity>
+
           </View>
-        </View></><View style={styles.unexploredView}>
+        )}
+        </View>
+
+        
+    
+
+        </View>
+        <View style={styles.banners}>
+          { exploreIndex &&(
+          <><View>
+            {exploreIndex === "3" && (
+              <Pressable
+                onPress={() => navigation.navigate('WELLNESS TOURISM')}>
+                <Image
+                  style={styles.wildlife}
+                  source={{
+                    uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[0]?.content_images[0]}`,
+                  }} />
+              </Pressable>
+            )}
+            { exploreIndex !=="3" && (
+               <Pressable
+               onPress={() => navigation.navigate('InnerPage2', {
+                 id: experienceData[exploreIndex]?.contents[0]?.id,
+               })}>
+               <Image
+                 style={styles.wildlife}
+                 source={{
+                   uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[0]?.content_images[0]}`,
+                 }} />
+             </Pressable>
+            )
+            }
+              <View style={styles.opacity} />
+              <Text style={styles.bannerText}>Know more</Text>
+            </View><View style={styles.bannersRow}>
+                <View>
+                  <Pressable
+                    onPress={() => navigation.navigate('InnerPage2', {
+                      id: experienceData[exploreIndex]?.contents[1]?.id,
+                    })}>
+                    <Image
+                      style={styles.adventure}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[1]?.content_images[0]}`,
+                      }} />
+                  </Pressable>
+                  <View style={styles.opacity2} />
+                  <Text style={styles.bannerText2}>Know more --{'>'}</Text>
+                </View>
+                <View>
+                  <Pressable
+                    onPress={() => navigation.navigate('InnerPage2', {
+                      id: experienceData[exploreIndex]?.contents[2]?.id,
+                    })}>
+                    <Image
+                      style={styles.food}
+                      source={{
+                        uri: `https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/${experienceData[exploreIndex]?.contents[2]?.content_images[0]}`,
+                      }} />
+                  </Pressable>
+                  <View style={styles.opacity2} />
+
+                  <Text style={styles.bannerText2}>Know more</Text>
+                </View>
+              </View></>
+    )}
+        </View>
+        
+        </><View style={styles.unexploredView}>
           <Text style={styles.unexplored}>Unexplored side of MP</Text>
           <View>
             {unexploredofMP && (
@@ -678,7 +756,7 @@ const Trial = () => {
                       onPress={() => navigation.navigate('KnowMoreUE', {
                         content: item,
                       })}>
-                      <Text style={styles.read}>Read more -- </Text>
+                      <Text style={styles.read}>Read more   --{'>'} </Text>
                     </Pressable>
                   </View>
                 )} />
@@ -745,17 +823,50 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     // done
   },
+  diveText: {
+    fontSize: 15,
+    color: 'white',
+  },
+  diveIn: {
+    display: 'flex',
+    flexDirection: 'column',
+    // alignItems: 'center',
+    justifyContent: 'space-between',
+    // alignItems: 'flex-start',
+    // alignSelf: 'center',
+    // position: 'absolute',
+  },
+  dropboxtext: {
+    fontSize: 14,
+    color: 'black',
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  dropbox: {
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 6,
+    backgroundColor: 'white',
+    minHeight:200,
+    top: 50,
+    width: 100,
+    height: 80,
+    zIndex:2,
+    elevation:2
+  },
   banners: {
     width: wp('100%'),
     height: hp('65%'),
     // justifyContent: 'center',
     alignItems: 'center',
+    position:'relative'
 
     // done
   },
   wildlife: {
     width: wp('98%'),
     height: hp('27%'),
+    position:'relative'
     // done
   },
   bannersRow: {
@@ -794,7 +905,7 @@ const styles = StyleSheet.create({
   exploreImage: {
     width: wp('90%'),
     height: 196,
-    // borderRadius: 10,
+     borderRadius: 10,
     marginHorizontal: 5,
     position: 'relative',
     // done

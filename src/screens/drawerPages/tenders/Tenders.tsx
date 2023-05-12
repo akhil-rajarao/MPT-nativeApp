@@ -4,7 +4,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Image
+  Image,
+  Pressable
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -25,6 +26,7 @@ import { Table, Row, Rows } from 'react-native-table-component';
 
 import Footer from '../../../component/Footer';
 import ContactUs from '../../../component/common/ContactUs';
+import { useNavigation } from '@react-navigation/native';
 
 
 
@@ -44,6 +46,8 @@ const Tender = () => {
     // ['sample' , 'sample',  'sample',  'sample',  'sample'],
     // ['sample' , 'sample',  'sample',  'sample',  'sample'],
 ];
+
+const navigation = useNavigation<any>();
   return (
     <ScrollView>
       <View>
@@ -61,7 +65,9 @@ const Tender = () => {
           <TouchableOpacity style={styles.buttoncss}>
             <Text style={styles.buttonText}>Current Tenders</Text>
           </TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate('TendorArchive')}>
           <Text style={styles.archiveText}>Tender Archive (Click Here)</Text>
+          </Pressable>
           <TextInput style={styles.input} placeholder="Search by Title" />
           <View style={styles.ButtonContainer}>
             <TouchableOpacity style={styles.buttoncss2}>
@@ -84,10 +90,10 @@ const Tender = () => {
           </Table> */}
 
 <View  style={styles.container}>
-      <Table>
+      {/* <Table>
         <Row data={header} style={styles.head} textStyle={styles.text}/>
         <Rows  data={data} style={styles.datarow}  textStyle={styles.text2} />
-      </Table>
+      </Table> */}
     </View>
     <View>
       <Text style={styles.record}>Record Not Found</Text>

@@ -1,4 +1,4 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, Linking, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {
   heightPercentageToDP as hp,
@@ -51,9 +51,9 @@ const AccommodationView = () => {
     5: <MaterialIcons name="meeting-room" size={20} color="gray" />,
     6: <MaterialIcons name="emoji-transportation" size={20} color="gray" />,
     7: <MaterialCommunityIcons name="dumbbell" size={20} color="gray" />,
-    8: <FontAwesome5 name="parking" size={24} color="red" />,
-    9: <MaterialIcons name="pool" size={24} color="red" />,
-    10: <FontAwesome5 name="first-aid" size={24} color="red" />,
+    8: <FontAwesome5 name="parking" size={24} color="gray" />,
+    9: <MaterialIcons name="pool" size={24} color="gray" />,
+    10: <FontAwesome5 name="first-aid" size={24} color="gray" />,
   };
 
   return (
@@ -178,19 +178,20 @@ const AccommodationView = () => {
           </View>
           <View style={styles.proparty}>
             <View style={styles.iconView}>
-              <Ionicons name="person" size={20} color="gray" />
-              <FontAwesome name="mobile-phone" size={22} color="gray" />
-              <MaterialCommunityIcons name="email" size={20} color="gray" />
-              <Entypo name="phone" size={20} color="gray" />
-              <Ionicons name="location" size={20} color="gray" />
+              <Ionicons name="person" size={20} color="red" />
+              <FontAwesome name="mobile-phone" size={22} color="red" />
+              <MaterialCommunityIcons name="email" size={20} color="red" />
+              <Entypo name="phone" size={20} color="red" />
+              <Ionicons name="location" size={20} color="red" />
             </View>
             <View style={styles.propartyContactTextVi}>
               <Text style={styles.contactText}>{content.manager_name}</Text>
               <Text style={styles.contactText}>{content.mobile_number}</Text>
               <Text style={styles.contactText}>{content.email}</Text>
               <Text style={styles.contactText}>{content.phone_number}</Text>
-
-              <Text style={styles.contactText}>location</Text>
+              <Pressable onPress={() => Linking.openURL(`${content.location_url}`)}>
+              <Text style={styles.contactText}>Location</Text>
+              </Pressable>
             </View>
           </View>
           <View style={styles.contactusView}>
@@ -340,10 +341,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     marginRight: 140,
     justifyContent: 'space-evenly',
+    alignSelf:'auto'
   },
   contactText: {
     color: 'gray',
     fontSize: 16,
+    
   },
   contactusView: {
     marginTop: 50,

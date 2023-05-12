@@ -770,6 +770,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {FlatList} from 'react-native-gesture-handler';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Carousel } from 'react-native-auto-carousel';
 
 const Destination = () => {
   const dispatch = useAppDispatch();
@@ -796,7 +797,7 @@ const Destination = () => {
     );
     setSelectedCity(city?.id);
   };
-  console.log('properties======>', properties);
+  // console.log('properties======>', properties[0]);
   const amenitiesObj: any = Object.freeze({
     1: 'Dinner',
     2: 'A/C Rooms',
@@ -809,17 +810,30 @@ const Destination = () => {
     9: 'Pool facilities',
     10: 'Kerala Ayurvedic Panchkarma',
   });
+
+  const Images = [
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/671425781.png',
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3426237395.png',
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/966861917.png',
+    'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3544608669.png'
+  ];
+
   return (
    <FlatList
       data = {[{key :"outer"}]}
       renderItem={()=>(
         <><View style={styles.container}>
           <View style={styles.imageSlice}>
-            <Image
+            {/* <Image
               style={styles.image}
               source={{
                 uri: 'https://d3b9bso2h5gryf.cloudfront.net/mp-cms-images/3544608669.png',
-              }} />
+              }} /> */}
+               <Carousel
+          data={Images}
+          renderItem={item => (
+            <Image key={item} source={{ uri: item }} style={styles.image} />
+          )} />
           </View>
 
           <View style={styles.search}>
@@ -929,6 +943,11 @@ const Destination = () => {
                         )
                         )}
                       </View>
+                     
+                     <View style={{marginBottom:10}}>
+                      <Text style={styles.Residency}>{item.price_range}/Night</Text>
+                      </View>
+                   
                       {/* ??????????????????????/ */}
                       {/* <View style={styles.dateNew}>
                         {item &&
@@ -999,7 +1018,7 @@ const styles = StyleSheet.create({
   search: {
     flexDirection: 'row',
     position: 'absolute',
-    top: 265,
+    top: 275,
     display: 'flex',
     alignSelf: 'center',
 
@@ -1059,7 +1078,7 @@ const styles = StyleSheet.create({
     height: hp('15%'),
   },
   Residency: {
-    fontSize: 13,
+    fontSize: 16,
     color: 'black',
     marginTop: 5,
   },
@@ -1152,12 +1171,4 @@ const styles = StyleSheet.create({
     height: hp('90%'),
     paddingLeft: 10,
   },
-  // dateNew: {
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   alignItems: 'flex-start',
-  //   justifyContent: 'space-between',
-  //   marginHorizontal: 10,
-  //   flexWrap: 'wrap',
-  // },
 });

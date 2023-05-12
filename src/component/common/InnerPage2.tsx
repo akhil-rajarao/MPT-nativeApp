@@ -34,16 +34,14 @@ const InnerPage2 = () => {
 
   // if(id===93187332)
   let innerPageSections =
-    id === 29788625
-      ? innerPageData?.sections[3]?.contents
-      : id === 43105675
-      ? innerPageData?.sections[3]?.contents
-      : id === 11771867
-      ? innerPageData?.sections[3]?.contents
-      : id === 24947658
+    id === (29788625 || 43105675 || 11771867 || 24947658)
       ? innerPageData?.sections[3]?.contents
       : id === 93187332
       ? innerPageData?.sections[7]?.contents
+      : id=== (12280537 ||33177905 || 88938514 || 42373715 || 57777254 || 63512101)
+      ? innerPageData?.sections[4]?.contents
+      : id=== (10397259|| 52321192 || 79212711 )
+      ? innerPageData?.sections[5]?.contents
       : undefined;
 
   console.log('==========>innerPageDataSEctions', innerPageSections);

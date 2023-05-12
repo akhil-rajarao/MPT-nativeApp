@@ -27,7 +27,7 @@ const Destination = () => {
 
   const destinationData = useAppSelector(state => state.dashboard?.bannerData);
   const sectionsData = useAppSelector(state => state.dashboard?.sectionsData);
-  console.log(destinationData, 'destinationData>>>>>>>>>>>>>>>>>>>>');
+  // console.log(destinationData, 'destinationData>>>>>>>>>>>>>>>>>>>>');
 
   let popularPlacesData = sectionsData?.filter(item =>
     item.section_title.includes('Popular'),
@@ -387,22 +387,6 @@ const Destination = () => {
            )}
           
           />
-
-          {/* <View>
-          <Image
-            style={styles.storyImage}
-            source={{
-              uri: 'https://mpstdc.com/assets/storyImg1.b792bfea.jpg',
-            }} />
-          <View style={styles.textBox}>
-            <Text style={styles.storyText}>
-              Best Hotel Of MP, I really did not expect such a wonderful
-              experience over there, everything went as an exceptional, very
-              supportive staff Have stayed in many excellent hotels but this one
-              is really amazing Champak Bungalow rocks.
-            </Text>
-          </View>
-          </View> */}
         </View>
         <View>
           <ContactUs />
