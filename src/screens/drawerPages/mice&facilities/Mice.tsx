@@ -7,9 +7,10 @@ import {Image} from 'react-native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Row, Rows, Table} from 'react-native-table-component';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Mice = () => {
-  const header = ['PARTICULARS', '	DELUXE', 'LUXURY', ];
+  const header = ['PARTICULARS', '  DELUXE', 'LUXURY', ];
   const data = [
     ['Out station charges (Minimum 250 kms per day running)', '40/- per km', '85/- per km', ],
     ['Night halt charges - with stay - without stay','2500/- per night, 1500/- per night','5000/- per night 3000/- per night',],
@@ -21,10 +22,10 @@ const Mice = () => {
   const KushabhauH =['TYPE','CAPACITY','STYLE',];
   const KushabhauD = [['Raja Bhoj Hall','500 Pax','Theater',],
                          ['Nawab Hamidullah Hall (Auditorium Hall)','133 Pax','Theater',],
-                         ['Nawab Shah Jehan Begum Hall (Decorative Hall)','	50 - 70 Pax','Theater',],
-                         ['Nawab Sultan Jehan Begum Room (Committee Room)','	40 - 50 Pax','',],
-                         ['Nawab Sikander Jehan Hall (Committee Room)','	40 - 50 Pax','',],
-                         ['Nawab Qudsia Begum Room (Board Room)','	25 Pax','',],
+                         ['Nawab Shah Jehan Begum Hall (Decorative Hall)',' 50 - 70 Pax','Theater',],
+                         ['Nawab Sultan Jehan Begum Room (Committee Room)','  40 - 50 Pax','',],
+                         ['Nawab Sikander Jehan Hall (Committee Room)','  40 - 50 Pax','',],
+                         ['Nawab Qudsia Begum Room (Board Room)','  25 Pax','',],
                          ['Makhanlal Chaturvedi (Media Room)','','',],
                          ['Pre Wedding/ Video Shooting','','',],
                      ];
@@ -35,7 +36,7 @@ const MaharajaD =[['Hall No.1','25 Pax','U shape'],
                   ['Hall No.3','64 Pax','Theatre'],
                   ['Hall No.4','221 Pax','Theatre'],
                   ['Hall No.5','120 Pax','Cluster'],
-                  ['Meeting Hall 1(VIP)','18 Pax','	U Shape'],
+                  ['Meeting Hall 1(VIP)','18 Pax',' U Shape'],
                   ['Meeting Hall 2','24 Pax','U Shape'],
                   ['Meeting Hall 3','35 Pax','Theatre'],
 
@@ -108,21 +109,22 @@ const MaharajaD =[['Hall No.1','25 Pax','U shape'],
         {
           modalVisible ?
          
-        <Modal transparent={true}  animationType='none' >
-         <View style={styles. modalmainView}>
-             
-              <Table>
-                <Row data={header} style={styles.header} flexArr={[4, 4, 4, ]} textStyle={styles.textH} />
-                <Rows data={data} style={styles.datarow} flexArr={[4, 4, 4, ]} textStyle={styles.text2} />
-             </Table>
-  
-             
-            <View >
-              <Pressable>
-              <Text style={{color:'red', paddingLeft:270,position:'absolute',paddingTop:360 ,fontWeight:'bold'}} onPress={onpress}  >Hide popup</Text>
+        <Modal>
+         <View  style={styles.modelmainview}>
+          <ScrollView>
+          <Pressable>
+              <Text style={{color:'red',marginLeft:10}} onPress={onpress}><Icon name="remove" size={25} color="red" /></Text>
               </Pressable>
+          
+             <View style={{marginTop:30,paddingHorizontal:5}}>
+             <Table>
+                <Row data={header} style={styles.header} flexArr={[5, 4, 4, ]} textStyle={styles.textH} />
+                <Rows data={data} style={styles.datarow} flexArr={[5, 4, 4, ]} textStyle={styles.text2} />
+             </Table>
               </View>
-             </View>
+            
+           </ScrollView>
+           </View>
         </Modal> :null
         }
 
@@ -165,22 +167,22 @@ const MaharajaD =[['Hall No.1','25 Pax','U shape'],
           {
          secondmodalVisible?
          
-        <Modal transparent={true}  animationType='none' >
-         <View style={styles. ModalmainView2}>
-             <View>
-              <Table>
-                <Row data={KushabhauH} style={styles.header} flexArr={[4, 3, 2, ]} textStyle={styles.textH} />
-                <Rows data={KushabhauD} style={styles.datarow} flexArr={[4, 3, 2, ]} textStyle={styles.text2} />
-             </Table>
-             </View>
-             
-             <View >
-              <Pressable>
-              <Text style={{color:'red', paddingLeft:270,position:'absolute',paddingTop:600 ,fontWeight:'bold'}} onPress={onpressSecond}  >Hide popup</Text>
+        <Modal>
+         <View  style={styles.modelmainview}>
+          <ScrollView>
+          <Pressable>
+              <Text style={{color:'red',marginLeft:10}} onPress={onpressSecond}><Icon name="remove" size={25} color="red" /></Text>
               </Pressable>
+          
+             <View style={{marginTop:30,paddingHorizontal:5}}>
+             <Table>
+                <Row data={KushabhauH} style={styles.header} flexArr={[5, 4, 4, ]} textStyle={styles.textH} />
+                <Rows data={KushabhauD} style={styles.datarow} flexArr={[5, 4, 4, ]} textStyle={styles.text2} />
+             </Table>
               </View>
-
-             </View>
+            
+           </ScrollView>
+           </View>
         </Modal>:null
         }
 
@@ -216,35 +218,46 @@ const MaharajaD =[['Hall No.1','25 Pax','U shape'],
           </Pressable>
 
           {
-          thirdmodalVisible ?
-         
-        <Modal transparent={true}  animationType='none' >
-         <View style={styles.ModalmainView2}>
-             <View>
-              <Table>
-                <Row data={MaharajaH} style={styles.header} flexArr={[4, 4, 4, ]} textStyle={styles.textH} />
-                <Rows data={MaharajaD} style={styles.datarow2} flexArr={[4, 4, 4, ]} textStyle={styles.text2} />
-             </Table>
-             
-             </View>
-            <View >
-              <Pressable>
-              <Text style={{color:'red', paddingLeft:270,position:'absolute',paddingTop:600 ,fontWeight:'bold'}} onPress={onpressThird}  >Hide popup</Text>
+         thirdmodalVisible ?    
+         <Modal>
+          
+          <View  style={styles.modelmainview}>
+          <ScrollView>
+          <Pressable>
+              <Text style={{color:'red',marginLeft:10}} onPress={onpressThird}><Icon name="remove" size={25} color="red" /></Text>
               </Pressable>
+          
+             <View style={{marginTop:30,paddingHorizontal:5}}>
+             <Table>
+                <Row data={ MaharajaH} style={styles.header} flexArr={[5, 4, 4, ]} textStyle={styles.textH} />
+                <Rows data={ MaharajaD} style={styles.datarow} flexArr={[5, 4, 4, ]} textStyle={styles.text2} />
+             </Table>
               </View>
-              <View style={{marginTop:40,paddingLeft:10}}>
-              <Text style={{marginTop:400}}>-Parking facility available</Text>
+             
                
-             <Text style={{}} >-Lodging available at</Text>
-             <Text style={{color:'red'}}>-MPT Payal & MPT Jhankar in Khajuraho.</Text>
-             <View style={{flexDirection:'row'}}>
-             <Text>-For Booking Call </Text>
-             <Text style={{color:'red'}}> - 07686-274051,9425986033</Text>
-             </View>               
-              </View>
-             </View>
-        </Modal> :null
-        }
+           <View >
+            <Text >-Parking facility available</Text>
+          </View>
+
+            <View style={styles.facilitiesView}>
+            <Text style={styles.facilitesText1}>-Lodging available at</Text>
+            <Text style={styles.facilitesText2}>-MPT Payal & MPT Jhankar in Khajuraho.</Text> 
+            </View>
+            <View style={styles.facilitiesView}>
+            <Text style={styles.facilitesText1}>-For Booking Call</Text>
+            <Text style={styles.facilitesText2}>- 07686-274051,9425986033</Text> 
+            </View>
+            
+            
+           </ScrollView>
+           </View>
+           
+          
+        </Modal>  :null
+         }
+
+
+
 
 
         </View>
@@ -262,7 +275,7 @@ const MaharajaD =[['Hall No.1','25 Pax','U shape'],
           }}
         />
         <View style={styles.innerContainer}>
-          <Text style={styles.caravanText}>MPT DDX Drive In Cinema</Text>data
+          <Text style={styles.caravanText}>MPT DDX Drive In Cinema</Text>
           <Text style={styles.discription}>
             MPT Hotels & Resorts is excited to invite you to our Open Air 'Drive
             In' Cinema the "MPT DDX Drive In Cinema" at MPT Lake View Residency,
@@ -330,8 +343,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    height: 50,
-    backgroundColor: 'gray',
+    height: 100,
+    backgroundColor: 'white',
   },
   textH: {
     marginHorizontal: 10,
@@ -340,8 +353,8 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
   },
   datarow: {
-    height: 80,
-    backgroundColor: 'gray',
+    height: 100,
+    backgroundColor: 'white',
   },
   text2: {
     marginHorizontal: 10,
@@ -352,31 +365,47 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: 'gray',
   },
-  modalmainView:{
-  backgroundColor:'gray',
-  margin:10,
-  // borderRadius:20,
-  flex:1, 
-  marginBottom:10,
-  marginLeft:15,
-  marginTop:260,
-  position:'relative'},
+ 
   
-  
-  ModalmainView2:{
-    backgroundColor:'gray',
-    margin:20,
-    // borderRadius:20,
-    flex:1, 
-    marginBottom:10,
-    marginLeft:15,
-    marginTop:60,
-    
-   
-   
+  // ModalmainView2:{
+  //   backgroundColor:'gray',
+  //   margin:20,
+  //   // borderRadius:20,
+  //   flex:1, 
+  //   marginBottom:10,
+  //   marginLeft:15,
+  //   marginTop:60,
+  //    },
+ 
+    modelmainview:{
+    backgroundColor:'white',
+    flex:1,
+    marginHorizontal:20,
+    marginTop:20,
+    marginBottom:120,
+    borderRadius:5,
+    borderWidth:1,
+    borderColor:'red'
   },
   
-   
+  facilitiesView:{
+    flexDirection:'row',
+    justifyContent:'space-evenly',
+    margin:10,
+    padding:10,
+  },
+  facilitesText1:{
+    alignItems:'center',
+    marginHorizontal:60,
+    paddingHorizontal:30,
+    color:'black',
+  },
+facilitesText2:{
+  alignItems:'center',
+  marginHorizontal:60,
+  paddingHorizontal:30,
+  color:'red'
+},
 
  
 });
